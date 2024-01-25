@@ -1,0 +1,11 @@
+.player-team {
+  border: 2px solid blue;
+  border-radius: 50px;
+  padding: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+  h3 {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "capacities": [
+    {
+      "id": 1,
+      "icon": "",
+      "name": "Fire Breath",
+      "description": "A fire breath that deals damage!",
+      "type": {
+        "required": ["Fire"],
+        "excluded": null
+      },
+      "race": null,
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Magical"],
+        "element": ["Fire"]
+      }
+    },
+    {
+      "id": 2,
+      "icon": "",
+      "name": "Dark Breath",
+      "description": "A dark breath that deals damage!",
+      "type": {
+        "required": ["Dark"],
+        "excluded": null
+      },
+      "race": null,
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Magical"],
+        "element": ["Dark"]
+      }
+    },
+    {
+      "id": 3,
+      "icon": "",
+      "name": "Ice Breath",
+      "description": "An ice breath that deals damage!",
+      "type": {
+        "required": ["Ice"],
+        "excluded": null
+      },
+      "race": null,
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Magical"],
+        "element": ["Ice"]
+      }
+    },
+    {
+      "id": 4,
+      "icon": "",
+      "name": "Burning Slash",
+      "description": "A Burning Slash that deals damage !",
+      "type": {
+        "required": ["Fire"],
+        "excluded": null
+      },
+      "race": null,
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Physical"],
+        "element": ["Fire", "Slash"]
+      }
+    },
+    {
+      "id": 5,
+      "icon": "",
+      "name": "The Carbuncle Special",
+      "description": "A Carbuncle Special that deals damage !",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": ["Carbuncle"],
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Physical"],
+        "element": ["Slash"]
+      }
+    },
+    {
+      "id": 6,
+      "icon": "",
+      "name": "Slime Hit",
+      "description": "A Slime Hit that deals damage !",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": ["Slime"],
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Physical"],
+        "element": ["Slash"]
+      }
+    },
+    {
+      "id": 7,
+      "icon": "",
+      "name": "Ice Spike",
+      "description": "An Ice Splike that deals damage !",
+      "type": {
+        "required": ["Ice"],
+        "excluded": null
+      },
+      "race": null,
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Magical"],
+        "element": ["Ice"]
+      }
+    },
+    {
+      "id": 7,
+      "icon": "",
+      "name": "Holy Wave",
+      "description": "An Holy Wave that deals damage !",
+      "type": {
+        "required": ["Holy"],
+        "excluded": null
+      },
+      "race": null,
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Magical"],
+        "element": ["Holy"]
+      }
+    },
+    {
+      "id": 8,
+      "icon": "",
+      "name": "Water Spray",
+      "description": "A Water Spray that deals damage !",
+      "type": {
+        "required": ["Water"],
+        "excluded": null
+      },
+      "race": null,
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Magical"],
+        "element": ["Water"]
+      }
+    },
+    {
+      "id": 9,
+      "icon": "",
+      "name": "Basic Attack",
+      "description": "A Basic Attack that deals damage !",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": null,
+      "details": {
+        "type": "Damage",
+        "base": 100,
+        "variance": 5,
+        "damageType": ["Physical"],
+        "element": ["Blunt"]
+      }
+    }
+  ]
+}

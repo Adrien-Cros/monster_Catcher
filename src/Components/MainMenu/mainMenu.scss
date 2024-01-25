@@ -1,0 +1,27 @@
+.main-menu {
+  margin: 20px 0 0 20px;
+  display: flex;
+  flex-direction: column;
+
+  .mission-button {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .menu-button {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .player-box {
+    display: flex;
+    flex-direction: column;
+  }
+  section {
+    display: flex;
+    justify-content: space-between;
+  }
+}

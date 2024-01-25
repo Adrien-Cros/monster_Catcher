@@ -1,0 +1,123 @@
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
+import {
+  addMonsterToTeam,
+  removeMonsterFromTeam,
+} from '../../Store/Slice/playerTeamSlice'
+import {
+  deleteMonsterFromListByKey,
+  updateCapturedMonstersList,
+} from '../../Store/Slice/monstersSlice'
+import './monsterCard.scss'
+
+function MonsterCard({
+  monster,
+  onDelete,
+  canAccessMenu,
+  canBeRemovedFromTeam,
+  canBeDelete,
+}) {
+  const dispatch = useDispatch()
+  const [isMenuOpen, setMenuOpen] = useState(false)
+
+  if (!monster) {
+    return <div>Can't find monsters</div>
+  }
+
+  const handleDeleteClick = () => {
+    onDelete(monster.uniqueKey)
+    setMenuOpen(false)
+  }
+
+  const handleMoveToTeam = () => {
+    dispatch(addMonsterToTeam(monster))
+    dispatch(deleteMonsterFromListByKey({ uniqueKey: monster.uniqueKey }))
+    setMenuOpen(false)
+  }
+
+  const handleRemoveFromTeam = () => {
+    dispatch(removeMonsterFromTeam({ uniqueKey: monster.uniqueKey }))
+    dispatch(updateCapturedMonstersList(monster))
+    setMenuOpen(false)
+  }
+
+  const handleMenuClick = () => {
+    setMenuOpen(!isMenuOpen)
+  }
+
+  return (
+    <div className="monster-container">
+      {canAccessMenu && (
+        <div className="menu-container">
+          <button onClick={handleMenuClick} className="monster-menu-button">
+            ...
+          </button>
+          {isMenuOpen && (
+            <>
+              {canBeRemovedFromTeam === false && (
+                <button onClick={handleMoveToTeam} className="move-button">
+                  Move to your team
+                </button>
+              )}
+              {canBeRemovedFromTeam === true && (
+                <button
+                  onClick={handleRemoveFromTeam}
+                  className="remove-button"
+                >
+                  Move to your box
+                </button>
+              )}
+              <button className="rename-button">Rename</button>
+              {canBeDelete === true && (
+                <button onClick={handleDeleteClick} className="delete-button">
+                  Delete
+                </button>
+              )}
+            </>
+          )}
+        </div>
+      )}
+      <h3 className="monster-container-name">{monster.name}</h3>
+      <div>
+        <p className="lvl">Level: {monster.level}</p>
+        <p className="xp">Exp: {monster.experience}</p>
+      </div>
+      <div>
+        {monster.race && <p className="race">{monster.race.join(' ')}</p>}
+        {monster.type && <p className="type">{monster.type.join(' ')}</p>}
+      </div>
+      <img src={monster.picture} alt={monster.name} />
+      <p className="description">{monster.description}</p>
+      <div className="stats">
+        <p>HP: {monster.stats?.hp}</p>
+        <p>Attack: {monster.stats?.attack}</p>
+        <p>Magic: {monster.stats?.magic}</p>
+        <p>Defense: {monster.stats?.defense}</p>
+        <p>Spirit: {monster.stats?.spirit}</p>
+        <p>Speed: {monster.stats?.speed}</p>
+        <p>Despair: {monster.stats?.despair}</p>
+      </div>
+      <div className="capacity">
+        Capacity:
+        {monster.capacities &&
+          Object.values(monster.capacities)
+            .slice(0, 4)
+            .map(
+              (capacity, index) =>
+                capacity && <p key={index}>{capacity.name}</p>
+            )}
+      </div>
+
+      <div className="traits">
+        Traits:
+        {monster.traits &&
+          Object.values(monster.traits)
+            .slice(0, 4)
+            .map((trait, index) => trait && <p key={index}>{trait.name}</p>)}
+      </div>
+    </div>
+  )
+}
+
+export default MonsterCard

@@ -1,0 +1,544 @@
+{
+  "monsters": [
+    {
+      "id": 1,
+      "uniqueKey": null,
+      "name": "Fire Carbuncle",
+      "level": 1,
+      "experience": 200,
+      "picture": "./Assets/Monsters/Carbuncle Fire.png",
+      "race": ["Carbuncle"],
+      "type": ["Fire"],
+      "description": "A cute little fire carbuncle",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 2,
+      "uniqueKey": null,
+      "name": "Dark Carbuncle",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Carbuncle Dark.png",
+      "race": ["Carbuncle"],
+      "type": ["Dark"],
+      "description": "A cute little dark carbuncle",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 3,
+      "uniqueKey": null,
+      "name": "Ice Carbuncle",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Carbuncle Ice.png",
+      "race": ["Carbuncle"],
+      "type": ["Ice"],
+      "description": "A cute little ice carbuncle",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 4,
+      "uniqueKey": null,
+      "name": "Dark Slime",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Slime Darki.png",
+      "race": ["Slime"],
+      "type": ["Dark"],
+      "description": "A beautiful Dark Slime !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 5,
+      "uniqueKey": null,
+      "name": "Holy Slime",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Slime Holyi.png",
+      "race": ["Slime"],
+      "type": ["Holy"],
+      "description": "A beautiful Holy Slime !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 6,
+      "uniqueKey": null,
+      "name": "Fire Slime",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Slime Firei.png",
+      "race": ["Slime"],
+      "type": ["Fire"],
+      "description": "A beautiful Fire Slime !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 7,
+      "uniqueKey": null,
+      "name": "Water Slime",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Slime Wateri.png",
+      "race": ["Slime"],
+      "type": ["Water"],
+      "description": "A beautiful Water Slime !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 8,
+      "uniqueKey": null,
+      "name": "Corrupted Villager",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Eldritch Corruption Villager.png",
+      "race": ["Eldritch"],
+      "type": ["Dark"],
+      "description": "A beautiful Corrupted Villager !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 9,
+      "uniqueKey": null,
+      "name": "Corrupted Hound",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Eldritch Abomination Hound.png",
+      "race": ["Eldritch"],
+      "type": ["Dark"],
+      "description": "A beautiful Corrupted Hound !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 10,
+      "uniqueKey": null,
+      "name": "Corrupted Boomer",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Eldritch Corruption Exploder.png",
+      "race": ["Eldritch"],
+      "type": ["Dark"],
+      "description": "A beautiful Corrupted Boomer !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 11,
+      "uniqueKey": null,
+      "name": "Fire Gazer Elemental",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Gazer Fire Elemental.png",
+      "race": ["Elemental"],
+      "type": ["Fire"],
+      "description": "A beautiful Fire Gazer Elemental !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 12,
+      "uniqueKey": null,
+      "name": "Water Gazer Elemental",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Gazer Water Elemental.png",
+      "race": ["Elemental"],
+      "type": ["Water"],
+      "description": "A beautiful Water Gazer Elemental !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 13,
+      "uniqueKey": null,
+      "name": "Clockwork Bird",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Clockwork Aerial.png",
+      "race": ["Clockwork"],
+      "type": ["Lightning"],
+      "description": "A beautiful Clockwork Bird !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 14,
+      "uniqueKey": null,
+      "name": "Clockwork Gunner",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Clockwork Mini C.png",
+      "race": ["Clockwork"],
+      "type": ["Lightning"],
+      "description": "A beautiful Clockwork Gunner !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    },
+    {
+      "id": 15,
+      "uniqueKey": null,
+      "name": "Corrupted Clockwork Spirit",
+      "level": "",
+      "experience": "",
+      "picture": "./Assets/Monsters/Corrupted Clockwork.png",
+      "race": ["Clockwork", "Eldritch", "Spirit"],
+      "type": ["Lightning", "Dark"],
+      "description": "A beautiful Corrupted Clockwork Spirit !",
+      "stats": {
+        "hp": 100,
+        "attack": 80,
+        "magic": 60,
+        "defense": 75,
+        "spirit": 70,
+        "speed": 90,
+        "luck": 10,
+        "despair": 20,
+        "capture_chance": 5,
+        "rarity": 3
+      },
+      "unique_passive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      }
+    }
+  ]
+}

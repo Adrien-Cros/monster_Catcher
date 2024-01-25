@@ -1,0 +1,231 @@
+{
+  "traits": [
+    {
+      "id": 1,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Strong",
+      "description": "+10% attack",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack +10%"]
+    },
+    {
+      "id": 2,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Strong+",
+      "description": "+20% attack",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack +20%"]
+    },
+    {
+      "id": 3,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Strong++",
+      "description": "+30% attack",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+
+      "effectOnStats": ["attack +30%"]
+    },
+    {
+      "id": 4,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Weak",
+      "description": "-10% attack",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack -10%"]
+    },
+    {
+      "id": 5,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Weak+",
+      "description": "-20% attack",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack -20%"]
+    },
+    {
+      "id": 6,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Weak++",
+      "description": "-30% attack",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack -30%"]
+    },
+    {
+      "id": 7,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Magician",
+      "description": "-10% attack, +10% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack -10%", "magic +10%"]
+    },
+    {
+      "id": 8,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Magician+",
+      "description": "-20% attack, +20% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack -20%", "magic +20%"]
+    },
+    {
+      "id": 9,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Magician++",
+      "description": "-30% attack, +30% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack -30%", "magic +30%"]
+    },
+    {
+      "id": 10,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Fighter",
+      "description": "-10% magic, +10% attack",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic -10%", "attack +10%"]
+    },
+    {
+      "id": 11,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Fighter+",
+      "description": "-20% magic, +20% attack",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic -20%", "attack +20%"]
+    },
+    {
+      "id": 12,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Fighter++",
+      "description": "-30% magic, +30% attack",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic -30%", "attack +30%"]
+    },
+    {
+      "id": 13,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Heavy",
+      "description": "+10% hp, +10% defense",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["hp +10%", "defense +10%"]
+    },
+    {
+      "id": 14,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Heavy+",
+      "description": "+20% hp, +20% defense",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["hp +20%", "defense +20%"]
+    },
+    {
+      "id": 15,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Legendary",
+      "description": "+10% all stats",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": [
+        "hp +10%",
+        "attack +10%",
+        "magic +10%",
+        "defense +10%",
+        "spirit +10%",
+        "speed +10%",
+        "luck +10%",
+        "despair +10%"
+      ]
+    },
+    {
+      "id": 16,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Cursed",
+      "description": "-10% all stats",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": [
+        "hp -10%",
+        "attack -10%",
+        "magic -10%",
+        "defense -10%",
+        "spirit -10%",
+        "speed -10%",
+        "luck -10%",
+        "despair -10%"
+      ]
+    }
+  ]
+}

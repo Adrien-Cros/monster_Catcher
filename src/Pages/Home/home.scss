@@ -1,0 +1,20 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  .start-continue-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+  }
+}
+.main-menu-button {
+  font-size: 4rem;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}

@@ -1,0 +1,92 @@
+.monster-container {
+  position: relative;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 6px;
+  width: 280px;
+  height: 270px;
+  text-align: center;
+  background-color: #332b2b;
+
+  h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #dfd4d4;
+    font-weight: bold;
+  }
+
+  img {
+    width: 100px;
+    height: 80px;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+
+  .description {
+    color: #dfd4d4;
+    font-style: italic;
+    margin: 0;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 4px;
+
+    p {
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+
+  .stats {
+    margin: 0;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: left;
+    font-size: 12px;
+
+    p {
+      margin: 4px 0;
+    }
+  }
+
+  .capacity,
+  .traits {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    gap: 4px;
+
+    p {
+      display: flex;
+      justify-content: center;
+      border: 1px solid #a45353;
+      padding: 2px;
+      border-radius: 10px;
+      margin: 4px 0;
+      color: #8ac2ff;
+    }
+    :hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 2%;
+    top: 1%;
+    padding: 6px;
+    gap: 5px;
+  }
+}

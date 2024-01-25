@@ -1,0 +1,24 @@
+.player-box {
+  border: 2px solid blue;
+  border-radius: 50px;
+  padding: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+
+  h3 {
+    display: flex;
+    justify-content: center;
+  }
+  .stocked-monsters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    height: 41em;
+    width: 90em;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }
+}
