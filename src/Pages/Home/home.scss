@@ -9,6 +9,7 @@ main {
     flex-direction: column;
     justify-content: center;
     gap: 30px;
+    margin-top: 150px;
   }
 }
 .main-menu-button {
@@ -17,4 +18,13 @@ main {
   display: flex;
   justify-content: center;
   align-self: center;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  border-radius: 25px;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: rgb(177, 60, 132);
+    border-radius: 50px;
+  }
 }

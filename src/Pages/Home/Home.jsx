@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import MainMenu from '../../Components/MainMenu/MainMenu'
 import {
   resetCapturedMonstersList,
   loadCapturedMonstersList,
 } from '../../Store/Slice/monstersSlice'
-import { loadMonsterFromTeam } from '../../Store/Slice/playerTeamSlice'
+import {
+  loadMonsterFromTeam,
+  resetMonsterFromTeam,
+} from '../../Store/Slice/playerTeamSlice'
+import { loadSetting, setDifficultyNormal } from '../../System/config'
+
+import MainMenu from '../../Components/MainMenu/MainMenu'
 
 import './home.scss'
 
@@ -19,6 +24,7 @@ function Home() {
   useEffect(() => {
     dispatch(loadCapturedMonstersList())
     dispatch(loadMonsterFromTeam())
+    dispatch(loadSetting())
     const savedData = localStorage.getItem('capturedMonstersList')
     if (savedData) {
       setAlreadyHasData(true)
@@ -30,6 +36,8 @@ function Home() {
     event.preventDefault()
     setOpenGame(true)
     dispatch(resetCapturedMonstersList())
+    dispatch(setDifficultyNormal())
+    dispatch(resetMonsterFromTeam())
   }
 
   const handleContinue = (event) => {

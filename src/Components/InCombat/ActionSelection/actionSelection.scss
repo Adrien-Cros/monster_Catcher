@@ -1,0 +1,39 @@
+.capacity-selection-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.selection-button-capacity {
+  display: flex;
+  justify-content: center;
+  border: 2px solid white;
+  padding: 10px;
+  &:hover {
+    transform: scale(1.1);
+    background-color: red;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+.capacity-selected-info {
+  border: 2px solid white;
+  padding: 5px;
+  h2 {
+    display: flex;
+    justify-content: center;
+  }
+  .damage-info {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+.player-monster-hp-bar,
+.enemy-monster-hp-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: green;
+  border-radius: 14px;
+}

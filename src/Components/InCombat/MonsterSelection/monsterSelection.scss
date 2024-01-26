@@ -1,0 +1,23 @@
+.selection-menu {
+  display: flex;
+  .monster-selection-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    .selection-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-self: center;
+      width: auto;
+      border: 2px transparent;
+
+      &:hover {
+        border: 2px solid red;
+        transform: scale(1.1);
+        border-radius: 10px;
+      }
+    }
+  }
+}

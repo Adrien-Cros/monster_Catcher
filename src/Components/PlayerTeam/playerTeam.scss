@@ -1,4 +1,5 @@
 .player-team {
+  display: flex;
   border: 2px solid blue;
   border-radius: 50px;
   padding: 2px;
@@ -8,4 +9,12 @@
     display: flex;
     justify-content: center;
   }
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
 }

@@ -14,8 +14,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Magical"],
-        "element": ["Fire"]
+        "element": ["Fire"],
+        "scaling": ["+25% magic"]
       }
     },
     {
@@ -32,8 +36,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Magical"],
-        "element": ["Dark"]
+        "element": ["Dark"],
+        "scaling": ["+10% magic", "+20% despair"]
       }
     },
     {
@@ -50,8 +58,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Magical"],
-        "element": ["Ice"]
+        "element": ["Ice"],
+        "scaling": ["+20% magic"]
       }
     },
     {
@@ -68,8 +80,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Physical"],
-        "element": ["Fire", "Slash"]
+        "element": ["Fire", "Slash"],
+        "scaling": ["+30% attack"]
       }
     },
     {
@@ -86,8 +102,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Physical"],
-        "element": ["Slash"]
+        "element": ["Slash"],
+        "scaling": ["+50% attack", "+10% speed"]
       }
     },
     {
@@ -104,8 +124,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Physical"],
-        "element": ["Slash"]
+        "element": ["Slash"],
+        "scaling": ["+10% attack"]
       }
     },
     {
@@ -122,8 +146,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Magical"],
-        "element": ["Ice"]
+        "element": ["Ice"],
+        "scaling": ["+30% magic"]
       }
     },
     {
@@ -140,8 +168,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Magical"],
-        "element": ["Holy"]
+        "element": ["Holy"],
+        "scaling": ["+30% magic"]
       }
     },
     {
@@ -158,8 +190,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Magical"],
-        "element": ["Water"]
+        "element": ["Water"],
+        "scaling": ["+30% magic"]
       }
     },
     {
@@ -176,8 +212,12 @@
         "type": "Damage",
         "base": 100,
         "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
         "damageType": ["Physical"],
-        "element": ["Blunt"]
+        "element": ["Blunt"],
+        "scaling": ["+5% attack"]
       }
     }
   ]

@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
   }
+
   .stocked-monsters {
     display: flex;
     justify-content: center;
@@ -17,8 +18,13 @@
     height: 41em;
     width: 90em;
   }
+
   .pagination {
     display: flex;
     justify-content: center;
+  }
+
+  .filter-button {
+    display: flex;
   }
 }

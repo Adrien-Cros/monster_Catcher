@@ -32,9 +32,17 @@ const monstersTeamSlice = createSlice({
         state.actualMonstersInTeam = JSON.parse(storedData)
       }
     },
+    resetMonsterFromTeam: (state) => {
+      state.actualMonstersInTeam = []
+      localStorage.removeItem('actualMonstersInTeam')
+    },
   },
 })
 
-export const { addMonsterToTeam, removeMonsterFromTeam, loadMonsterFromTeam } =
-  monstersTeamSlice.actions
+export const {
+  addMonsterToTeam,
+  removeMonsterFromTeam,
+  loadMonsterFromTeam,
+  resetMonsterFromTeam,
+} = monstersTeamSlice.actions
 export default monstersTeamSlice.reducer

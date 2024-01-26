@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import {
   addMonsterToTeam,
@@ -17,8 +18,14 @@ function MonsterCard({
   canAccessMenu,
   canBeRemovedFromTeam,
   canBeDelete,
+  showStats,
 }) {
   const dispatch = useDispatch()
+
+  const teamMonsters = useSelector(
+    (state) => state.monsterTeam.actualMonstersInTeam
+  )
+
   const [isMenuOpen, setMenuOpen] = useState(false)
 
   if (!monster) {
@@ -31,9 +38,14 @@ function MonsterCard({
   }
 
   const handleMoveToTeam = () => {
-    dispatch(addMonsterToTeam(monster))
-    dispatch(deleteMonsterFromListByKey({ uniqueKey: monster.uniqueKey }))
-    setMenuOpen(false)
+    if (teamMonsters.length <= 4) {
+      dispatch(addMonsterToTeam(monster))
+      dispatch(deleteMonsterFromListByKey({ uniqueKey: monster.uniqueKey }))
+      setMenuOpen(false)
+    } else {
+      alert("you can't add more monster")
+      setMenuOpen(false)
+    }
   }
 
   const handleRemoveFromTeam = () => {
@@ -48,7 +60,7 @@ function MonsterCard({
 
   return (
     <div className="monster-container">
-      {canAccessMenu && (
+      {canAccessMenu === true && (
         <div className="menu-container">
           <button onClick={handleMenuClick} className="monster-menu-button">
             ...
@@ -89,15 +101,18 @@ function MonsterCard({
       </div>
       <img src={monster.picture} alt={monster.name} />
       <p className="description">{monster.description}</p>
-      <div className="stats">
-        <p>HP: {monster.stats?.hp}</p>
-        <p>Attack: {monster.stats?.attack}</p>
-        <p>Magic: {monster.stats?.magic}</p>
-        <p>Defense: {monster.stats?.defense}</p>
-        <p>Spirit: {monster.stats?.spirit}</p>
-        <p>Speed: {monster.stats?.speed}</p>
-        <p>Despair: {monster.stats?.despair}</p>
-      </div>
+      {showStats && (
+        <div className="stats">
+          <p>HP: {monster.stats?.hp}</p>
+          <p>Attack: {monster.stats?.attack}</p>
+          <p>Magic: {monster.stats?.magic}</p>
+          <p>Defense: {monster.stats?.defense}</p>
+          <p>Spirit: {monster.stats?.spirit}</p>
+          <p>Speed: {monster.stats?.speed}</p>
+          <p>Despair: {monster.stats?.despair}</p>
+        </div>
+      )}
+
       <div className="capacity">
         Capacity:
         {monster.capacities &&
@@ -118,6 +133,21 @@ function MonsterCard({
       </div>
     </div>
   )
+}
+
+MonsterCard.propTypes = {
+  // The data object representing the monster.
+  monster: PropTypes.object.isRequired,
+  // Callback function triggered when a delete action is performed on the monster. Return the monster.uniqueKey for the selected monster.
+  onDelete: PropTypes.func,
+  // Flag indicating whether the user has access to the menu for the monster.
+  canAccessMenu: PropTypes.bool,
+  // Flag indicating whether the monster can be removed from the team.
+  canBeRemovedFromTeam: PropTypes.bool,
+  // Flag indicating whether the delete action is allowed for the monster.
+  canBeDelete: PropTypes.bool,
+  // Flag indicating whether to display statistical information of the monster. Hide the entire menu button if set to false.
+  showStats: PropTypes.bool,
 }
 
 export default MonsterCard

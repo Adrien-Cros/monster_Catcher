@@ -7,14 +7,13 @@ import './playerBox.scss'
 
 function PlayerBox() {
   const dispatch = useDispatch()
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const monstersPerPage = 8
 
   const capturedMonsterData = useSelector(
     (state) => state.monsters.capturedMonstersList
   )
-
-  const monstersPerPage = 8
-
-  const [currentPage, setCurrentPage] = useState(1)
 
   const indexOfLastMonster = currentPage * monstersPerPage
   const indexOfFirstMonster = indexOfLastMonster - monstersPerPage
@@ -22,7 +21,6 @@ function PlayerBox() {
     indexOfFirstMonster,
     indexOfLastMonster
   )
-
   const totalPages = Math.ceil(capturedMonsterData.length / monstersPerPage)
 
   const handlePageChange = (newPage) => {
@@ -35,25 +33,29 @@ function PlayerBox() {
 
   return (
     <>
-      <h3>Your stocked monsters:</h3>
+      <h3>
+        Your stocked monsters (Total Monsters: {capturedMonsterData.length}):
+      </h3>
       <div className="filter-button">
-        <p> Filter by:</p>
-        <button>name</button>
-        <button>level</button>
-        <button>race</button>
-        <button>element</button>
+        <p> Sort by:</p>
+        <button>Name</button>
+        <button>Level</button>
+        <button>Race</button>
+        <button>Element</button>
       </div>
       <div className="stocked-monsters">
-        {currentMonsters.map((monster, index) => (
-          <MonsterCard
-            key={index}
-            monster={monster}
-            onDelete={() => handleDeleteMonster(monster.uniqueKey)}
-            canAccessMenu={true}
-            canBeRemovedFromTeam={false}
-            canBeDelete={true}
-          />
-        ))}
+        {currentMonsters &&
+          currentMonsters.map((monster, index) => (
+            <MonsterCard
+              key={monster.uniqueKey}
+              monster={monster}
+              onDelete={() => handleDeleteMonster(monster.uniqueKey)}
+              canAccessMenu={true}
+              canBeRemovedFromTeam={false}
+              canBeDelete={true}
+              showStats={true}
+            />
+          ))}
       </div>
       <div className="pagination">
         <button

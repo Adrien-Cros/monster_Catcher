@@ -13,9 +13,26 @@ header {
 
   .menu {
     margin-top: 10px;
+    position: relative;
 
     .navbar {
       display: flex;
+      gap: 10px;
+
+      .option-button {
+        border: 1px solid white;
+        padding: 2px;
+        display: flex;
+        justify-content: center;
+        transition: all 0.3s;
+
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+          transform: scale(1.1);
+          background-color: rgb(177, 60, 132);
+        }
+      }
 
       button {
         color: #fff;
@@ -28,6 +45,16 @@ header {
         &:hover {
           text-decoration: underline;
         }
+      }
+
+      .option-container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        right: -2px;
+        top: 50px;
+        background: green;
+        padding: 16px;
       }
     }
   }
