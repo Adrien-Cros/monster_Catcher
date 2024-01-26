@@ -31,6 +31,8 @@ const GenerateMonster = () => {
   const generatedMonsterWithDetail = {
     ...randomMonster,
     uniqueKey: uniqueKey,
+    level: 1,
+    experience: 0,
     capacities,
     traits,
   }

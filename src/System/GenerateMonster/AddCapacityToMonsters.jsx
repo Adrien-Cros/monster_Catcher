@@ -35,12 +35,12 @@ function AddCapacityToMonsters({ monster }) {
   }
 
   let numCapacities
-  if (randomNumberOfCapacity <= 75) {
-    numCapacities = 1 // 75% chance for 1 capacity
-  } else if (randomNumberOfCapacity <= 90) {
-    numCapacities = 2 // 15% chance for 2 capacity
+  if (randomNumberOfCapacity <= 60) {
+    numCapacities = 1 // 60% chance for 1 capacity
+  } else if (randomNumberOfCapacity <= 86) {
+    numCapacities = 2 // 26% chance for 2 capacity
   } else if (randomNumberOfCapacity <= 97) {
-    numCapacities = 3 // 7% chance for 3 capacity
+    numCapacities = 3 // 11% chance for 3 capacity
   } else {
     numCapacities = 4 // 3% chance for 4 capacity
   }
@@ -49,7 +49,12 @@ function AddCapacityToMonsters({ monster }) {
   const capacities = {}
 
   for (let i = 1; i <= numCapacities; i++) {
-    capacities[`capacity${i}`] = getRandomCapacity(selectedCapacity, monster)
+    const randomCapacity = getRandomCapacity(selectedCapacity, monster)
+
+    // Only add the capacity if it is defined (not null or undefined)
+    if (randomCapacity !== null && randomCapacity !== undefined) {
+      capacities[`capacity${i}`] = randomCapacity
+    }
   }
   return capacities
 }

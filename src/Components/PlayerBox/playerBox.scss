@@ -8,6 +8,7 @@
   h3 {
     display: flex;
     justify-content: center;
+    margin: 0;
   }
 
   .stocked-monsters {
@@ -15,7 +16,6 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 5px;
-    height: 41em;
     width: 90em;
   }
 

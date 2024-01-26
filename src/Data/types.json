@@ -1,0 +1,34 @@
+{
+  "types": [
+    {
+      "id": 1,
+      "name": "Ice",
+      "icon": "./Assets/Types/Ice-icon.png"
+    },
+    {
+      "id": 2,
+      "name": "Dark",
+      "icon": "./Assets/Types/Dark-icon.png"
+    },
+    {
+      "id": 3,
+      "name": "Fire",
+      "icon": "./Assets/Types/Fire-icon.png"
+    },
+    {
+      "id": 4,
+      "name": "Holy",
+      "icon": "./Assets/Types/Holy-icon.png"
+    },
+    {
+      "id": 5,
+      "name": "Lightning",
+      "icon": "./Assets/Types/Lightning-icon.png"
+    },
+    {
+      "id": 6,
+      "name": "Water",
+      "icon": "./Assets/Types/Water-icon.png"
+    }
+  ]
+}

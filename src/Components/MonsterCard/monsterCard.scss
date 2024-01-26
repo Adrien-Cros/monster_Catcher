@@ -5,7 +5,7 @@
   padding: 16px;
   margin: 6px;
   width: 280px;
-  height: 270px;
+  height: 280px;
   text-align: center;
   background-color: #332b2b;
 
@@ -16,7 +16,7 @@
     font-weight: bold;
   }
 
-  img {
+  .monster-icon {
     width: 100px;
     height: 80px;
     border-radius: 4px;
@@ -88,5 +88,22 @@
     top: 1%;
     padding: 6px;
     gap: 5px;
+  }
+
+  .type-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .monster-name-id {
+    .monster-id {
+      position: absolute;
+    }
+    .monster-container-name {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
   }
 }

@@ -43,20 +43,6 @@ function PlayerBox() {
         <button>Race</button>
         <button>Element</button>
       </div>
-      <div className="stocked-monsters">
-        {currentMonsters &&
-          currentMonsters.map((monster, index) => (
-            <MonsterCard
-              key={monster.uniqueKey}
-              monster={monster}
-              onDelete={() => handleDeleteMonster(monster.uniqueKey)}
-              canAccessMenu={true}
-              canBeRemovedFromTeam={false}
-              canBeDelete={true}
-              showStats={true}
-            />
-          ))}
-      </div>
       <div className="pagination">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
@@ -73,6 +59,20 @@ function PlayerBox() {
         >
           Next Page
         </button>
+      </div>
+      <div className="stocked-monsters">
+        {currentMonsters &&
+          currentMonsters.map((monster, index) => (
+            <MonsterCard
+              key={monster.uniqueKey}
+              monster={monster}
+              onDelete={() => handleDeleteMonster(monster.uniqueKey)}
+              canAccessMenu={true}
+              canBeRemovedFromTeam={false}
+              canBeDelete={true}
+              showStats={true}
+            />
+          ))}
       </div>
     </>
   )

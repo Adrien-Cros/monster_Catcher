@@ -10,6 +10,9 @@ import {
   deleteMonsterFromListByKey,
   updateCapturedMonstersList,
 } from '../../Store/Slice/monstersSlice'
+
+import typesData from '../../Data/types.json'
+
 import './monsterCard.scss'
 
 function MonsterCard({
@@ -90,16 +93,31 @@ function MonsterCard({
           )}
         </div>
       )}
-      <h3 className="monster-container-name">{monster.name}</h3>
+      <div className="monster-name-id">
+        <p className="monster-id">ID: {monster.id}</p>
+        <h3 className="monster-container-name">{monster.name}</h3>
+      </div>
+
       <div>
         <p className="lvl">Level: {monster.level}</p>
         <p className="xp">Exp: {monster.experience}</p>
       </div>
       <div>
         {monster.race && <p className="race">{monster.race.join(' ')}</p>}
-        {monster.type && <p className="type">{monster.type.join(' ')}</p>}
+        {monster.type && (
+          <p className="type">
+            {monster.type.map((typeId, index) => (
+              <img
+                className="type-icon"
+                key={index}
+                src={typesData.types.find((t) => t.name === typeId)?.icon}
+                alt={`Type ${typeId}`}
+              />
+            ))}
+          </p>
+        )}
       </div>
-      <img src={monster.picture} alt={monster.name} />
+      <img className="monster-icon" src={monster.picture} alt={monster.name} />
       <p className="description">{monster.description}</p>
       {showStats && (
         <div className="stats">
@@ -110,6 +128,7 @@ function MonsterCard({
           <p>Spirit: {monster.stats?.spirit}</p>
           <p>Speed: {monster.stats?.speed}</p>
           <p>Despair: {monster.stats?.despair}</p>
+          <p>Luck: {monster.stats?.luck}</p>
         </div>
       )}
 

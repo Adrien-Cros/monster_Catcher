@@ -4,31 +4,29 @@ function CalculateDamage({ attacker, defender, capacityUsed }) {
   let damageDealt = 0
 
   function damageDealtCalculation(attacker, defender, capacity) {
-    // Apply scaling factors
-    console.log('attacker: ', attacker)
-    console.log('defender: ', defender)
-    console.log('capacity: ', capacity)
-
+    //apply scaling factor of the capacity
     if (capacity.details.scaling) {
+      let addedDamage = 0
       capacity.details.scaling.forEach((scalingFactor) => {
         const [percentage, attribute] = scalingFactor.split(' ')
 
         if (attribute === 'attack') {
-          damageDealt += attacker.stats.attack * (parseFloat(percentage) / 100)
+          addedDamage += attacker.stats.attack * (parseFloat(percentage) / 100)
         } else if (attribute === 'magic') {
-          damageDealt += attacker.stats.magic * (parseFloat(percentage) / 100)
+          addedDamage += attacker.stats.magic * (parseFloat(percentage) / 100)
         } else if (attribute === 'despair') {
-          damageDealt += attacker.stats.despair * (parseFloat(percentage) / 100)
+          addedDamage += attacker.stats.despair * (parseFloat(percentage) / 100)
         } else if (attribute === 'defense') {
-          damageDealt += attacker.stats.defense * (parseFloat(percentage) / 100)
+          addedDamage += attacker.stats.defense * (parseFloat(percentage) / 100)
         } else if (attribute === 'spirit') {
-          damageDealt += attacker.stats.spirit * (parseFloat(percentage) / 100)
+          addedDamage += attacker.stats.spirit * (parseFloat(percentage) / 100)
         } else if (attribute === 'luck') {
-          damageDealt += attacker.stats.luck * (parseFloat(percentage) / 100)
+          addedDamage += attacker.stats.luck * (parseFloat(percentage) / 100)
         } else if (attribute === 'speed') {
-          damageDealt += attacker.stats.speed * (parseFloat(percentage) / 100)
+          addedDamage += attacker.stats.speed * (parseFloat(percentage) / 100)
         }
       })
+      damageDealt = capacity.details.base + addedDamage
     }
 
     // check for crit chance
@@ -37,11 +35,6 @@ function CalculateDamage({ attacker, defender, capacityUsed }) {
     const critRoll = Math.random() * 100
     const isCritical = critRoll <= capacity.details.critChance + luckModifier
 
-    if (isCritical) {
-      console.log('coup critique', critRoll)
-    } else {
-      console.log('pas critique', critRoll)
-    }
     // add the crit multiplier
     damageDealt = isCritical
       ? damageDealt * capacity.details.critDamage
@@ -58,10 +51,15 @@ function CalculateDamage({ attacker, defender, capacityUsed }) {
     //calculate the damage reduction
     //Check if the attack type is physical or magical and compare it to armor/spirit for resistance
     // 10 defense/spirit = (1% damage reduction /2)
+    // penetration reduce the flat damage reduction
     if (capacity.details.damageType === 'Physical') {
-      damageDealt = damageDealt * (1 - defender.stats.defense / 1000)
+      damageDealt =
+        damageDealt *
+        (1 - defender.stats.defense - attacker.stats.penetration / 1000)
     } else if (capacity.details.damageType === 'Magical') {
-      damageDealt = damageDealt * (1 - defender.stats.spirit / 1000)
+      damageDealt =
+        damageDealt *
+        (1 - defender.stats.spirit - attacker.stats.penetration / 1000)
     }
     damageDealt = Math.ceil(damageDealt)
   }
