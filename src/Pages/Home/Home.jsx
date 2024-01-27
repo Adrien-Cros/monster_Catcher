@@ -47,13 +47,20 @@ function Home() {
 
   const handleNewGame = (event) => {
     event.preventDefault()
-    dispatch(resetCapturedMonstersList())
-    dispatch(setDifficultyNormal())
-    dispatch(resetMonsterFromTeam())
-    dispatch(resetInventory())
-    dispatch(addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }))
 
-    navigate('/main')
+    if (alreadyChargedTheData) {
+      const confirmationNewGame = window.confirm(
+        'You already have a save, are you sure you want to delete the old one to create a new one ?'
+      )
+      if (confirmationNewGame) {
+        dispatch(resetCapturedMonstersList())
+        dispatch(setDifficultyNormal())
+        dispatch(resetMonsterFromTeam())
+        dispatch(resetInventory())
+        //dispatch(addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }))
+        navigate('/main')
+      }
+    }
   }
 
   const handleContinue = (event) => {

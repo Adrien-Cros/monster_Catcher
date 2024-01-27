@@ -3,7 +3,13 @@ import PropTypes from 'prop-types'
 import MonsterCard from '../MonsterCard/MonsterCard'
 import './modal.scss'
 
-function Modal({ monsterDefeated, onCloseModal, modalName, itemsWon }) {
+function Modal({
+  monsterDefeated,
+  onCloseModal,
+  modalName,
+  itemsWon,
+  isCaptured,
+}) {
   const [isOpen, setIsOpen] = useState(true)
 
   const handleCloseModal = () => {
@@ -18,7 +24,7 @@ function Modal({ monsterDefeated, onCloseModal, modalName, itemsWon }) {
   return (
     <section className="modal">
       <h3 className="modal-name">{modalName}</h3>
-      {monsterDefeated && itemsWon && (
+      {(monsterDefeated || isCaptured) && itemsWon && (
         <div className="combat-result">
           {itemsWon.map((loot, index) => (
             <div key={index} className="loot">
@@ -29,14 +35,14 @@ function Modal({ monsterDefeated, onCloseModal, modalName, itemsWon }) {
           ))}
         </div>
       )}
-      {monsterDefeated && (
+      {isCaptured && (
         <div className="captured-monsters">
           There is a new monster in your team!
           <MonsterCard
             monster={monsterDefeated}
             canAccessMenu={true}
             showStats={true}
-            canBeDelete={true}
+            canBeDelete={false}
           />
         </div>
       )}

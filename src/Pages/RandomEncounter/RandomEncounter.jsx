@@ -10,9 +10,14 @@ import CalculateDamage from '../../System/Combat/CalculateDamage'
 import Modal from '../../Components/Modal/Modal'
 import Loot from '../../System/Loot/Loot'
 
-import './randomEncounter.scss'
-import { addItemToInventory } from '../../Store/Slice/inventorySlice'
+import {
+  addItemToInventory,
+  removeItemFromInventory,
+} from '../../Store/Slice/inventorySlice'
+import { updateCapturedMonstersList } from '../../Store/Slice/monstersSlice'
 
+import './randomEncounter.scss'
+//This page render a full combat encounter with an HUD
 function RandomEncounter() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -34,11 +39,13 @@ function RandomEncounter() {
   const [hasCombatEnded, setHasCombatEnded] = useState(false)
   const [winOrLose, setWinOrLose] = useState(null) //win=true, lose=false
 
-  //log informations
+  //combat log informations
   const [logInformation, setLogInformation] = useState([])
 
-  //used to check lootlist
+  //used to check the loot when the monster is killed
   const [lootList, setLootList] = useState({})
+
+  const [monsterCaptured, setMonsterCaptured] = useState(false)
 
   useEffect(() => {
     initBattle()
@@ -151,8 +158,34 @@ function RandomEncounter() {
           handlePlayerTurn(selectedCapacityOrItem)
         }
       }
+      //If it's a capture item, try to catch the actual monster
     } else if (isACaptureItem) {
-      //TODO
+      dispatch(
+        removeItemFromInventory({
+          item: selectedCapacityOrItem,
+          quantity: 1,
+        })
+      )
+      const minValueToCaptureTheMonster = wildMonster.captureValueNeeded
+      const minChanceToCapture = selectedCapacityOrItem.effect.captureMinValue
+      const maxChanceToCapture = selectedCapacityOrItem.effect.captureMaxValue
+      const randomRoll =
+        Math.random() * (maxChanceToCapture - minChanceToCapture) +
+        minChanceToCapture
+      const monsterCaptured = randomRoll >= minValueToCaptureTheMonster
+      if (monsterCaptured) {
+        dispatch(updateCapturedMonstersList(wildMonster))
+        setLootList(null)
+        setMonsterCaptured(true)
+        setHasCombatEnded(true)
+        handleCombatWon()
+        const logMessage = `You have captured a ${wildMonster.name} !`
+        updateCombatLog(logMessage)
+      } else {
+        const logMessage = `Failed to capture ${wildMonster.name} ! Try again !`
+        updateCombatLog(logMessage)
+        handleEnemyTurn()
+      }
     } else {
       console.log('Error in retrieving the type of the object')
     }
@@ -219,6 +252,7 @@ function RandomEncounter() {
             monsterDefeated={wildMonster}
             onCloseModal={handleCloseModal}
             itemsWon={lootList}
+            isCaptured={monsterCaptured}
           />
         )}
         <div className="combat-board">

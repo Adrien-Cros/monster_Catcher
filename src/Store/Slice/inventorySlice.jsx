@@ -8,69 +8,76 @@ const inventorySlice = createSlice({
   reducers: {
     addItemToInventory: (state, action) => {
       const { item, quantity } = action.payload
-      const existingItemIndex = state.inventory.findIndex(
-        (invItem) => invItem.id === item.id
-      )
+      if (item) {
+        const existingItemIndex = state.inventory.findIndex(
+          (invItem) => invItem.id === item.id
+        )
 
-      if (existingItemIndex !== -1 && item.stackable) {
-        // If item is in inventory and stackable, update quantityPossessed
-        state.inventory[existingItemIndex].quantityPossessed += quantity
-      } else {
-        // If item is not in inventory or not stackable, add new entries for each item
-        if (!item.stackable) {
-          state.inventory = [
-            ...state.inventory,
-            ...Array(quantity).fill({ ...item, quantityPossessed: 1 }),
-          ]
+        if (existingItemIndex !== -1 && item.stackable) {
+          // If item is in inventory and stackable, update quantityPossessed
+          state.inventory[existingItemIndex].quantityPossessed += quantity
         } else {
-          state.inventory = [
-            ...state.inventory,
-            { ...item, quantityPossessed: quantity },
-          ]
+          // If item is not in inventory or not stackable, add new entries for each item
+          if (!item.stackable) {
+            state.inventory = [
+              ...state.inventory,
+              ...Array(quantity).fill({ ...item, quantityPossessed: 1 }),
+            ]
+          } else {
+            state.inventory = [
+              ...state.inventory,
+              { ...item, quantityPossessed: quantity },
+            ]
+          }
         }
+        localStorage.setItem('inventory', JSON.stringify(state.inventory))
+      } else {
+        console.log('failed to add the item: ', item)
       }
-
-      localStorage.setItem('inventory', JSON.stringify(state.inventory))
     },
     removeItemFromInventory: (state, action) => {
       const { item, quantity } = action.payload
-      const itemIndex = state.inventory.findIndex(
-        (invItem) => invItem.id === item.id
-      )
+      if (item) {
+        const itemIndex = state.inventory.findIndex(
+          (invItem) => invItem.id === item.id
+        )
 
-      if (itemIndex !== -1) {
-        // If item is in inventory and stackable, update quantityPossessed
-        if (item.stackable) {
-          state.inventory[itemIndex].quantityPossessed -= quantity
-          // Ensure quantityPossessed is non-negative
-          state.inventory[itemIndex].quantityPossessed = Math.max(
-            0,
-            state.inventory[itemIndex].quantityPossessed
-          )
+        if (itemIndex !== -1) {
+          // If item is in inventory and stackable, update quantityPossessed
+          if (item.stackable) {
+            state.inventory[itemIndex].quantityPossessed -= quantity
+            // Ensure quantityPossessed is non-negative
+            state.inventory[itemIndex].quantityPossessed = Math.max(
+              0,
+              state.inventory[itemIndex].quantityPossessed
+            )
 
-          // If quantityPossessed becomes 0, remove the item from inventory
-          if (state.inventory[itemIndex].quantityPossessed === 0) {
-            state.inventory = state.inventory.filter(
+            // If quantityPossessed becomes 0, remove the item from inventory
+            if (state.inventory[itemIndex].quantityPossessed === 0) {
+              state.inventory = state.inventory.filter(
+                (invItem) => invItem.id !== item.id
+              )
+            }
+          } else {
+            // If item is not stackable, remove specified quantity of items
+            const nonStackableItems = state.inventory.filter(
+              (invItem) => invItem.id === item.id
+            )
+            const remainingItems = state.inventory.filter(
               (invItem) => invItem.id !== item.id
             )
+
+            state.inventory = [
+              ...remainingItems,
+              ...nonStackableItems.slice(quantity),
+            ]
           }
-        } else {
-          // If item is not stackable, remove specified quantity of items
-          const nonStackableItems = state.inventory.filter(
-            (invItem) => invItem.id === item.id
-          )
-          const remainingItems = state.inventory.filter(
-            (invItem) => invItem.id !== item.id
-          )
-
-          state.inventory = [
-            ...remainingItems,
-            ...nonStackableItems.slice(quantity),
-          ]
         }
-      }
 
-      localStorage.setItem('inventory', JSON.stringify(state.inventory))
+        localStorage.setItem('inventory', JSON.stringify(state.inventory))
+      } else {
+        console.log('failed to remove the item: ', item)
+      }
     },
 
     loadItemFromInventory: (state, action) => {

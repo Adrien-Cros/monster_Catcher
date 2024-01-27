@@ -16,7 +16,8 @@
       "rarity": 1,
       "objectType": "item",
       "effect": {
-        "captureValue": 10
+        "captureMinValue": 1,
+        "captureMaxValue": 10
       }
     },
     {
@@ -35,7 +36,8 @@
       "rarity": 1,
       "objectType": "item",
       "effect": {
-        "captureValue": 25
+        "captureMinValue": 10,
+        "captureMaxValue": 25
       }
     },
     {
