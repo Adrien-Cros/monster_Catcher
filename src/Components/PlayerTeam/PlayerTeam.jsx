@@ -14,21 +14,23 @@ function PlayerTeam({ canAccessMonsterMenu, inCombat }) {
   )
 
   return (
-    <div className={`player-team ${inCombat ? 'flex-row' : 'flex-column'}`}>
+    <>
       <h3>
         Your current team: {teamMonsters.length}/{maxMonstersInTeam}
       </h3>
-      {teamMonsters.map((monster, index) => (
-        <MonsterCard
-          key={monster.uniqueKey}
-          monster={monster}
-          canAccessMenu={canAccessMonsterMenu}
-          canBeRemovedFromTeam={true}
-          canBeDelete={false}
-          showStats={true}
-        />
-      ))}
-    </div>
+      <div className="current-team">
+        {teamMonsters.map((monster, index) => (
+          <MonsterCard
+            key={monster.uniqueKey}
+            monster={monster}
+            canAccessMenu={canAccessMonsterMenu}
+            canBeRemovedFromTeam={true}
+            canBeDelete={false}
+            showStats={true}
+          />
+        ))}
+      </div>
+    </>
   )
 }
 

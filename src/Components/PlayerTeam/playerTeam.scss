@@ -1,20 +1,13 @@
-.player-team {
+h3 {
   display: flex;
-  border: 2px solid blue;
-  border-radius: 50px;
-  padding: 2px;
-  margin-left: 4px;
-  margin-right: 4px;
-  h3 {
-    display: flex;
-    justify-content: center;
-  }
+  justify-content: center;
+  margin: 0;
 }
 
-.flex-column {
-  flex-direction: column;
-}
-
-.flex-row {
-  flex-direction: row;
+.current-team {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
 }

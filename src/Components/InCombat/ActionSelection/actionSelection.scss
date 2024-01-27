@@ -1,7 +1,15 @@
 .capacity-selection-menu {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.selected-capacity-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-self: center;
 }
 
 .selection-button-capacity {
@@ -27,15 +35,6 @@
     display: flex;
     gap: 40px;
   }
-}
-
-.player-monster-hp-bar,
-.enemy-monster-hp-bar {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: green;
-  border-radius: 14px;
 }
 
 .element-details {

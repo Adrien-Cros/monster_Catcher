@@ -75,6 +75,24 @@
     align-items: center;
     margin-top: 30px;
   }
+
+  .enemy-monster-hp-name,
+  .player-monster-hp-name {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .enemy-monster-hp-bar,
+  .player-monster-hp-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: green;
+    border-radius: 14px;
+    height: 20px;
+  }
 }
 
 .player-animation {

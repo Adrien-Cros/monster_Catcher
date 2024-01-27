@@ -16,9 +16,6 @@ function Modal({ capturedMonster, killedMonster, onCloseModal }) {
 
   return (
     <section className="modal">
-      <button onClick={handleCloseModal} className="close-button">
-        X
-      </button>
       <h3 className="modal-name">Modal</h3>
       {killedMonster && (
         <div className="combat-result">
@@ -47,6 +44,9 @@ function Modal({ capturedMonster, killedMonster, onCloseModal }) {
           />
         </div>
       )}
+      <button onClick={handleCloseModal} className="close-button">
+        Accept All
+      </button>
     </section>
   )
 }

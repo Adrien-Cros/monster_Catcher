@@ -25,11 +25,12 @@ function MonsterCard({
 }) {
   const dispatch = useDispatch()
 
+  const [isMenuOpen, setMenuOpen] = useState(false)
+  const [clickedItem, setClickedItem] = useState(null)
+
   const teamMonsters = useSelector(
     (state) => state.monsterTeam.actualMonstersInTeam
   )
-
-  const [isMenuOpen, setMenuOpen] = useState(false)
 
   if (!monster) {
     return <div>Can't find monsters</div>
@@ -59,6 +60,10 @@ function MonsterCard({
 
   const handleMenuClick = () => {
     setMenuOpen(!isMenuOpen)
+  }
+
+  const handleClickOnItem = (item) => {
+    setClickedItem(item)
   }
 
   return (
@@ -139,7 +144,11 @@ function MonsterCard({
             .slice(0, 4)
             .map(
               (capacity, index) =>
-                capacity && <p key={index}>{capacity.name}</p>
+                capacity && (
+                  <p key={index} onClick={() => handleClickOnItem(capacity)}>
+                    {capacity.name}
+                  </p>
+                )
             )}
       </div>
 
@@ -148,8 +157,26 @@ function MonsterCard({
         {monster.traits &&
           Object.values(monster.traits)
             .slice(0, 4)
-            .map((trait, index) => trait && <p key={index}>{trait.name}</p>)}
+            .map(
+              (trait, index) =>
+                trait && (
+                  <p key={index} onClick={() => handleClickOnItem(trait)}>
+                    {trait.name}
+                  </p>
+                )
+            )}
       </div>
+      {clickedItem && (
+        <div className="clicked-item">
+          <p>{clickedItem.description}</p>
+          <p
+            className="close-button-tooltip"
+            onClick={() => handleClickOnItem(null)}
+          >
+            X
+          </p>
+        </div>
+      )}
     </div>
   )
 }

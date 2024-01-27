@@ -1,3 +1,46 @@
 {
-  "consumables": []
+  "consumables": [
+    {
+      "id": 1,
+      "name": "Catch Nest",
+      "icon": null,
+      "description": "Used for catching monsters.",
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
+      "quantityPossessed": 0,
+      "rarity": 1
+    },
+    {
+      "id": 2,
+      "name": "Catch Nest +",
+      "icon": null,
+      "description": "Used for catching monsters.",
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": false,
+      "maxStackNumber": 1,
+      "quantityPossessed": 0,
+      "rarity": 1
+    },
+    {
+      "id": 3,
+      "name": "Placeholder",
+      "icon": null,
+      "description": "Placeholder for things",
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
+      "quantityPossessed": 0,
+      "rarity": 1
+    }
+  ]
 }

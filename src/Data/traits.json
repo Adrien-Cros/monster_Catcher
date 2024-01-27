@@ -188,21 +188,21 @@
       "rarityTier": 3,
       "icon": "",
       "name": "Legendary",
-      "description": "+10% all stats",
+      "description": "+30% all stats",
       "type": {
         "required": [],
         "excluded": null
       },
       "race": null,
       "effectOnStats": [
-        "hp +10%",
-        "attack +10%",
-        "magic +10%",
-        "defense +10%",
-        "spirit +10%",
-        "speed +10%",
-        "luck +10%",
-        "despair +10%"
+        "hp +30%",
+        "attack +30%",
+        "magic +30%",
+        "defense +30%",
+        "spirit +30%",
+        "speed +30%",
+        "luck +30%",
+        "despair +30%"
       ]
     },
     {

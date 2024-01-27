@@ -1,24 +1,22 @@
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import MonsterCard from '../../MonsterCard/MonsterCard'
-import GenerateMonster from '../../../System/GenerateMonster/GenerateMonster'
-import MonsterSelection from '../MonsterSelection/MonsterSelection'
-import ActionSelection from '../ActionSelection/ActionSelection'
-import CalculateDamage from '../../../System/Combat/CalculateDamage'
-import Modal from '../../Modal/Modal'
+import MonsterCard from '../../Components/MonsterCard/MonsterCard'
+import GenerateMonster from '../../System/GenerateMonster/GenerateMonster'
+import MonsterSelection from '../../Components/InCombat/MonsterSelection/MonsterSelection'
+import ActionSelection from '../../Components/InCombat/ActionSelection/ActionSelection'
+import CalculateDamage from '../../System/Combat/CalculateDamage'
+import Modal from '../../Components/Modal/Modal'
 
-import { setInDungeonStatus } from '../../../Store/Slice/gameStatusSlice'
+import './randomEncounter.scss'
 
-import './combatPanel.scss'
-
-function CombatPanel() {
-  const dispatch = useDispatch()
+function RandomEncounter() {
+  const navigate = useNavigate()
 
   const [hasInitBattle, setHasInitBattle] = useState(false)
   const [hasChooseARandomMonster, setHasChooseARandomMonster] = useState(false)
   const [hasPlayerChooseAMonster, setHasPlayerChooseAMonster] = useState(false)
-  const [chosenEnemyMonster, setChosenEnemyMonster] = useState(null)
+  const [wildMonster, setWildMonster] = useState(null)
   const [selectedPlayerMonster, setSelectedPlayerMonster] = useState(null)
 
   //copy the monster for modifying stats if needed for fight
@@ -33,13 +31,13 @@ function CombatPanel() {
 
   useEffect(() => {
     initBattle()
-  }, [hasInitBattle])
+  }, [])
 
   const generateRandomMonster = () => {
     if (!hasChooseARandomMonster) {
       const randomMonster = GenerateMonster()
       if (randomMonster) {
-        setChosenEnemyMonster(randomMonster)
+        setWildMonster(randomMonster)
         setWildMonsterCopy(randomMonster)
         setHasChooseARandomMonster(true)
       }
@@ -143,18 +141,20 @@ function CombatPanel() {
     setHasCombatEnded(true)
   }
 
-  //on close end, end the encounter and return to main menu
   const handleCloseModal = () => {
-    setHasInitBattle(false)
-    dispatch(setInDungeonStatus(false))
+    navigate('/main')
+  }
+
+  const calculateHealthRatio = (currentHP, maxHP) => {
+    return (currentHP / maxHP) * 100
   }
 
   return (
     <main className="combat-panel">
       {hasCombatEnded && (
         <Modal
-          capturedMonster={wildMonsterCopy}
-          killedMonster={wildMonsterCopy}
+          capturedMonster={wildMonster}
+          killedMonster={wildMonster}
           onCloseModal={handleCloseModal}
         />
       )}
@@ -167,8 +167,17 @@ function CombatPanel() {
           >
             Your Monsters:
             <div className="player-monster-state"></div>
-            <div className="player-monster-hp-bar">
+            <div className="player-monster-hp-name">
               {playerMonsterCopy?.stats.hp} / {selectedPlayerMonster?.stats.hp}
+              <div
+                className="player-monster-hp-bar"
+                style={{
+                  width: `${calculateHealthRatio(
+                    playerMonsterCopy?.stats.hp,
+                    selectedPlayerMonster?.stats.hp
+                  )}%`,
+                }}
+              ></div>
             </div>
             <MonsterCard
               monster={playerMonsterCopy}
@@ -186,10 +195,19 @@ function CombatPanel() {
           >
             Wild Monsters:
             <div className="enemy-monster-state"></div>
-            <div className="enemy-monster-hp-bar">
-              {wildMonsterCopy?.stats.hp} / {chosenEnemyMonster?.stats.hp}
+            <div className="enemy-monster-hp-name">
+              {wildMonsterCopy?.stats.hp} / {wildMonster?.stats.hp}
+              <div
+                className="enemy-monster-hp-bar"
+                style={{
+                  width: `${calculateHealthRatio(
+                    wildMonsterCopy?.stats.hp,
+                    wildMonster?.stats.hp
+                  )}%`,
+                }}
+              ></div>
             </div>
-            <MonsterCard monster={wildMonsterCopy} showStats={true} />
+            <MonsterCard monster={wildMonsterCopy} showStats={false} />
           </div>
         )}
       </div>
@@ -207,4 +225,4 @@ function CombatPanel() {
   )
 }
 
-export default CombatPanel
+export default RandomEncounter
