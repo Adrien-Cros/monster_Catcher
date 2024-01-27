@@ -59,6 +59,14 @@
   }
 }
 
+.--flex-column {
+  flex-direction: column;
+}
+
+.--flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
 .combat-panel {
   align-self: center;
 
@@ -105,4 +113,18 @@
 
 .monster-apparation {
   animation: animate-wild-monster-apparation 2s ease-in;
+}
+
+.combat-log {
+  .combat-log-information {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    border: 6px dashed rgb(119, 100, 100);
+    padding: 10px;
+    margin: 5px 20px 0 20px;
+    background: whitesmoke;
+    color: black;
+    border-radius: 50px;
+  }
 }

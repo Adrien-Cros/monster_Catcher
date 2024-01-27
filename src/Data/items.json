@@ -1,10 +1,11 @@
 {
-  "consumables": [
+  "items": [
     {
       "id": 1,
-      "name": "Catch Nest",
-      "icon": null,
+      "name": "Capture Sphere",
+      "icon": "./Assets/Items/capture-sphere-icon.png",
       "description": "Used for catching monsters.",
+      "type": ["Capture", "Consumable"],
       "prices": {
         "buy": 5,
         "sell": 1
@@ -12,13 +13,37 @@
       "stackable": true,
       "maxStackNumber": 99,
       "quantityPossessed": 0,
-      "rarity": 1
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {
+        "captureValue": 10
+      }
     },
     {
       "id": 2,
-      "name": "Catch Nest +",
-      "icon": null,
+      "name": "Capture Sphere +",
+      "icon": "./Assets/Items/capture-sphere+-icon.png",
       "description": "Used for catching monsters.",
+      "type": ["Capture", "Consumable"],
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
+      "quantityPossessed": 0,
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {
+        "captureValue": 25
+      }
+    },
+    {
+      "id": 3,
+      "name": "Placeholder",
+      "icon": null,
+      "description": "Placeholder for things",
+      "type": ["Consumable"],
       "prices": {
         "buy": 5,
         "sell": 1
@@ -26,21 +51,9 @@
       "stackable": false,
       "maxStackNumber": 1,
       "quantityPossessed": 0,
-      "rarity": 1
-    },
-    {
-      "id": 3,
-      "name": "Placeholder",
-      "icon": null,
-      "description": "Placeholder for things",
-      "prices": {
-        "buy": 5,
-        "sell": 1
-      },
-      "stackable": true,
-      "maxStackNumber": 99,
-      "quantityPossessed": 0,
-      "rarity": 1
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {}
     }
   ]
 }

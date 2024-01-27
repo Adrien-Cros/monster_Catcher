@@ -1,6 +1,15 @@
+.action-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+  margin-right: 100px;
+  width: 600px;
+  height: 400px;
+}
+
 .capacity-selection-menu {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 20px;
 }
@@ -8,8 +17,9 @@
 .selected-capacity-container {
   display: flex;
   flex-direction: column;
-  width: 50%;
   align-self: center;
+  width: 100%;
+  height: 100%;
 }
 
 .selection-button-capacity {
@@ -27,7 +37,11 @@
 .capacity-selected-info {
   border: 2px solid white;
   padding: 5px;
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
   h2 {
+    margin: 0;
     display: flex;
     justify-content: center;
   }
@@ -35,8 +49,39 @@
     display: flex;
     gap: 40px;
   }
-}
+  p {
+    margin: 0;
+  }
 
+  .item-selection-button {
+    display: flex;
+    border: 1px solid white;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+
+    .--icon {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    &:hover {
+      background: green;
+      transform: scale(1.01);
+      font-weight: bold;
+      font-style: italic;
+      cursor: pointer;
+    }
+  }
+}
+.--selected {
+  background: green;
+  transform: scale(1.01);
+  font-weight: bold;
+  font-style: italic;
+  cursor: pointer;
+}
 .element-details {
   display: flex;
   align-content: center;

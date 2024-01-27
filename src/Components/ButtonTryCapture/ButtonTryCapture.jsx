@@ -12,7 +12,6 @@ function ButtonTryCapture() {
     const monster = GenerateMonster()
     setMonsterCatched(monster)
     dispatch(updateCapturedMonstersList(monster))
-    console.log('generated monster: ', monster)
   }
 
   return (

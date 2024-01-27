@@ -24,7 +24,7 @@ import './home.scss'
 
 function Home() {
   //for testing purpose: add 10 capture nest
-  const itemToAdd = itemsData.consumables.find((item) => item.id === 1)
+  const itemToAdd = itemsData.items.find((item) => item.id === 1)
   const quantityToAdd = 10
 
   const dispatch = useDispatch()
@@ -50,7 +50,7 @@ function Home() {
     dispatch(resetCapturedMonstersList())
     dispatch(setDifficultyNormal())
     dispatch(resetMonsterFromTeam())
-    //dispatch(resetInventory())
+    dispatch(resetInventory())
     dispatch(addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }))
 
     navigate('/main')

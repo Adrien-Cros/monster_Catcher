@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import MonsterCard from '../MonsterCard/MonsterCard'
 import './modal.scss'
 
-function Modal({ capturedMonster, killedMonster, onCloseModal }) {
+function Modal({ monsterDefeated, onCloseModal, modalName, itemsWon }) {
   const [isOpen, setIsOpen] = useState(true)
 
   const handleCloseModal = () => {
@@ -16,28 +17,23 @@ function Modal({ capturedMonster, killedMonster, onCloseModal }) {
 
   return (
     <section className="modal">
-      <h3 className="modal-name">Modal</h3>
-      {killedMonster && (
+      <h3 className="modal-name">{modalName}</h3>
+      {monsterDefeated && itemsWon && (
         <div className="combat-result">
-          <div className="loot">
-            loot 1:
-            <img src="placeholder" alt="placeholder" />
-          </div>
-          <div className="loot">
-            loot 2:
-            <img src="placeholder" alt="placeholder" />
-          </div>
-          <div className="loot">
-            loot 3:
-            <img src="placeholder" alt="placeholder" />
-          </div>
+          {itemsWon.map((loot, index) => (
+            <div key={index} className="loot">
+              {loot.item.name}
+              <img src={loot.item.icon} alt={loot.item.name} />
+              <span>{`Quantity: ${loot.quantity}`}</span>
+            </div>
+          ))}
         </div>
       )}
-      {capturedMonster && (
+      {monsterDefeated && (
         <div className="captured-monsters">
           There is a new monster in your team!
           <MonsterCard
-            monster={capturedMonster}
+            monster={monsterDefeated}
             canAccessMenu={true}
             showStats={true}
             canBeDelete={true}
@@ -49,6 +45,17 @@ function Modal({ capturedMonster, killedMonster, onCloseModal }) {
       </button>
     </section>
   )
+}
+
+Modal.propTypes = {
+  // The data object representing the monster.
+  monsterDefeated: PropTypes.object,
+  // Callback function triggered when the modal close
+  onCloseModal: PropTypes.func,
+  // Name of the modal
+  modalName: PropTypes.string,
+  // Array contening item won
+  itemsWon: PropTypes.array,
 }
 
 export default Modal

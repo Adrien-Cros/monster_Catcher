@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './header.scss'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import {
   setDifficultyEasy,
@@ -7,13 +7,21 @@ import {
   setDifficultyNormal,
 } from '../../System/config'
 
+import './header.scss'
+
 function Header() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [optionPanelOpen, setOptionPanelOpen] = useState(false)
 
   const handleOption = (e) => {
     e.preventDefault()
     setOptionPanelOpen(!optionPanelOpen)
+  }
+
+  const handleMainMenu = (e) => {
+    e.preventDefault()
+    navigate('/')
   }
 
   const handleChangeDifficulty = (e) => {
@@ -34,7 +42,9 @@ function Header() {
       <h1>Le Jeu</h1>
       <div className="menu">
         <nav className="navbar">
-          <div className="option-button">Menu 1</div>
+          <div onClick={handleMainMenu} className="option-button">
+            Main Menu
+          </div>
           <div className="option-button">Menu 2</div>
           <div className="option-button">Codex</div>
           <div

@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import typesData from '../../../Data/types.json'
 import PropTypes from 'prop-types'
 
@@ -6,12 +8,28 @@ import ShowCurrentInforForCapacity from '../../../System/Combat/ShowCurrentInfoF
 
 import './actionSelection.scss'
 
-function ActionSelection({ monster, onTurnEnd, disableActionButton }) {
-  const [selectedCapacity, setSelectedCapacity] = useState(null)
+function ActionSelection({
+  playerMonster,
+  wildMonster,
+  onTurnEnd,
+  disableActionButton,
+}) {
+  const navigate = useNavigate()
 
-  const capacitiesArray = Object.values(monster.capacities)
+  const playerInventory = useSelector((state) => state.inventory.inventory)
+  const captureItemList = playerInventory.filter((item) =>
+    item.type.includes('Capture')
+  )
+
+  const [selectedCapacity, setSelectedCapacity] = useState(null)
+  const [selectedCaptureItem, setSelectedCaptureItem] = useState(null)
+  const [showCaptureObject, setShowCaptureObject] = useState(null)
+
+  const capacitiesArray = Object.values(playerMonster.capacities)
 
   function handleSelectedCapacity(capacity) {
+    setShowCaptureObject(null)
+    setSelectedCaptureItem(null)
     setSelectedCapacity(capacity)
   }
 
@@ -19,8 +37,37 @@ function ActionSelection({ monster, onTurnEnd, disableActionButton }) {
     // Pass the selectedCapacity to the parent component
     onTurnEnd(selectedCapacity)
   }
+
+  const handleEscape = () => {
+    const confirmationLeaving = window.confirm(
+      'Do you want to escape the fight ?'
+    )
+
+    if (confirmationLeaving) {
+      navigate('/main')
+    }
+  }
+
+  const handleCatch = () => {
+    setSelectedCapacity(null)
+
+    if (showCaptureObject === null) {
+      setShowCaptureObject(captureItemList)
+    } else {
+      setShowCaptureObject(null)
+    }
+  }
+
+  function handleSelectedCaptureItem(captureItem) {
+    setSelectedCaptureItem(captureItem)
+  }
+
+  function handleTryCapture(selectedCaptureItem) {
+    onTurnEnd(selectedCaptureItem)
+  }
+
   return (
-    <>
+    <div className="action-menu">
       <div className="capacity-selection-menu">
         Select a capacity:
         {capacitiesArray.map((capacity, index) => (
@@ -34,9 +81,14 @@ function ActionSelection({ monster, onTurnEnd, disableActionButton }) {
         ))}
       </div>
       <div className="capacity-selection-menu">
-        <div className="selection-button-capacity">Items</div>
-        <div className="selection-button-capacity">Catch</div>
-        <div className="selection-button-capacity">Escape</div>
+        Or choose an action:
+        <div className="selection-button-capacity">Use items</div>
+        <div onClick={handleCatch} className="selection-button-capacity">
+          Try to catch
+        </div>
+        <div onClick={handleEscape} className="selection-button-capacity">
+          Escape
+        </div>
       </div>
       {selectedCapacity && (
         <div className="selected-capacity-container">
@@ -47,7 +99,7 @@ function ActionSelection({ monster, onTurnEnd, disableActionButton }) {
               <p>
                 Damage:{' '}
                 <ShowCurrentInforForCapacity
-                  monster={monster}
+                  monster={playerMonster}
                   capacity={selectedCapacity}
                   displayType="damageDealt"
                 />
@@ -55,7 +107,7 @@ function ActionSelection({ monster, onTurnEnd, disableActionButton }) {
               <p>
                 Critical Strike Chance:{' '}
                 <ShowCurrentInforForCapacity
-                  monster={monster}
+                  monster={playerMonster}
                   capacity={selectedCapacity}
                   displayType="critChance"
                 />
@@ -95,13 +147,47 @@ function ActionSelection({ monster, onTurnEnd, disableActionButton }) {
           )}
         </div>
       )}
-    </>
+      {showCaptureObject && (
+        <div className="selected-capacity-container">
+          <div className="capacity-selected-info">
+            {captureItemList.map((item, index) => (
+              <div
+                key={index}
+                onClick={() => handleSelectedCaptureItem(item)}
+                className={`item-selection-button ${
+                  selectedCaptureItem === item ? '--selected' : ''
+                }`}
+              >
+                {item.name}
+                <img className="--icon" src={item.icon} alt={item.name} />
+                <span className="--quantity">
+                  Quantity: {item.quantityPossessed}
+                </span>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+          {disableActionButton === false && (
+            <div
+              onClick={() => handleTryCapture(selectedCaptureItem)}
+              className="selection-button-capacity"
+            >
+              {selectedCaptureItem
+                ? `Try to capture ${wildMonster.name} (level: ${wildMonster.level}) with ${selectedCaptureItem.name} ?`
+                : 'Select a capture items to catch this monsters !'}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   )
 }
 
 ActionSelection.propTypes = {
-  // The data object representing the monster.
-  monster: PropTypes.object.isRequired,
+  // The data object representing the player monster.
+  playerMonster: PropTypes.object.isRequired,
+  // The data object representing the wild monster.
+  wildMonster: PropTypes.object.isRequired,
   // Callback function triggered when the turn end function is performed on the monster. Return the capacity selected by the player.
   onTurnEnd: PropTypes.func,
   // Used to show or not the confirm action button

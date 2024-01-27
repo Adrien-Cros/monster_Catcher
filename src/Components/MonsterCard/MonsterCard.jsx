@@ -15,6 +15,16 @@ import typesData from '../../Data/types.json'
 
 import './monsterCard.scss'
 
+/**
+ * @param {Object} props -
+ * @param {MonsterObject} props.monster
+ * @param {function} props.onDelete
+ * @param {boolean} props.canAccessMenu
+ * @param {boolean} props.canBeRemovedFromTeam
+ * @param {boolean} props.canBeDelete
+ * @param {boolean} props.showStats
+ */
+
 function MonsterCard({
   monster,
   onDelete,

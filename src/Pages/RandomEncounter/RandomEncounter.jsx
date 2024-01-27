@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import MonsterCard from '../../Components/MonsterCard/MonsterCard'
@@ -7,14 +8,17 @@ import MonsterSelection from '../../Components/InCombat/MonsterSelection/Monster
 import ActionSelection from '../../Components/InCombat/ActionSelection/ActionSelection'
 import CalculateDamage from '../../System/Combat/CalculateDamage'
 import Modal from '../../Components/Modal/Modal'
+import Loot from '../../System/Loot/Loot'
 
 import './randomEncounter.scss'
+import { addItemToInventory } from '../../Store/Slice/inventorySlice'
 
 function RandomEncounter() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const [hasInitBattle, setHasInitBattle] = useState(false)
-  const [hasChooseARandomMonster, setHasChooseARandomMonster] = useState(false)
+  const [hasChosenRandomMonster, setHasChosenRandomMonster] = useState(false)
   const [hasPlayerChooseAMonster, setHasPlayerChooseAMonster] = useState(false)
   const [wildMonster, setWildMonster] = useState(null)
   const [selectedPlayerMonster, setSelectedPlayerMonster] = useState(null)
@@ -28,18 +32,25 @@ function RandomEncounter() {
 
   //used to check if the combat has ended
   const [hasCombatEnded, setHasCombatEnded] = useState(false)
+  const [winOrLose, setWinOrLose] = useState(null) //win=true, lose=false
+
+  //log informations
+  const [logInformation, setLogInformation] = useState([])
+
+  //used to check lootlist
+  const [lootList, setLootList] = useState({})
 
   useEffect(() => {
     initBattle()
   }, [])
 
   const generateRandomMonster = () => {
-    if (!hasChooseARandomMonster) {
+    if (!hasChosenRandomMonster) {
       const randomMonster = GenerateMonster()
       if (randomMonster) {
         setWildMonster(randomMonster)
         setWildMonsterCopy(randomMonster)
-        setHasChooseARandomMonster(true)
+        setHasChosenRandomMonster(true)
       }
     }
   }
@@ -55,6 +66,10 @@ function RandomEncounter() {
     setHasInitBattle(true)
   }
 
+  const updateCombatLog = (message) => {
+    setLogInformation((prevCombatLog) => [...prevCombatLog, message])
+  }
+
   //handle the player turn
   const handlePlayerTurn = (selectedCapacity) => {
     const damageDealt = CalculateDamage({
@@ -62,6 +77,8 @@ function RandomEncounter() {
       defender: wildMonsterCopy,
       capacityUsed: selectedCapacity,
     })
+    const logMessage = `Your ${playerMonsterCopy.name} used ${selectedCapacity.name} => ${wildMonsterCopy.name} takes ${damageDealt} damage!`
+    updateCombatLog(logMessage)
     setWildMonsterCopy((prevWildMonsterCopy) => ({
       ...prevWildMonsterCopy,
       stats: {
@@ -86,6 +103,8 @@ function RandomEncounter() {
       capacityUsed: selectedCapacity,
     })
 
+    const logMessage = `Wild ${wildMonsterCopy.name} used ${selectedCapacity.name} => ${playerMonsterCopy.name} takes ${damageDealt} damage!`
+    updateCombatLog(logMessage)
     setPlayerMonsterCopy((prevPlayerMonsterCopy) => ({
       ...prevPlayerMonsterCopy,
       stats: {
@@ -96,49 +115,60 @@ function RandomEncounter() {
   }
 
   // handle the sequential action when the player confirms the turn
-  const handleTurnEnd = (selectedCapacity) => {
-    setCombatAnimation(true)
-    if (playerMonsterCopy.stats.speed >= wildMonsterCopy.stats.speed) {
-      if (!hasCombatEnded) {
-        handlePlayerTurn(selectedCapacity)
-      }
-      setTimeout(() => {
-        if (!hasCombatEnded) {
-          handleEnemyTurn()
-          setCombatAnimation(false)
+  // it can receive a capacity object, or an item object, based on what the ActionSelection return
+  const handleTurnEnd = (selectedCapacityOrItem) => {
+    const playerGoesFirst =
+      playerMonsterCopy.stats.speed >= wildMonsterCopy.stats.speed
+    const isACapacity = selectedCapacityOrItem.objectType === 'capacity'
+    const isACaptureItem =
+      selectedCapacityOrItem.objectType === 'item' &&
+      selectedCapacityOrItem.type.includes('Capture')
+    if (isACapacity) {
+      setCombatAnimation(true)
+      if (playerGoesFirst) {
+        if (!hasCombatEnded && playerMonsterCopy.stats.hp > 0) {
+          console.log('player turn')
+          handlePlayerTurn(selectedCapacityOrItem)
         }
-      }, 1100)
+        if (!hasCombatEnded && wildMonsterCopy.stats.hp > 0) {
+          setTimeout(() => {
+            if (!hasCombatEnded) {
+              handleEnemyTurn()
+              setCombatAnimation(false)
+            }
+          }, 1100)
+        }
+      } else {
+        if (!hasCombatEnded && wildMonsterCopy.stats.hp >= 0) {
+          if (!hasCombatEnded) {
+            setTimeout(() => {
+              if (!hasCombatEnded) {
+                handleEnemyTurn()
+                setCombatAnimation(false)
+              }
+            }, 1100)
+          }
+          handlePlayerTurn(selectedCapacityOrItem)
+        }
+      }
+    } else if (isACaptureItem) {
+      //TODO
     } else {
-      if (!hasCombatEnded) {
-        handleEnemyTurn()
-      }
-      setTimeout(() => {
-        if (!hasCombatEnded) {
-          handlePlayerTurn(selectedCapacity)
-          setCombatAnimation(false)
-        }
-      }, 1100)
+      console.log('Error in retrieving the type of the object')
     }
   }
 
-  useEffect(() => {
-    if (wildMonsterCopy?.stats.hp <= 0) {
-      setCombatAnimation(false)
-      setHasCombatEnded(true)
-      handleCombatWon()
-    } else if (playerMonsterCopy?.stats.hp <= 0) {
-      setCombatAnimation(false)
-      setHasCombatEnded(true)
-      handleCombatLoose()
-    }
-  }, [playerMonsterCopy, wildMonsterCopy])
-
   const handleCombatWon = () => {
     setHasCombatEnded(true)
+    console.log('win')
+    setWinOrLose(true) // true = win
   }
 
   const handleCombatLoose = () => {
     setHasCombatEnded(true)
+    console.log('lose')
+    setWinOrLose(false) // false = lose
+    navigate('/main')
   }
 
   const handleCloseModal = () => {
@@ -149,79 +179,125 @@ function RandomEncounter() {
     return (currentHP / maxHP) * 100
   }
 
-  return (
-    <main className="combat-panel">
-      {hasCombatEnded && (
-        <Modal
-          capturedMonster={wildMonster}
-          killedMonster={wildMonster}
-          onCloseModal={handleCloseModal}
-        />
-      )}
-      <div className="combat-board">
-        {hasInitBattle && playerMonsterCopy && (
-          <div
-            className={`player-board ${
-              combatAnimation ? 'player-animation' : ''
-            }`}
-          >
-            Your Monsters:
-            <div className="player-monster-state"></div>
-            <div className="player-monster-hp-name">
-              {playerMonsterCopy?.stats.hp} / {selectedPlayerMonster?.stats.hp}
-              <div
-                className="player-monster-hp-bar"
-                style={{
-                  width: `${calculateHealthRatio(
-                    playerMonsterCopy?.stats.hp,
-                    selectedPlayerMonster?.stats.hp
-                  )}%`,
-                }}
-              ></div>
-            </div>
-            <MonsterCard
-              monster={playerMonsterCopy}
-              showStats={true}
-              canAccessMenu={false}
-            />
-          </div>
-        )}
+  //Check playermonster with true value, then check if player loose
+  useEffect(() => {
+    if (playerMonsterCopy?.stats.hp <= 0) {
+      const logMessage = `Oh no! Your ${playerMonsterCopy.name} is dead !`
+      updateCombatLog(logMessage)
+      setCombatAnimation(false)
+      handleCombatLoose()
+    }
+  }, [playerMonsterCopy?.stats.hp])
 
-        {hasInitBattle && (
-          <div
-            className={`ennemy-board ${
-              combatAnimation ? 'monster-animation' : ''
-            }`}
-          >
-            Wild Monsters:
-            <div className="enemy-monster-state"></div>
-            <div className="enemy-monster-hp-name">
-              {wildMonsterCopy?.stats.hp} / {wildMonster?.stats.hp}
-              <div
-                className="enemy-monster-hp-bar"
-                style={{
-                  width: `${calculateHealthRatio(
-                    wildMonsterCopy?.stats.hp,
-                    wildMonster?.stats.hp
-                  )}%`,
-                }}
-              ></div>
-            </div>
-            <MonsterCard monster={wildMonsterCopy} showStats={false} />
-          </div>
+  //Check wildmonster with true value, then check if combat is win, and the monster is dead
+  useEffect(() => {
+    if (wildMonsterCopy?.stats.hp <= 0) {
+      const logMessage = `You won ! ${wildMonsterCopy.name} is dead !`
+      updateCombatLog(logMessage)
+
+      setCombatAnimation(false)
+      handleCombatWon()
+      //Check loot in the killed monster
+      const lootedItem = Loot(wildMonster)
+      setLootList(lootedItem)
+      lootedItem.forEach(({ item, quantity }) => {
+        dispatch(addItemToInventory({ item, quantity }))
+      })
+    }
+  }, [wildMonsterCopy?.stats.hp])
+
+  return (
+    <>
+      <main
+        className={`combat-panel ${
+          selectedPlayerMonster ? '--flex-row-reverse' : '--flex-column'
+        }`}
+      >
+        {hasCombatEnded && winOrLose && (
+          <Modal
+            modalName={'Combat Result'}
+            monsterDefeated={wildMonster}
+            onCloseModal={handleCloseModal}
+            itemsWon={lootList}
+          />
         )}
-      </div>
-      {!hasPlayerChooseAMonster && (
-        <MonsterSelection onMonsterSelect={handleMonsterSelection} />
+        <div className="combat-board">
+          {hasInitBattle && playerMonsterCopy && (
+            <div
+              className={`player-board ${
+                combatAnimation ? 'player-animation' : ''
+              }`}
+            >
+              Your Monsters:
+              <div className="player-monster-state"></div>
+              <div className="player-monster-hp-name">
+                {playerMonsterCopy?.stats.hp} /{' '}
+                {selectedPlayerMonster?.stats.hp}
+                <div
+                  className="player-monster-hp-bar"
+                  style={{
+                    width: `${calculateHealthRatio(
+                      playerMonsterCopy?.stats.hp,
+                      selectedPlayerMonster?.stats.hp
+                    )}%`,
+                  }}
+                ></div>
+              </div>
+              <MonsterCard
+                monster={playerMonsterCopy}
+                showStats={true}
+                canAccessMenu={false}
+              />
+            </div>
+          )}
+
+          {hasInitBattle && (
+            <div
+              className={`ennemy-board ${
+                combatAnimation ? 'monster-animation' : ''
+              }`}
+            >
+              Wild Monsters:
+              <div className="enemy-monster-state"></div>
+              <div className="enemy-monster-hp-name">
+                {wildMonsterCopy?.stats.hp} / {wildMonster?.stats.hp}
+                <div
+                  className="enemy-monster-hp-bar"
+                  style={{
+                    width: `${calculateHealthRatio(
+                      wildMonsterCopy?.stats.hp,
+                      wildMonster?.stats.hp
+                    )}%`,
+                  }}
+                ></div>
+              </div>
+              <MonsterCard monster={wildMonsterCopy} showStats={false} />
+            </div>
+          )}
+        </div>
+        {!hasPlayerChooseAMonster && (
+          <MonsterSelection onMonsterSelect={handleMonsterSelection} />
+        )}
+        {hasPlayerChooseAMonster && (
+          <ActionSelection
+            playerMonster={playerMonsterCopy}
+            wildMonster={wildMonsterCopy}
+            onTurnEnd={handleTurnEnd}
+            disableActionButton={combatAnimation || hasCombatEnded}
+          />
+        )}
+      </main>
+      {selectedPlayerMonster && (
+        <aside className="combat-log">
+          <h3>Combat log:</h3>
+          <div className="combat-log-information">
+            {logInformation.map((message, index) => (
+              <span key={index}>{message}</span>
+            ))}
+          </div>
+        </aside>
       )}
-      {hasPlayerChooseAMonster && (
-        <ActionSelection
-          monster={playerMonsterCopy}
-          onTurnEnd={handleTurnEnd}
-          disableActionButton={combatAnimation || hasCombatEnded}
-        />
-      )}
-    </main>
+    </>
   )
 }
 

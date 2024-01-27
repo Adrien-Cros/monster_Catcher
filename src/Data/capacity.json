@@ -5,6 +5,7 @@
       "icon": "",
       "name": "Fire Breath",
       "description": "A fire breath that deals damage!",
+      "objectType": "capacity",
       "type": {
         "required": ["Fire"],
         "excluded": null
@@ -27,6 +28,7 @@
       "icon": "",
       "name": "Dark Breath",
       "description": "A dark breath that deals damage!",
+      "objectType": "capacity",
       "type": {
         "required": ["Dark"],
         "excluded": null
@@ -49,6 +51,7 @@
       "icon": "",
       "name": "Ice Breath",
       "description": "An ice breath that deals damage!",
+      "objectType": "capacity",
       "type": {
         "required": ["Ice"],
         "excluded": null
@@ -71,6 +74,7 @@
       "icon": "",
       "name": "Burning Slash",
       "description": "A Burning Slash that deals damage !",
+      "objectType": "capacity",
       "type": {
         "required": ["Fire"],
         "excluded": null
@@ -93,6 +97,7 @@
       "icon": "",
       "name": "The Carbuncle Special",
       "description": "A Carbuncle Special that deals damage !",
+      "objectType": "capacity",
       "type": {
         "required": null,
         "excluded": null
@@ -115,6 +120,7 @@
       "icon": "",
       "name": "Slime Hit",
       "description": "A Slime Hit that deals damage !",
+      "objectType": "capacity",
       "type": {
         "required": null,
         "excluded": null
@@ -137,6 +143,7 @@
       "icon": "",
       "name": "Ice Spike",
       "description": "An Ice Splike that deals damage !",
+      "objectType": "capacity",
       "type": {
         "required": ["Ice"],
         "excluded": null
@@ -159,6 +166,7 @@
       "icon": "",
       "name": "Holy Wave",
       "description": "An Holy Wave that deals damage !",
+      "objectType": "capacity",
       "type": {
         "required": ["Holy"],
         "excluded": null
@@ -181,6 +189,7 @@
       "icon": "",
       "name": "Water Spray",
       "description": "A Water Spray that deals damage !",
+      "objectType": "capacity",
       "type": {
         "required": ["Water"],
         "excluded": null
@@ -203,6 +212,7 @@
       "icon": "",
       "name": "Basic Attack",
       "description": "A Basic Attack that deals damage !",
+      "objectType": "capacity",
       "type": {
         "required": null,
         "excluded": null
