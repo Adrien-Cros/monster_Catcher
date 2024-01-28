@@ -63,8 +63,6 @@ const GenerateMonster = ({ monsterRarity, specificMonsterId }) => {
   const generatedMonsterWithDetail = {
     ...randomMonster,
     uniqueKey,
-    level: 1,
-    experience: 0,
     capacities,
     traits,
   }

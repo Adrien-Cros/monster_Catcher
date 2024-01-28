@@ -12,6 +12,7 @@ import {
 } from '../../Store/Slice/monstersSlice'
 
 import typesData from '../../Data/types.json'
+import levelsData from '../../Data/levels.json'
 
 import './monsterCard.scss'
 
@@ -43,9 +44,36 @@ function MonsterCard({
     (state) => state.monsterTeam.actualMonstersInTeam
   )
 
+  //Handle the case for monster not found
   if (!monster) {
     return <div>Can't find monsters</div>
   }
+
+  // Used to change the background color depending on the monster type
+  // Need to find a way to double types
+  let monsterContainerColor = '#332b2b' // Default color
+
+  if (monster.type) {
+    if (monster.type.includes('Fire')) {
+      monsterContainerColor = '#530c0f'
+    } else if (monster.type.includes('Dark')) {
+      monsterContainerColor = '#2d0627'
+    } else if (monster.type.includes('Ice')) {
+      monsterContainerColor = '#056777'
+    } else if (monster.type.includes('Lightning')) {
+      monsterContainerColor = '#716400'
+    } else if (monster.type.includes('Water')) {
+      monsterContainerColor = '#203d95'
+    } else if (monster.type.includes('Holy')) {
+      monsterContainerColor = '#665548'
+    }
+  }
+
+  //Used to show the actual xp to next
+  const monsterActualLevel = monster.level
+  const xpToNext = levelsData.levels.find(
+    (level) => level.level === monsterActualLevel
+  )?.xpRequiredToNext
 
   const handleDeleteClick = () => {
     onDelete(monster.uniqueKey)
@@ -78,7 +106,10 @@ function MonsterCard({
   }
 
   return (
-    <div className="monster-container">
+    <div
+      className="monster-container"
+      style={{ backgroundColor: monsterContainerColor }}
+    >
       {canAccessMenu === true && (
         <div className="menu-container">
           <button onClick={handleMenuClick} className="monster-menu-button">
@@ -117,7 +148,9 @@ function MonsterCard({
 
       <div>
         <p className="lvl">Level: {monster.level}</p>
-        <p className="xp">Exp: {monster.experience}</p>
+        <p className="xp">
+          Exp: {monster.experience} / {xpToNext} to next
+        </p>
       </div>
       <div>
         {monster.race && <p className="race">{monster.race.join(' ')}</p>}

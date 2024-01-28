@@ -26,6 +26,21 @@ const monstersTeamSlice = createSlice({
         JSON.stringify(state.actualMonstersInTeam)
       )
     },
+    updateMonsterFromTeam: (state, action) => {
+      const { monsterToUpdate } = action.payload
+      console.log('Entry in slice, monster to update: ', monsterToUpdate)
+      state.actualMonstersInTeam = state.actualMonstersInTeam.map((monster) =>
+        monster.uniqueKey === monsterToUpdate.uniqueKey
+          ? monsterToUpdate
+          : monster
+      )
+
+      localStorage.setItem(
+        'actualMonstersInTeam',
+        JSON.stringify(state.actualMonstersInTeam)
+      )
+    },
+
     loadMonsterFromTeam: (state, action) => {
       const storedData = localStorage.getItem('actualMonstersInTeam')
       if (storedData) {
@@ -44,5 +59,6 @@ export const {
   removeMonsterFromTeam,
   loadMonsterFromTeam,
   resetMonsterFromTeam,
+  updateMonsterFromTeam,
 } = monstersTeamSlice.actions
 export default monstersTeamSlice.reducer

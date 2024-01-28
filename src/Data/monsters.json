@@ -4,8 +4,8 @@
       "id": 1,
       "uniqueKey": null,
       "name": "Fire Carbuncle",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Carbuncle Fire.png",
       "race": ["Carbuncle"],
       "type": ["Fire"],
@@ -22,7 +22,7 @@
         "luck": 2,
         "despair": 1
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -55,8 +55,8 @@
       "id": 2,
       "uniqueKey": null,
       "name": "Dark Carbuncle",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Carbuncle Dark.png",
       "race": ["Carbuncle"],
       "type": ["Dark"],
@@ -73,7 +73,7 @@
         "luck": 1,
         "despair": 4
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -106,8 +106,8 @@
       "id": 3,
       "uniqueKey": null,
       "name": "Ice Carbuncle",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Carbuncle Ice.png",
       "race": ["Carbuncle"],
       "type": ["Ice"],
@@ -124,7 +124,7 @@
         "luck": 2,
         "despair": 2
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -157,8 +157,8 @@
       "id": 4,
       "uniqueKey": null,
       "name": "Dark Slime",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Slime Darki.png",
       "race": ["Slime"],
       "type": ["Dark"],
@@ -175,7 +175,7 @@
         "luck": 1,
         "despair": 6
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -208,8 +208,8 @@
       "id": 5,
       "uniqueKey": null,
       "name": "Holy Slime",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Slime Holyi.png",
       "race": ["Slime"],
       "type": ["Holy"],
@@ -226,7 +226,7 @@
         "luck": 1,
         "despair": 4
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -259,8 +259,8 @@
       "id": 6,
       "uniqueKey": null,
       "name": "Fire Slime",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Slime Firei.png",
       "race": ["Slime"],
       "type": ["Fire"],
@@ -277,7 +277,7 @@
         "luck": 2,
         "despair": 2
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -310,8 +310,8 @@
       "id": 7,
       "uniqueKey": null,
       "name": "Water Slime",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Slime Wateri.png",
       "race": ["Slime"],
       "type": ["Water"],
@@ -328,7 +328,7 @@
         "luck": 2,
         "despair": 1
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -361,8 +361,8 @@
       "id": 8,
       "uniqueKey": null,
       "name": "Corrupted Villager",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Eldritch Corruption Villager.png",
       "race": ["Eldritch"],
       "type": ["Dark"],
@@ -379,7 +379,7 @@
         "luck": 1,
         "despair": 8
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -412,8 +412,8 @@
       "id": 9,
       "uniqueKey": null,
       "name": "Corrupted Hound",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Eldritch Abomination Hound.png",
       "race": ["Eldritch"],
       "type": ["Dark"],
@@ -430,7 +430,7 @@
         "luck": 1,
         "despair": 10
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -463,8 +463,8 @@
       "id": 10,
       "uniqueKey": null,
       "name": "Corrupted Boomer",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Eldritch Corruption Exploder.png",
       "race": ["Eldritch"],
       "type": ["Dark"],
@@ -481,7 +481,7 @@
         "luck": 2,
         "despair": 10
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -514,8 +514,8 @@
       "id": 11,
       "uniqueKey": null,
       "name": "Fire Gazer Elemental",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Gazer Fire Elemental.png",
       "race": ["Elemental"],
       "type": ["Fire"],
@@ -532,7 +532,7 @@
         "luck": 1,
         "despair": 1
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -565,8 +565,8 @@
       "id": 12,
       "uniqueKey": null,
       "name": "Water Gazer Elemental",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Gazer Water Elemental.png",
       "race": ["Elemental"],
       "type": ["Water"],
@@ -583,7 +583,7 @@
         "luck": 1,
         "despair": 1
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -616,8 +616,8 @@
       "id": 13,
       "uniqueKey": null,
       "name": "Clockwork Bird",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Clockwork Aerial.png",
       "race": ["Clockwork"],
       "type": ["Lightning"],
@@ -634,7 +634,7 @@
         "luck": 4,
         "despair": 1
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -667,8 +667,8 @@
       "id": 14,
       "uniqueKey": null,
       "name": "Clockwork Gunner",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Clockwork Mini C.png",
       "race": ["Clockwork"],
       "type": ["Lightning"],
@@ -685,7 +685,7 @@
         "luck": 2,
         "despair": 1
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],
@@ -718,8 +718,8 @@
       "id": 15,
       "uniqueKey": null,
       "name": "Corrupted Clockwork Spirit",
-      "level": "",
-      "experience": "",
+      "level": 1,
+      "experience": 0,
       "picture": "./Assets/Monsters/Corrupted Clockwork.png",
       "race": ["Clockwork", "Eldritch", "Spirit"],
       "type": ["Lightning", "Dark"],
@@ -736,7 +736,7 @@
         "luck": 6,
         "despair": 6
       },
-      "unique_passive": [],
+      "uniquePassive": [],
       "capacities": {
         "capacity1": [],
         "capacity2": [],

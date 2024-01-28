@@ -7,7 +7,13 @@ import './playerBox.scss'
 
 function PlayerBox() {
   const dispatch = useDispatch()
+
+  //check the page
   const [currentPage, setCurrentPage] = useState(1)
+
+  //used to check the sort
+  const [sortCriteria, setSortCriteria] = useState(null)
+  const [sortOrder, setSortOrder] = useState(null)
 
   const monstersPerPage = 8
 
@@ -31,18 +37,57 @@ function PlayerBox() {
     dispatch(deleteMonsterFromListByKey({ uniqueKey: uniqueKey }))
   }
 
+  const sortedMonsters = [...currentMonsters].sort((a, b) => {
+    const compareValue = sortOrder === '↑' ? 1 : -1
+
+    if (a[sortCriteria] < b[sortCriteria]) {
+      return -compareValue
+    }
+    if (a[sortCriteria] > b[sortCriteria]) {
+      return compareValue
+    }
+    return 0
+  })
+
+  const handleSort = (criteria) => {
+    // If the same criteria is clicked again, toggle the sort order
+    const newSortOrder =
+      sortCriteria === criteria ? (sortOrder === '↑' ? '↓' : '↑') : '↑'
+
+    setSortCriteria(criteria)
+    setSortOrder(newSortOrder)
+  }
+
   return (
     <>
       <h3>
         Your stocked monsters (Total Monsters: {capturedMonsterData.length}):
       </h3>
-      <div className="filter-button">
+      <div className="sort-button-list">
         <p> Sort by:</p>
-        <button>Id</button>
-        <button>Name</button>
-        <button>Level</button>
-        <button>Race</button>
-        <button>Element</button>
+        <button className="sort-button" onClick={() => handleSort('id')}>
+          Id
+        </button>
+        <button className="sort-button" onClick={() => handleSort('name')}>
+          Name
+        </button>
+        <button className="sort-button" onClick={() => handleSort('level')}>
+          Level
+        </button>
+        <button className="sort-button" onClick={() => handleSort('race')}>
+          Race
+        </button>
+        <button className="sort-button" onClick={() => handleSort('rarity')}>
+          Rarity
+        </button>
+        <button className="sort-button" onClick={() => handleSort('type')}>
+          Type
+        </button>
+        {sortCriteria && sortOrder && (
+          <p>
+            Actually sorted by: {sortCriteria} {sortOrder}
+          </p>
+        )}
       </div>
       <div className="pagination">
         <button
@@ -63,7 +108,7 @@ function PlayerBox() {
       </div>
       <div className="stocked-monsters">
         {currentMonsters &&
-          currentMonsters.map((monster, index) => (
+          sortedMonsters.map((monster, index) => (
             <MonsterCard
               key={monster.uniqueKey}
               monster={monster}

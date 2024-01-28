@@ -9,6 +9,7 @@ import ActionSelection from '../../Components/InCombat/ActionSelection/ActionSel
 import CalculateDamage from '../../System/Combat/CalculateDamage'
 import Modal from '../../Components/Modal/Modal'
 import Loot from '../../System/Loot/Loot'
+import LevelUp from '../../System/Level/LevelUp/LevelUp'
 
 import {
   addItemToInventory,
@@ -18,6 +19,7 @@ import { updateCapturedMonstersList } from '../../Store/Slice/monstersSlice'
 import { setInRandomEncounter } from '../../Store/Slice/gameStatusSlice'
 
 import './randomEncounter.scss'
+import { updateMonsterFromTeam } from '../../Store/Slice/playerTeamSlice'
 //This page render a full combat encounter with an HUD
 function RandomEncounter() {
   const navigate = useNavigate()
@@ -48,6 +50,9 @@ function RandomEncounter() {
 
   //check if monster is captured
   const [monsterCaptured, setMonsterCaptured] = useState(false)
+
+  //check the catch rate in the difficulty settings
+  const catchRate = useSelector((state) => state.config.catchRate)
 
   //check if the monster id is already in the team or the box
   const isANewMonster = useSelector((state) => {
@@ -156,7 +161,6 @@ function RandomEncounter() {
       setCombatAnimation(true)
       if (playerGoesFirst) {
         if (!hasCombatEnded && playerMonsterCopy.stats.hp > 0) {
-          console.log('player turn')
           handlePlayerTurn(selectedCapacityOrItem)
         }
         if (!hasCombatEnded && wildMonsterCopy.stats.hp > 0) {
@@ -188,7 +192,10 @@ function RandomEncounter() {
           quantity: 1,
         })
       )
-      const minValueToCaptureTheMonster = wildMonster.captureValueNeeded
+
+      //Multiply the value to capture by the difficulty settings catchRate
+      const minValueToCaptureTheMonster =
+        wildMonster.captureValueNeeded * catchRate
       const minChanceToCapture = selectedCapacityOrItem.effect.captureMinValue
       const maxChanceToCapture = selectedCapacityOrItem.effect.captureMaxValue
       const randomRoll =
@@ -214,17 +221,28 @@ function RandomEncounter() {
   }
 
   const handleCombatWon = () => {
+    //check for lvl up et xp won
+    const monsterToUpdate = LevelUp({
+      victoriousMonster: selectedPlayerMonster,
+      defeatedMonster: wildMonster,
+    })
+    console.log('monster to update: ', monsterToUpdate)
+    //update the monster with the new xp/lvl
+    dispatch(updateMonsterFromTeam({ monsterToUpdate: monsterToUpdate }))
     setHasCombatEnded(true)
     console.log('win')
     setWinOrLose(true) // true = win
   }
 
   const handleCombatLoose = () => {
-    setHasCombatEnded(true)
-    console.log('lose')
-    setWinOrLose(false) // false = lose
-    dispatch(setInRandomEncounter(false))
-    navigate('/main')
+    if (winOrLose === true) {
+    } else {
+      setHasCombatEnded(true)
+      console.log('lose')
+      setWinOrLose(false) // false = lose
+      dispatch(setInRandomEncounter(false))
+      navigate('/main')
+    }
   }
 
   const handleCloseModal = () => {

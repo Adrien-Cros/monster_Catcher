@@ -15,13 +15,6 @@ function Loot(monster) {
         if (itemFind) {
           // Generate a random number between 1 and 100
           const randomChance = Math.floor(Math.random() * 100) + 1
-
-          console.log(
-            'Potential Looted item: ',
-            itemFind,
-            ' Roll ',
-            randomChance
-          )
           // Check if the random number is within the drop_chance
           if (randomChance <= lootItem.drop_chance) {
             // If yes, calculate the quantity based on the specified range
@@ -43,7 +36,6 @@ function Loot(monster) {
 
   const result = lootRandomItem()
 
-  console.log('Looted item: ', result)
   return result
 }
 
