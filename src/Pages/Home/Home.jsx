@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -16,17 +16,23 @@ import {
   removeItemFromInventory,
   resetInventory,
 } from '../../Store/Slice/inventorySlice'
-import { loadSetting, setDifficultyNormal } from '../../System/config'
+import {
+  loadSetting,
+  setAlreadyHaveStarter,
+  setDifficultyNormal,
+} from '../../System/config'
+import {
+  setInMainMenu,
+  setInRandomEncounter,
+} from '../../Store/Slice/gameStatusSlice'
+
+import StarterMonsterSelection from '../../Components/StarterMonsterSelection/StarterMonsterSelection'
 
 import itemsData from '../../Data/items.json'
 
 import './home.scss'
 
 function Home() {
-  //for testing purpose: add 10 capture nest
-  const itemToAdd = itemsData.items.find((item) => item.id === 1)
-  const quantityToAdd = 10
-
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -38,33 +44,42 @@ function Home() {
     dispatch(loadMonsterFromTeam())
     dispatch(loadSetting())
     dispatch(loadItemFromInventory())
+    dispatch(setInMainMenu(false))
+    dispatch(setInRandomEncounter(false))
     const savedData = localStorage.getItem('capturedMonstersList')
     if (savedData) {
       setAlreadyHasData(true)
     }
     setAlreadyChargedTheData(true)
-  }, [dispatch])
+  }, [])
 
   const handleNewGame = (event) => {
     event.preventDefault()
 
-    if (alreadyChargedTheData) {
-      const confirmationNewGame = window.confirm(
-        'You already have a save, are you sure you want to delete the old one to create a new one ?'
-      )
-      if (confirmationNewGame) {
-        dispatch(resetCapturedMonstersList())
-        dispatch(setDifficultyNormal())
-        dispatch(resetMonsterFromTeam())
-        dispatch(resetInventory())
-        //dispatch( addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }) )
-        navigate('/main')
-      }
+    const confirmationMessage =
+      'You already have a save, are you sure you want to delete the old one to create a new one ?'
+
+    const shouldStartNewGame =
+      !alreadyHasData || window.confirm(confirmationMessage)
+
+    if (shouldStartNewGame) {
+      // Add 10 Capture Sphere in the player inventory
+      const itemToAdd = itemsData.items.find((item) => item.id === 1)
+      const quantityToAdd = 10
+      dispatch(resetCapturedMonstersList())
+      dispatch(setDifficultyNormal())
+      dispatch(resetMonsterFromTeam())
+      dispatch(resetInventory())
+      dispatch(setAlreadyHaveStarter(false))
+      dispatch(addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }))
+      dispatch(setInMainMenu(true))
+      navigate('/main')
     }
   }
 
   const handleContinue = (event) => {
     event.preventDefault()
+    dispatch(dispatch(setInMainMenu(true)))
     navigate('/main')
   }
 
@@ -72,23 +87,6 @@ function Home() {
     return <div>Loading...</div>
   }
 
-  const handleAddItemsToInventory = (event) => {
-    event.preventDefault()
-    dispatch(addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }))
-  }
-  const handleRemoveItemsToInventory = (event) => {
-    event.preventDefault()
-    dispatch(
-      removeItemFromInventory({ item: itemToAdd, quantity: quantityToAdd })
-    )
-  }
-  /*
-      <button onClick={handleAddItemsToInventory}>
-        Add 10 Items to Inventory
-      </button>
-      <button onClick={handleRemoveItemsToInventory}>
-        Remove 10 Items to Inventory
-      </button> */
   return (
     <main>
       <div className="start-continue-button">

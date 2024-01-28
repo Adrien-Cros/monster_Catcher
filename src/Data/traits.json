@@ -397,7 +397,7 @@
       "effectOnStats": ["magic -20%"]
     },
     {
-      "id": 29,
+      "id": 30,
       "rarityTier": 3,
       "icon": "",
       "name": "Stupid++",
@@ -410,7 +410,7 @@
       "effectOnStats": ["magic -30%"]
     },
     {
-      "id": 30,
+      "id": 31,
       "rarityTier": 1,
       "icon": "",
       "name": "Slow",
@@ -423,7 +423,7 @@
       "effectOnStats": ["speed -10%"]
     },
     {
-      "id": 31,
+      "id": 32,
       "rarityTier": 2,
       "icon": "",
       "name": "Slow+",
@@ -436,7 +436,7 @@
       "effectOnStats": ["speed -20%"]
     },
     {
-      "id": 32,
+      "id": 33,
       "rarityTier": 3,
       "icon": "",
       "name": "Slow++",

@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import ButtonTryCapture from '../../Components/ButtonTryCapture/ButtonTryCapture'
 import PlayerBox from '../../Components/PlayerBox/PlayerBox'
 import PlayerTeam from '../../Components/PlayerTeam/PlayerTeam'
+import StarterMonsterSelection from '../../Components/StarterMonsterSelection/StarterMonsterSelection'
 
 import './mainMenu.scss'
 import { useNavigate } from 'react-router-dom'
+import { setInRandomEncounter } from '../../Store/Slice/gameStatusSlice'
 
 function MainMenu() {
   const dispatch = useDispatch()
@@ -20,6 +22,10 @@ function MainMenu() {
     (state) => state.monsterTeam.actualMonstersInTeam
   )
 
+  const alreadyHaveStarter = useSelector(
+    (state) => state.config.alreadyHaveStarter
+  )
+
   const inventory = useSelector((state) => state.inventory.inventory)
 
   const togglePlayerBox = () => {
@@ -30,68 +36,71 @@ function MainMenu() {
   const toggleInventory = () => {
     setShowPlayerBox(false)
     setShowInventory(!showInventory)
-    console.log(inventory)
   }
 
   const handleCombat = () => {
     if (teamMonsters.length <= 0) {
       alert('You need at least 1 monster in your team before entering')
     } else {
+      dispatch(setInRandomEncounter(true))
       navigate('/random-encounter')
     }
   }
 
   return (
-    <>
-      <ButtonTryCapture />
-      <main className="main-menu">
-        <div className="mission-button">
-          <button onClick={handleCombat}>Random encounter</button>
-          <button>Explore a specific zone</button>
-          <button>Raid a boss</button>
-        </div>
-        <section>
-          <div className="menu-button">
-            {showPlayerBox === false && (
-              <button onClick={togglePlayerBox}>Show Stocked Monsters</button>
-            )}
-            {showPlayerBox === true && (
-              <button onClick={togglePlayerBox}>Hide Stocked Monsters</button>
-            )}
-            {showInventory === false && (
-              <button onClick={toggleInventory}>Show Inventory</button>
-            )}
-            {showInventory === true && (
-              <button onClick={toggleInventory}>Hide Inventory</button>
-            )}
+    <main className="main-menu">
+      {alreadyHaveStarter ? (
+        <>
+          <div className="mission-button">
+            <button onClick={handleCombat}>Random encounter</button>
+            <button>Explore a specific zone</button>
+            <button>Raid a boss</button>
           </div>
-          {showPlayerBox && (
-            <>
-              <div className="player-monsters-equip">
-                <PlayerTeam canAccessMonsterMenu={true} />
-              </div>
-              <div className="player-box">
-                <PlayerBox />
-              </div>
-            </>
-          )}
-          {showInventory && (
-            <div className="player-inventory">
-              {inventory.map((item, index) => (
-                <div className="item-container" key={item + index}>
-                  <div className="item-container-name-icon">
-                    <span>{item.name}</span>
-                    <img src={item.icon} alt={item.name} />
-                  </div>
-                  <span>{item.description}</span>
-                  <span>Quantity: {item.quantityPossessed}</span>
-                </div>
-              ))}
+          <section>
+            <div className="menu-button">
+              {showPlayerBox === false && (
+                <button onClick={togglePlayerBox}>Show Stocked Monsters</button>
+              )}
+              {showPlayerBox === true && (
+                <button onClick={togglePlayerBox}>Hide Stocked Monsters</button>
+              )}
+              {showInventory === false && (
+                <button onClick={toggleInventory}>Show Inventory</button>
+              )}
+              {showInventory === true && (
+                <button onClick={toggleInventory}>Hide Inventory</button>
+              )}
             </div>
-          )}
-        </section>
-      </main>
-    </>
+            {showPlayerBox && (
+              <>
+                <div className="player-monsters-equip">
+                  <PlayerTeam canAccessMonsterMenu={true} />
+                </div>
+                <div className="player-box">
+                  <PlayerBox />
+                </div>
+              </>
+            )}
+            {showInventory && (
+              <div className="player-inventory">
+                {inventory.map((item, index) => (
+                  <div className="item-container" key={item + index}>
+                    <div className="item-container-name-icon">
+                      <span>{item.name}</span>
+                      <img src={item.icon} alt={item.name} />
+                    </div>
+                    <span>{item.description}</span>
+                    <span>Quantity: {item.quantityPossessed}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        </>
+      ) : (
+        <StarterMonsterSelection />
+      )}
+    </main>
   )
 }
 

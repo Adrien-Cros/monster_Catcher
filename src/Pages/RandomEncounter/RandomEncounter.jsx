@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import MonsterCard from '../../Components/MonsterCard/MonsterCard'
@@ -15,6 +15,7 @@ import {
   removeItemFromInventory,
 } from '../../Store/Slice/inventorySlice'
 import { updateCapturedMonstersList } from '../../Store/Slice/monstersSlice'
+import { setInRandomEncounter } from '../../Store/Slice/gameStatusSlice'
 
 import './randomEncounter.scss'
 //This page render a full combat encounter with an HUD
@@ -45,7 +46,25 @@ function RandomEncounter() {
   //used to check the loot when the monster is killed
   const [lootList, setLootList] = useState({})
 
+  //check if monster is captured
   const [monsterCaptured, setMonsterCaptured] = useState(false)
+
+  //check if the monster id is already in the team or the box
+  const isANewMonster = useSelector((state) => {
+    const actualMonstersInTeam = state.monsterTeam.actualMonstersInTeam
+    const capturedMonstersList = state.monsters.capturedMonstersList
+
+    const isMonsterInActualTeam = actualMonstersInTeam.some(
+      (monster) => monster.id === wildMonster?.id
+    )
+    const isMonsterInCapturedList = capturedMonstersList.some(
+      (monster) => monster.id === wildMonster?.id
+    )
+
+    const isNewMonster = !isMonsterInActualTeam && !isMonsterInCapturedList
+
+    return isNewMonster
+  })
 
   useEffect(() => {
     initBattle()
@@ -53,7 +72,10 @@ function RandomEncounter() {
 
   const generateRandomMonster = () => {
     if (!hasChosenRandomMonster) {
-      const randomMonster = GenerateMonster({ monsterRarity: 'all' })
+      const randomMonster = GenerateMonster({
+        specificMonsterId: null,
+        monsterRarity: 'all',
+      })
       if (randomMonster) {
         setWildMonster(randomMonster)
         setWildMonsterCopy(randomMonster)
@@ -201,10 +223,12 @@ function RandomEncounter() {
     setHasCombatEnded(true)
     console.log('lose')
     setWinOrLose(false) // false = lose
+    dispatch(setInRandomEncounter(false))
     navigate('/main')
   }
 
   const handleCloseModal = () => {
+    dispatch(setInRandomEncounter(false))
     navigate('/main')
   }
 
@@ -305,7 +329,11 @@ function RandomEncounter() {
                   }}
                 ></div>
               </div>
-              <MonsterCard monster={wildMonsterCopy} showStats={false} />
+              <MonsterCard
+                monster={wildMonsterCopy}
+                showStats={false}
+                isNew={isANewMonster}
+              />
             </div>
           )}
         </div>

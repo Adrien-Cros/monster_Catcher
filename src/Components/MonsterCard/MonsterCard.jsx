@@ -27,6 +27,7 @@ import './monsterCard.scss'
 
 function MonsterCard({
   monster,
+  isNew,
   onDelete,
   canAccessMenu,
   canBeRemovedFromTeam,
@@ -108,6 +109,7 @@ function MonsterCard({
           )}
         </div>
       )}
+      {isNew && <div className="monster-new new-animation">New !</div>}
       <div className="monster-name-id">
         <p className="monster-id">ID: {monster.id}</p>
         <h3 className="monster-container-name">{monster.name}</h3>
@@ -198,6 +200,8 @@ MonsterCard.propTypes = {
   onDelete: PropTypes.func,
   // Flag indicating whether the user has access to the menu for the monster.
   canAccessMenu: PropTypes.bool,
+  // Flag indicating whether the user already have the monster, showing a special icon.
+  isNew: PropTypes.bool,
   // Flag indicating whether the monster can be removed from the team.
   canBeRemovedFromTeam: PropTypes.bool,
   // Flag indicating whether the delete action is allowed for the monster.

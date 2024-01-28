@@ -6,6 +6,7 @@ const gameStatusSlice = createSlice({
     inMainMenu: false,
     inCombat: false,
     inDungeon: false,
+    inRandomEncounter: false,
   },
   reducers: {
     setInCombatStatus: (state, action) => {
@@ -17,9 +18,16 @@ const gameStatusSlice = createSlice({
     setInMainMenu: (state, action) => {
       state.inMainMenu = action.payload
     },
+    setInRandomEncounter: (state, action) => {
+      state.inRandomEncounter = action.payload
+    },
   },
 })
 
-export const { setInCombatStatus, setInDungeonStatus, setInMainMenu } =
-  gameStatusSlice.actions
+export const {
+  setInCombatStatus,
+  setInDungeonStatus,
+  setInMainMenu,
+  setInRandomEncounter,
+} = gameStatusSlice.actions
 export default gameStatusSlice.reducer

@@ -9,7 +9,10 @@ function ButtonTryCapture() {
   const [monsterCatched, setMonsterCatched] = useState(null)
 
   const handleCatchMonster = () => {
-    const monster = GenerateMonster({ monsterRarity: 'all' })
+    const monster = GenerateMonster({
+      monsterRarity: 'all',
+      specificMonsterId: null,
+    })
     setMonsterCatched(monster)
     dispatch(updateCapturedMonstersList(monster))
   }

@@ -9,6 +9,7 @@ const configSlice = createSlice({
     catchRate: 1,
     maxMonstersInTeam: 5,
     maxMonstersInBox: 500,
+    alreadyHaveStarter: false,
   },
   reducers: {
     setDifficulty: (state, action) => {
@@ -28,6 +29,9 @@ const configSlice = createSlice({
     },
     setMaxMonstersInBox: (state, action) => {
       state.maxMonstersInBox = action.payload
+    },
+    setAlreadyHaveStarter: (state, action) => {
+      state.alreadyHaveStarter = action.payload
     },
     saveSetting: (state, action) => {
       localStorage.setItem('settings', JSON.stringify(state))
@@ -75,6 +79,7 @@ export const {
   setCatchRate,
   setMaxMonstersInTeam,
   setMaxMonstersInBox,
+  setAlreadyHaveStarter,
   saveSetting,
   loadSetting,
   setDifficultyEasy,

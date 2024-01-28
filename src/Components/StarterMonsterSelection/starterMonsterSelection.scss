@@ -1,0 +1,116 @@
+@keyframes starter-apparition {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: translateY(-250px);
+  }
+
+  38% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  55% {
+    animation-timing-function: ease-in;
+    transform: translateY(-65px);
+  }
+
+  72% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  81% {
+    animation-timing-function: ease-in;
+    transform: translateY(-28px);
+  }
+
+  90% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  95% {
+    animation-timing-function: ease-in;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes accept-button-apparition {
+  0% {
+    opacity: 0;
+    transform: translateX(-250px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.starter-monster-container {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    font-size: 40px;
+    margin: 0;
+  }
+
+  .monster-card-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    opacity: 1;
+  }
+
+  .validate-button {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    font-size: 50px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    border-radius: 15px;
+    width: 25%;
+    &:hover {
+      transform: scale(1.1);
+      background-color: rgb(177, 60, 132);
+      border-radius: 50px;
+      cursor: pointer;
+    }
+  }
+
+  .starter-apparition-1,
+  .starter-apparition-2,
+  .starter-apparition-3 {
+    opacity: 0;
+  }
+
+  .starter-apparition-1 {
+    animation: starter-apparition 1s ease forwards;
+  }
+
+  .starter-apparition-2 {
+    animation: starter-apparition 1s ease 1.2s forwards;
+  }
+
+  .starter-apparition-3 {
+    animation: starter-apparition 1s ease 2.4s forwards;
+  }
+
+  .validate-button {
+    animation: accept-button-apparition 1s ease 3.6s forwards;
+  }
+}

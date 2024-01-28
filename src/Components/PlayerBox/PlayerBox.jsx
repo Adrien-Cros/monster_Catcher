@@ -38,6 +38,7 @@ function PlayerBox() {
       </h3>
       <div className="filter-button">
         <p> Sort by:</p>
+        <button>Id</button>
         <button>Name</button>
         <button>Level</button>
         <button>Race</button>

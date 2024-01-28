@@ -23,8 +23,8 @@ main {
   border-radius: 25px;
 
   &:hover {
-    transform: scale(1.1);
     background-color: rgb(177, 60, 132);
     border-radius: 50px;
+    cursor: pointer;
   }
 }
