@@ -2,7 +2,7 @@
   "traits": [
     {
       "id": 1,
-      "rarityTier": 3,
+      "rarityTier": 1,
       "icon": "",
       "name": "Strong",
       "description": "+10% attack",
@@ -28,7 +28,7 @@
     },
     {
       "id": 3,
-      "rarityTier": 1,
+      "rarityTier": 3,
       "icon": "",
       "name": "Strong++",
       "description": "+30% attack",
@@ -185,7 +185,7 @@
     },
     {
       "id": 15,
-      "rarityTier": 3,
+      "rarityTier": 4,
       "icon": "",
       "name": "Legendary",
       "description": "+30% all stats",
@@ -207,25 +207,246 @@
     },
     {
       "id": 16,
-      "rarityTier": 3,
+      "rarityTier": 4,
       "icon": "",
       "name": "Cursed",
-      "description": "-10% all stats",
+      "description": "-30% all stats",
       "type": {
         "required": [],
         "excluded": null
       },
       "race": null,
       "effectOnStats": [
-        "hp -10%",
-        "attack -10%",
-        "magic -10%",
-        "defense -10%",
-        "spirit -10%",
-        "speed -10%",
-        "luck -10%",
-        "despair -10%"
+        "hp -30%",
+        "attack -30%",
+        "magic -30%",
+        "defense -30%",
+        "spirit -30%",
+        "speed -30%",
+        "luck -30%",
+        "despair -30%"
       ]
+    },
+    {
+      "id": 17,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Lucky",
+      "description": "+10% luck",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["luck +10%"]
+    },
+    {
+      "id": 18,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Lucky+",
+      "description": "+20% luck",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["luck +20%"]
+    },
+    {
+      "id": 19,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Lucky++",
+      "description": "+30% luck",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["luck +30%"]
+    },
+    {
+      "id": 20,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Resistant",
+      "description": "+10% defense, +10% spirit",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["defense +10%", "spirit +10%"]
+    },
+    {
+      "id": 21,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Resistant+",
+      "description": "+20% defense, +20% spirit",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["defense +20%", "spirit +20%"]
+    },
+    {
+      "id": 22,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Fast",
+      "description": "+10% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["speed +10%"]
+    },
+    {
+      "id": 23,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Fast+",
+      "description": "+20% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["speed +20%"]
+    },
+    {
+      "id": 24,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Fast++",
+      "description": "+30% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["speed +30%"]
+    },
+    {
+      "id": 25,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Psychic",
+      "description": "+10% despair",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["despair +10%"]
+    },
+    {
+      "id": 26,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Psychic+",
+      "description": "+20% despair",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["despair +20%"]
+    },
+    {
+      "id": 27,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Psychic++",
+      "description": "+30% despair",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["despair +30%"]
+    },
+    {
+      "id": 28,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Stupid",
+      "description": "-10% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic -10%"]
+    },
+    {
+      "id": 29,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Stupid+",
+      "description": "-20% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic -20%"]
+    },
+    {
+      "id": 29,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Stupid++",
+      "description": "-30% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic -30%"]
+    },
+    {
+      "id": 30,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Slow",
+      "description": "-10% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["speed -10%"]
+    },
+    {
+      "id": 31,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Slow+",
+      "description": "-20% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["speed -20%"]
+    },
+    {
+      "id": 32,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Slow++",
+      "description": "-30% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["speed -30%"]
     }
   ]
 }

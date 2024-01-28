@@ -11,7 +11,7 @@
       "type": ["Fire"],
       "description": "A cute little fire carbuncle",
       "captureValueNeeded": 5,
-      "rarity": 1,
+      "rarity": 3,
       "stats": {
         "hp": 80,
         "attack": 7,
@@ -62,7 +62,7 @@
       "type": ["Dark"],
       "description": "A cute little dark carbuncle",
       "captureValueNeeded": 5,
-      "rarity": 1,
+      "rarity": 2,
       "stats": {
         "hp": 82,
         "attack": 8,
@@ -113,7 +113,7 @@
       "type": ["Ice"],
       "description": "A cute little ice carbuncle",
       "captureValueNeeded": 5,
-      "rarity": 1,
+      "rarity": 0,
       "stats": {
         "hp": 85,
         "attack": 9,

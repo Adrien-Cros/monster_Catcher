@@ -11,14 +11,26 @@ import { useNavigate } from 'react-router-dom'
 function MainMenu() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  //hide or show player box/team
   const [showPlayerBox, setShowPlayerBox] = useState(false)
+  //hide or show inventory
+  const [showInventory, setShowInventory] = useState(false)
 
   const teamMonsters = useSelector(
     (state) => state.monsterTeam.actualMonstersInTeam
   )
 
+  const inventory = useSelector((state) => state.inventory.inventory)
+
   const togglePlayerBox = () => {
+    setShowInventory(false)
     setShowPlayerBox(!showPlayerBox)
+  }
+
+  const toggleInventory = () => {
+    setShowPlayerBox(false)
+    setShowInventory(!showInventory)
+    console.log(inventory)
   }
 
   const handleCombat = () => {
@@ -31,6 +43,7 @@ function MainMenu() {
 
   return (
     <>
+      <ButtonTryCapture />
       <main className="main-menu">
         <div className="mission-button">
           <button onClick={handleCombat}>Random encounter</button>
@@ -38,6 +51,20 @@ function MainMenu() {
           <button>Raid a boss</button>
         </div>
         <section>
+          <div className="menu-button">
+            {showPlayerBox === false && (
+              <button onClick={togglePlayerBox}>Show Stocked Monsters</button>
+            )}
+            {showPlayerBox === true && (
+              <button onClick={togglePlayerBox}>Hide Stocked Monsters</button>
+            )}
+            {showInventory === false && (
+              <button onClick={toggleInventory}>Show Inventory</button>
+            )}
+            {showInventory === true && (
+              <button onClick={toggleInventory}>Hide Inventory</button>
+            )}
+          </div>
           {showPlayerBox && (
             <>
               <div className="player-monsters-equip">
@@ -48,15 +75,20 @@ function MainMenu() {
               </div>
             </>
           )}
-          <div className="menu-button">
-            {showPlayerBox === false && (
-              <button onClick={togglePlayerBox}>Show Stocked Monsters</button>
-            )}
-            {showPlayerBox === true && (
-              <button onClick={togglePlayerBox}>Hide Stocked Monsters</button>
-            )}
-            <button>Show Inventory</button>
-          </div>
+          {showInventory && (
+            <div className="player-inventory">
+              {inventory.map((item, index) => (
+                <div className="item-container" key={item + index}>
+                  <div className="item-container-name-icon">
+                    <span>{item.name}</span>
+                    <img src={item.icon} alt={item.name} />
+                  </div>
+                  <span>{item.description}</span>
+                  <span>Quantity: {item.quantityPossessed}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
       </main>
     </>

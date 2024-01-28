@@ -1,23 +1,28 @@
 import traitData from '../../Data/traits.json'
 
-function AddTraitsToMonster({ monster }) {
+function AddTraitsToMonster() {
   const getRandomTrait = (selectedTraits) => {
     const randomRarity = Math.floor(Math.random() * 100) + 1
     let filteredTraits
     if (randomRarity <= 65) {
-      // Rarity tier 3
+      // Rarity tier 1 70%
       filteredTraits = traitData.traits.filter(
-        (trait) => trait.rarityTier === 3
+        (trait) => trait.rarityTier === 1
       )
     } else if (randomRarity <= 92) {
-      // Rarity tier 2
+      // Rarity tier 2 22%
       filteredTraits = traitData.traits.filter(
         (trait) => trait.rarityTier === 2
       )
-    } else if (randomRarity <= 100) {
-      // Rarity tier 1
+    } else if (randomRarity <= 99) {
+      // Rarity tier 3 7%
       filteredTraits = traitData.traits.filter(
-        (trait) => trait.rarityTier === 1
+        (trait) => trait.rarityTier === 3
+      )
+    } else if (randomRarity === 100) {
+      // Rarity tier 4 1%
+      filteredTraits = traitData.traits.filter(
+        (trait) => trait.rarityTier === 4
       )
     }
     if (!filteredTraits || filteredTraits.length === 0) {

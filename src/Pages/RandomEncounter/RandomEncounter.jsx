@@ -53,7 +53,7 @@ function RandomEncounter() {
 
   const generateRandomMonster = () => {
     if (!hasChosenRandomMonster) {
-      const randomMonster = GenerateMonster()
+      const randomMonster = GenerateMonster({ monsterRarity: 'all' })
       if (randomMonster) {
         setWildMonster(randomMonster)
         setWildMonsterCopy(randomMonster)

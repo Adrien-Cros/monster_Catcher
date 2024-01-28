@@ -15,7 +15,8 @@
   }
 
   .player-box,
-  .player-monsters-equip {
+  .player-monsters-equip,
+  .player-inventory {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -26,6 +27,40 @@
     margin-left: 4px;
     margin-right: 4px;
   }
+
+  .player-box,
+  .player-monsters-equip {
+    width: 50%;
+  }
+  .player-inventory {
+    width: 30%;
+    padding: 5px;
+
+    .item-container {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid white;
+      border-radius: 28px;
+
+      &-name-icon {
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        img {
+          width: 32px;
+          height: 32px;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+
   section {
     display: flex;
   }

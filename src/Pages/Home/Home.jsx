@@ -57,7 +57,7 @@ function Home() {
         dispatch(setDifficultyNormal())
         dispatch(resetMonsterFromTeam())
         dispatch(resetInventory())
-        //dispatch(addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }))
+        //dispatch( addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }) )
         navigate('/main')
       }
     }
