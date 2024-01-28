@@ -12,13 +12,27 @@ function AddCapacityToMonsters({ monster }) {
           monster.type.some((type) => capacity.type.required.includes(type)))
 
       const meetsRaceRequirement =
-        !capacity.race ||
+        !capacity.race.required ||
         (monster.race &&
-          monster.race.some((race) => capacity.race.includes(race)))
+          monster.race.some((race) => capacity.race.required.includes(race)))
+
+      // Check if the capacity is not excluded based on type
+      const meetsTypeExclusion =
+        !capacity.type.excluded ||
+        (monster.type &&
+          monster.type.every((type) => !capacity.type.excluded.includes(type)))
+
+      // Check if the capacity is not excluded based on race
+      const meetsRaceExclusion =
+        !capacity.race.excluded ||
+        (monster.race &&
+          monster.race.every((race) => !capacity.race.excluded.includes(race)))
 
       return (
         meetsTypeRequirement &&
         meetsRaceRequirement &&
+        meetsTypeExclusion &&
+        meetsRaceExclusion &&
         !selectedCapacities.has(capacity)
       )
     })

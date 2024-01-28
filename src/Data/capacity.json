@@ -10,7 +10,10 @@
         "required": ["Fire"],
         "excluded": null
       },
-      "race": null,
+      "race": {
+        "required": null,
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
         "base": 20,
@@ -33,7 +36,10 @@
         "required": ["Dark"],
         "excluded": null
       },
-      "race": null,
+      "race": {
+        "required": null,
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
         "base": 20,
@@ -56,7 +62,10 @@
         "required": ["Ice"],
         "excluded": null
       },
-      "race": null,
+      "race": {
+        "required": null,
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
         "base": 25,
@@ -79,7 +88,10 @@
         "required": ["Fire"],
         "excluded": null
       },
-      "race": null,
+      "race": {
+        "required": null,
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
         "base": 20,
@@ -102,7 +114,10 @@
         "required": null,
         "excluded": null
       },
-      "race": ["Carbuncle"],
+      "race": {
+        "required": ["Carbuncle"],
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
         "base": 20,
@@ -125,7 +140,10 @@
         "required": null,
         "excluded": null
       },
-      "race": ["Slime"],
+      "race": {
+        "required": ["Slime"],
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
         "base": 20,
@@ -148,7 +166,10 @@
         "required": ["Ice"],
         "excluded": null
       },
-      "race": null,
+      "race": {
+        "required": null,
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
         "base": 15,
@@ -171,7 +192,10 @@
         "required": ["Holy"],
         "excluded": null
       },
-      "race": null,
+      "race": {
+        "required": null,
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
         "base": 20,
@@ -194,7 +218,10 @@
         "required": ["Water"],
         "excluded": null
       },
-      "race": null,
+      "race": {
+        "required": null,
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
         "base": 20,
@@ -217,17 +244,176 @@
         "required": null,
         "excluded": null
       },
-      "race": null,
+      "race": {
+        "required": null,
+        "excluded": null
+      },
       "details": {
         "type": "Damage",
-        "base": 20,
-        "variance": 5,
+        "base": 16,
+        "variance": 15,
         "critChance": 1,
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Blunt"],
         "scaling": ["+5% attack"]
+      }
+    },
+    {
+      "id": 11,
+      "icon": "",
+      "name": "Charge",
+      "description": "A Charge that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": {
+        "required": ["Beast"],
+        "excluded": ["Slime"]
+      },
+      "details": {
+        "type": "Damage",
+        "base": 22,
+        "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.4,
+        "penetration": 1,
+        "damageType": ["Physical"],
+        "element": ["Blunt"],
+        "scaling": ["+20% attack"]
+      }
+    },
+    {
+      "id": 12,
+      "icon": "",
+      "name": "Magic Trick",
+      "description": "A Magic Trick that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": null,
+        "excluded": ["Dark"]
+      },
+      "race": {
+        "required": null,
+        "excluded": ["Beast"]
+      },
+      "details": {
+        "type": "Damage",
+        "base": 16,
+        "variance": 25,
+        "critChance": 5,
+        "critDamage": 1.25,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Arcane"],
+        "scaling": ["+40% magic"]
+      }
+    },
+    {
+      "id": 13,
+      "icon": "",
+      "name": "Body Slam",
+      "description": "A Body Slam that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": ["Slime"]
+      },
+      "details": {
+        "type": "Damage",
+        "base": 18,
+        "variance": 10,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Blunt"],
+        "scaling": ["+5% attack", "+25% defense"]
+      }
+    },
+    {
+      "id": 14,
+      "icon": "",
+      "name": "Deep Freeze",
+      "description": "A Deep Freeze that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Ice"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 21,
+        "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Ice"],
+        "scaling": ["+20% magic", "+5% despair"]
+      }
+    },
+    {
+      "id": 15,
+      "icon": "",
+      "name": "Total Darkness",
+      "description": "A Total Darkness that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Dark"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 23,
+        "variance": 15,
+        "critChance": 2,
+        "critDamage": 1.35,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Dark"],
+        "scaling": ["+10% magic", "+40% despair"]
+      }
+    },
+    {
+      "id": 16,
+      "icon": "",
+      "name": "Clock Burst",
+      "description": "A Clock Burst that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Lightning"],
+        "excluded": null
+      },
+      "race": {
+        "required": ["Clockwork"],
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 25,
+        "variance": 2,
+        "critChance": 1,
+        "critDamage": 1.2,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Lightning"],
+        "scaling": ["+20% magic", "+10% spirit"]
       }
     }
   ]

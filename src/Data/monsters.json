@@ -7,7 +7,7 @@
       "level": 1,
       "experience": 0,
       "picture": "./Assets/Monsters/Carbuncle Fire.png",
-      "race": ["Carbuncle"],
+      "race": ["Carbuncle", "Beast"],
       "type": ["Fire"],
       "description": "A cute little fire carbuncle",
       "captureValueNeeded": 5,
@@ -39,8 +39,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -48,7 +48,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 5,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -58,7 +63,7 @@
       "level": 1,
       "experience": 0,
       "picture": "./Assets/Monsters/Carbuncle Dark.png",
-      "race": ["Carbuncle"],
+      "race": ["Carbuncle", "Beast"],
       "type": ["Dark"],
       "description": "A cute little dark carbuncle",
       "captureValueNeeded": 5,
@@ -90,8 +95,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 3,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -99,7 +104,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 4,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -109,7 +119,7 @@
       "level": 1,
       "experience": 0,
       "picture": "./Assets/Monsters/Carbuncle Ice.png",
-      "race": ["Carbuncle"],
+      "race": ["Carbuncle", "Beast"],
       "type": ["Ice"],
       "description": "A cute little ice carbuncle",
       "captureValueNeeded": 5,
@@ -141,8 +151,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -150,7 +160,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 7,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -192,8 +207,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -201,7 +216,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 4,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -243,8 +263,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -252,7 +272,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 6,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -294,8 +319,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -303,7 +328,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 5,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -345,8 +375,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -354,7 +384,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 9,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -396,8 +431,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -405,7 +440,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 4,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -415,7 +455,7 @@
       "level": 1,
       "experience": 0,
       "picture": "./Assets/Monsters/Eldritch Abomination Hound.png",
-      "race": ["Eldritch"],
+      "race": ["Eldritch", "Beast"],
       "type": ["Dark"],
       "description": "A beautiful Corrupted Hound !",
       "captureValueNeeded": 5,
@@ -447,8 +487,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -456,7 +496,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 4,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -498,8 +543,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -507,7 +552,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 4,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -549,8 +599,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -558,7 +608,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 5,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -600,8 +655,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -609,7 +664,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 9,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -619,7 +679,7 @@
       "level": 1,
       "experience": 0,
       "picture": "./Assets/Monsters/Clockwork Aerial.png",
-      "race": ["Clockwork"],
+      "race": ["Clockwork", "Beast"],
       "type": ["Lightning"],
       "description": "A beautiful Clockwork Bird !",
       "captureValueNeeded": 5,
@@ -651,8 +711,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -660,7 +720,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 8,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -702,8 +767,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -711,7 +776,12 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 8,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     },
     {
@@ -724,8 +794,8 @@
       "race": ["Clockwork", "Eldritch", "Spirit"],
       "type": ["Lightning", "Dark"],
       "description": "A beautiful Corrupted Clockwork Spirit !",
-      "captureValueNeeded": 5,
-      "rarity": 1,
+      "captureValueNeeded": 10,
+      "rarity": 2,
       "stats": {
         "hp": 101,
         "attack": 6,
@@ -753,8 +823,8 @@
         {
           "item_id": 1,
           "min_quantity": 1,
-          "max_quantity": 5,
-          "drop_chance": 10
+          "max_quantity": 2,
+          "drop_chance": 50
         },
         {
           "item_id": 2,
@@ -762,7 +832,186 @@
           "max_quantity": 2,
           "drop_chance": 5
         },
-        { "item_id": 3, "min_quantity": 1, "max_quantity": 1, "drop_chance": 2 }
+        {
+          "item_id": 4,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        },
+        {
+          "item_id": 8,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "uniqueKey": null,
+      "name": "Ice Bull",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Ice Bull.png",
+      "race": ["Beast"],
+      "type": ["Ice"],
+      "description": "A beautiful Ice Bull !",
+      "captureValueNeeded": 5,
+      "rarity": 1,
+      "stats": {
+        "hp": 92,
+        "attack": 6,
+        "magic": 3,
+        "defense": 7,
+        "spirit": 5,
+        "speed": 6,
+        "luck": 1,
+        "despair": 3
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "loot_table": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 7,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "uniqueKey": null,
+      "name": "Ice Lion",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Ice Lion.png",
+      "race": ["Beast"],
+      "type": ["Ice"],
+      "description": "A beautiful Ice Lion !",
+      "captureValueNeeded": 5,
+      "rarity": 1,
+      "stats": {
+        "hp": 90,
+        "attack": 7,
+        "magic": 5,
+        "defense": 5,
+        "spirit": 4,
+        "speed": 9,
+        "luck": 4,
+        "despair": 2
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "loot_table": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 7,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "uniqueKey": null,
+      "name": "Magical Fox",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Magical Fox.png",
+      "race": ["Beast"],
+      "type": ["Holy"],
+      "description": "A beautiful Magical Fox !",
+      "captureValueNeeded": 5,
+      "rarity": 1,
+      "stats": {
+        "hp": 74,
+        "attack": 4,
+        "magic": 10,
+        "defense": 4,
+        "spirit": 9,
+        "speed": 7,
+        "luck": 5,
+        "despair": 2
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "loot_table": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 6,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
       ]
     }
   ]

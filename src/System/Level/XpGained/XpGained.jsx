@@ -5,18 +5,13 @@
 const XpGained = ({ victoriousMonster, defeatedMonster }) => {
   //check xpModifier from the difficulty
   // const xpModifier = useSelector((state) => state.config.xpRate)
-  console.log(
-    'Entered in xpgained with attacker: ',
-    victoriousMonster,
-    ' Defender: ',
-    defeatedMonster
-  )
+
   //base xp for a kill
   const BASE_XP_GIVEN = 100
   //base xp lose or gain per level difference
   const XP_PER_LEVEL_DIFF = 10
   //variance factor in %
-  const VARIANCE = 20
+  const VARIANCE = 25
 
   let xpValue = 0
 
@@ -41,8 +36,11 @@ const XpGained = ({ victoriousMonster, defeatedMonster }) => {
     console.log('An error occured: ', victoriousMonster, ' + ', defeatedMonster)
   }
   //rounded up
+  if (xpValue < 0) {
+    xpValue = 0
+  }
+
   xpValue = Math.ceil(xpValue)
-  console.log('Xp won', xpValue)
 
   return xpValue
 }

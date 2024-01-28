@@ -167,16 +167,18 @@ function ActionSelection({
               </div>
             ))}
           </div>
-          {disableActionButton === false && captureItemList.length !== 0 && (
-            <div
-              onClick={() => handleTryCapture(selectedCaptureItem)}
-              className="selection-button-capacity"
-            >
-              {selectedCaptureItem
-                ? `Try to capture ${wildMonster.name} (level: ${wildMonster.level}) with ${selectedCaptureItem.name} ?`
-                : 'Select a capture item to catch this monster!'}
-            </div>
-          )}
+          {selectedCaptureItem !== null &&
+            disableActionButton === false &&
+            captureItemList.length !== 0 && (
+              <div
+                onClick={() => handleTryCapture(selectedCaptureItem)}
+                className="selection-button-capacity"
+              >
+                {selectedCaptureItem
+                  ? `Try to capture ${wildMonster.name} (level: ${wildMonster.level}) with ${selectedCaptureItem.name} ?`
+                  : 'Select a capture item to catch this monster!'}
+              </div>
+            )}
         </div>
       )}
     </div>

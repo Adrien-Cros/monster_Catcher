@@ -33,7 +33,7 @@
       "stackable": true,
       "maxStackNumber": 99,
       "quantityPossessed": 0,
-      "rarity": 1,
+      "rarity": 2,
       "objectType": "item",
       "effect": {
         "captureMinValue": 10,
@@ -44,7 +44,7 @@
       "id": 3,
       "name": "Placeholder",
       "icon": null,
-      "description": "Placeholder for things",
+      "description": "A non stackable item !",
       "type": ["Consumable"],
       "prices": {
         "buy": 5,
@@ -52,6 +52,108 @@
       },
       "stackable": false,
       "maxStackNumber": 1,
+      "quantityPossessed": 0,
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {}
+    },
+    {
+      "id": 4,
+      "name": "Dark Gems",
+      "icon": "./Assets/Items/dark-gems-icon.png",
+      "description": "A dark gems, to enhance some monsters.",
+      "type": ["Consumable"],
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
+      "quantityPossessed": 0,
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {}
+    },
+    {
+      "id": 5,
+      "name": "Fire Gems",
+      "icon": "./Assets/Items/fire-gems-icon.png",
+      "description": "A fire gems, to enhance some monsters.",
+      "type": ["Consumable"],
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
+      "quantityPossessed": 0,
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {}
+    },
+    {
+      "id": 6,
+      "name": "Holy Gems",
+      "icon": "./Assets/Items/holy-gems-icon.png",
+      "description": "A holy gems, to enhance some monsters.",
+      "type": ["Consumable"],
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
+      "quantityPossessed": 0,
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {}
+    },
+    {
+      "id": 7,
+      "name": "Ice Gems",
+      "icon": "./Assets/Items/ice-gems-icon.png",
+      "description": "A ice gems, to enhance some monsters.",
+      "type": ["Consumable"],
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
+      "quantityPossessed": 0,
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {}
+    },
+    {
+      "id": 8,
+      "name": "Lightning Gems",
+      "icon": "./Assets/Items/lightning-gems-icon.png",
+      "description": "A lightning gems, to enhance some monsters.",
+      "type": ["Consumable"],
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
+      "quantityPossessed": 0,
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {}
+    },
+    {
+      "id": 9,
+      "name": "Water Gems",
+      "icon": "./Assets/Items/water-gems-icon.png",
+      "description": "A water gems, to enhance some monsters.",
+      "type": ["Consumable"],
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
       "quantityPossessed": 0,
       "rarity": 1,
       "objectType": "item",

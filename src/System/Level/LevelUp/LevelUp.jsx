@@ -4,36 +4,27 @@ import XpGained from '../XpGained/XpGained'
 import levelsData from '../../../Data/levels.json'
 import monsterData from '../../../Data/monsters.json'
 
-//Function to check if a monster can level up or not
-//Return the victorious monster, but with upgraded stats if level up
 const LevelUp = ({ victoriousMonster, defeatedMonster }) => {
-  // Store the current monster
+  // Store the current monster and create a deep copy
   const currentMonster = victoriousMonster
-  // Create a deep copy of the current monster
   const copyMonster = { ...currentMonster }
 
-  const monsterToCheck = defeatedMonster
-
-  console.log('entered in lvl up with: ', currentMonster)
-
+  // Calculate the experience gained in the battle
   const xpWon = XpGained({
     victoriousMonster: currentMonster,
-    defeatedMonster: monsterToCheck,
+    defeatedMonster: defeatedMonster,
   })
 
-  console.log('After xp gained: ', currentMonster)
-
-  // Store the current level/xp/traits/capacities/uniquepassive/uniqueKey
+  // Store the current level, current experience, and level data
   const monsterCurrentLevel = copyMonster.level
   const monsterCurrentExperience = copyMonster.experience + xpWon
 
-  console.log('Applying the xp bonus: ', monsterCurrentExperience)
-  // Find the corresponding level data
+  // Check the level property inside the levelsData
   const levelToCheck = levelsData.levels.find(
     (level) => level.level === monsterCurrentLevel
   )
 
-  // Check if current experience is higher than required for the next level
+  // Check if current experience is higher or equal than required for the next level
   if (monsterCurrentExperience >= levelToCheck.xpRequiredToNext) {
     // If true, increment the monster's level
     const newLevel = monsterCurrentLevel + 1
@@ -42,30 +33,30 @@ const LevelUp = ({ victoriousMonster, defeatedMonster }) => {
     const updatedMonster = monsterData.monsters.find(
       (monster) => monster.id === copyMonster.id
     )
-
+    console.log('Before updating stats lvl up:', updatedMonster.stats)
     // Update the stats based on the level up effects
-    const modifiedStats = levelsData.effectOnStats.map((effect) => {
+    levelsData.effectOnStats.forEach((effect) => {
       const [stat, value] = effect.split(' ')
       const modifiedValue = parseFloat(value)
       updatedMonster.stats[stat] += modifiedValue
-      return `${stat} +${modifiedValue}`
     })
+    console.log('After updating stats lvl up:', updatedMonster.stats)
 
-    //restore and update the value to the new monster
-    updatedMonster.level = newLevel
-    updatedMonster.experience = monsterCurrentExperience
-    updatedMonster.capacities = currentMonster.capacities
-    updatedMonster.traits = currentMonster.traits
-    updatedMonster.uniqueKey = currentMonster.uniqueKey
-    updatedMonster.uniquePassive = currentMonster.uniquePassive
+    // Create the modified monster object with updated properties
+    const modifiedMonster = {
+      ...updatedMonster,
+      level: newLevel,
+      experience: monsterCurrentExperience,
+      capacities: currentMonster.capacities,
+      traits: currentMonster.traits,
+      uniqueKey: currentMonster.uniqueKey,
+      uniquePassive: currentMonster.uniquePassive,
+    }
 
     // Apply traits effect to the monster
-    const modifiedMonster = ApplyTraitsEffectToMonsters({
-      monster: updatedMonster,
+    return ApplyTraitsEffectToMonsters({
+      monster: modifiedMonster,
     })
-
-    // Return the modified monster
-    return modifiedMonster
   }
 
   // Return a new object with the same properties as currentMonster, but with updated experience

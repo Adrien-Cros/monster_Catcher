@@ -9,6 +9,7 @@ function Modal({
   modalName,
   itemsWon,
   isCaptured,
+  xpWon,
 }) {
   const [isOpen, setIsOpen] = useState(true)
 
@@ -35,6 +36,7 @@ function Modal({
           ))}
         </div>
       )}
+      {xpWon && <div className="combat-result">Xp gained: {xpWon}</div>}
       {isCaptured && (
         <div className="captured-monsters">
           There is a new monster in your team!

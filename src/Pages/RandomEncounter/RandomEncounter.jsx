@@ -72,32 +72,32 @@ function RandomEncounter() {
   })
 
   useEffect(() => {
-    initBattle()
-  }, [])
-
-  const generateRandomMonster = () => {
-    if (!hasChosenRandomMonster) {
-      const randomMonster = GenerateMonster({
-        specificMonsterId: null,
-        monsterRarity: 'all',
-      })
-      if (randomMonster) {
-        setWildMonster(randomMonster)
-        setWildMonsterCopy(randomMonster)
-        setHasChosenRandomMonster(true)
+    const generateRandomMonster = () => {
+      if (!hasChosenRandomMonster) {
+        const randomMonster = GenerateMonster({
+          specificMonsterId: null,
+          monsterRarity: 'all',
+        })
+        if (randomMonster) {
+          setWildMonster(randomMonster)
+          setWildMonsterCopy(randomMonster)
+          setHasChosenRandomMonster(true)
+        }
       }
     }
-  }
+
+    const initBattle = () => {
+      generateRandomMonster()
+      setHasInitBattle(true)
+    }
+
+    initBattle()
+  }, [])
 
   function handleMonsterSelection(monster) {
     setSelectedPlayerMonster(monster)
     setPlayerMonsterCopy(monster)
     setHasPlayerChooseAMonster(true)
-  }
-
-  const initBattle = () => {
-    generateRandomMonster()
-    setHasInitBattle(true)
   }
 
   const updateCombatLog = (message) => {
@@ -226,7 +226,6 @@ function RandomEncounter() {
       victoriousMonster: selectedPlayerMonster,
       defeatedMonster: wildMonster,
     })
-    console.log('monster to update: ', monsterToUpdate)
     //update the monster with the new xp/lvl
     dispatch(updateMonsterFromTeam({ monsterToUpdate: monsterToUpdate }))
     setHasCombatEnded(true)
