@@ -20,6 +20,7 @@ import { setInRandomEncounter } from '../../Store/Slice/gameStatusSlice'
 
 import './randomEncounter.scss'
 import { updateMonsterFromTeam } from '../../Store/Slice/playerTeamSlice'
+import ApplyLevelToMonster from '../../System/Level/ApplyLevelToMonster/ApplyLevelToMonster'
 //This page render a full combat encounter with an HUD
 function RandomEncounter() {
   const navigate = useNavigate()
@@ -55,6 +56,21 @@ function RandomEncounter() {
   const [xpGained, setXpGained] = useState(null)
   const [hasLevelUp, setHasLevelUp] = useState(null)
 
+  const AVERAGE_TEAM_LVL = useSelector((state) => {
+    let totalLevel = 0
+
+    if (state.monsterTeam.actualMonstersInTeam.length > 0) {
+      totalLevel = state.monsterTeam.actualMonstersInTeam.reduce(
+        (accumulator, monster) => accumulator + monster.level,
+        0
+      )
+      return Math.ceil(
+        totalLevel / state.monsterTeam.actualMonstersInTeam.length
+      )
+    }
+    return 0
+  })
+
   //check the catch rate in the difficulty settings
   const catchRate = useSelector((state) => state.config.catchRate)
 
@@ -83,8 +99,12 @@ function RandomEncounter() {
           monsterRarity: 'all',
         })
         if (randomMonster) {
-          setWildMonster(randomMonster)
-          setWildMonsterCopy(randomMonster)
+          const randomMonsterAfterLevelUp = ApplyLevelToMonster({
+            monster: randomMonster,
+            level: AVERAGE_TEAM_LVL,
+          })
+          setWildMonster(randomMonsterAfterLevelUp)
+          setWildMonsterCopy(randomMonsterAfterLevelUp)
           setHasChosenRandomMonster(true)
         }
       }
@@ -96,7 +116,7 @@ function RandomEncounter() {
     }
 
     initBattle()
-  }, [])
+  }, [hasChosenRandomMonster])
 
   function handleMonsterSelection(monster) {
     setSelectedPlayerMonster(monster)
@@ -190,37 +210,41 @@ function RandomEncounter() {
       }
       //If it's a capture item, try to catch the actual monster
     } else if (isACaptureItem) {
-      dispatch(
-        removeItemFromInventory({
-          item: selectedCapacityOrItem,
-          quantity: 1,
-        })
-      )
-
-      //Multiply the value to capture by the difficulty settings catchRate
-      const minValueToCaptureTheMonster =
-        wildMonster.captureValueNeeded * catchRate
-      const minChanceToCapture = selectedCapacityOrItem.effect.captureMinValue
-      const maxChanceToCapture = selectedCapacityOrItem.effect.captureMaxValue
-      const randomRoll =
-        Math.random() * (maxChanceToCapture - minChanceToCapture) +
-        minChanceToCapture
-      const monsterCaptured = randomRoll >= minValueToCaptureTheMonster
-      if (monsterCaptured) {
-        dispatch(updateCapturedMonstersList(wildMonster))
-        setLootList(null)
-        setMonsterCaptured(true)
-        setHasCombatEnded(true)
-        handleCombatWon()
-        const logMessage = `You have captured a ${wildMonster.name} !`
-        updateCombatLog(logMessage)
-      } else {
-        const logMessage = `Failed to capture ${wildMonster.name} ! Try again !`
-        updateCombatLog(logMessage)
-        handleEnemyTurn()
-      }
+      handleCapture(selectedCapacityOrItem)
     } else {
       console.log('Error in retrieving the type of the object')
+    }
+  }
+
+  //used to calcul if the monsters has been captured
+  const handleCapture = (selectedCapacityOrItem) => {
+    dispatch(
+      removeItemFromInventory({
+        item: selectedCapacityOrItem,
+        quantity: 1,
+      })
+    )
+    //Multiply the value to capture by the difficulty settings catchRate
+    const minValueToCaptureTheMonster =
+      wildMonster.captureValueNeeded * catchRate
+    const minChanceToCapture = selectedCapacityOrItem.effect.captureMinValue
+    const maxChanceToCapture = selectedCapacityOrItem.effect.captureMaxValue
+    const randomRoll =
+      Math.random() * (maxChanceToCapture - minChanceToCapture) +
+      minChanceToCapture
+    const monsterCaptured = randomRoll >= minValueToCaptureTheMonster
+    if (monsterCaptured) {
+      dispatch(updateCapturedMonstersList(wildMonster))
+      setLootList(null)
+      setMonsterCaptured(true)
+      setHasCombatEnded(true)
+      handleCombatWon()
+      const logMessage = `You have captured a ${wildMonster.name} !`
+      updateCombatLog(logMessage)
+    } else {
+      const logMessage = `Failed to capture ${wildMonster.name} ! Try again !`
+      updateCombatLog(logMessage)
+      handleEnemyTurn()
     }
   }
 
@@ -236,7 +260,6 @@ function RandomEncounter() {
     //Update the monster with the new xp/lvl
     dispatch(updateMonsterFromTeam({ monsterToUpdate: result.monster }))
     setHasCombatEnded(true)
-    console.log('win')
     setWinOrLose(true) // true = win
   }
 
@@ -244,7 +267,6 @@ function RandomEncounter() {
     if (winOrLose === true) {
     } else {
       setHasCombatEnded(true)
-      console.log('lose')
       setWinOrLose(false) // false = lose
       dispatch(setInRandomEncounter(false))
       navigate('/main')

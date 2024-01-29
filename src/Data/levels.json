@@ -23,6 +23,22 @@
     {
       "level": 6,
       "xpRequiredToNext": 5000
+    },
+    {
+      "level": 7,
+      "xpRequiredToNext": 10000
+    },
+    {
+      "level": 8,
+      "xpRequiredToNext": 20000
+    },
+    {
+      "level": 9,
+      "xpRequiredToNext": 40000
+    },
+    {
+      "level": 9,
+      "xpRequiredToNext": 80000
     }
   ],
 

@@ -118,7 +118,8 @@
 .combat-log {
   .combat-log-information {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
     height: 200px;
     border: 6px dashed rgb(119, 100, 100);
     padding: 10px;
