@@ -6,18 +6,22 @@ import monsterData from '../../../Data/monsters.json'
 
 const LevelUp = ({ victoriousMonster, defeatedMonster }) => {
   // Store the current monster and create a deep copy
-  const currentMonster = victoriousMonster
-  const copyMonster = { ...currentMonster }
+  const currentVictoriousMonster = victoriousMonster
+  const copyCurrentVictoriousMonster = { ...currentVictoriousMonster }
+
+  const currentDefeatedMonster = defeatedMonster
+  const copyCurrentDefeatedMonster = { ...currentDefeatedMonster }
 
   // Calculate the experience gained in the battle
   const xpWon = XpGained({
-    victoriousMonster: currentMonster,
-    defeatedMonster: defeatedMonster,
+    victoriousMonster: copyCurrentVictoriousMonster,
+    defeatedMonster: copyCurrentDefeatedMonster,
   })
 
   // Store the current level, current experience, and level data
-  const monsterCurrentLevel = copyMonster.level
-  const monsterCurrentExperience = copyMonster.experience + xpWon
+  const monsterCurrentLevel = copyCurrentVictoriousMonster.level
+  const monsterCurrentExperience =
+    copyCurrentVictoriousMonster.experience + xpWon
 
   // Check the level property inside the levelsData
   const levelToCheck = levelsData.levels.find(
@@ -30,38 +34,49 @@ const LevelUp = ({ victoriousMonster, defeatedMonster }) => {
     const newLevel = monsterCurrentLevel + 1
 
     // Find the monster in monsterData by id
-    const updatedMonster = monsterData.monsters.find(
-      (monster) => monster.id === copyMonster.id
+    const monsterIdToUpdate = copyCurrentVictoriousMonster.id
+    const updatedMonsterIndex = monsterData.monsters.findIndex(
+      (monster) => monster.id === monsterIdToUpdate
     )
-    console.log('Before updating stats lvl up:', updatedMonster.stats)
+
+    // Make a deep copy of the monster
+    const updatedMonster = JSON.parse(
+      JSON.stringify(monsterData.monsters[updatedMonsterIndex])
+    )
+
     // Update the stats based on the level up effects
     levelsData.effectOnStats.forEach((effect) => {
       const [stat, value] = effect.split(' ')
       const modifiedValue = parseFloat(value)
-      updatedMonster.stats[stat] += modifiedValue
+      updatedMonster.stats[stat] += modifiedValue * monsterCurrentLevel
+      console.log(
+        'Monster stats updated: ',
+        updatedMonster.stats[stat],
+        " because it's actually value: ",
+        modifiedValue * monsterCurrentLevel
+      )
     })
-    console.log('After updating stats lvl up:', updatedMonster.stats)
 
-    // Create the modified monster object with updated properties
+    // Create the modified monster object with updated properties, and keeping their capacity/traits/uniqueKey/uniquePassive
     const modifiedMonster = {
       ...updatedMonster,
       level: newLevel,
       experience: monsterCurrentExperience,
-      capacities: currentMonster.capacities,
-      traits: currentMonster.traits,
-      uniqueKey: currentMonster.uniqueKey,
-      uniquePassive: currentMonster.uniquePassive,
+      capacities: currentVictoriousMonster.capacities,
+      traits: currentVictoriousMonster.traits,
+      uniqueKey: currentVictoriousMonster.uniqueKey,
+      uniquePassive: currentVictoriousMonster.uniquePassive,
     }
 
-    // Apply traits effect to the monster
+    // Reapply the traits effect to the monster
     return ApplyTraitsEffectToMonsters({
       monster: modifiedMonster,
     })
   }
 
-  // Return a new object with the same properties as currentMonster, but with updated experience
+  // Return a new object with the same properties as currentVictoriousMonster, but with updated experience
   return {
-    ...currentMonster,
+    ...currentVictoriousMonster,
     experience: monsterCurrentExperience,
   }
 }
