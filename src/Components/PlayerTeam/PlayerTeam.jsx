@@ -2,9 +2,10 @@ import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import MonsterCard from '../MonsterCard/MonsterCard'
 import './playerTeam.scss'
+import MonsterCardLight from '../MonsterCardLight/MonsterCardLight'
 
 //Function to show player monsters inventory, and move it to the box or apply various actions
-function PlayerTeam({ canAccessMonsterMenu, inCombat }) {
+function PlayerTeam({ canAccessMonsterMenu, monsterCardStyle }) {
   const teamMonsters = useSelector(
     (state) => state.monsterTeam.actualMonstersInTeam
   )
@@ -19,16 +20,28 @@ function PlayerTeam({ canAccessMonsterMenu, inCombat }) {
         Your current team: {teamMonsters.length}/{maxMonstersInTeam}
       </h3>
       <div className="current-team">
-        {teamMonsters.map((monster, index) => (
-          <MonsterCard
-            key={monster.uniqueKey}
-            monster={monster}
-            canAccessMenu={canAccessMonsterMenu}
-            canBeRemovedFromTeam={true}
-            canBeDelete={false}
-            showStats={true}
-          />
-        ))}
+        {monsterCardStyle === 'Classic' &&
+          teamMonsters.map((monster, index) => (
+            <MonsterCard
+              key={monster.uniqueKey}
+              monster={monster}
+              canAccessMenu={canAccessMonsterMenu}
+              canBeRemovedFromTeam={true}
+              canBeDelete={false}
+              showStats={true}
+            />
+          ))}
+        {monsterCardStyle === 'Light' &&
+          teamMonsters.map((monster, index) => (
+            <MonsterCardLight
+              key={monster.uniqueKey}
+              monster={monster}
+              canAccessMenu={canAccessMonsterMenu}
+              canBeRemovedFromTeam={true}
+              canBeDelete={false}
+              showStats={true}
+            />
+          ))}
       </div>
     </>
   )

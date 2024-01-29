@@ -1,33 +1,40 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteMonsterFromListByKey } from '../../Store/Slice/monstersSlice'
+import {
+  deleteMonsterFromListByKey,
+  sortMonstersInCapturedList,
+} from '../../Store/Slice/monstersSlice'
+
 import MonsterCard from '../MonsterCard/MonsterCard'
+import MonsterCardLight from '../MonsterCardLight/MonsterCardLight'
 
 import './playerBox.scss'
 
-function PlayerBox() {
+function PlayerBox({ monsterCardStyle }) {
   const dispatch = useDispatch()
 
   //check the page
   const [currentPage, setCurrentPage] = useState(1)
 
-  //used to check the sort
-  const [sortCriteria, setSortCriteria] = useState(null)
-  const [sortOrder, setSortOrder] = useState(null)
+  let MONSTER_PER_PAGE = 4
 
-  const monstersPerPage = 8
+  if (monsterCardStyle === 'Light') {
+    MONSTER_PER_PAGE = 12
+  } else if (monsterCardStyle === 'Classic') {
+    MONSTER_PER_PAGE = 4
+  }
 
-  const capturedMonsterData = useSelector(
+  let capturedMonsterData = useSelector(
     (state) => state.monsters.capturedMonstersList
   )
 
-  const indexOfLastMonster = currentPage * monstersPerPage
-  const indexOfFirstMonster = indexOfLastMonster - monstersPerPage
+  const indexOfLastMonster = currentPage * MONSTER_PER_PAGE
+  const indexOfFirstMonster = indexOfLastMonster - MONSTER_PER_PAGE
   const currentMonsters = capturedMonsterData.slice(
     indexOfFirstMonster,
     indexOfLastMonster
   )
-  const totalPages = Math.ceil(capturedMonsterData.length / monstersPerPage)
+  const totalPages = Math.ceil(capturedMonsterData.length / MONSTER_PER_PAGE)
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage)
@@ -37,25 +44,9 @@ function PlayerBox() {
     dispatch(deleteMonsterFromListByKey({ uniqueKey: uniqueKey }))
   }
 
-  const sortedMonsters = [...currentMonsters].sort((a, b) => {
-    const compareValue = sortOrder === '↑' ? 1 : -1
-
-    if (a[sortCriteria] < b[sortCriteria]) {
-      return -compareValue
-    }
-    if (a[sortCriteria] > b[sortCriteria]) {
-      return compareValue
-    }
-    return 0
-  })
-
   const handleSort = (criteria) => {
-    // If the same criteria is clicked again, toggle the sort order
-    const newSortOrder =
-      sortCriteria === criteria ? (sortOrder === '↑' ? '↓' : '↑') : '↑'
-
-    setSortCriteria(criteria)
-    setSortOrder(newSortOrder)
+    // Dispatch an action to update the sorting in the Redux store
+    dispatch(sortMonstersInCapturedList({ criteria }))
   }
 
   return (
@@ -67,9 +58,6 @@ function PlayerBox() {
         <p> Sort by:</p>
         <button className="sort-button" onClick={() => handleSort('id')}>
           Id
-        </button>
-        <button className="sort-button" onClick={() => handleSort('name')}>
-          Name
         </button>
         <button className="sort-button" onClick={() => handleSort('level')}>
           Level
@@ -83,11 +71,6 @@ function PlayerBox() {
         <button className="sort-button" onClick={() => handleSort('type')}>
           Type
         </button>
-        {sortCriteria && sortOrder && (
-          <p>
-            Actually sorted by: {sortCriteria} {sortOrder}
-          </p>
-        )}
       </div>
       <div className="pagination">
         <button
@@ -108,16 +91,30 @@ function PlayerBox() {
       </div>
       <div className="stocked-monsters">
         {currentMonsters &&
-          sortedMonsters.map((monster, index) => (
-            <MonsterCard
-              key={monster.uniqueKey}
-              monster={monster}
-              onDelete={() => handleDeleteMonster(monster.uniqueKey)}
-              canAccessMenu={true}
-              canBeRemovedFromTeam={false}
-              canBeDelete={true}
-              showStats={true}
-            />
+          currentMonsters.map((monster, index) => (
+            <Fragment key={monster.uniqueKey + index}>
+              {monsterCardStyle === 'Classic' && (
+                <MonsterCard
+                  key={`card_${monster.uniqueKey}`}
+                  monster={monster}
+                  onDelete={() => handleDeleteMonster(monster.uniqueKey)}
+                  canAccessMenu={true}
+                  canBeRemovedFromTeam={false}
+                  canBeDelete={true}
+                  showStats={true}
+                />
+              )}
+              {monsterCardStyle === 'Light' && (
+                <MonsterCardLight
+                  key={`light__card_${monster.uniqueKey}`}
+                  monster={monster}
+                  canAccessMenu={true}
+                  canBeRemovedFromTeam={false}
+                  canBeDelete={true}
+                  showStats={true}
+                />
+              )}
+            </Fragment>
           ))}
       </div>
     </>

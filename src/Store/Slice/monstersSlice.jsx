@@ -4,6 +4,7 @@ const monstersSlice = createSlice({
   name: 'monsters',
   initialState: {
     capturedMonstersList: [],
+    sortCriteria: null,
   },
   reducers: {
     updateCapturedMonstersList: (state, action) => {
@@ -40,6 +41,63 @@ const monstersSlice = createSlice({
         JSON.stringify(state.capturedMonstersList)
       )
     },
+    sortMonstersInCapturedList: (state, action) => {
+      const { criteria } = action.payload
+
+      state.sortCriteria = criteria
+
+      const sortedList = [...state.capturedMonstersList]
+
+      sortedList.sort((a, b) => {
+        if (criteria === 'level') {
+          // Sorting logic based on level and experience
+          if (a.level > b.level) {
+            return -1
+          } else if (a.level < b.level) {
+            return 1
+          } else {
+            if (a.experience > b.experience) {
+              return -1
+            } else if (a.experience < b.experience) {
+              return 1
+            } else {
+              return 0
+            }
+          }
+        } else if (criteria === 'id') {
+          // Sorting logic based on id
+          if (a.id < b.id) {
+            return -1
+          } else if (a.id > b.id) {
+            return 1
+          } else {
+            return 0
+          }
+        } else if (criteria === 'race') {
+          // Sorting logic based on race
+          return Array.isArray(a.race) && Array.isArray(b.race)
+            ? a.race.join('').localeCompare(b.race.join(''))
+            : 0
+        } else if (criteria === 'rarity') {
+          // Sorting logic based on rarity
+          if (a.rarity > b.rarity) {
+            return -1
+          } else if (a.rarity < b.rarity) {
+            return 1
+          } else {
+            return 0
+          }
+        } else if (criteria === 'type') {
+          // Sorting logic based on type
+          return Array.isArray(a.type) && Array.isArray(b.type)
+            ? a.type.join('').localeCompare(b.type.join(''))
+            : 0
+        }
+        // Default case: return 0 if none of the specific conditions apply
+        return 0
+      })
+      state.capturedMonstersList = sortedList
+    },
   },
 })
 
@@ -48,5 +106,6 @@ export const {
   resetCapturedMonstersList,
   loadCapturedMonstersList,
   deleteMonsterFromListByKey,
+  sortMonstersInCapturedList,
 } = monstersSlice.actions
 export default monstersSlice.reducer

@@ -11,34 +11,18 @@ import {
   updateCapturedMonstersList,
 } from '../../Store/Slice/monstersSlice'
 
-import typesData from '../../Data/types.json'
-import levelsData from '../../Data/levels.json'
+import './monsterCardLight.scss'
 
-import './monsterCard.scss'
-
-/**
- * @param {Object} props -
- * @param {MonsterObject} props.monster
- * @param {function} props.onDelete
- * @param {boolean} props.canAccessMenu
- * @param {boolean} props.canBeRemovedFromTeam
- * @param {boolean} props.canBeDelete
- * @param {boolean} props.showStats
- */
-
-function MonsterCard({
+function MonsterCardLight({
   monster,
-  isNew,
   onDelete,
   canAccessMenu,
   canBeRemovedFromTeam,
   canBeDelete,
-  showStats,
 }) {
   const dispatch = useDispatch()
 
   const [isMenuOpen, setMenuOpen] = useState(false)
-  const [clickedItem, setClickedItem] = useState(null)
 
   const teamMonsters = useSelector(
     (state) => state.monsterTeam.actualMonstersInTeam
@@ -73,17 +57,12 @@ function MonsterCard({
     }
   }
 
-  //Used to show the actual xp to next
-  const monsterActualLevel = monster.level
-  const xpToNext = levelsData.levels.find(
-    (level) => level.level === monsterActualLevel
-  )?.xpRequiredToNext
-
   const handleDeleteClick = () => {
     onDelete(monster.uniqueKey)
     setMenuOpen(false)
   }
 
+  //Remove the monster from the box and put it in the team
   const handleMoveToTeam = () => {
     if (teamMonsters.length < maxMonsterInTeam) {
       dispatch(addMonsterToTeam(monster))
@@ -105,38 +84,48 @@ function MonsterCard({
     setMenuOpen(!isMenuOpen)
   }
 
-  const handleClickOnItem = (item) => {
-    setClickedItem(item)
-  }
-
   return (
     <div
-      className="monster-container"
+      className="monster-container-light"
       style={{ backgroundColor: monsterContainerColor }}
     >
+      <img
+        className="monster-icon-light"
+        src={monster.picture}
+        alt={monster.name}
+      />
       {canAccessMenu === true && (
-        <div className="menu-container">
-          <button onClick={handleMenuClick} className="monster-menu-button">
+        <div className="menu-container-light">
+          <button
+            onClick={handleMenuClick}
+            className="monster-menu-button-light"
+          >
             ...
           </button>
           {isMenuOpen && (
             <>
               {canBeRemovedFromTeam === false && (
-                <button onClick={handleMoveToTeam} className="move-button">
+                <button
+                  onClick={handleMoveToTeam}
+                  className="move-button-light"
+                >
                   Move to your team
                 </button>
               )}
               {canBeRemovedFromTeam === true && (
                 <button
                   onClick={handleRemoveFromTeam}
-                  className="remove-button"
+                  className="remove-button-light"
                 >
                   Move to your box
                 </button>
               )}
-              <button className="rename-button">Rename</button>
+              <button className="rename-button-light">Rename</button>
               {canBeDelete === true && (
-                <button onClick={handleDeleteClick} className="delete-button">
+                <button
+                  onClick={handleDeleteClick}
+                  className="delete-button-light"
+                >
                   Delete
                 </button>
               )}
@@ -144,93 +133,17 @@ function MonsterCard({
           )}
         </div>
       )}
-      {isNew && <div className="monster-new new-animation">New !</div>}
-      <div className="monster-name-id">
-        <p className="monster-id">ID: {monster.id}</p>
-        <h3 className="monster-container-name">{monster.name}</h3>
-      </div>
-
-      <div>
-        <p className="lvl">Level: {monster.level}</p>
-        <p className="xp">
-          Exp: {monster.experience} / {xpToNext} to next
-        </p>
+      <div className="monster-name-id-light">
+        <h3 className="monster-container-name-light">{monster.name}</h3>
       </div>
       <div>
-        {monster.race && <p className="race">{monster.race.join(' ')}</p>}
-        {monster.type && (
-          <p className="type">
-            {monster.type.map((typeId, index) => (
-              <img
-                className="type-icon"
-                key={index}
-                src={typesData.types.find((t) => t.name === typeId)?.icon}
-                alt={`Type ${typeId}`}
-              />
-            ))}
-          </p>
-        )}
+        <p className="lvl-light">Level: {monster.level}</p>
       </div>
-      <img className="monster-icon" src={monster.picture} alt={monster.name} />
-      <p className="description">{monster.description}</p>
-      {showStats && (
-        <div className="stats">
-          <p>HP: {monster.stats?.hp}</p>
-          <p>Attack: {monster.stats?.attack}</p>
-          <p>Magic: {monster.stats?.magic}</p>
-          <p>Defense: {monster.stats?.defense}</p>
-          <p>Spirit: {monster.stats?.spirit}</p>
-          <p>Speed: {monster.stats?.speed}</p>
-          <p>Despair: {monster.stats?.despair}</p>
-          <p>Luck: {monster.stats?.luck}</p>
-        </div>
-      )}
-
-      <div className="capacity">
-        Capacity:
-        {monster.capacities &&
-          Object.values(monster.capacities)
-            .slice(0, 4)
-            .map(
-              (capacity, index) =>
-                capacity && (
-                  <p key={index} onClick={() => handleClickOnItem(capacity)}>
-                    {capacity.name}
-                  </p>
-                )
-            )}
-      </div>
-
-      <div className="traits">
-        Traits:
-        {monster.traits &&
-          Object.values(monster.traits)
-            .slice(0, 4)
-            .map(
-              (trait, index) =>
-                trait && (
-                  <p key={index} onClick={() => handleClickOnItem(trait)}>
-                    {trait.name}
-                  </p>
-                )
-            )}
-      </div>
-      {clickedItem && (
-        <div className="clicked-item">
-          <p>{clickedItem.description}</p>
-          <p
-            className="close-button-tooltip"
-            onClick={() => handleClickOnItem(null)}
-          >
-            X
-          </p>
-        </div>
-      )}
     </div>
   )
 }
 
-MonsterCard.propTypes = {
+MonsterCardLight.propTypes = {
   // The data object representing the monster.
   monster: PropTypes.object.isRequired,
   // Callback function triggered when a delete action is performed on the monster. Return the monster.uniqueKey for the selected monster.
@@ -247,4 +160,4 @@ MonsterCard.propTypes = {
   showStats: PropTypes.bool,
 }
 
-export default MonsterCard
+export default MonsterCardLight

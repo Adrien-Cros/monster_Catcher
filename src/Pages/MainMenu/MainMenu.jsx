@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import ButtonTryCapture from '../../Components/ButtonTryCapture/ButtonTryCapture'
 import PlayerBox from '../../Components/PlayerBox/PlayerBox'
 import PlayerTeam from '../../Components/PlayerTeam/PlayerTeam'
+import PlayerInventory from '../../Components/PlayerInventory/PlayerInventory'
 import StarterMonsterSelection from '../../Components/StarterMonsterSelection/StarterMonsterSelection'
 
 import './mainMenu.scss'
@@ -17,6 +18,17 @@ function MainMenu() {
   const [showPlayerBox, setShowPlayerBox] = useState(false)
   //hide or show inventory
   const [showInventory, setShowInventory] = useState(false)
+  //used to change the view
+  const [cardStyle, setCardStyle] = useState('Light')
+
+  //change the card view
+  const handleChangeView = () => {
+    if (cardStyle === 'Classic') {
+      setCardStyle('Light')
+    } else if (cardStyle === 'Light') {
+      setCardStyle('Classic')
+    }
+  }
 
   const teamMonsters = useSelector(
     (state) => state.monsterTeam.actualMonstersInTeam
@@ -25,8 +37,6 @@ function MainMenu() {
   const alreadyHaveStarter = useSelector(
     (state) => state.config.alreadyHaveStarter
   )
-
-  const inventory = useSelector((state) => state.inventory.inventory)
 
   const togglePlayerBox = () => {
     setShowInventory(false)
@@ -56,7 +66,7 @@ function MainMenu() {
             <button>Explore a specific zone</button>
             <button>Raid a boss</button>
           </div>
-          <section>
+          <section className="main-menu-container">
             <div className="menu-button">
               {showPlayerBox === false && (
                 <button onClick={togglePlayerBox}>Show Stocked Monsters</button>
@@ -72,27 +82,29 @@ function MainMenu() {
               )}
             </div>
             {showPlayerBox && (
-              <>
-                <div className="player-monsters-equip">
-                  <PlayerTeam canAccessMonsterMenu={true} />
+              <div className="box-container-global">
+                <button
+                  onClick={handleChangeView}
+                  className="button-change-view"
+                >
+                  Change view (current view): {cardStyle}
+                </button>
+                <div className="box-container">
+                  <div className="player-monsters-equip">
+                    <PlayerTeam
+                      canAccessMonsterMenu={true}
+                      monsterCardStyle={cardStyle}
+                    />
+                  </div>
+                  <div className="player-box">
+                    <PlayerBox monsterCardStyle={cardStyle} />
+                  </div>
                 </div>
-                <div className="player-box">
-                  <PlayerBox />
-                </div>
-              </>
+              </div>
             )}
             {showInventory && (
               <div className="player-inventory">
-                {inventory.map((item, index) => (
-                  <div className="item-container" key={item + index}>
-                    <div className="item-container-name-icon">
-                      <span>{item.name}</span>
-                      <img src={item.icon} alt={item.name} />
-                    </div>
-                    <span>{item.description}</span>
-                    <span>Quantity: {item.quantityPossessed}</span>
-                  </div>
-                ))}
+                <PlayerInventory />
               </div>
             )}
           </section>

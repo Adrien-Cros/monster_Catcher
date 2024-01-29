@@ -51,6 +51,10 @@ function RandomEncounter() {
   //check if monster is captured
   const [monsterCaptured, setMonsterCaptured] = useState(false)
 
+  //stored the xp win at the end of the fight
+  const [xpGained, setXpGained] = useState(null)
+  const [hasLevelUp, setHasLevelUp] = useState(null)
+
   //check the catch rate in the difficulty settings
   const catchRate = useSelector((state) => state.config.catchRate)
 
@@ -222,12 +226,15 @@ function RandomEncounter() {
 
   const handleCombatWon = () => {
     //check for lvl up et xp won
-    const monsterToUpdate = LevelUp({
+    const result = LevelUp({
       victoriousMonster: selectedPlayerMonster,
       defeatedMonster: wildMonster,
     })
-    //update the monster with the new xp/lvl
-    dispatch(updateMonsterFromTeam({ monsterToUpdate: monsterToUpdate }))
+    //Update the state
+    setXpGained(result.xpWon)
+    setHasLevelUp(result.leveledUp)
+    //Update the monster with the new xp/lvl
+    dispatch(updateMonsterFromTeam({ monsterToUpdate: result.monster }))
     setHasCombatEnded(true)
     console.log('win')
     setWinOrLose(true) // true = win
@@ -294,6 +301,7 @@ function RandomEncounter() {
             onCloseModal={handleCloseModal}
             itemsWon={lootList}
             isCaptured={monsterCaptured}
+            xpWon={xpGained}
           />
         )}
         <div className="combat-board">

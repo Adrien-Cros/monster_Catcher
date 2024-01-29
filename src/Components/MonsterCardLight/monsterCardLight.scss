@@ -1,0 +1,54 @@
+.monster-container-light {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 6px;
+  width: 280px;
+  height: 70px;
+  text-align: center;
+
+  h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #dfd4d4;
+    font-weight: bold;
+  }
+
+  .monster-icon-light {
+    width: 100px;
+    height: 80px;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 4px;
+
+    p {
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+
+  .menu-container-light {
+    display: flex;
+    position: absolute;
+    top: 1%;
+    gap: 5px;
+  }
+
+  .monster-name-id {
+    .monster-container-name {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

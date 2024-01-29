@@ -7,7 +7,7 @@ const configSlice = createSlice({
     goldRate: 1,
     xpRate: 1,
     catchRate: 1,
-    maxMonstersInTeam: 5,
+    maxMonstersInTeam: 4,
     maxMonstersInBox: 500,
     alreadyHaveStarter: false,
   },
@@ -47,7 +47,7 @@ const configSlice = createSlice({
       state.catchRate = 2
       state.goldRate = 2
       state.xpRate = 2
-      state.maxMonstersInTeam = 7
+      state.maxMonstersInTeam = 4
       state.maxMonstersInBox = 500
       localStorage.setItem('settings', JSON.stringify(state))
     },
@@ -56,7 +56,7 @@ const configSlice = createSlice({
       state.catchRate = 1
       state.goldRate = 1
       state.xpRate = 1
-      state.maxMonstersInTeam = 5
+      state.maxMonstersInTeam = 4
       state.maxMonstersInBox = 500
       localStorage.setItem('settings', JSON.stringify(state))
     },
@@ -65,7 +65,7 @@ const configSlice = createSlice({
       state.catchRate = 0.5
       state.goldRate = 0.5
       state.xpRate = 0.5
-      state.maxMonstersInTeam = 3
+      state.maxMonstersInTeam = 4
       state.maxMonstersInBox = 500
       localStorage.setItem('settings', JSON.stringify(state))
     },

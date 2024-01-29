@@ -25,24 +25,26 @@ function Modal({
   return (
     <section className="modal">
       <h3 className="modal-name">{modalName}</h3>
-      {(monsterDefeated || isCaptured) && itemsWon && (
-        <div className="combat-result">
-          {itemsWon.map((loot, index) => (
-            <div key={index} className="loot">
-              {loot.item.name}
-              <img src={loot.item.icon} alt={loot.item.name} />
-              <span>{`Quantity: ${loot.quantity}`}</span>
-            </div>
-          ))}
-        </div>
-      )}
-      {xpWon && <div className="combat-result">Xp gained: {xpWon}</div>}
+      {xpWon && <div className="combat-result">XP Gained: {xpWon}</div>}
+      {(monsterDefeated || isCaptured) &&
+        itemsWon !== null &&
+        itemsWon.length > 0 && (
+          <div className="combat-result">
+            {itemsWon.map((loot, index) => (
+              <div key={index} className="loot">
+                {loot.item.name}
+                <img src={loot.item.icon} alt={loot.item.name} />
+                <span>{`Quantity: ${loot.quantity}`}</span>
+              </div>
+            ))}
+          </div>
+        )}
       {isCaptured && (
         <div className="captured-monsters">
           There is a new monster in your team!
           <MonsterCard
             monster={monsterDefeated}
-            canAccessMenu={true}
+            canAccessMenu={false}
             showStats={true}
             canBeDelete={false}
           />

@@ -20,8 +20,8 @@
   border-radius: 8px;
   padding: 16px;
   margin: 6px;
-  width: 280px;
-  height: 280px;
+  width: 350px;
+  height: 320px;
   text-align: center;
 
   .monster-new {
@@ -49,8 +49,8 @@
   }
 
   .monster-icon {
-    width: 100px;
-    height: 80px;
+    width: 200px;
+    height: 120px;
     border-radius: 4px;
     object-fit: contain;
   }
@@ -100,11 +100,12 @@
     p {
       display: flex;
       justify-content: center;
-      border: 1px solid #a45353;
-      padding: 2px;
-      border-radius: 10px;
+      border: 2px solid #c60404;
+      padding: 3px;
+      border-radius: 6px;
       margin: 4px 0;
-      color: #8ac2ff;
+      color: #75ecff;
+      background: black;
     }
     :hover {
       text-decoration: underline;
@@ -123,9 +124,12 @@
   }
 
   .type-icon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
+    position: absolute;
+    left: 3%;
+    top: 22%;
   }
 
   .monster-name-id {

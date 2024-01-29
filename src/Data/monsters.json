@@ -395,6 +395,62 @@
     {
       "id": 8,
       "uniqueKey": null,
+      "name": "Ice Slime",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Ice_Slime.png",
+      "race": ["Slime"],
+      "type": ["Ice"],
+      "description": "A beautiful Ice Slime !",
+      "captureValueNeeded": 5,
+      "rarity": 1,
+      "stats": {
+        "hp": 82,
+        "attack": 8,
+        "magic": 6,
+        "defense": 7,
+        "spirit": 2,
+        "speed": 4,
+        "luck": 2,
+        "despair": 1
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "loot_table": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 7,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "uniqueKey": null,
       "name": "Corrupted Villager",
       "level": 1,
       "experience": 0,
@@ -449,7 +505,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": 10,
       "uniqueKey": null,
       "name": "Corrupted Hound",
       "level": 1,
@@ -505,7 +561,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": 11,
       "uniqueKey": null,
       "name": "Corrupted Boomer",
       "level": 1,
@@ -561,7 +617,7 @@
       ]
     },
     {
-      "id": 11,
+      "id": 12,
       "uniqueKey": null,
       "name": "Fire Gazer Elemental",
       "level": 1,
@@ -617,7 +673,7 @@
       ]
     },
     {
-      "id": 12,
+      "id": 13,
       "uniqueKey": null,
       "name": "Water Gazer Elemental",
       "level": 1,
@@ -673,7 +729,7 @@
       ]
     },
     {
-      "id": 13,
+      "id": 14,
       "uniqueKey": null,
       "name": "Clockwork Bird",
       "level": 1,
@@ -729,7 +785,7 @@
       ]
     },
     {
-      "id": 14,
+      "id": 15,
       "uniqueKey": null,
       "name": "Clockwork Gunner",
       "level": 1,
@@ -785,7 +841,7 @@
       ]
     },
     {
-      "id": 15,
+      "id": 16,
       "uniqueKey": null,
       "name": "Corrupted Clockwork Spirit",
       "level": 1,
@@ -847,7 +903,7 @@
       ]
     },
     {
-      "id": 16,
+      "id": 17,
       "uniqueKey": null,
       "name": "Ice Bull",
       "level": 1,
@@ -903,7 +959,7 @@
       ]
     },
     {
-      "id": 17,
+      "id": 18,
       "uniqueKey": null,
       "name": "Ice Lion",
       "level": 1,
@@ -959,19 +1015,19 @@
       ]
     },
     {
-      "id": 18,
+      "id": 19,
       "uniqueKey": null,
       "name": "Magical Holy Fox",
-      "level": 2,
+      "level": 1,
       "experience": 0,
       "picture": "./Assets/Monsters/Magical_Holy_Fox.png",
       "race": ["Beast"],
       "type": ["Holy"],
       "description": "A beautiful Magical Holy Fox !",
-      "captureValueNeeded": 5,
-      "rarity": 1,
+      "captureValueNeeded": 10,
+      "rarity": 2,
       "stats": {
-        "hp": 74,
+        "hp": 78,
         "attack": 4,
         "magic": 10,
         "defense": 4,
@@ -1008,6 +1064,118 @@
         },
         {
           "item_id": 6,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "uniqueKey": null,
+      "name": "Magical Dark Fox",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Magical_Dark_Fox.png",
+      "race": ["Beast"],
+      "type": ["Dark"],
+      "description": "A beautiful Magical Dark Fox !",
+      "captureValueNeeded": 10,
+      "rarity": 2,
+      "stats": {
+        "hp": 79,
+        "attack": 3,
+        "magic": 11,
+        "defense": 5,
+        "spirit": 7,
+        "speed": 7,
+        "luck": 2,
+        "despair": 6
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "loot_table": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 4,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "uniqueKey": null,
+      "name": "Clockwork Worker",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Clockwork_Worker.png",
+      "race": ["Clockwork"],
+      "type": ["Lightning"],
+      "description": "A beautiful Clockwork Worker !",
+      "captureValueNeeded": 5,
+      "rarity": 1,
+      "stats": {
+        "hp": 64,
+        "attack": 6,
+        "magic": 6,
+        "defense": 4,
+        "spirit": 4,
+        "speed": 2,
+        "luck": 1,
+        "despair": 1
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "loot_table": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 8,
           "min_quantity": 1,
           "max_quantity": 1,
           "drop_chance": 25

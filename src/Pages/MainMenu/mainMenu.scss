@@ -1,17 +1,35 @@
 .main-menu {
-  margin: 20px 0 0 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 4px;
+
+  &-container {
+    display: flex;
+    margin-top: -57px;
+  }
 
   .mission-button {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    align-self: center;
+    gap: 20px;
+    background: #99000e;
+    padding: 10px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 15px 10px rgba(255, 0, 0, 0.5);
+    box-shadow: 0px 0px 15px 10px rgba(255, 0, 0, 0.5);
+    z-index: 1;
   }
 
   .menu-button {
-    margin-right: 20px;
     display: flex;
     flex-direction: column;
+    margin-right: 8px;
+    width: 5%;
+    height: fit-content;
     gap: 10px;
+    padding: 10px;
+    border: 1px solid blue;
   }
 
   .player-box,
@@ -19,49 +37,43 @@
   .player-inventory {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    flex-wrap: wrap;
     border: 2px solid blue;
-    border-radius: 50px;
-    padding: 2px;
+    border-radius: 25px;
     margin-left: 4px;
-    margin-right: 4px;
+    margin-right: 20px;
   }
 
-  .player-box,
   .player-monsters-equip {
-    width: 50%;
+    height: fit-content;
   }
-  .player-inventory {
-    width: 30%;
-    padding: 5px;
 
-    .item-container {
+  .box-container-global {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .button-change-view {
       display: flex;
       justify-content: center;
-      height: 100%;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid white;
-      border-radius: 28px;
+      width: 230px;
+    }
 
-      &-name-icon {
-        font-weight: bold;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-
-        img {
-          width: 32px;
-          height: 32px;
-          object-fit: contain;
-        }
+    .box-container {
+      display: flex;
+      .player-box,
+      .player-monsters-equip {
+        flex-wrap: wrap;
+        width: 50%;
+        padding: 2px;
       }
     }
   }
 
-  section {
-    display: flex;
+  .player-inventory {
+    width: 30%;
+    padding: 12px;
+    font-size: 14px;
+    flex-wrap: nowrap;
+    gap: 5px;
   }
 }
