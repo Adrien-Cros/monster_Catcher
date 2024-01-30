@@ -4,6 +4,7 @@ const inventorySlice = createSlice({
   name: 'inventory',
   initialState: {
     inventory: [],
+    currency: [],
   },
   reducers: {
     addItemToInventory: (state, action) => {
@@ -30,7 +31,13 @@ const inventorySlice = createSlice({
             ]
           }
         }
-        localStorage.setItem('inventory', JSON.stringify(state.inventory))
+        localStorage.setItem(
+          'inventory',
+          JSON.stringify({
+            inventory: state.inventory,
+            currency: state.currency,
+          })
+        )
       } else {
         console.log('failed to add the item: ', item)
       }
@@ -74,21 +81,91 @@ const inventorySlice = createSlice({
           }
         }
 
-        localStorage.setItem('inventory', JSON.stringify(state.inventory))
+        localStorage.setItem(
+          'inventory',
+          JSON.stringify({
+            inventory: state.inventory,
+            currency: state.currency,
+          })
+        )
       } else {
         console.log('failed to remove the item: ', item)
       }
     },
 
-    loadItemFromInventory: (state, action) => {
+    loadItemFromInventory: (state) => {
       const storedData = localStorage.getItem('inventory')
       if (storedData) {
-        state.inventory = JSON.parse(storedData)
+        const parsedData = JSON.parse(storedData)
+        state.inventory = parsedData.inventory || []
+        state.currency = parsedData.currency || []
       }
     },
     resetInventory: (state) => {
       state.inventory = []
+      state.currency = []
       localStorage.removeItem('inventory')
+    },
+
+    //add currency object, quantity
+    addCurrencyToInventory: (state, action) => {
+      const { currency, quantity } = action.payload
+
+      // Check if the currency already exists in the inventory
+      const existingCurrencyIndex = state.currency.findIndex(
+        (curr) => curr.id === currency.id
+      )
+
+      if (existingCurrencyIndex !== -1) {
+        // If currency exists, update the quantity
+        state.currency[existingCurrencyIndex].quantityPossessed += quantity
+      } else {
+        // If currency doesn't exist, add a new entry
+        state.currency = [
+          ...state.currency,
+          { ...currency, quantityPossessed: quantity },
+        ]
+      }
+
+      localStorage.setItem(
+        'inventory',
+        JSON.stringify({
+          inventory: state.inventory,
+          currency: state.currency,
+        })
+      )
+    },
+    //remove currency object, quantity
+    removeCurrencyToInventory: (state, action) => {
+      const { currency, quantity } = action.payload
+
+      // Check if the currency exists in the inventory
+      const existingCurrencyIndex = state.currency.findIndex(
+        (curr) => curr.id === currency.id
+      )
+
+      if (existingCurrencyIndex !== -1) {
+        // If currency exists, update the quantity and ensure it's non-negative
+        state.currency[existingCurrencyIndex].quantityPossessed = Math.max(
+          0,
+          state.currency[existingCurrencyIndex].quantityPossessed - quantity
+        )
+
+        // If quantity becomes 0, remove the currency from inventory
+        if (state.currency[existingCurrencyIndex].quantityPossessed === 0) {
+          state.currency = state.currency.filter(
+            (curr) => curr.id !== currency.id
+          )
+        }
+      }
+
+      localStorage.setItem(
+        'inventory',
+        JSON.stringify({
+          inventory: state.inventory,
+          currency: state.currency,
+        })
+      )
     },
   },
 })
@@ -98,5 +175,7 @@ export const {
   removeItemFromInventory,
   loadItemFromInventory,
   resetInventory,
+  addCurrencyToInventory,
+  removeCurrencyToInventory,
 } = inventorySlice.actions
 export default inventorySlice.reducer

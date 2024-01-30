@@ -159,5 +159,21 @@
       "objectType": "item",
       "effect": {}
     }
+  ],
+  "currency": [
+    {
+      "id": 1,
+      "name": "Gold",
+      "icon": "./Assets/Items/Currency/gold-icon.png",
+      "description": "Used to buy things",
+      "quantityPossessed": 0
+    },
+    {
+      "id": 2,
+      "name": "Dust",
+      "icon": null,
+      "description": "Used to do things",
+      "quantityPossessed": 0
+    }
   ]
 }

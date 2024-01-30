@@ -1,11 +1,14 @@
+import store from '../../../Store/store'
+
 //function used to check how many xp the monster win
 //victoriousMonster = monster object you want to add xp
 //defeatedMonster  = monster object you want to check how many xp it gives
 //return the xp value gained
 const XpGained = ({ victoriousMonster, defeatedMonster }) => {
   //check xpModifier from the difficulty
-  // const xpModifier = useSelector((state) => state.config.xpRate)
+  const currentState = store.getState()
 
+  const xpModifier = currentState.config.xpRate
   //base xp for a kill
   const BASE_XP_GIVEN = 100
   //base xp lose or gain per level difference
@@ -31,7 +34,7 @@ const XpGained = ({ victoriousMonster, defeatedMonster }) => {
     // Apply random XP factor
     const halfVariance = VARIANCE / 2
     const randomVariance = Math.random() * VARIANCE - halfVariance
-    xpValue += randomVariance
+    xpValue += randomVariance * xpModifier
   } else {
     console.log('An error occured: ', victoriousMonster, ' + ', defeatedMonster)
   }

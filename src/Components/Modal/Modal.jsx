@@ -10,6 +10,7 @@ function Modal({
   itemsWon,
   isCaptured,
   xpWon,
+  currencyWon,
 }) {
   const [isOpen, setIsOpen] = useState(true)
 
@@ -26,6 +27,19 @@ function Modal({
     <section className="modal">
       <h3 className="modal-name">{modalName}</h3>
       {xpWon && <div className="combat-result">XP Gained: {xpWon}</div>}
+      {(monsterDefeated || isCaptured) &&
+        currencyWon !== null &&
+        currencyWon.length > 0 && (
+          <div className="combat-result">
+            {currencyWon.map((loot, index) => (
+              <div key={index} className="loot">
+                {loot.item.name}
+                <img src={loot.item.icon} alt={loot.item.name} />
+                <span>{`Quantity: ${loot.quantity}`}</span>
+              </div>
+            ))}
+          </div>
+        )}
       {(monsterDefeated || isCaptured) &&
         itemsWon !== null &&
         itemsWon.length > 0 && (
@@ -66,6 +80,12 @@ Modal.propTypes = {
   modalName: PropTypes.string,
   // Array contening item won
   itemsWon: PropTypes.array,
+  // Captured the monster or not
+  isCaptured: PropTypes.bool,
+  // Quantity or xp gained
+  xpWon: PropTypes.number,
+  // Arraw contening currency won
+  currencyWon: PropTypes.array,
 }
 
 export default Modal

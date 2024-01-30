@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   setDifficultyEasy,
   setDifficultyHard,
@@ -24,6 +24,9 @@ function Header() {
     navigate('/')
   }
 
+  const isInMainMenu = useSelector((state) => state.gameStatus.inMainMenu)
+  const currencyOwned = useSelector((state) => state.inventory.currency)
+
   const handleChangeDifficulty = (e) => {
     e.preventDefault()
     const selectedDifficulty = e.target.value
@@ -40,6 +43,16 @@ function Header() {
   return (
     <header>
       <h1>Le Jeu</h1>
+      {isInMainMenu && (
+        <div className="currency-container">
+          {currencyOwned.map((currency, index) => (
+            <div key={index} className="currency-item">
+              <img src={currency?.icon} alt={currency?.name} />
+              {currency?.quantityPossessed}
+            </div>
+          ))}
+        </div>
+      )}
       <div className="menu">
         <nav className="navbar">
           <div onClick={handleMainMenu} className="option-button">

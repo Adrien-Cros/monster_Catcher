@@ -12,6 +12,7 @@ import Loot from '../../System/Loot/Loot'
 import LevelUp from '../../System/Level/LevelUp/LevelUp'
 
 import {
+  addCurrencyToInventory,
   addItemToInventory,
   removeItemFromInventory,
 } from '../../Store/Slice/inventorySlice'
@@ -21,6 +22,7 @@ import { setInRandomEncounter } from '../../Store/Slice/gameStatusSlice'
 import './randomEncounter.scss'
 import { updateMonsterFromTeam } from '../../Store/Slice/playerTeamSlice'
 import ApplyLevelToMonster from '../../System/Level/ApplyLevelToMonster/ApplyLevelToMonster'
+import CurrencyLoot from '../../System/Loot/CurrencyLoot'
 //This page render a full combat encounter with an HUD
 function RandomEncounter() {
   const navigate = useNavigate()
@@ -48,6 +50,7 @@ function RandomEncounter() {
 
   //used to check the loot when the monster is killed
   const [lootList, setLootList] = useState({})
+  const [currencyList, setCurrencyList] = useState({})
 
   //check if monster is captured
   const [monsterCaptured, setMonsterCaptured] = useState(false)
@@ -236,6 +239,7 @@ function RandomEncounter() {
     if (monsterCaptured) {
       dispatch(updateCapturedMonstersList(wildMonster))
       setLootList(null)
+      setCurrencyList(null)
       setMonsterCaptured(true)
       setHasCombatEnded(true)
       handleCombatWon()
@@ -306,6 +310,13 @@ function RandomEncounter() {
       lootedItem.forEach(({ item, quantity }) => {
         dispatch(addItemToInventory({ item, quantity }))
       })
+
+      const lootedCurrency = CurrencyLoot()
+      console.log(lootedCurrency)
+      setCurrencyList(lootedCurrency)
+      lootedCurrency.forEach(({ item, quantity }) => {
+        dispatch(addCurrencyToInventory({ currency: item, quantity }))
+      })
     }
   }, [wildMonsterCopy?.stats.hp])
 
@@ -322,8 +333,9 @@ function RandomEncounter() {
             monsterDefeated={wildMonster}
             onCloseModal={handleCloseModal}
             itemsWon={lootList}
-            isCaptured={monsterCaptured}
+            currencyWon={currencyList}
             xpWon={xpGained}
+            isCaptured={monsterCaptured}
           />
         )}
         <div className="combat-board">

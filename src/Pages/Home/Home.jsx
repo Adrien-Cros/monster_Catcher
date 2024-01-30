@@ -13,8 +13,9 @@ import {
 import {
   addItemToInventory,
   loadItemFromInventory,
-  removeItemFromInventory,
+  addGoldToInventory,
   resetInventory,
+  addCurrencyToInventory,
 } from '../../Store/Slice/inventorySlice'
 import {
   loadSetting,
@@ -25,8 +26,6 @@ import {
   setInMainMenu,
   setInRandomEncounter,
 } from '../../Store/Slice/gameStatusSlice'
-
-import StarterMonsterSelection from '../../Components/StarterMonsterSelection/StarterMonsterSelection'
 
 import itemsData from '../../Data/items.json'
 
@@ -66,11 +65,21 @@ function Home() {
       // Add 10 Capture Sphere in the player inventory
       const itemToAdd = itemsData.items.find((item) => item.id === 1)
       const quantityToAdd = 10
+
+      // Add 50 golds in the player inventory
+      const currencyToAdd = itemsData.currency.find((curr) => curr.id === 1)
+      const goldToAdd = 50
       dispatch(resetCapturedMonstersList())
       dispatch(setDifficultyNormal())
       dispatch(resetMonsterFromTeam())
       dispatch(resetInventory())
       dispatch(setAlreadyHaveStarter(false))
+      dispatch(
+        addCurrencyToInventory({
+          currency: currencyToAdd,
+          quantity: goldToAdd,
+        })
+      )
       dispatch(addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }))
       dispatch(setInMainMenu(true))
       navigate('/main')
