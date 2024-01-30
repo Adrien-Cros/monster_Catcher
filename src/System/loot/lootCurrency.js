@@ -1,7 +1,8 @@
 import itemsData from '../../Data/items.json'
 import store from '../../Store/store'
 
-function CurrencyLoot() {
+//used to generate a random amount of gold, based on the difficulty settings
+function lootCurrency() {
   const currentState = store.getState()
 
   const currentGoldModifier = currentState.config.goldRate
@@ -21,4 +22,4 @@ function CurrencyLoot() {
   return result
 }
 
-export default CurrencyLoot
+export default lootCurrency

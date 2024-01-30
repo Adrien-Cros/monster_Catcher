@@ -1,6 +1,7 @@
 import itemsData from '../../Data/items.json'
 
-function Loot(monster) {
+//accept a monster object, it will generate random items bases on his lootTables, and return them in format ([{item}, quantity])
+function lootItem({ monster }) {
   let lootedItems = []
 
   const lootRandomItem = () => {
@@ -39,4 +40,4 @@ function Loot(monster) {
   return result
 }
 
-export default Loot
+export default lootItem

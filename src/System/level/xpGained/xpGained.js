@@ -4,7 +4,7 @@ import store from '../../../Store/store'
 //victoriousMonster = monster object you want to add xp
 //defeatedMonster  = monster object you want to check how many xp it gives
 //return the xp value gained
-const XpGained = ({ victoriousMonster, defeatedMonster }) => {
+const xpGained = ({ victoriousMonster, defeatedMonster }) => {
   //check xpModifier from the difficulty
   const currentState = store.getState()
 
@@ -47,4 +47,4 @@ const XpGained = ({ victoriousMonster, defeatedMonster }) => {
 
   return xpValue
 }
-export default XpGained
+export default xpGained

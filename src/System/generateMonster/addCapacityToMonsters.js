@@ -1,6 +1,6 @@
 import capacitiesData from '../../Data/capacity.json'
 
-function AddCapacityToMonsters({ monster }) {
+function addCapacityToMonsters({ monster }) {
   const randomNumberOfCapacity = Math.floor(Math.random() * 100) + 1
 
   const getRandomCapacity = (selectedCapacities, monster) => {
@@ -73,4 +73,4 @@ function AddCapacityToMonsters({ monster }) {
   return capacities
 }
 
-export default AddCapacityToMonsters
+export default addCapacityToMonsters

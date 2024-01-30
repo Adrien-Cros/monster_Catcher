@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-function CalculateDamage({ attacker, defender, capacityUsed }) {
+function calculateDamage({ attacker, defender, capacityUsed }) {
   let damageDealt = 0
 
   function damageDealtCalculation(attacker, defender, capacity) {
@@ -69,7 +69,7 @@ function CalculateDamage({ attacker, defender, capacityUsed }) {
   return damageDealt
 }
 
-CalculateDamage.propTypes = {
+calculateDamage.propTypes = {
   // The data object representing the monster of the attacker.
   attacker: PropTypes.object.isRequired,
   // The data object representing the monster of the defender.
@@ -78,4 +78,4 @@ CalculateDamage.propTypes = {
   capacityUsed: PropTypes.object.isRequired,
 }
 
-export default CalculateDamage
+export default calculateDamage

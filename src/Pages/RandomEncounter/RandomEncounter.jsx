@@ -2,14 +2,17 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import generateMonster from '../../System/generateMonster/generateMonster'
+import calculateDamage from '../../System/combat/calculateDamage'
+import lootItem from '../../System/loot/lootItem'
+import levelUp from '../../System/level/levelUp/levelUp'
+import lootCurrency from '../../System/loot/lootCurrency'
+import applyLevelToMonster from '../../System/level/applyLevelToMonster/applyLevelToMonster'
+
 import MonsterCard from '../../Components/MonsterCard/MonsterCard'
-import GenerateMonster from '../../System/GenerateMonster/GenerateMonster'
 import MonsterSelection from '../../Components/InCombat/MonsterSelection/MonsterSelection'
 import ActionSelection from '../../Components/InCombat/ActionSelection/ActionSelection'
-import CalculateDamage from '../../System/Combat/CalculateDamage'
-import Modal from '../../Components/Modal/Modal'
-import Loot from '../../System/Loot/Loot'
-import LevelUp from '../../System/Level/LevelUp/LevelUp'
+import Modal from '../../Components/Modal/ModalCombatResult/Modal'
 
 import {
   addCurrencyToInventory,
@@ -21,8 +24,7 @@ import { setInRandomEncounter } from '../../Store/Slice/gameStatusSlice'
 
 import './randomEncounter.scss'
 import { updateMonsterFromTeam } from '../../Store/Slice/playerTeamSlice'
-import ApplyLevelToMonster from '../../System/Level/ApplyLevelToMonster/ApplyLevelToMonster'
-import CurrencyLoot from '../../System/Loot/CurrencyLoot'
+
 //This page render a full combat encounter with an HUD
 function RandomEncounter() {
   const navigate = useNavigate()
@@ -97,12 +99,12 @@ function RandomEncounter() {
   useEffect(() => {
     const generateRandomMonster = () => {
       if (!hasChosenRandomMonster) {
-        const randomMonster = GenerateMonster({
+        const randomMonster = generateMonster({
           specificMonsterId: null,
           monsterRarity: 'all',
         })
         if (randomMonster) {
-          const randomMonsterAfterLevelUp = ApplyLevelToMonster({
+          const randomMonsterAfterLevelUp = applyLevelToMonster({
             monster: randomMonster,
             level: AVERAGE_TEAM_LVL,
           })
@@ -133,7 +135,7 @@ function RandomEncounter() {
 
   //handle the player turn
   const handlePlayerTurn = (selectedCapacity) => {
-    const damageDealt = CalculateDamage({
+    const damageDealt = calculateDamage({
       attacker: playerMonsterCopy,
       defender: wildMonsterCopy,
       capacityUsed: selectedCapacity,
@@ -158,7 +160,7 @@ function RandomEncounter() {
 
     const selectedCapacity = capacitiesArray[randomIndex]
 
-    const damageDealt = CalculateDamage({
+    const damageDealt = calculateDamage({
       attacker: wildMonsterCopy,
       defender: playerMonsterCopy,
       capacityUsed: selectedCapacity,
@@ -254,7 +256,7 @@ function RandomEncounter() {
 
   const handleCombatWon = () => {
     //check for lvl up et xp won
-    const result = LevelUp({
+    const result = levelUp({
       victoriousMonster: selectedPlayerMonster,
       defeatedMonster: wildMonster,
     })
@@ -305,14 +307,13 @@ function RandomEncounter() {
       setCombatAnimation(false)
       handleCombatWon()
       //Check loot in the killed monster
-      const lootedItem = Loot(wildMonster)
+      const lootedItem = lootItem(wildMonster)
       setLootList(lootedItem)
       lootedItem.forEach(({ item, quantity }) => {
         dispatch(addItemToInventory({ item, quantity }))
       })
 
-      const lootedCurrency = CurrencyLoot()
-      console.log(lootedCurrency)
+      const lootedCurrency = lootCurrency()
       setCurrencyList(lootedCurrency)
       lootedCurrency.forEach(({ item, quantity }) => {
         dispatch(addCurrencyToInventory({ currency: item, quantity }))

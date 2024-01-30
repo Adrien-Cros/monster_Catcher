@@ -1,6 +1,6 @@
 import traitData from '../../Data/traits.json'
 
-function AddTraitsToMonster() {
+function addTraitsToMonster() {
   const getRandomTrait = (selectedTraits) => {
     const randomRarity = Math.floor(Math.random() * 100) + 1
     let filteredTraits
@@ -64,4 +64,4 @@ function AddTraitsToMonster() {
   return traits
 }
 
-export default AddTraitsToMonster
+export default addTraitsToMonster

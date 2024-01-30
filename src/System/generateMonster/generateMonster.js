@@ -1,7 +1,7 @@
 import monstersData from '../../Data/monsters.json'
-import AddCapacityToMonsters from './AddCapacityToMonsters'
-import AddTraitsToMonster from './AddTraitsToMonsters'
-import ApplyTraitsEffectToMonsters from './ApplyTraitsEffectToMonsters'
+import addCapacityToMonsters from './addCapacityToMonsters'
+import addTraitsToMonster from './addTraitsToMonsters'
+import applyTraitsEffectToMonsters from './applyTraitsEffectToMonsters'
 
 // Generate a random monster from the monster data, attaching random traits/capacity to it, and generating a uniqueKey
 // monsterRarity can accept "all" for no filter, a single number for a specific rarity, or an array like [2, 3, 4] to search in specific rarity
@@ -10,7 +10,7 @@ import ApplyTraitsEffectToMonsters from './ApplyTraitsEffectToMonsters'
 // You can only search by rarity or by a specific monster
 // If you put a specific rarity and a specific monster, it will always return the specific monster
 
-const GenerateMonster = ({ monsterRarity, specificMonsterId }) => {
+const generateMonster = ({ monsterRarity, specificMonsterId }) => {
   // Helper function to get a random element from an array
   const getRandomMonster = (list) =>
     list[Math.floor(Math.random() * list.length)]
@@ -46,10 +46,10 @@ const GenerateMonster = ({ monsterRarity, specificMonsterId }) => {
   const randomMonster = getRandomMonster(filteredMonsters)
 
   // Add random traits
-  const traits = AddTraitsToMonster()
+  const traits = addTraitsToMonster()
 
   // Add random capacity
-  const capacities = AddCapacityToMonsters({ monster: randomMonster })
+  const capacities = addCapacityToMonsters({ monster: randomMonster })
 
   // Create a unique key based on monster properties
   const uniqueKey =
@@ -68,7 +68,7 @@ const GenerateMonster = ({ monsterRarity, specificMonsterId }) => {
   }
 
   // Apply trait effects to monster stats
-  const modifiedMonster = ApplyTraitsEffectToMonsters({
+  const modifiedMonster = applyTraitsEffectToMonsters({
     monster: generatedMonsterWithDetail,
   })
 
@@ -76,4 +76,4 @@ const GenerateMonster = ({ monsterRarity, specificMonsterId }) => {
   return modifiedMonster
 }
 
-export default GenerateMonster
+export default generateMonster

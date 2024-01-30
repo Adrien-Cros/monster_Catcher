@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import ButtonTryCapture from '../../Components/ButtonTryCapture/ButtonTryCapture'
 import PlayerBox from '../../Components/PlayerBox/PlayerBox'
 import PlayerTeam from '../../Components/PlayerTeam/PlayerTeam'
 import PlayerInventory from '../../Components/PlayerInventory/PlayerInventory'
 import StarterMonsterSelection from '../../Components/StarterMonsterSelection/StarterMonsterSelection'
 
-import './mainMenu.scss'
-import { useNavigate } from 'react-router-dom'
 import { setInRandomEncounter } from '../../Store/Slice/gameStatusSlice'
+
+import './mainMenu.scss'
 
 function MainMenu() {
   const dispatch = useDispatch()

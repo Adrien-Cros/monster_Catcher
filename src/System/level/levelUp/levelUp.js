@@ -1,12 +1,20 @@
-import ApplyTraitsEffectToMonsters from '../../GenerateMonster/ApplyTraitsEffectToMonsters'
-import XpGained from '../XpGained/XpGained'
+import applyTraitsEffectToMonsters from '../../generateMonster/applyTraitsEffectToMonsters'
+import xpGained from '../xpGained/xpGained'
 
 import levelsData from '../../../Data/levels.json'
 import monsterData from '../../../Data/monsters.json'
 
-//Take 2 monsters object, will updated the victoriousMonster base on the defeatedMonster
-//Return the xp won, a flag that indicate if it has lvl up or not, and return the monster updated
-const LevelUp = ({ victoriousMonster, defeatedMonster }) => {
+/**
+ * Take 2 monsters object, will update the victoriousMonster based on the defeatedMonster.
+ * Returns the XP won, a flag indicating if there was a level up, and the updated monster.
+ *
+ * @param {Object} options - Options for leveling up the monsters.
+ * @param {Object} options.victoriousMonster - The victorious monster before the level up.
+ * @param {Object} options.defeatedMonster - The defeated monster influencing the level up.
+ * @returns {Object} - Object containing XP won, a flag indicating level up, and the updated monster.
+ */
+
+const levelUp = ({ victoriousMonster, defeatedMonster }) => {
   // Store the current monster and create a deep copy
   const currentVictoriousMonster = victoriousMonster
   const copyCurrentVictoriousMonster = { ...currentVictoriousMonster }
@@ -15,7 +23,7 @@ const LevelUp = ({ victoriousMonster, defeatedMonster }) => {
   const copyCurrentDefeatedMonster = { ...currentDefeatedMonster }
 
   // Calculate the experience gained in the battle
-  const xpWon = XpGained({
+  const xpWon = xpGained({
     victoriousMonster: copyCurrentVictoriousMonster,
     defeatedMonster: copyCurrentDefeatedMonster,
   })
@@ -65,7 +73,7 @@ const LevelUp = ({ victoriousMonster, defeatedMonster }) => {
     }
 
     // Reapply the traits effect to the monster
-    const leveledUpMonster = ApplyTraitsEffectToMonsters({
+    const leveledUpMonster = applyTraitsEffectToMonsters({
       monster: modifiedMonster,
     })
 
@@ -88,4 +96,4 @@ const LevelUp = ({ victoriousMonster, defeatedMonster }) => {
   }
 }
 
-export default LevelUp
+export default levelUp

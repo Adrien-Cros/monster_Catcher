@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import MonsterCard from '../MonsterCard/MonsterCard'
+import MonsterCard from '../../MonsterCard/MonsterCard'
 import './modal.scss'
 
 function Modal({

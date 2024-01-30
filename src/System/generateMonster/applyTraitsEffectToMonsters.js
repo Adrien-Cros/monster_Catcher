@@ -1,6 +1,6 @@
 import traitsData from '../../Data/traits.json'
 
-function ApplyTraitsEffectToMonsters({ monster }) {
+function applyTraitsEffectToMonsters({ monster }) {
   const traitValues = Object.values(monster.traits)
 
   for (const trait of traitValues) {
@@ -26,4 +26,4 @@ function ApplyTraitsEffectToMonsters({ monster }) {
   return monster
 }
 
-export default ApplyTraitsEffectToMonsters
+export default applyTraitsEffectToMonsters

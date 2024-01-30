@@ -1,10 +1,10 @@
-import ApplyTraitsEffectToMonsters from '../../GenerateMonster/ApplyTraitsEffectToMonsters'
+import applyTraitsEffectToMonsters from '../../generateMonster/applyTraitsEffectToMonsters'
 
 import levelsData from '../../../Data/levels.json'
 import monsterData from '../../../Data/monsters.json'
 
 //Apply a specific level to a monster, return the monster modified
-const ApplyLevelToMonster = ({ monster, level }) => {
+const applyLevelToMonster = ({ monster, level }) => {
   // Store the current monster and create a deep copy
   const currentMonster = monster
   const copyCurrentMonster = { ...currentMonster }
@@ -38,7 +38,7 @@ const ApplyLevelToMonster = ({ monster, level }) => {
   }
 
   // Reapply the traits effect to the monster
-  const leveledUpMonster = ApplyTraitsEffectToMonsters({
+  const leveledUpMonster = applyTraitsEffectToMonsters({
     monster: modifiedMonster,
   })
 
@@ -46,4 +46,4 @@ const ApplyLevelToMonster = ({ monster, level }) => {
   return leveledUpMonster
 }
 
-export default ApplyLevelToMonster
+export default applyLevelToMonster

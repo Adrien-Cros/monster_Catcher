@@ -1,25 +1,26 @@
-import MonsterCard from '../MonsterCard/MonsterCard'
-import GenerateMonster from '../../System/GenerateMonster/GenerateMonster'
-
-import './starterMonsterSelection.scss'
 import { useDispatch } from 'react-redux'
 import { updateCapturedMonstersList } from '../../Store/Slice/monstersSlice'
 import { saveSetting, setAlreadyHaveStarter } from '../../System/config'
+
+import MonsterCard from '../MonsterCard/MonsterCard'
+import generateMonster from '../../System/generateMonster/generateMonster'
+
+import './starterMonsterSelection.scss'
 
 function StarterMonsterSelection() {
   const dispatch = useDispatch()
 
   //rarity 0 mean starter monster only
   const starterRarity = 0
-  const monster1 = GenerateMonster({
+  const monster1 = generateMonster({
     monsterRarity: starterRarity,
     specificMonsterId: 1,
   })
-  const monster2 = GenerateMonster({
+  const monster2 = generateMonster({
     monsterRarity: starterRarity,
     specificMonsterId: 2,
   })
-  const monster3 = GenerateMonster({
+  const monster3 = generateMonster({
     monsterRarity: starterRarity,
     specificMonsterId: 3,
   })

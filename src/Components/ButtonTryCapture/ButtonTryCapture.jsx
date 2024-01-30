@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import GenerateMonster from '../../System/GenerateMonster/GenerateMonster'
+import generateMonster from '../../System/GenerateMonster/GenerateMonster'
 import MonsterCard from '../MonsterCard/MonsterCard'
 import { updateCapturedMonstersList } from '../../Store/Slice/monstersSlice'
 
@@ -9,7 +9,7 @@ function ButtonTryCapture() {
   const [monsterCatched, setMonsterCatched] = useState(null)
 
   const handleCatchMonster = () => {
-    const monster = GenerateMonster({
+    const monster = generateMonster({
       monsterRarity: 'all',
       specificMonsterId: null,
     })

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-function ShowCurrentInforForCapacity({ monster, capacity, displayType }) {
+function calculateCurrentInforForCapacity({ monster, capacity, displayType }) {
   let damageDealt = 0
   let critChance = 0
 
@@ -50,7 +50,7 @@ function ShowCurrentInforForCapacity({ monster, capacity, displayType }) {
   }
 }
 
-ShowCurrentInforForCapacity.propTypes = {
+calculateCurrentInforForCapacity.propTypes = {
   // The data object representing the monster.
   monster: PropTypes.object.isRequired,
   // The data object representing the capacity.
@@ -59,4 +59,4 @@ ShowCurrentInforForCapacity.propTypes = {
   displayType: PropTypes.oneOf(['critChance', 'damageDealt']).isRequired,
 }
 
-export default ShowCurrentInforForCapacity
+export default calculateCurrentInforForCapacity

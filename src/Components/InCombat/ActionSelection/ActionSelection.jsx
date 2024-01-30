@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import typesData from '../../../Data/types.json'
 import PropTypes from 'prop-types'
 
-import ShowCurrentInforForCapacity from '../../../System/Combat/ShowCurrentInfoForCapacity'
+import levelUp from '../../../System/level/levelUp/levelUp'
+
+import calculateCurrentInforForCapacity from '../../../System/combat/calculateCurrentInfoForCapacity'
 
 import './actionSelection.scss'
 
@@ -97,20 +99,20 @@ function ActionSelection({
             <p>Description: {selectedCapacity.description}</p>
             <div className="damage-info">
               <p>
-                Damage:{' '}
-                <ShowCurrentInforForCapacity
-                  monster={playerMonster}
-                  capacity={selectedCapacity}
-                  displayType="damageDealt"
-                />
+                Damages:{' '}
+                {calculateCurrentInforForCapacity({
+                  monster: playerMonster,
+                  capacity: selectedCapacity,
+                  displayType: 'damageDealt',
+                })}
               </p>
               <p>
                 Critical Strike Chance:{' '}
-                <ShowCurrentInforForCapacity
-                  monster={playerMonster}
-                  capacity={selectedCapacity}
-                  displayType="critChance"
-                />
+                {calculateCurrentInforForCapacity({
+                  monster: playerMonster,
+                  capacity: selectedCapacity,
+                  displayType: 'critChance',
+                })}
                 %
               </p>
               <p>
