@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import generateMonster from '../../System/generateMonster/generateMonster'
-import calculateDamage from '../../System/combat/calculateDamage'
-import lootItem from '../../System/loot/lootItem'
 import levelUp from '../../System/level/levelUp/levelUp'
-import lootCurrency from '../../System/loot/lootCurrency'
 import applyLevelToMonster from '../../System/level/applyLevelToMonster/applyLevelToMonster'
 
 import MonsterCard from '../../Components/MonsterCard/MonsterCard'
@@ -17,13 +14,13 @@ import Modal from '../../Components/Modal/ModalCombatResult/Modal'
 import {
   addCurrencyToInventory,
   addItemToInventory,
-  removeItemFromInventory,
 } from '../../Store/Slice/inventorySlice'
-import { updateCapturedMonstersList } from '../../Store/Slice/monstersSlice'
 import { setInRandomEncounter } from '../../Store/Slice/gameStatusSlice'
+import { updateCapturedMonstersList } from '../../Store/Slice/monstersSlice'
+import { updateMonsterFromTeam } from '../../Store/Slice/playerTeamSlice'
+import completeTurn from '../../System/combat/turnHandler/completeTurn'
 
 import './randomEncounter.scss'
-import { updateMonsterFromTeam } from '../../Store/Slice/playerTeamSlice'
 
 //This page render a full combat encounter with an HUD
 function RandomEncounter() {
@@ -34,14 +31,14 @@ function RandomEncounter() {
   const [hasChosenRandomMonster, setHasChosenRandomMonster] = useState(false)
   const [hasPlayerChooseAMonster, setHasPlayerChooseAMonster] = useState(false)
   const [wildMonster, setWildMonster] = useState(null)
-  const [selectedPlayerMonster, setSelectedPlayerMonster] = useState(null)
+  const [playerMonster, setPlayerMonster] = useState(null)
 
   //copy the monster for modifying stats if needed for fight
   const [playerMonsterCopy, setPlayerMonsterCopy] = useState(null)
   const [wildMonsterCopy, setWildMonsterCopy] = useState(null)
 
   //used to play animation on monster
-  const [combatAnimation, setCombatAnimation] = useState(false)
+  const [clashAnimation, setClashAnimation] = useState(false)
 
   //used to check if the combat has ended
   const [hasCombatEnded, setHasCombatEnded] = useState(false)
@@ -51,15 +48,14 @@ function RandomEncounter() {
   const [logInformation, setLogInformation] = useState([])
 
   //used to check the loot when the monster is killed
-  const [lootList, setLootList] = useState({})
-  const [currencyList, setCurrencyList] = useState({})
+  const [lootList, setLootList] = useState([])
+  const [currencyList, setCurrencyList] = useState([])
 
-  //check if monster is captured
+  //check if monster is captured, true or false
   const [monsterCaptured, setMonsterCaptured] = useState(false)
 
   //stored the xp win at the end of the fight
   const [xpGained, setXpGained] = useState(null)
-  const [hasLevelUp, setHasLevelUp] = useState(null)
 
   const AVERAGE_TEAM_LVL = useSelector((state) => {
     let totalLevel = 0
@@ -76,10 +72,7 @@ function RandomEncounter() {
     return 0
   })
 
-  //check the catch rate in the difficulty settings
-  const catchRate = useSelector((state) => state.config.catchRate)
-
-  //check if the monster id is already in the team or the box
+  //check if the monster id is already in the team or the box the show new animation
   const isANewMonster = useSelector((state) => {
     const actualMonstersInTeam = state.monsterTeam.actualMonstersInTeam
     const capturedMonstersList = state.monsters.capturedMonstersList
@@ -124,7 +117,7 @@ function RandomEncounter() {
   }, [hasChosenRandomMonster])
 
   function handleMonsterSelection(monster) {
-    setSelectedPlayerMonster(monster)
+    setPlayerMonster(monster)
     setPlayerMonsterCopy(monster)
     setHasPlayerChooseAMonster(true)
   }
@@ -133,151 +126,106 @@ function RandomEncounter() {
     setLogInformation((prevCombatLog) => [...prevCombatLog, message])
   }
 
-  //handle the player turn
-  const handlePlayerTurn = (selectedCapacity) => {
-    const damageDealt = calculateDamage({
-      attacker: playerMonsterCopy,
-      defender: wildMonsterCopy,
-      capacityUsed: selectedCapacity,
-    })
-    const logMessage = `Your ${playerMonsterCopy.name} used ${selectedCapacity.name} => ${wildMonsterCopy.name} takes ${damageDealt} damage!`
-    updateCombatLog(logMessage)
-    setWildMonsterCopy((prevWildMonsterCopy) => ({
-      ...prevWildMonsterCopy,
-      stats: {
-        ...prevWildMonsterCopy.stats,
-        hp: Math.max(prevWildMonsterCopy.stats.hp - damageDealt, 0),
-      },
-    }))
-  }
+  const handleTurnEnd = (selectedCapacityOrItem) => {
+    //Animation purpose
+    setClashAnimation(true)
 
-  //handle the enemy turn
-  const handleEnemyTurn = () => {
+    // Clear animations after a delay
+    setTimeout(() => {
+      setClashAnimation(false)
+    }, 1000)
+
+    //select a random monster capacity
     const capacities = wildMonsterCopy.capacities
     const capacitiesArray = Object.values(capacities)
     const numberOfCapacities = capacitiesArray.length
     const randomIndex = Math.floor(Math.random() * numberOfCapacities)
 
-    const selectedCapacity = capacitiesArray[randomIndex]
+    const monsterSelectedCapacity = capacitiesArray[randomIndex]
 
-    const damageDealt = calculateDamage({
-      attacker: wildMonsterCopy,
-      defender: playerMonsterCopy,
-      capacityUsed: selectedCapacity,
+    const turnResult = completeTurn({
+      playerMonster: playerMonsterCopy,
+      enemyMonster: wildMonsterCopy,
+      playerSelectedCapacityOrItem: selectedCapacityOrItem,
+      monsterSelectedCapacity: monsterSelectedCapacity,
     })
-
-    const logMessage = `Wild ${wildMonsterCopy.name} used ${selectedCapacity.name} => ${playerMonsterCopy.name} takes ${damageDealt} damage!`
-    updateCombatLog(logMessage)
-    setPlayerMonsterCopy((prevPlayerMonsterCopy) => ({
-      ...prevPlayerMonsterCopy,
-      stats: {
-        ...prevPlayerMonsterCopy.stats,
-        hp: Math.max(prevPlayerMonsterCopy.stats.hp - damageDealt, 0),
-      },
-    }))
-  }
-
-  // handle the sequential action when the player confirms the turn
-  // it can receive a capacity object, or an item object, based on what the ActionSelection return
-  const handleTurnEnd = (selectedCapacityOrItem) => {
-    const playerGoesFirst =
-      playerMonsterCopy.stats.speed >= wildMonsterCopy.stats.speed
-    const isACapacity = selectedCapacityOrItem.objectType === 'capacity'
-    const isACaptureItem =
-      selectedCapacityOrItem.objectType === 'item' &&
-      selectedCapacityOrItem.type.includes('Capture')
-    if (isACapacity) {
-      setCombatAnimation(true)
-      if (playerGoesFirst) {
-        if (!hasCombatEnded && playerMonsterCopy.stats.hp > 0) {
-          handlePlayerTurn(selectedCapacityOrItem)
-        }
-        if (!hasCombatEnded && wildMonsterCopy.stats.hp > 0) {
-          setTimeout(() => {
-            if (!hasCombatEnded) {
-              handleEnemyTurn()
-              setCombatAnimation(false)
-            }
-          }, 1100)
-        }
-      } else {
-        if (!hasCombatEnded && wildMonsterCopy.stats.hp >= 0) {
-          if (!hasCombatEnded) {
-            setTimeout(() => {
-              if (!hasCombatEnded) {
-                handleEnemyTurn()
-                setCombatAnimation(false)
-              }
-            }, 1100)
-          }
-          handlePlayerTurn(selectedCapacityOrItem)
-        }
-      }
-      //If it's a capture item, try to catch the actual monster
-    } else if (isACaptureItem) {
-      handleCapture(selectedCapacityOrItem)
-    } else {
-      console.log('Error in retrieving the type of the object')
-    }
-  }
-
-  //used to calcul if the monsters has been captured
-  const handleCapture = (selectedCapacityOrItem) => {
-    dispatch(
-      removeItemFromInventory({
-        item: selectedCapacityOrItem,
-        quantity: 1,
-      })
-    )
-    //Multiply the value to capture by the difficulty settings catchRate
-    const minValueToCaptureTheMonster =
-      wildMonster.captureValueNeeded * catchRate
-    const minChanceToCapture = selectedCapacityOrItem.effect.captureMinValue
-    const maxChanceToCapture = selectedCapacityOrItem.effect.captureMaxValue
-    const randomRoll =
-      Math.random() * (maxChanceToCapture - minChanceToCapture) +
-      minChanceToCapture
-    const monsterCaptured = randomRoll >= minValueToCaptureTheMonster
-    if (monsterCaptured) {
+    //update the log
+    updateCombatLog(turnResult?.logMessage)
+    //monster has been captured ?
+    setMonsterCaptured(turnResult?.isMonsterCaptured)
+    //if monster is successfully captured, add it to the box
+    if (turnResult?.isMonsterCaptured) {
       dispatch(updateCapturedMonstersList(wildMonster))
-      setLootList(null)
-      setCurrencyList(null)
-      setMonsterCaptured(true)
-      setHasCombatEnded(true)
-      handleCombatWon()
-      const logMessage = `You have captured a ${wildMonster.name} !`
-      updateCombatLog(logMessage)
+    }
+    //combat has ended ?
+    if (turnResult?.combatEnd) {
+      //player won or loose ?
+      if (turnResult?.combatWon) {
+        //Check loot item in the killed monster
+        const lootedItem = turnResult?.itemsLoot
+        console.log(lootedItem)
+        if (lootedItem) {
+          setLootList(lootedItem)
+          lootedItem.forEach(({ item, quantity }) => {
+            dispatch(addItemToInventory({ item, quantity }))
+          })
+        }
+        //Check loot currency
+        const lootedCurrency = turnResult?.currencyLoot
+        console.log('looted currency', turnResult.currencyLoot)
+        if (lootedCurrency) {
+          setCurrencyList(lootedCurrency)
+          lootedCurrency.forEach(({ item, quantity }) => {
+            dispatch(addCurrencyToInventory({ currency: item, quantity }))
+          })
+        }
+        // if combat won = true
+        setWinOrLose(turnResult?.combatWon)
+      } else {
+        // if combat lose = false
+        setWinOrLose(turnResult?.combatWon)
+      }
     } else {
-      const logMessage = `Failed to capture ${wildMonster.name} ! Try again !`
-      updateCombatLog(logMessage)
-      handleEnemyTurn()
+      //Combat isnt finish, extract the value of the turn result to the monster for the hud update
+
+      setWildMonsterCopy(turnResult?.enemyMonster)
+      setPlayerMonsterCopy(turnResult?.playerMonster)
     }
   }
 
-  const handleCombatWon = () => {
-    //check for lvl up et xp won
-    const result = levelUp({
-      victoriousMonster: selectedPlayerMonster,
-      defeatedMonster: wildMonster,
-    })
-    //Update the state
-    setXpGained(result.xpWon)
-    setHasLevelUp(result.leveledUp)
-    //Update the monster with the new xp/lvl
-    dispatch(updateMonsterFromTeam({ monsterToUpdate: result.monster }))
-    setHasCombatEnded(true)
-    setWinOrLose(true) // true = win
-  }
+  useEffect(() => {
+    setClashAnimation(false)
+    const handleCombatWon = () => {
+      //check for lvl up et xp won
+      console.log('win')
+      const result = levelUp({
+        victoriousMonster: playerMonster,
+        defeatedMonster: wildMonster,
+      })
+      //Update the state
+      setXpGained(result.xpWon)
+      //Update the monster with the new xp/lvl
+      dispatch(updateMonsterFromTeam({ monsterToUpdate: result.monster }))
+      setHasCombatEnded(true)
+      setWinOrLose(true) // true = win
+    }
 
-  const handleCombatLoose = () => {
+    const handleCombatLoose = () => {
+      if (winOrLose === true) {
+      } else {
+        console.log('lose')
+        setHasCombatEnded(true)
+        setWinOrLose(false) // false = lose
+        dispatch(setInRandomEncounter(false))
+        navigate('/main')
+      }
+    }
     if (winOrLose === true) {
-    } else {
-      setHasCombatEnded(true)
-      setWinOrLose(false) // false = lose
-      dispatch(setInRandomEncounter(false))
-      navigate('/main')
+      handleCombatWon()
+    } else if (winOrLose === false) {
+      handleCombatLoose()
     }
-  }
+  }, [winOrLose])
 
   const handleCloseModal = () => {
     dispatch(setInRandomEncounter(false))
@@ -288,44 +236,11 @@ function RandomEncounter() {
     return (currentHP / maxHP) * 100
   }
 
-  //Check playermonster with true value, then check if player loose
-  useEffect(() => {
-    if (playerMonsterCopy?.stats.hp <= 0) {
-      const logMessage = `Oh no! Your ${playerMonsterCopy.name} is dead !`
-      updateCombatLog(logMessage)
-      setCombatAnimation(false)
-      handleCombatLoose()
-    }
-  }, [playerMonsterCopy?.stats.hp])
-
-  //Check wildmonster with true value, then check if combat is win, and the monster is dead
-  useEffect(() => {
-    if (wildMonsterCopy?.stats.hp <= 0) {
-      const logMessage = `You won ! ${wildMonsterCopy.name} is dead !`
-      updateCombatLog(logMessage)
-
-      setCombatAnimation(false)
-      handleCombatWon()
-      //Check loot in the killed monster
-      const lootedItem = lootItem(wildMonster)
-      setLootList(lootedItem)
-      lootedItem.forEach(({ item, quantity }) => {
-        dispatch(addItemToInventory({ item, quantity }))
-      })
-
-      const lootedCurrency = lootCurrency()
-      setCurrencyList(lootedCurrency)
-      lootedCurrency.forEach(({ item, quantity }) => {
-        dispatch(addCurrencyToInventory({ currency: item, quantity }))
-      })
-    }
-  }, [wildMonsterCopy?.stats.hp])
-
   return (
     <>
       <main
         className={`combat-panel ${
-          selectedPlayerMonster ? '--flex-row-reverse' : '--flex-column'
+          playerMonster ? '--flex-row-reverse' : '--flex-column'
         }`}
       >
         {hasCombatEnded && winOrLose && (
@@ -343,20 +258,19 @@ function RandomEncounter() {
           {hasInitBattle && playerMonsterCopy && (
             <div
               className={`player-board ${
-                combatAnimation ? 'player-animation' : ''
+                clashAnimation ? 'player-animation' : ''
               }`}
             >
               Your Monsters:
               <div className="player-monster-state"></div>
               <div className="player-monster-hp-name">
-                {playerMonsterCopy?.stats.hp} /{' '}
-                {selectedPlayerMonster?.stats.hp}
+                {playerMonsterCopy?.stats.hp} / {playerMonster?.stats.hp}
                 <div
                   className="player-monster-hp-bar"
                   style={{
                     width: `${calculateHealthRatio(
                       playerMonsterCopy?.stats.hp,
-                      selectedPlayerMonster?.stats.hp
+                      playerMonster?.stats.hp
                     )}%`,
                   }}
                 ></div>
@@ -369,10 +283,10 @@ function RandomEncounter() {
             </div>
           )}
 
-          {hasInitBattle && (
+          {hasInitBattle && wildMonsterCopy && (
             <div
               className={`ennemy-board ${
-                combatAnimation ? 'monster-animation' : ''
+                clashAnimation ? 'monster-animation' : ''
               }`}
             >
               Wild Monsters:
@@ -400,16 +314,16 @@ function RandomEncounter() {
         {!hasPlayerChooseAMonster && (
           <MonsterSelection onMonsterSelect={handleMonsterSelection} />
         )}
-        {hasPlayerChooseAMonster && (
+        {hasPlayerChooseAMonster && hasCombatEnded === false && (
           <ActionSelection
-            playerMonster={playerMonsterCopy}
-            wildMonster={wildMonsterCopy}
+            playerMonster={playerMonster}
+            wildMonster={wildMonster}
             onTurnEnd={handleTurnEnd}
-            disableActionButton={combatAnimation || hasCombatEnded}
+            disableActionButton={clashAnimation || hasCombatEnded}
           />
         )}
       </main>
-      {selectedPlayerMonster && (
+      {playerMonster && (
         <aside className="combat-log">
           <h3>Combat log:</h3>
           <div className="combat-log-information">

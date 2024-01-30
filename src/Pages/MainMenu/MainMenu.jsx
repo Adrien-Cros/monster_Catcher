@@ -18,8 +18,8 @@ function MainMenu() {
   const [showPlayerBox, setShowPlayerBox] = useState(false)
   //hide or show inventory
   const [showInventory, setShowInventory] = useState(false)
-  //used to change the view
-  const [cardStyle, setCardStyle] = useState('Light')
+  //used to change the view, by default Classic
+  const [cardStyle, setCardStyle] = useState('Classic')
 
   //change the card view
   const handleChangeView = () => {

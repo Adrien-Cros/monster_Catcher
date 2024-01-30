@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux'
 import typesData from '../../../Data/types.json'
 import PropTypes from 'prop-types'
 
-import levelUp from '../../../System/level/levelUp/levelUp'
-
 import calculateCurrentInforForCapacity from '../../../System/combat/calculateCurrentInfoForCapacity'
 
 import './actionSelection.scss'
@@ -36,7 +34,7 @@ function ActionSelection({
   }
 
   const handleTurnEnd = () => {
-    // Pass the selectedCapacity to the parent component
+    // Pass the selectedCapacity to the parent component can be object or capacity
     onTurnEnd(selectedCapacity)
   }
 

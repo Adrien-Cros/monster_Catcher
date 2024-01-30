@@ -7,8 +7,8 @@ function lootItem({ monster }) {
   const lootRandomItem = () => {
     lootedItems = []
 
-    if (monster && monster.loot_table) {
-      monster.loot_table.forEach((lootItem) => {
+    if (monster && monster.lootTable) {
+      monster.lootTable.forEach((lootItem) => {
         const itemFind = itemsData.items.find(
           (item) => item.id === lootItem.item_id
         )

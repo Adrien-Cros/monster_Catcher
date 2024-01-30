@@ -35,7 +35,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -91,7 +91,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -147,7 +147,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -203,7 +203,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -259,7 +259,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -315,7 +315,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -371,7 +371,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -427,7 +427,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -483,7 +483,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -539,7 +539,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -595,7 +595,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -651,7 +651,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -707,7 +707,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -763,7 +763,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -819,7 +819,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -875,7 +875,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -937,7 +937,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -993,7 +993,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -1049,7 +1049,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -1105,7 +1105,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
@@ -1161,7 +1161,7 @@
         "trait3": [],
         "trait4": []
       },
-      "loot_table": [
+      "lootTable": [
         {
           "item_id": 1,
           "min_quantity": 1,
