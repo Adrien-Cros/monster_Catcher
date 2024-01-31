@@ -1,3 +1,19 @@
+@keyframes new-animation {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-20deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+  75% {
+    transform: rotate(20deg) scale(1.1);
+  }
+}
+
 .monster-container-light {
   display: flex;
   justify-content: space-between;
@@ -10,6 +26,23 @@
   width: 280px;
   height: 70px;
   text-align: center;
+
+  .monster-new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 36px;
+    width: 36px;
+    background-color: green;
+    right: 5%;
+    top: 0;
+    border-radius: 18px;
+  }
+
+  .new-animation {
+    animation: new-animation 3s linear infinite;
+  }
 
   h3 {
     margin: 0;

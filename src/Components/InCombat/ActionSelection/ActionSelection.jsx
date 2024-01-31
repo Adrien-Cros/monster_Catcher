@@ -13,9 +13,11 @@ function ActionSelection({
   wildMonster,
   onTurnEnd,
   disableActionButton,
+  canChooseAnAction,
 }) {
   const navigate = useNavigate()
 
+  const catchRateDifficulty = useSelector((state) => state.config.catchRate)
   const playerInventory = useSelector((state) => state.inventory.inventory)
   const captureItemList = playerInventory.filter((item) =>
     item.type.includes('Capture')
@@ -80,16 +82,20 @@ function ActionSelection({
           </div>
         ))}
       </div>
-      <div className="capacity-selection-menu">
-        Or choose an action:
-        <div className="selection-button-capacity">Use items</div>
-        <div onClick={handleCatch} className="selection-button-capacity">
-          Try to catch
+
+      {canChooseAnAction && (
+        <div className="capacity-selection-menu">
+          Or choose an action:
+          <div className="selection-button-capacity">Use items</div>
+          <div onClick={handleCatch} className="selection-button-capacity">
+            Try to catch
+          </div>
+          <div onClick={handleEscape} className="selection-button-capacity">
+            Escape
+          </div>
         </div>
-        <div onClick={handleEscape} className="selection-button-capacity">
-          Escape
-        </div>
-      </div>
+      )}
+
       {selectedCapacity && (
         <div className="selected-capacity-container">
           <div className="capacity-selected-info">
@@ -175,7 +181,7 @@ function ActionSelection({
                 className="selection-button-capacity"
               >
                 {selectedCaptureItem
-                  ? `Try to capture ${wildMonster.name} (level: ${wildMonster.level}) with ${selectedCaptureItem.name} ?`
+                  ? `Try to capture ${wildMonster.name} (level: ${wildMonster.level}) with ${selectedCaptureItem.name}) ?`
                   : 'Select a capture item to catch this monster!'}
               </div>
             )}
@@ -194,6 +200,8 @@ ActionSelection.propTypes = {
   onTurnEnd: PropTypes.func,
   // Used to show or not the confirm action button
   disableActionButton: PropTypes.bool,
+  // Used to show or not the action div
+  canChooseAnAction: PropTypes.bool,
 }
 
 export default ActionSelection

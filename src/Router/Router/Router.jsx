@@ -10,6 +10,7 @@ import Header from '../../Components/Header/Header'
 import Home from '../../Pages/Home/Home'
 import RandomEncounter from '../../Pages/RandomEncounter/RandomEncounter'
 import MainMenu from '../../Pages/MainMenu/MainMenu'
+import ComboMode from '../../Pages/ComboMode/ComboMode'
 
 function Routing() {
   //used to track where the player is, to give access or not at certain parts of the app
@@ -33,6 +34,11 @@ function Routing() {
           <Route path="/random-encounter" element={<RandomEncounter />} />
         ) : (
           <Route path="/random-encounter" element={<Navigate to="/main" />} />
+        )}
+        {whereIsTheUser.inComboMode ? (
+          <Route path="/combo" element={<ComboMode />} />
+        ) : (
+          <Route path="/combo" element={<Navigate to="/main" />} />
         )}
       </Routes>
     </Router>

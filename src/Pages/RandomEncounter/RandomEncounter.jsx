@@ -320,6 +320,7 @@ function RandomEncounter() {
             wildMonster={wildMonster}
             onTurnEnd={handleTurnEnd}
             disableActionButton={clashAnimation || hasCombatEnded}
+            canChooseAnAction={true}
           />
         )}
       </main>

@@ -7,6 +7,7 @@ const gameStatusSlice = createSlice({
     inCombat: false,
     inDungeon: false,
     inRandomEncounter: false,
+    inComboMode: false,
   },
   reducers: {
     setInCombatStatus: (state, action) => {
@@ -21,6 +22,9 @@ const gameStatusSlice = createSlice({
     setInRandomEncounter: (state, action) => {
       state.inRandomEncounter = action.payload
     },
+    setInComboMode: (state, action) => {
+      state.inComboMode = action.payload
+    },
   },
 })
 
@@ -29,5 +33,6 @@ export const {
   setInDungeonStatus,
   setInMainMenu,
   setInRandomEncounter,
+  setInComboMode,
 } = gameStatusSlice.actions
 export default gameStatusSlice.reducer

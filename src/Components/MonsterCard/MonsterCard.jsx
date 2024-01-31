@@ -144,7 +144,7 @@ function MonsterCard({
           )}
         </div>
       )}
-      {isNew && <div className="monster-new new-animation">New !</div>}
+      {isNew && <div className="monster-new new-animation">New</div>}
       <div className="monster-name-id">
         <p className="monster-id">ID: {monster.id}</p>
         <h3 className="monster-container-name">{monster.name}</h3>

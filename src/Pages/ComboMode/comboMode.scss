@@ -1,0 +1,101 @@
+@keyframes animate-action-player {
+  0% {
+    transform: translateX(0px);
+  }
+  33% {
+    transform: translateX(-30px) translateY(10px) rotate(10deg);
+  }
+  50% {
+    transform: translateX(50px) rotate(5deg);
+  }
+  66% {
+    transform: translateX(0px);
+  }
+  75% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes animate-action-monster {
+  0% {
+    transform: translateX(0px);
+  }
+  33% {
+    transform: translateX(30px) translateY(-10px) rotate(-10deg);
+  }
+  50% {
+    transform: translateX(-50px) rotate(-5deg);
+  }
+  66% {
+    transform: translateX(0px);
+  }
+  75% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.combo-mode {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .monster-capacity-combo {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+  }
+
+  .player-animation {
+    animation: animate-action-player 1s ease-in;
+  }
+
+  .monster-animation {
+    animation: animate-action-monster 1s ease-in;
+  }
+
+  .battlefield {
+    display: flex;
+    gap: 20px;
+
+    .monster-list-combo {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .--monster {
+        border: 1px solid #b30000;
+      }
+
+      .--player {
+        border: 1px solid #00913f;
+      }
+
+      .monster-container-combo {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+
+        .hp-container-bar {
+          display: flex;
+          background: green;
+          width: 100%;
+          height: 16px;
+          border-radius: 8px;
+
+          .hp-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -7,7 +7,10 @@ import PlayerTeam from '../../Components/PlayerTeam/PlayerTeam'
 import PlayerInventory from '../../Components/PlayerInventory/PlayerInventory'
 import StarterMonsterSelection from '../../Components/StarterMonsterSelection/StarterMonsterSelection'
 
-import { setInRandomEncounter } from '../../Store/Slice/gameStatusSlice'
+import {
+  setInComboMode,
+  setInRandomEncounter,
+} from '../../Store/Slice/gameStatusSlice'
 
 import './mainMenu.scss'
 
@@ -48,7 +51,7 @@ function MainMenu() {
     setShowInventory(!showInventory)
   }
 
-  const handleCombat = () => {
+  const handleRandomEncounter = () => {
     if (teamMonsters.length <= 0) {
       alert('You need at least 1 monster in your team before entering')
     } else {
@@ -57,13 +60,18 @@ function MainMenu() {
     }
   }
 
+  const handleComboModeButton = () => {
+    dispatch(setInComboMode(true))
+    navigate('/combo')
+  }
+
   return (
     <main className="main-menu">
       {alreadyHaveStarter ? (
         <>
           <div className="mission-button">
-            <button onClick={handleCombat}>Random encounter</button>
-            <button>Explore a specific zone</button>
+            <button onClick={handleRandomEncounter}>Random encounter</button>
+            <button onClick={handleComboModeButton}>Combo Mode</button>
             <button>Raid a boss</button>
           </div>
           <section className="main-menu-container">

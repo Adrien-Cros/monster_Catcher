@@ -19,6 +19,7 @@ function MonsterCardLight({
   canAccessMenu,
   canBeRemovedFromTeam,
   canBeDelete,
+  isNew,
 }) {
   const dispatch = useDispatch()
 
@@ -89,6 +90,7 @@ function MonsterCardLight({
       className="monster-container-light"
       style={{ backgroundColor: monsterContainerColor }}
     >
+      {isNew && <div className="monster-new new-animation">New</div>}
       <img
         className="monster-icon-light"
         src={monster.picture}

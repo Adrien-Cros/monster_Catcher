@@ -13,7 +13,7 @@ function catchingMonster({ captureItem, monsterToCapture }) {
   const maxChanceToCapture = captureItem.effect.captureMaxValue
 
   const randomRoll =
-    Math.random() * (maxChanceToCapture - minChanceToCapture) +
+    Math.random() * (maxChanceToCapture - minChanceToCapture + 1) +
     minChanceToCapture
 
   const isMonsterCaptured = randomRoll >= minValueToCaptureTheMonster

@@ -8,6 +8,7 @@ function MonsterSelection({ onMonsterSelect }) {
     (state) => state.monsterTeam.actualMonstersInTeam
   )
 
+  //return the selected monster object
   function handleSelectedMonster(monster) {
     onMonsterSelect(monster)
   }
