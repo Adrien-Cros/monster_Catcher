@@ -1,7 +1,48 @@
+@keyframes header-apparition {
+  0% {
+    transform: translateY(-250px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes h1-movement {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes currency-movement {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.header-animation {
+  animation: header-apparition 1s ease forwards;
+}
+
+.h1-movement {
+  animation: h1-movement 1s ease;
+}
+
+.currency-movement {
+  animation: currency-movement 1s ease;
+}
+
 header {
   display: flex;
   justify-content: space-between;
-
   background-color: #333;
   padding: 15px;
   text-align: center;
@@ -19,23 +60,29 @@ header {
   }
 
   h1 {
+    display: flex;
+    align-self: center;
     margin: 0;
     font-size: 1.5rem;
+    justify-content: flex-end;
+    width: 57%;
   }
 
   .menu {
-    margin-top: 10px;
+    display: flex;
     position: relative;
+    width: 17%;
 
     .navbar {
       display: flex;
       gap: 10px;
 
       .option-button {
-        border: 1px solid white;
-        padding: 2px;
         display: flex;
         justify-content: center;
+        align-items: center;
+        border: 1px solid white;
+        padding: 2px;
         transition: all 0.3s;
 
         &:hover {

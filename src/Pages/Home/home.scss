@@ -1,3 +1,39 @@
+@keyframes button-apparition1 {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px) scale(0);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes button-apparition2 {
+  0% {
+    opacity: 0;
+    transform: translateX(300px) scale(0);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.-button-apparition1 {
+  animation: button-apparition1 1s ease forwards;
+}
+
+.-button-apparition2 {
+  animation: button-apparition2 1s ease forwards;
+}
+
 main {
   display: flex;
   flex-direction: column;

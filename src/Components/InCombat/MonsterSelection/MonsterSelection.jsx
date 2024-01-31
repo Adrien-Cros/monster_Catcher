@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import MonsterCard from '../../MonsterCard/MonsterCard'
+import MenuButton from '../../Button/MenuButton/MenuButton'
 import './monsterSelection.scss'
 
 function MonsterSelection({ onMonsterSelect }) {
@@ -20,13 +21,11 @@ function MonsterSelection({ onMonsterSelect }) {
           key={monster.uniqueKey + index}
           className="monster-selection-container"
         >
-          <button
-            onClick={() => handleSelectedMonster(monster)}
+          <MenuButton
             key={index}
-            className="selection-button"
-          >
-            Select {monster.name}
-          </button>
+            boutonName={monster.name}
+            onClick={() => handleSelectedMonster(monster)}
+          />
           <MonsterCard
             key={monster.uniqueKey}
             monster={monster}

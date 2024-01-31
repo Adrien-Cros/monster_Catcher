@@ -20,11 +20,8 @@ h3 {
 .sort-button-list {
   display: flex;
   align-items: center;
-  gap: 11px;
-  .sort-button {
-    display: flex;
-    height: max-content;
-    width: 50px;
-    justify-content: center;
+
+  .menu-button {
+    width: 15%;
   }
 }

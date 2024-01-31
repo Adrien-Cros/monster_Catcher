@@ -57,7 +57,7 @@ function Home() {
     setAlreadyChargedTheData(true)
   }, [])
 
-  const newGameInit = (reset) => {
+  const newGameInit = () => {
     // Add 10 Capture Sphere in the player inventory
     const itemToAdd = itemsData.items.find((item) => item.id === 1)
     const quantityToAdd = 10
@@ -121,11 +121,17 @@ function Home() {
       {!pressedNewGame && (
         <div className="start-continue-button">
           {alreadyHasData && (
-            <button onClick={handleContinue} className="main-menu-button">
+            <button
+              onClick={handleContinue}
+              className="main-menu-button -button-apparition2"
+            >
               Continue
             </button>
           )}
-          <button onClick={handleNewGame} className="main-menu-button">
+          <button
+            onClick={handleNewGame}
+            className="main-menu-button -button-apparition1"
+          >
             New Game
           </button>
         </div>

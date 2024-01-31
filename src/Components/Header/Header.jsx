@@ -12,6 +12,7 @@ import './header.scss'
 function Header() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const [optionPanelOpen, setOptionPanelOpen] = useState(false)
 
   const handleOption = (e) => {
@@ -26,6 +27,9 @@ function Header() {
 
   const isInMainMenu = useSelector((state) => state.gameStatus.inMainMenu)
   const currencyOwned = useSelector((state) => state.inventory.currency)
+  const defaultDifficulty = useSelector((state) => state.config.difficulty)
+
+  const headerWith = isInMainMenu ? '17%' : '57%'
 
   const handleChangeDifficulty = (e) => {
     e.preventDefault()
@@ -41,12 +45,23 @@ function Header() {
   }
 
   return (
-    <header>
-      <h1>Le Jeu</h1>
+    <header className="header-animation">
+      <h1
+        style={{ width: `${headerWith}` }}
+        className={isInMainMenu ? 'h1-movement' : ''}
+      >
+        Ekrasys Monster Catcher
+      </h1>
+
       {isInMainMenu && (
         <div className="currency-container">
           {currencyOwned.map((currency, index) => (
-            <div key={index} className="currency-item">
+            <div
+              key={index}
+              className={`currency-item ${
+                isInMainMenu ? 'currency-movement' : ''
+              }`}
+            >
               <img src={currency?.icon} alt={currency?.name} />
               {currency?.quantityPossessed}
             </div>
@@ -60,11 +75,7 @@ function Header() {
           </div>
           <div className="option-button">Menu 2</div>
           <div className="option-button">Codex</div>
-          <div
-            className="option-button"
-            onClick={handleOption}
-            aria-expanded={optionPanelOpen}
-          >
+          <div className="option-button" onClick={handleOption}>
             Options
           </div>
           {optionPanelOpen && (
@@ -73,7 +84,7 @@ function Header() {
               <select
                 onChange={handleChangeDifficulty}
                 id="difficulty"
-                defaultValue="normal"
+                defaultValue={defaultDifficulty}
               >
                 <option value="easy">Easy</option>
                 <option value="normal">Normal</option>

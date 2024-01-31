@@ -6,6 +6,7 @@ import PlayerBox from '../../Components/PlayerBox/PlayerBox'
 import PlayerTeam from '../../Components/PlayerTeam/PlayerTeam'
 import PlayerInventory from '../../Components/PlayerInventory/PlayerInventory'
 import StarterMonsterSelection from '../../Components/StarterMonsterSelection/StarterMonsterSelection'
+import MenuButton from '../../Components/Button/MenuButton/MenuButton'
 
 import {
   setInComboMode,
@@ -74,41 +75,54 @@ function MainMenu() {
         <>
           <div className="mission-container">
             <div className="mission-button-container">
-              <button onClick={handleRandomEncounter}>Random encounter</button>
-              <button onClick={handleComboModeButton}>Combo Mode</button>
-              <button>Raid a boss</button>
+              <MenuButton
+                onClick={handleRandomEncounter}
+                boutonName={'Random Encounter'}
+              />
+              <MenuButton
+                onClick={handleComboModeButton}
+                boutonName={'Combo Mode'}
+              />
+              <MenuButton onClick={null} boutonName={'Arena'} />
             </div>
             <div
               className={`information-message ${
                 errorMessage !== '' ? 'information-message-animation' : ''
               }`}
             >
-              {errorMessage !== '' && <> {errorMessage}</>}
+              {errorMessage !== '' && <>{errorMessage}</>}
             </div>
           </div>
           <section className="main-menu-container">
-            <div className="menu-button">
-              {showPlayerBox === false && (
-                <button onClick={togglePlayerBox}>Show Stocked Monsters</button>
-              )}
-              {showPlayerBox === true && (
-                <button onClick={togglePlayerBox}>Hide Stocked Monsters</button>
-              )}
-              {showInventory === false && (
-                <button onClick={toggleInventory}>Show Inventory</button>
-              )}
-              {showInventory === true && (
-                <button onClick={toggleInventory}>Hide Inventory</button>
-              )}
+            <div className="misc-button">
+              {[
+                {
+                  condition: !showPlayerBox,
+                  onClick: togglePlayerBox,
+                  text: 'Show Stocked Monsters',
+                  altText: 'Hide Stocked Monsters',
+                },
+                {
+                  condition: !showInventory,
+                  onClick: toggleInventory,
+                  text: 'Show Inventory',
+                  altText: 'Hide Inventory',
+                },
+              ].map((button, index) => (
+                <MenuButton
+                  key={index}
+                  onClick={button.onClick}
+                  boutonName={button.condition ? button.text : button.altText}
+                />
+              ))}
             </div>
+
             {showPlayerBox && (
               <div className="box-container-global">
-                <button
+                <MenuButton
                   onClick={handleChangeView}
-                  className="button-change-view"
-                >
-                  Change view (current view): {cardStyle}
-                </button>
+                  boutonName={`Monster card: "${cardStyle}"`}
+                />
                 <div className="box-container">
                   <div className="player-monsters-equip">
                     <PlayerTeam

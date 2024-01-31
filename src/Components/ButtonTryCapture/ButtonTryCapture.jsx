@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import generateMonster from '../../System/GenerateMonster/GenerateMonster'
+import generateMonster from '../../System/generateMonster/generateMonster'
 import MonsterCard from '../MonsterCard/MonsterCard'
 import { updateCapturedMonstersList } from '../../Store/Slice/monstersSlice'
 

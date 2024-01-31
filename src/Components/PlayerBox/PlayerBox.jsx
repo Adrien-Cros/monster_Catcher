@@ -7,6 +7,7 @@ import {
 
 import MonsterCard from '../MonsterCard/MonsterCard'
 import MonsterCardLight from '../MonsterCardLight/MonsterCardLight'
+import MenuButton from '../Button/MenuButton/MenuButton'
 
 import './playerBox.scss'
 
@@ -56,21 +57,14 @@ function PlayerBox({ monsterCardStyle }) {
       </h3>
       <div className="sort-button-list">
         <p> Sort by:</p>
-        <button className="sort-button" onClick={() => handleSort('id')}>
-          Id
-        </button>
-        <button className="sort-button" onClick={() => handleSort('level')}>
-          Level
-        </button>
-        <button className="sort-button" onClick={() => handleSort('race')}>
-          Race
-        </button>
-        <button className="sort-button" onClick={() => handleSort('rarity')}>
-          Rarity
-        </button>
-        <button className="sort-button" onClick={() => handleSort('type')}>
-          Type
-        </button>
+        <MenuButton onClick={() => handleSort('id')} boutonName={'Id'} />
+        <MenuButton onClick={() => handleSort('level')} boutonName={'Level'} />
+        <MenuButton onClick={() => handleSort('race')} boutonName={'Race'} />
+        <MenuButton
+          onClick={() => handleSort('rarity')}
+          boutonName={'Rarity'}
+        />
+        <MenuButton onClick={() => handleSort('type')} boutonName={'Type'} />
       </div>
       <div className="pagination">
         <button
