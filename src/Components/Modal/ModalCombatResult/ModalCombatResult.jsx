@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import MonsterCard from '../../MonsterCard/MonsterCard'
-import './modal.scss'
 
-function Modal({
+import MonsterCard from '../../MonsterCard/MonsterCard'
+import ConfirmationButton from '../../Button/ConfirmationButton/ConfirmationButton'
+
+import './modalCombatResult.scss'
+
+function ModalCombatResult({
   monsterDefeated,
   onCloseModal,
   modalName,
@@ -24,7 +27,7 @@ function Modal({
   }
 
   return (
-    <section className="modal">
+    <div className="modal">
       <h3 className="modal-name">{modalName}</h3>
       {xpWon && <div className="combat-result">XP Gained: {xpWon}</div>}
       {(monsterDefeated || isCaptured) &&
@@ -64,14 +67,15 @@ function Modal({
           />
         </div>
       )}
-      <button onClick={handleCloseModal} className="close-button">
-        Accept All
-      </button>
-    </section>
+      <ConfirmationButton
+        onButtonClick={handleCloseModal}
+        buttonName={'Accept All'}
+      />
+    </div>
   )
 }
 
-Modal.propTypes = {
+ModalCombatResult.propTypes = {
   // The data object representing the monster.
   monsterDefeated: PropTypes.object,
   // Callback function triggered when the modal close
@@ -88,4 +92,4 @@ Modal.propTypes = {
   currencyWon: PropTypes.array,
 }
 
-export default Modal
+export default ModalCombatResult

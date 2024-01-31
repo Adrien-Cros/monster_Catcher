@@ -1,4 +1,5 @@
-import store from '../../Store/store'
+import store from '../../../Store/store'
+import catchRateHelpers from './catchRateHelper'
 
 //Check if the monster has been captured, only accept item with typeObject: Capture
 function catchingMonster({ captureItem, monsterToCapture }) {
@@ -6,17 +7,19 @@ function catchingMonster({ captureItem, monsterToCapture }) {
   const currentState = store.getState()
   const catchRateDifficulty = currentState.config.catchRate
 
-  // Multiply the min value to capture by the difficulty settings catchRate
-  const minValueToCaptureTheMonster =
-    monsterToCapture.captureValueNeeded * catchRateDifficulty
-  const minChanceToCapture = captureItem.effect.captureMinValue
-  const maxChanceToCapture = captureItem.effect.captureMaxValue
+  // Roll a random value between 1 and 100 + value of the capture item
+  const randomRoll = Math.min(
+    Math.floor(
+      Math.random() * (100 - 1) +
+        1 +
+        captureItem.effect.chanceToCapture * catchRateDifficulty
+    ),
+    100
+  )
 
-  const randomRoll =
-    Math.random() * (maxChanceToCapture - minChanceToCapture + 1) +
-    minChanceToCapture
-
-  const isMonsterCaptured = randomRoll >= minValueToCaptureTheMonster
+  // Is monster captured ?
+  const isMonsterCaptured =
+    randomRoll >= catchRateHelpers({ monster: monsterToCapture })
 
   if (isMonsterCaptured) {
     return {

@@ -9,7 +9,7 @@ import applyLevelToMonster from '../../System/level/applyLevelToMonster/applyLev
 import MonsterCard from '../../Components/MonsterCard/MonsterCard'
 import MonsterSelection from '../../Components/InCombat/MonsterSelection/MonsterSelection'
 import ActionSelection from '../../Components/InCombat/ActionSelection/ActionSelection'
-import Modal from '../../Components/Modal/ModalCombatResult/Modal'
+import ModalCombatResult from '../../Components/Modal/ModalCombatResult/ModalCombatResult'
 
 import {
   addCurrencyToInventory,
@@ -163,7 +163,6 @@ function RandomEncounter() {
       if (turnResult?.combatWon) {
         //Check loot item in the killed monster
         const lootedItem = turnResult?.itemsLoot
-        console.log(lootedItem)
         if (lootedItem) {
           setLootList(lootedItem)
           lootedItem.forEach(({ item, quantity }) => {
@@ -172,7 +171,6 @@ function RandomEncounter() {
         }
         //Check loot currency
         const lootedCurrency = turnResult?.currencyLoot
-        console.log('looted currency', turnResult.currencyLoot)
         if (lootedCurrency) {
           setCurrencyList(lootedCurrency)
           lootedCurrency.forEach(({ item, quantity }) => {
@@ -197,7 +195,6 @@ function RandomEncounter() {
     setClashAnimation(false)
     const handleCombatWon = () => {
       //check for lvl up et xp won
-      console.log('win')
       const result = levelUp({
         victoriousMonster: playerMonster,
         defeatedMonster: wildMonster,
@@ -213,7 +210,6 @@ function RandomEncounter() {
     const handleCombatLoose = () => {
       if (winOrLose === true) {
       } else {
-        console.log('lose')
         setHasCombatEnded(true)
         setWinOrLose(false) // false = lose
         dispatch(setInRandomEncounter(false))
@@ -244,7 +240,7 @@ function RandomEncounter() {
         }`}
       >
         {hasCombatEnded && winOrLose && (
-          <Modal
+          <ModalCombatResult
             modalName={'Combat Result'}
             monsterDefeated={wildMonster}
             onCloseModal={handleCloseModal}
@@ -263,17 +259,18 @@ function RandomEncounter() {
             >
               Your Monsters:
               <div className="player-monster-state"></div>
-              <div className="player-monster-hp-name">
-                {playerMonsterCopy?.stats.hp} / {playerMonster?.stats.hp}
-                <div
-                  className="player-monster-hp-bar"
-                  style={{
-                    width: `${calculateHealthRatio(
-                      playerMonsterCopy?.stats.hp,
-                      playerMonster?.stats.hp
-                    )}%`,
-                  }}
-                ></div>
+              <div
+                className="player-monster-hp-bar"
+                style={{
+                  width: `${calculateHealthRatio(
+                    playerMonsterCopy?.stats.hp,
+                    playerMonster?.stats.hp
+                  )}%`,
+                }}
+              >
+                <div className="player-monster-hp-name">
+                  {playerMonsterCopy?.stats.hp} / {playerMonster?.stats.hp}
+                </div>
               </div>
               <MonsterCard
                 monster={playerMonsterCopy}
@@ -291,17 +288,18 @@ function RandomEncounter() {
             >
               Wild Monsters:
               <div className="enemy-monster-state"></div>
-              <div className="enemy-monster-hp-name">
-                {wildMonsterCopy?.stats.hp} / {wildMonster?.stats.hp}
-                <div
-                  className="enemy-monster-hp-bar"
-                  style={{
-                    width: `${calculateHealthRatio(
-                      wildMonsterCopy?.stats.hp,
-                      wildMonster?.stats.hp
-                    )}%`,
-                  }}
-                ></div>
+              <div
+                className="enemy-monster-hp-bar"
+                style={{
+                  width: `${calculateHealthRatio(
+                    wildMonsterCopy?.stats.hp,
+                    wildMonster?.stats.hp
+                  )}%`,
+                }}
+              >
+                <div className="enemy-monster-hp-name">
+                  {wildMonsterCopy?.stats.hp} / {wildMonster?.stats.hp}
+                </div>
               </div>
               <MonsterCard
                 monster={wildMonsterCopy}

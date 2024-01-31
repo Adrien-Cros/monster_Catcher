@@ -1,7 +1,7 @@
 import store from '../../../Store/store'
 
 import { removeItemFromInventory } from '../../../Store/Slice/inventorySlice'
-import catchingMonster from '../catchingMonster'
+import catchingMonster from '../catch/catchingMonster'
 import handleTurn from './handleTurn'
 import lootCurrency from '../../loot/lootCurrency'
 import lootItem from '../../loot/lootItem'

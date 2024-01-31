@@ -5,6 +5,7 @@ import typesData from '../../../Data/types.json'
 import PropTypes from 'prop-types'
 
 import calculateCurrentInforForCapacity from '../../../System/combat/calculateCurrentInfoForCapacity'
+import catchRateHelpers from '../../../System/combat/catch/catchRateHelper'
 
 import './actionSelection.scss'
 
@@ -17,8 +18,8 @@ function ActionSelection({
 }) {
   const navigate = useNavigate()
 
-  const catchRateDifficulty = useSelector((state) => state.config.catchRate)
   const playerInventory = useSelector((state) => state.inventory.inventory)
+
   const captureItemList = playerInventory.filter((item) =>
     item.type.includes('Capture')
   )
@@ -181,7 +182,14 @@ function ActionSelection({
                 className="selection-button-capacity"
               >
                 {selectedCaptureItem
-                  ? `Try to capture ${wildMonster.name} (level: ${wildMonster.level}) with ${selectedCaptureItem.name}) ?`
+                  ? `Try to capture ${wildMonster.name} (level: ${
+                      wildMonster.level
+                    }) with ${selectedCaptureItem.name} (${Math.min(
+                      100,
+                      100 -
+                        (catchRateHelpers({ monster: wildMonster }) +
+                          selectedCaptureItem.effect.chanceToCapture)
+                    )}%) ?`
                   : 'Select a capture item to catch this monster!'}
               </div>
             )}

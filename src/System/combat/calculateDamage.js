@@ -29,6 +29,76 @@ function calculateDamage({ attacker, defender, capacityUsed }) {
       damageDealt = capacity.details.base + addedDamage
     }
 
+    // Check for elemental damage modifier
+    if (capacity.details && capacity.details.element && defender.type) {
+      const attackerElements = capacity.details.element
+      const defenderElements = defender.type
+
+      for (const attackerElement of attackerElements) {
+        for (const defenderElement of defenderElements) {
+          // Same element, halve the damage
+          if (attackerElement === defenderElement) {
+            damageDealt /= 2
+          }
+
+          // Elemental relationships
+          switch (attackerElement) {
+            case 'Dark':
+              if (defenderElement === 'Holy') {
+                damageDealt *= 2
+              }
+              break
+            case 'Holy':
+              if (defenderElement === 'Dark') {
+                damageDealt *= 2
+              }
+              break
+            case 'Fire':
+              if (defenderElement === 'Ice') {
+                damageDealt *= 2
+              }
+              if (defenderElement === 'Water') {
+                damageDealt /= 2
+              }
+              break
+            case 'Ice':
+              if (defenderElement === 'Lightning') {
+                damageDealt *= 2
+              }
+              if (defenderElement === 'Fire') {
+                damageDealt /= 2
+              }
+              break
+            case 'Lightning':
+              if (defenderElement === 'Water') {
+                damageDealt *= 2
+              }
+              if (defenderElement === 'Ice') {
+                damageDealt /= 2
+              }
+              break
+            case 'Water':
+              if (defenderElement === 'Fire') {
+                damageDealt *= 2
+              }
+              if (defenderElement === 'Lightning') {
+                damageDealt /= 2
+              }
+              break
+            case 'Neutral':
+              if (defenderElement === 'Dark') {
+                damageDealt /= 2
+              }
+              if (defenderElement === 'Holy') {
+                damageDealt /= 2
+              }
+              break
+            default:
+          }
+        }
+      }
+    }
+
     // check for crit chance
     // 10 luck = +1%
     const luckModifier = attacker.stats.luck / 10

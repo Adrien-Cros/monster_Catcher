@@ -100,7 +100,7 @@
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Physical"],
-        "element": ["Fire", "Slash"],
+        "element": ["Fire"],
         "scaling": ["+30% attack"]
       }
     },
@@ -126,7 +126,7 @@
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Physical"],
-        "element": ["Slash"],
+        "element": ["Neutral"],
         "scaling": ["+50% attack", "+10% speed"]
       }
     },
@@ -152,7 +152,7 @@
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Physical"],
-        "element": ["Slash"],
+        "element": ["Neutral"],
         "scaling": ["+10% attack"]
       }
     },
@@ -256,7 +256,7 @@
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Physical"],
-        "element": ["Blunt"],
+        "element": ["Neutral"],
         "scaling": ["+5% attack"]
       }
     },
@@ -282,7 +282,7 @@
         "critDamage": 1.4,
         "penetration": 1,
         "damageType": ["Physical"],
-        "element": ["Blunt"],
+        "element": ["Neutral"],
         "scaling": ["+20% attack"]
       }
     },
@@ -308,7 +308,7 @@
         "critDamage": 1.25,
         "penetration": 0,
         "damageType": ["Magical"],
-        "element": ["Arcane"],
+        "element": ["Neutral"],
         "scaling": ["+40% magic"]
       }
     },
@@ -334,7 +334,7 @@
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Physical"],
-        "element": ["Blunt"],
+        "element": ["Neutral"],
         "scaling": ["+5% attack", "+25% defense"]
       }
     },

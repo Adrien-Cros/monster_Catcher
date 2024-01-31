@@ -23,6 +23,8 @@ function MainMenu() {
   const [showInventory, setShowInventory] = useState(false)
   //used to change the view, by default Classic
   const [cardStyle, setCardStyle] = useState('Classic')
+  //used to set an error message if need
+  const [errorMessage, setErrorMessage] = useState('')
 
   //change the card view
   const handleChangeView = () => {
@@ -53,7 +55,8 @@ function MainMenu() {
 
   const handleRandomEncounter = () => {
     if (teamMonsters.length <= 0) {
-      alert('You need at least 1 monster in your team before entering')
+      setErrorMessage('You need atleast 1 monsters in your team')
+      setTimeout(() => setErrorMessage(''), 3000)
     } else {
       dispatch(setInRandomEncounter(true))
       navigate('/random-encounter')
@@ -69,10 +72,19 @@ function MainMenu() {
     <main className="main-menu">
       {alreadyHaveStarter ? (
         <>
-          <div className="mission-button">
-            <button onClick={handleRandomEncounter}>Random encounter</button>
-            <button onClick={handleComboModeButton}>Combo Mode</button>
-            <button>Raid a boss</button>
+          <div className="mission-container">
+            <div className="mission-button-container">
+              <button onClick={handleRandomEncounter}>Random encounter</button>
+              <button onClick={handleComboModeButton}>Combo Mode</button>
+              <button>Raid a boss</button>
+            </div>
+            <div
+              className={`information-message ${
+                errorMessage !== '' ? 'information-message-animation' : ''
+              }`}
+            >
+              {errorMessage !== '' && <> {errorMessage}</>}
+            </div>
           </div>
           <section className="main-menu-container">
             <div className="menu-button">
