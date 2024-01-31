@@ -1,6 +1,6 @@
 import applyTraitsEffectToMonsters from '../../generateMonster/applyTraitsEffectToMonsters'
 
-import levelsData from '../../../Data/levels.json'
+import levelsData from '../../../Data/monsterLevels.json'
 import monsterData from '../../../Data/monsters.json'
 
 //Apply a specific level to a monster, return the monster modified

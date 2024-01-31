@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import store from '../../Store/store'
-import MonsterCardLight from '../../Components/MonsterCardLight/MonsterCardLight'
+import MonsterCardLight from '../../Components/MonsterCard/MonsterCardLight/MonsterCardLight'
 import generateMonster from '../../System/generateMonster/generateMonster'
 import applyLevelToMonster from '../../System/level/applyLevelToMonster/applyLevelToMonster'
-import './comboMode.scss'
 import ActionSelection from '../../Components/InCombat/ActionSelection/ActionSelection'
+
+import './comboMode.scss'
 
 function ComboMode() {
   const [hasInitBattle, setHasInitBattle] = useState(false)

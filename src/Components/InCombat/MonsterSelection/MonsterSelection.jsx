@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import MonsterCard from '../../MonsterCard/MonsterCard'
+import MonsterCardClassic from '../../MonsterCard/MonsterCardClassic/MonsterCardClassic'
 import MenuButton from '../../Button/MenuButton/MenuButton'
 import './monsterSelection.scss'
 
@@ -26,7 +26,7 @@ function MonsterSelection({ onMonsterSelect }) {
             boutonName={monster.name}
             onClick={() => handleSelectedMonster(monster)}
           />
-          <MonsterCard
+          <MonsterCardClassic
             key={monster.uniqueKey}
             monster={monster}
             showStats={true}

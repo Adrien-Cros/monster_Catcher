@@ -4,6 +4,7 @@ import monsterTeamReducer from './Slice/playerTeamSlice'
 import configReducer from '../System/config'
 import gameStatusReducer from './Slice/gameStatusSlice'
 import inventoryReducer from './Slice/inventorySlice'
+import playerReducer from './Slice/playerInfoSlice'
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     config: configReducer,
     gameStatus: gameStatusReducer,
     inventory: inventoryReducer,
+    playerInfo: playerReducer,
   },
 })
 

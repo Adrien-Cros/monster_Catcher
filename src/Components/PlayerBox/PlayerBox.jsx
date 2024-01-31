@@ -5,8 +5,8 @@ import {
   sortMonstersInCapturedList,
 } from '../../Store/Slice/monstersSlice'
 
-import MonsterCard from '../MonsterCard/MonsterCard'
-import MonsterCardLight from '../MonsterCardLight/MonsterCardLight'
+import MonsterCardClassic from '../MonsterCard/MonsterCardClassic/MonsterCardClassic'
+import MonsterCardLight from '../MonsterCard/MonsterCardLight/MonsterCardLight'
 import MenuButton from '../Button/MenuButton/MenuButton'
 
 import './playerBox.scss'
@@ -88,7 +88,7 @@ function PlayerBox({ monsterCardStyle }) {
           currentMonsters.map((monster, index) => (
             <Fragment key={monster.uniqueKey + index}>
               {monsterCardStyle === 'Classic' && (
-                <MonsterCard
+                <MonsterCardClassic
                   key={`card_${monster.uniqueKey}`}
                   monster={monster}
                   onDelete={() => handleDeleteMonster(monster.uniqueKey)}

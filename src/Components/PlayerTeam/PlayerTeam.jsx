@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import MonsterCard from '../MonsterCard/MonsterCard'
-import MonsterCardLight from '../MonsterCardLight/MonsterCardLight'
+import MonsterCardClassic from '../MonsterCard/MonsterCardClassic/MonsterCardClassic'
+import MonsterCardLight from '../MonsterCard/MonsterCardLight/MonsterCardLight'
 
 import './playerTeam.scss'
 
@@ -23,7 +23,7 @@ function PlayerTeam({ canAccessMonsterMenu, monsterCardStyle }) {
       <div className="current-team">
         {monsterCardStyle === 'Classic' &&
           teamMonsters.map((monster, index) => (
-            <MonsterCard
+            <MonsterCardClassic
               key={monster.uniqueKey}
               monster={monster}
               canAccessMenu={canAccessMonsterMenu}

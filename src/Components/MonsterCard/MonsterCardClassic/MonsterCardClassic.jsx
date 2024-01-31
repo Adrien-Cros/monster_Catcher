@@ -5,16 +5,16 @@ import PropTypes from 'prop-types'
 import {
   addMonsterToTeam,
   removeMonsterFromTeam,
-} from '../../Store/Slice/playerTeamSlice'
+} from '../../../Store/Slice/playerTeamSlice'
 import {
   deleteMonsterFromListByKey,
   updateCapturedMonstersList,
-} from '../../Store/Slice/monstersSlice'
+} from '../../../Store/Slice/monstersSlice'
 
-import typesData from '../../Data/types.json'
-import levelsData from '../../Data/levels.json'
+import typesData from '../../../Data/types.json'
+import levelsData from '../../../Data/monsterLevels.json'
 
-import './monsterCard.scss'
+import './monsterCardClassic.scss'
 
 /**
  * @param {Object} props -
@@ -26,7 +26,7 @@ import './monsterCard.scss'
  * @param {boolean} props.showStats
  */
 
-function MonsterCard({
+function MonsterCardClassic({
   monster,
   isNew,
   onDelete,
@@ -230,7 +230,7 @@ function MonsterCard({
   )
 }
 
-MonsterCard.propTypes = {
+MonsterCardClassic.propTypes = {
   // The data object representing the monster.
   monster: PropTypes.object.isRequired,
   // Callback function triggered when a delete action is performed on the monster. Return the monster.uniqueKey for the selected monster.
@@ -247,4 +247,4 @@ MonsterCard.propTypes = {
   showStats: PropTypes.bool,
 }
 
-export default MonsterCard
+export default MonsterCardClassic

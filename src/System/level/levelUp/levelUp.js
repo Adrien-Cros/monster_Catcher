@@ -1,7 +1,7 @@
 import applyTraitsEffectToMonsters from '../../generateMonster/applyTraitsEffectToMonsters'
 import xpGained from '../xpGained/xpGained'
 
-import levelsData from '../../../Data/levels.json'
+import levelsData from '../../../Data/monsterLevels.json'
 import monsterData from '../../../Data/monsters.json'
 
 /**

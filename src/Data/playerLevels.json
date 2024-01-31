@@ -1,0 +1,48 @@
+{
+  "levels": [
+    {
+      "level": 1,
+      "xpRequiredToNext": 200
+    },
+    {
+      "level": 2,
+      "xpRequiredToNext": 400
+    },
+    {
+      "level": 3,
+      "xpRequiredToNext": 800
+    },
+    {
+      "level": 4,
+      "xpRequiredToNext": 1600
+    },
+    {
+      "level": 5,
+      "xpRequiredToNext": 3000
+    },
+    {
+      "level": 6,
+      "xpRequiredToNext": 5000
+    },
+    {
+      "level": 7,
+      "xpRequiredToNext": 10000
+    },
+    {
+      "level": 8,
+      "xpRequiredToNext": 20000
+    },
+    {
+      "level": 9,
+      "xpRequiredToNext": 40000
+    },
+    {
+      "level": 9,
+      "xpRequiredToNext": 80000
+    },
+    {
+      "level": 10,
+      "xpRequiredToNext": 160000
+    }
+  ]
+}

@@ -2,10 +2,11 @@ import { useDispatch } from 'react-redux'
 import { updateCapturedMonstersList } from '../../Store/Slice/monstersSlice'
 import { saveSetting, setAlreadyHaveStarter } from '../../System/config'
 
-import MonsterCard from '../MonsterCard/MonsterCard'
+import MonsterCardClassic from '../MonsterCard/MonsterCardClassic/MonsterCardClassic'
 import generateMonster from '../../System/generateMonster/generateMonster'
 
 import './starterMonsterSelection.scss'
+import { setUsername } from '../../Store/Slice/playerInfoSlice'
 
 function StarterMonsterSelection() {
   const dispatch = useDispatch()
@@ -27,11 +28,17 @@ function StarterMonsterSelection() {
 
   const handleStartAdventure = (event) => {
     event.preventDefault()
-    dispatch(updateCapturedMonstersList(monster1))
-    dispatch(updateCapturedMonstersList(monster2))
-    dispatch(updateCapturedMonstersList(monster3))
-    dispatch(setAlreadyHaveStarter(true))
-    dispatch(saveSetting())
+    const username = event.target.elements.username.value
+
+    if (username.length > 0 && username.length <= 10) {
+      // Dispatch actions if the username is valid
+      dispatch(updateCapturedMonstersList(monster1))
+      dispatch(updateCapturedMonstersList(monster2))
+      dispatch(updateCapturedMonstersList(monster3))
+      dispatch(setUsername({ username: username }))
+      dispatch(setAlreadyHaveStarter(true))
+      dispatch(saveSetting())
+    }
   }
 
   return (
@@ -39,7 +46,7 @@ function StarterMonsterSelection() {
       <h2>You have new monsters in your team !</h2>
       <div className="monster-card-container">
         <div className="monster-card-1 starter-apparition-1">
-          <MonsterCard
+          <MonsterCardClassic
             monster={monster1}
             canAccessMenu={false}
             showStats={true}
@@ -47,7 +54,7 @@ function StarterMonsterSelection() {
           />
         </div>
         <div className="monster-card-2 starter-apparition-2">
-          <MonsterCard
+          <MonsterCardClassic
             monster={monster2}
             canAccessMenu={false}
             showStats={true}
@@ -55,7 +62,7 @@ function StarterMonsterSelection() {
           />
         </div>
         <div className="monster-card-3 starter-apparition-3">
-          <MonsterCard
+          <MonsterCardClassic
             monster={monster3}
             canAccessMenu={false}
             showStats={true}
@@ -63,12 +70,16 @@ function StarterMonsterSelection() {
           />
         </div>
       </div>
-      <button
-        onClick={handleStartAdventure}
-        className="validate-button accept-button-apparition"
-      >
-        Accept all !
-      </button>
+      <form className="form-apparition" onSubmit={handleStartAdventure}>
+        <label>Enter a username :</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="10 max characters"
+        />
+        <button className="validate-button">Start Adventure</button>
+      </form>
     </section>
   )
 }

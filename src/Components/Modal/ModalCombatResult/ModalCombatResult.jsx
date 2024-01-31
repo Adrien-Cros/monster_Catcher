@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import MonsterCard from '../../MonsterCard/MonsterCard'
+import MonsterCard from '../../MonsterCard/MonsterCardClassic/MonsterCardClassic'
 import ConfirmationButton from '../../Button/ConfirmationButton/ConfirmationButton'
 
 import './modalCombatResult.scss'

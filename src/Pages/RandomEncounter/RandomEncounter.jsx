@@ -6,7 +6,7 @@ import generateMonster from '../../System/generateMonster/generateMonster'
 import levelUp from '../../System/level/levelUp/levelUp'
 import applyLevelToMonster from '../../System/level/applyLevelToMonster/applyLevelToMonster'
 
-import MonsterCard from '../../Components/MonsterCard/MonsterCard'
+import MonsterCardClassic from '../../Components/MonsterCard/MonsterCardClassic/MonsterCardClassic'
 import MonsterSelection from '../../Components/InCombat/MonsterSelection/MonsterSelection'
 import ActionSelection from '../../Components/InCombat/ActionSelection/ActionSelection'
 import ModalCombatResult from '../../Components/Modal/ModalCombatResult/ModalCombatResult'
@@ -272,7 +272,7 @@ function RandomEncounter() {
                   {playerMonsterCopy?.stats.hp} / {playerMonster?.stats.hp}
                 </div>
               </div>
-              <MonsterCard
+              <MonsterCardClassic
                 monster={playerMonsterCopy}
                 showStats={true}
                 canAccessMenu={false}
@@ -301,7 +301,7 @@ function RandomEncounter() {
                   {wildMonsterCopy?.stats.hp} / {wildMonster?.stats.hp}
                 </div>
               </div>
-              <MonsterCard
+              <MonsterCardClassic
                 monster={wildMonsterCopy}
                 showStats={false}
                 isNew={isANewMonster}

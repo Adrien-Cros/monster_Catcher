@@ -43,7 +43,7 @@
   }
 }
 
-@keyframes accept-button-apparition {
+@keyframes form-apparition {
   0% {
     opacity: 0;
     transform: translateX(-250px);
@@ -74,12 +74,34 @@
     opacity: 1;
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    gap: 10px;
+
+    label {
+      display: flex;
+      justify-content: center;
+    }
+
+    input {
+      display: flex;
+      align-content: center;
+      align-self: center;
+      border: none;
+      width: 11%;
+      height: 25px;
+      font-size: 24px;
+      border-radius: 8px;
+    }
+  }
+
   .validate-button {
     display: flex;
     align-self: center;
     justify-content: center;
     font-size: 50px;
-    opacity: 0;
     transition: all 0.3s ease-in-out;
     border: none;
     border-radius: 15px;
@@ -110,7 +132,7 @@
     animation: starter-apparition 1s ease 2.4s forwards;
   }
 
-  .validate-button {
-    animation: accept-button-apparition 1s ease 3.6s forwards;
+  .form-apparition {
+    animation: form-apparition 1s ease 3.6s forwards;
   }
 }

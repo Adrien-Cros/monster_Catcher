@@ -25,6 +25,10 @@ import {
   setInMainMenu,
   setInRandomEncounter,
 } from '../../Store/Slice/gameStatusSlice'
+import {
+  loadPlayerInfo,
+  resetPlayerInfo,
+} from '../../Store/Slice/playerInfoSlice'
 
 import itemsData from '../../Data/items.json'
 
@@ -48,6 +52,7 @@ function Home() {
     dispatch(loadMonsterFromTeam())
     dispatch(loadSetting())
     dispatch(loadItemFromInventory())
+    dispatch(loadPlayerInfo())
     dispatch(setInMainMenu(false))
     dispatch(setInRandomEncounter(false))
     const savedData = localStorage.getItem('capturedMonstersList')
@@ -69,6 +74,7 @@ function Home() {
     dispatch(setDifficultyNormal())
     dispatch(resetMonsterFromTeam())
     dispatch(resetInventory())
+    dispatch(resetPlayerInfo())
     dispatch(setAlreadyHaveStarter(false))
     dispatch(
       addCurrencyToInventory({

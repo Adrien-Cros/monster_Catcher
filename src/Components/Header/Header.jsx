@@ -8,6 +8,8 @@ import {
 } from '../../System/config'
 
 import './header.scss'
+import PlayerInfosHUD from '../HUD/PlayerInfos/PlayerInfosHUD'
+import { updatePlayerXp } from '../../Store/Slice/playerInfoSlice'
 
 function Header() {
   const dispatch = useDispatch()
@@ -28,8 +30,9 @@ function Header() {
   const isInMainMenu = useSelector((state) => state.gameStatus.inMainMenu)
   const currencyOwned = useSelector((state) => state.inventory.currency)
   const defaultDifficulty = useSelector((state) => state.config.difficulty)
+  const playerUsername = useSelector((state) => state.playerInfo.username)
 
-  const headerWith = isInMainMenu ? '17%' : '57%'
+  const headerWidth = isInMainMenu ? '17%' : '57%'
 
   const handleChangeDifficulty = (e) => {
     e.preventDefault()
@@ -47,11 +50,21 @@ function Header() {
   return (
     <header className="header-animation">
       <h1
-        style={{ width: `${headerWith}` }}
+        style={{ width: `${headerWidth}` }}
         className={isInMainMenu ? 'h1-movement' : ''}
       >
         Ekrasys Monster Catcher
       </h1>
+      {playerUsername && (
+        <>
+          <div className={isInMainMenu ? '--display-none' : ''}>
+            <div className="header-username">
+              {isInMainMenu ? '' : `Welcome Back ${playerUsername}! `}
+            </div>
+          </div>
+        </>
+      )}
+      {isInMainMenu && <PlayerInfosHUD />}
 
       {isInMainMenu && (
         <div className="currency-container">

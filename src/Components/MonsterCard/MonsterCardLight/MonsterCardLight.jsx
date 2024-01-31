@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 import {
   addMonsterToTeam,
   removeMonsterFromTeam,
-} from '../../Store/Slice/playerTeamSlice'
+} from '../../../Store/Slice/playerTeamSlice'
 import {
   deleteMonsterFromListByKey,
   updateCapturedMonstersList,
-} from '../../Store/Slice/monstersSlice'
+} from '../../../Store/Slice/monstersSlice'
 
 import './monsterCardLight.scss'
 
