@@ -9,7 +9,7 @@ function catchRateHelpers({ monster }) {
   // 20% for rarity 4
   const baseRarity4 = 80
 
-  if (monster.rarity === 0 || 1) {
+  if (monster.rarity === 0 || monster.rarity === 1) {
     return baseRarity1
   } else if (monster.rarity === 2) {
     return baseRarity2

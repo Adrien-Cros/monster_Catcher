@@ -3,50 +3,41 @@ import './comboCounterDisplay.scss'
 
 // capacityAndMonsterList format [{monster{}, capacity{}}, {monster{}, capacity{}}, {monster{}, capacity{}}, {monster{}, capacity{}}]
 function ComboCounterDisplay({ capacityAndMonsterList }) {
+  // Check if a sequence combo can be activate
   const isComboActivated = () => {
     const possibleCombo = comboData.combo
-    console.log('Combo List', possibleCombo)
 
     // Add each capacity in order picked in an array
-    let capacityList = []
-    for (let i = 0; i < capacityAndMonsterList.length; i++) {
-      capacityList.push(capacityAndMonsterList[i]?.capacity)
-    }
-    console.log('CapacityList', capacityList)
+    let capacityList = capacityAndMonsterList.map((item) => item?.capacity)
 
-    for (let i = 0; i < possibleCombo.length; i++) {
-      // Check possible combo based on capacity stored
-      const comboCheck = [
-        capacityList[i]?.details.element[0],
-        capacityList[i + 1]?.details.element[0],
-        capacityList[i + 2]?.details.element[0],
-      ]
-      // Ensure there are enough elements in comboCheck for the current combo
-      // If 2 elements
-      if (comboCheck.length === 2) {
-        for (let j = 0; j < possibleCombo.length; j++)
-          // Directly access the elements of comboCheck using indexing
-          if (
-            possibleCombo[j].requiredElement[0] === comboCheck[0] &&
-            possibleCombo[j].requiredElement[1] === comboCheck[1]
-          ) {
-            return possibleCombo[j]
+    for (let comboLength = 4; comboLength >= 2; comboLength--) {
+      for (let i = 0; i <= capacityList.length - comboLength; i++) {
+        const comboCheck = []
+
+        // Build comboCheck array dynamically based on the length of required elements
+        for (let j = 0; j < comboLength; j++) {
+          comboCheck.push(capacityList[i + j]?.details.element[0])
+        }
+
+        // Check if comboCheck matches the required elements of any combo
+        for (let k = 0; k < possibleCombo.length; k++) {
+          if (arraysEqual(possibleCombo[k].requiredElement, comboCheck)) {
+            return possibleCombo[k]
           }
-        // If 3 elements
-      } else if (comboCheck.length === 3) {
-        for (let j = 0; j < possibleCombo.length; j++)
-          // Directly access the elements of comboCheck using indexing
-          if (
-            possibleCombo[j].requiredElement[0] === comboCheck[0] &&
-            possibleCombo[j].requiredElement[1] === comboCheck[1] &&
-            possibleCombo[j].requiredElement[2] === comboCheck[2]
-          ) {
-            return possibleCombo[j]
-          }
+        }
       }
     }
 
     return null
+  }
+
+  // Function to check if two arrays are equal
+  const arraysEqual = (arr1, arr2) => {
+    if (arr1.length !== arr2.length) return false
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] !== arr2[i]) return false
+    }
+    return true
   }
 
   const whichCombo = isComboActivated()
@@ -103,7 +94,12 @@ function ComboCounterDisplay({ capacityAndMonsterList }) {
       {whichCombo && (
         <>
           <div className="combo-found-info">
-            <div className="combo-name">Current Combo: {whichCombo?.name} </div>
+            <div className="combo-name">Current Combo: {whichCombo?.name}</div>
+            {whichCombo?.requiredElement.map((element, index) => (
+              <div key={index} className="combo-desc">
+                =&gt; {element}
+              </div>
+            ))}
             <div className="combo-desc">
               Current Combo: {whichCombo?.description}
             </div>
@@ -121,26 +117,25 @@ function ComboCounterDisplay({ capacityAndMonsterList }) {
               ))}
             </div>
           </div>
-
-          <div className="combo-order">
-            <div className="combo-order-square">
-              {capacityAndMonsterList[0]?.capacity.details.element}
-            </div>
-            <div>===&gt;</div>
-            <div className="combo-order-square">
-              {capacityAndMonsterList[1]?.capacity.details.element}
-            </div>
-            <div>===&gt;</div>
-            <div className="combo-order-square">
-              {capacityAndMonsterList[2]?.capacity.details.element}
-            </div>
-            <div>===&gt;</div>
-            <div className="combo-order-square">
-              {capacityAndMonsterList[3]?.capacity.details.element}
-            </div>
-          </div>
         </>
       )}
+      <div className="combo-order">
+        <div className="combo-order-square">
+          {capacityAndMonsterList[0]?.capacity.details.element}
+        </div>
+        <div>===&gt;</div>
+        <div className="combo-order-square">
+          {capacityAndMonsterList[1]?.capacity.details.element}
+        </div>
+        <div>===&gt;</div>
+        <div className="combo-order-square">
+          {capacityAndMonsterList[2]?.capacity.details.element}
+        </div>
+        <div>===&gt;</div>
+        <div className="combo-order-square">
+          {capacityAndMonsterList[3]?.capacity.details.element}
+        </div>
+      </div>
     </div>
   )
 }

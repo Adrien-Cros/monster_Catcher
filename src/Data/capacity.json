@@ -415,6 +415,214 @@
         "element": ["Lightning"],
         "scaling": ["+20% magic", "+10% spirit"]
       }
+    },
+    {
+      "id": 17,
+      "icon": "",
+      "name": "Torrent",
+      "description": "A Torrent that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Water"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 20,
+        "variance": 10,
+        "critChance": 1,
+        "critDamage": 1.6,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Water"],
+        "scaling": ["+25% magic"]
+      }
+    },
+    {
+      "id": 18,
+      "icon": "",
+      "name": "Ice Strike",
+      "description": "A Ice Strike that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Ice"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 22,
+        "variance": 15,
+        "critChance": 1,
+        "critDamage": 2,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Ice"],
+        "scaling": ["+30% attack"]
+      }
+    },
+    {
+      "id": 19,
+      "icon": "",
+      "name": "Holy Strike",
+      "description": "A Holy Strike that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Holy"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 22,
+        "variance": 12,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Holy"],
+        "scaling": ["+30% attack"]
+      }
+    },
+    {
+      "id": 20,
+      "icon": "",
+      "name": "Thunder Strike",
+      "description": "A Thunder Strike that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Lightning"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 20,
+        "variance": 50,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Lightning"],
+        "scaling": ["+30% attack"]
+      }
+    },
+    {
+      "id": 21,
+      "icon": "",
+      "name": "Shock",
+      "description": "A Shock that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Lightning"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 20,
+        "variance": 50,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Lightning"],
+        "scaling": ["+30% magic"]
+      }
+    },
+    {
+      "id": 22,
+      "icon": "",
+      "name": "Compression",
+      "description": "A Compression that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 19,
+        "variance": 10,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Neutral"],
+        "scaling": ["+20% magic"]
+      }
+    },
+    {
+      "id": 23,
+      "icon": "",
+      "name": "Punishment",
+      "description": "A Punishment that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Holy"],
+        "excluded": null
+      },
+      "race": {
+        "required": ["Angel"],
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 28,
+        "variance": 20,
+        "critChance": 1,
+        "critDamage": 1.2,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Holy"],
+        "scaling": ["+20% magic", "+20% attack", "+5% despair"]
+      }
+    },
+    {
+      "id": 24,
+      "icon": "",
+      "name": "Lava Geyser",
+      "description": "A Lava Geyser that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Fire"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 24,
+        "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Fire"],
+        "scaling": ["+15% magic", "+5% despair"]
+      }
     }
   ]
 }
