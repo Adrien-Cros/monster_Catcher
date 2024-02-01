@@ -1,0 +1,54 @@
+.combo-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.combo-display-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  .monster-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    align-self: center;
+    flex-direction: column;
+    border: 1px solid rebeccapurple;
+  }
+}
+
+.combo-name {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 24px;
+}
+
+.combo-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.combo-order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .combo-order-square {
+    border: 1px solid white;
+    height: 64px;
+    width: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.combo-found-info {
+  display: flex;
+  flex-direction: column;
+}

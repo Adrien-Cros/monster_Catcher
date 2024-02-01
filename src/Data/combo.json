@@ -1,3 +1,130 @@
 {
-  "combo": []
+  "combo": [
+    {
+      "id": 1,
+      "name": "Magical Approach",
+      "icon": null,
+      "requiredElement": ["Neutral", "Neutral"],
+      "description": "Unleash a potent magical onslaught, inflicting heavy neutral damage.",
+      "details": {
+        "type": "Damage",
+        "base": 40,
+        "variance": 20,
+        "critChance": 2,
+        "critDamage": 1.3,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Neutral"],
+        "scaling": ["+30% magic", "+10% despair"]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Fire Storm",
+      "icon": null,
+      "requiredElement": ["Fire", "Fire"],
+      "description": "Unleash a tempest of magical flames, dealing heavy fire damage to all targets.",
+      "details": {
+        "type": "Damage",
+        "base": 40,
+        "variance": 20,
+        "critChance": 2,
+        "critDamage": 1.3,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Fire"],
+        "scaling": ["+50% magic"]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Pyroclasmic Blitz",
+      "icon": null,
+      "requiredElement": ["Fire", "Lightning"],
+      "description": "Unleash a devastating combination of magical fire and lightning, dealing heavy damage to all targets.",
+      "details": {
+        "type": "Damage",
+        "base": 40,
+        "variance": 20,
+        "critChance": 2,
+        "critDamage": 1.3,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Fire", "Lightning"],
+        "scaling": ["+50% magic"]
+      }
+    },
+    {
+      "id": 4,
+      "name": "Yin & Yang",
+      "icon": null,
+      "requiredElement": ["Dark", "Holy"],
+      "description": "Harness the opposing forces of dark and holy energy, inflicting heavy magical damage upon all targets.",
+      "details": {
+        "type": "Damage",
+        "base": 40,
+        "variance": 20,
+        "critChance": 2,
+        "critDamage": 1.3,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Dark", "Holy"],
+        "scaling": ["+50% magic"]
+      }
+    },
+    {
+      "id": 5,
+      "name": "Neutral Annihilation",
+      "icon": null,
+      "requiredElement": ["Neutral", "Neutral", "Neutral"],
+      "description": "Unleash a powerful physical onslaught, dealing heavy neutral damage to all targets.",
+      "details": {
+        "type": "Damage",
+        "base": 60,
+        "variance": 20,
+        "critChance": 2,
+        "critDamage": 1.35,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Neutral"],
+        "scaling": ["+50% attack"]
+      }
+    },
+    {
+      "id": 6,
+      "name": "Abyssal Trinity",
+      "icon": null,
+      "requiredElement": ["Dark", "Water", "Fire"],
+      "description": "Invoke the power of the abyss with a combination of dark, water, and ice, causing devastating magical damage to all adversaries.",
+      "details": {
+        "type": "Damage",
+        "base": 60,
+        "variance": 25,
+        "critChance": 3,
+        "critDamage": 1.25,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Dark", "Water", "Fire"],
+        "scaling": ["+30% magic", "+50% despair"]
+      }
+    },
+    {
+      "id": 7,
+      "name": "Eclipsed Wrath",
+      "icon": null,
+      "requiredElement": ["Fire", "Holy", "Dark"],
+      "description": "Channel the power of an eclipse, combining dark, holy, and fire elements to smite enemies with intense magical damage.",
+      "details": {
+        "type": "Damage",
+        "base": 60,
+        "variance": 15,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Fire", "Holy", "Dark"],
+        "scaling": ["+50% magic", "+30% despair"]
+      }
+    }
+  ]
 }

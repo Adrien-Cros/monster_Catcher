@@ -5,7 +5,9 @@ import store from '../../Store/store'
 import MonsterCardLight from '../../Components/MonsterCard/MonsterCardLight/MonsterCardLight'
 import generateMonster from '../../System/generateMonster/generateMonster'
 import applyLevelToMonster from '../../System/level/applyLevelToMonster/applyLevelToMonster'
-import ActionSelection from '../../Components/InCombat/ActionSelection/ActionSelection'
+
+import ComboCapacitySelection from '../../Components/ComboMode/ComboCapacitySelection/ComboCapacitySelection'
+import ComboCounterDisplay from '../../Components/ComboMode/ComboCounterDisplay/ComboCounterDisplay'
 
 import './comboMode.scss'
 
@@ -24,6 +26,35 @@ function ComboMode() {
 
   // Copy state for wildMonstersList
   const [copiedWildMonstersList, setCopiedWildMonstersList] = useState([])
+
+  // Used to track which capacities have been selected
+  const [selectedCapacities, setSelectedCapacities] = useState([])
+
+  const handleCapacitySelect = (monster, capacity) => {
+    // Create an object containing the monster with the selected capacity
+    const monsterAndCapacity = { monster, capacity }
+    // Check if the capacity is already selected for the given monster
+    const alreadySelectedACapacity = selectedCapacities.find(
+      (item) => item.monster.uniqueKey === monsterAndCapacity.monster.uniqueKey
+    )
+    // If the monster has already selected a capacity, replace it with the new one
+    if (alreadySelectedACapacity) {
+      // Replace the existing entry in the array
+      setSelectedCapacities((prevCapacities) => {
+        return prevCapacities.map((item) =>
+          item.monster.uniqueKey === monster.uniqueKey
+            ? monsterAndCapacity
+            : item
+        )
+      })
+    } else {
+      // If the monster hasn't selected a capacity, push the new object into the array
+      setSelectedCapacities((prevCapacities) => [
+        ...prevCapacities,
+        monsterAndCapacity,
+      ])
+    }
+  }
 
   const calculateAverageTeamLevel = (actualMonstersInTeam) => {
     const totalLevel = actualMonstersInTeam.reduce(
@@ -89,20 +120,16 @@ function ComboMode() {
   return (
     <section className="combo-mode">
       <div className="monster-capacity-combo">
-        {originalMonsterInTeam !== null &&
-          originalMonsterInTeam !== undefined &&
-          originalMonsterInTeam.length > 0 &&
-          originalWildMonstersList !== null &&
-          originalWildMonstersList !== undefined &&
-          originalWildMonstersList.length > 0 &&
-          originalMonsterInTeam.map((monster, index) => (
-            <ActionSelection
-              key={index}
-              playerMonster={originalMonsterInTeam[index]}
-              wildMonster={originalWildMonstersList[index]}
-              disableActionButton={false}
-            />
-          ))}
+        {copiedMonsterInTeam.length === 4 && (
+          <ComboCapacitySelection
+            monster1={copiedMonsterInTeam[0]}
+            monster2={copiedMonsterInTeam[1]}
+            monster3={copiedMonsterInTeam[2]}
+            monster4={copiedMonsterInTeam[3]}
+            onCapacitySelect={handleCapacitySelect}
+          />
+        )}
+        <ComboCounterDisplay capacityAndMonsterList={selectedCapacities} />
       </div>
       <div className="battlefield">
         <div className="monster-list-combo">
