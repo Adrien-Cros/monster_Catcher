@@ -27,6 +27,7 @@ const xpGained = ({ victoriousMonster, defeatedMonster }) => {
     const halfVariance = VARIANCE / 2
     const randomVariance = Math.random() * VARIANCE - halfVariance
     xpValue += randomVariance
+    xpValue = xpValue * xpModifier
   }
   //victorious monster is lower or equal level than defeated monster
   else if (levelDiff <= 0) {
@@ -34,7 +35,8 @@ const xpGained = ({ victoriousMonster, defeatedMonster }) => {
     // Apply random XP factor
     const halfVariance = VARIANCE / 2
     const randomVariance = Math.random() * VARIANCE - halfVariance
-    xpValue += randomVariance * xpModifier
+    xpValue += randomVariance
+    xpValue = xpValue * xpModifier
   } else {
     console.log('An error occured: ', victoriousMonster, ' + ', defeatedMonster)
   }

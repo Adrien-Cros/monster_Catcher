@@ -82,8 +82,8 @@ function Home() {
         quantity: goldToAdd,
       })
     )
-    dispatch(addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }))
     dispatch(setInMainMenu(true))
+    dispatch(addItemToInventory({ item: itemToAdd, quantity: quantityToAdd }))
     navigate('/main')
   }
 

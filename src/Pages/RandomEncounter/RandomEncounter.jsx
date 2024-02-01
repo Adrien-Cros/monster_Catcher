@@ -21,6 +21,7 @@ import { updateMonsterFromTeam } from '../../Store/Slice/playerTeamSlice'
 import completeTurn from '../../System/combat/turnHandler/completeTurn'
 
 import './randomEncounter.scss'
+import { updatePlayerXp } from '../../Store/Slice/playerInfoSlice'
 
 //This page render a full combat encounter with an HUD
 function RandomEncounter() {
@@ -203,6 +204,8 @@ function RandomEncounter() {
       setXpGained(result.xpWon)
       //Update the monster with the new xp/lvl
       dispatch(updateMonsterFromTeam({ monsterToUpdate: result.monster }))
+      //update the player xp
+      dispatch(updatePlayerXp({ xpGained: 10 }))
       setHasCombatEnded(true)
       setWinOrLose(true) // true = win
     }

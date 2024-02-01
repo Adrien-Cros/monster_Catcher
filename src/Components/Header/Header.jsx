@@ -9,7 +9,6 @@ import {
 
 import './header.scss'
 import PlayerInfosHUD from '../HUD/PlayerInfos/PlayerInfosHUD'
-import { updatePlayerXp } from '../../Store/Slice/playerInfoSlice'
 
 function Header() {
   const dispatch = useDispatch()

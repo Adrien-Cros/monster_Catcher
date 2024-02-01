@@ -49,10 +49,10 @@ function addCapacityToMonsters({ monster }) {
   }
 
   let numCapacities
-  if (randomNumberOfCapacity <= 60) {
-    numCapacities = 1 // 60% chance for 1 capacity
+  if (randomNumberOfCapacity <= 50) {
+    numCapacities = 1 // 50% chance for 1 capacity
   } else if (randomNumberOfCapacity <= 86) {
-    numCapacities = 2 // 26% chance for 2 capacity
+    numCapacities = 2 // 36% chance for 2 capacity
   } else if (randomNumberOfCapacity <= 97) {
     numCapacities = 3 // 11% chance for 3 capacity
   } else {

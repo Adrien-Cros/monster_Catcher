@@ -24,7 +24,7 @@ function MainMenu() {
   const [showInventory, setShowInventory] = useState(false)
   //used to change the view, by default Classic
   const [cardStyle, setCardStyle] = useState('Classic')
-  //used to set an error message if need
+  //used to set an error message if needed
   const [errorMessage, setErrorMessage] = useState('')
 
   //change the card view
@@ -65,8 +65,13 @@ function MainMenu() {
   }
 
   const handleComboModeButton = () => {
-    dispatch(setInComboMode(true))
-    navigate('/combo')
+    if (teamMonsters.length < 4) {
+      setErrorMessage('You need atleast 4 monsters in your team')
+      setTimeout(() => setErrorMessage(''), 3000)
+    } else {
+      dispatch(setInComboMode(true))
+      navigate('/combo')
+    }
   }
 
   return (
@@ -95,26 +100,13 @@ function MainMenu() {
           </div>
           <section className="main-menu-container">
             <div className="misc-button">
-              {[
-                {
-                  condition: !showPlayerBox,
-                  onClick: togglePlayerBox,
-                  text: 'Show Stocked Monsters',
-                  altText: 'Hide Stocked Monsters',
-                },
-                {
-                  condition: !showInventory,
-                  onClick: toggleInventory,
-                  text: 'Show Inventory',
-                  altText: 'Hide Inventory',
-                },
-              ].map((button, index) => (
-                <MenuButton
-                  key={index}
-                  onClick={button.onClick}
-                  boutonName={button.condition ? button.text : button.altText}
-                />
-              ))}
+              <MenuButton
+                onClick={togglePlayerBox}
+                boutonName={'Stocked Monsters'}
+              />
+              <MenuButton onClick={toggleInventory} boutonName={'Inventory'} />
+              <MenuButton onClick={null} boutonName={'Skilltree'} />
+              <MenuButton onClick={null} boutonName={'Shop'} />
             </div>
 
             {showPlayerBox && (
