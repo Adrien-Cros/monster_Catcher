@@ -69,6 +69,10 @@ function ComboMode() {
     (state) => state.monsterTeam.actualMonstersInTeam
   )
 
+  const handleResetCapacity = () => {
+    setSelectedCapacities([])
+  }
+
   useEffect(() => {
     setOriginalMonsterInTeam(monsterInTeam)
     setCopiedMonsterInTeam(monsterInTeam)
@@ -129,7 +133,10 @@ function ComboMode() {
             onCapacitySelect={handleCapacitySelect}
           />
         )}
-        <ComboCounterDisplay capacityAndMonsterList={selectedCapacities} />
+        <ComboCounterDisplay
+          capacityAndMonsterList={selectedCapacities}
+          onResetButton={handleResetCapacity}
+        />
       </div>
       <div className="battlefield">
         <div className="monster-list-combo">

@@ -1,8 +1,9 @@
 import comboData from '../../../Data/combo.json'
+import ConfirmationButton from '../../Button/ConfirmationButton/ConfirmationButton'
 import './comboCounterDisplay.scss'
 
 // capacityAndMonsterList format [{monster{}, capacity{}}, {monster{}, capacity{}}, {monster{}, capacity{}}, {monster{}, capacity{}}]
-function ComboCounterDisplay({ capacityAndMonsterList }) {
+function ComboCounterDisplay({ capacityAndMonsterList, onResetButton }) {
   // Check if a sequence combo can be activate
   const isComboActivated = () => {
     const possibleCombo = comboData.combo
@@ -41,68 +42,41 @@ function ComboCounterDisplay({ capacityAndMonsterList }) {
   }
 
   const whichCombo = isComboActivated()
-  console.log('Combo returned: ', whichCombo)
+
+  const handleResetOrder = () => {
+    onResetButton()
+  }
 
   return (
     <div className="combo-panel">
       <div className="combo-display-container">
-        {capacityAndMonsterList[0] && (
-          <div className="monster-display">
-            <div>Action 1</div>
-            <div className="capacity-display">
-              Monster: {capacityAndMonsterList[0].monster.name}
-            </div>
-            <div className="capacity-display">
-              Capacity: {capacityAndMonsterList[0].capacity.name}
-            </div>
-          </div>
-        )}
-        {capacityAndMonsterList[1] && (
-          <div className="monster-display">
-            <div>Action 2</div>
-            <div className="capacity-display">
-              Monster: {capacityAndMonsterList[1].monster.name}
-            </div>
-            <div className="capacity-display">
-              Capacity: {capacityAndMonsterList[1].capacity.name}
-            </div>
-          </div>
-        )}
-        {capacityAndMonsterList[2] && (
-          <div className="monster-display">
-            <div>Action 3</div>
-            <div className="capacity-display">
-              Monster: {capacityAndMonsterList[2].monster.name}
-            </div>
-            <div className="capacity-display">
-              Capacity: {capacityAndMonsterList[2].capacity.name}
-            </div>
-          </div>
-        )}
-        {capacityAndMonsterList[3] && (
-          <div className="monster-display">
-            <div>Action 4</div>
-            <div className="capacity-display">
-              Monster: {capacityAndMonsterList[3].monster.name}
-            </div>
-            <div className="capacity-display">
-              Capacity: {capacityAndMonsterList[3].capacity.name}
-            </div>
-          </div>
+        {capacityAndMonsterList.map(
+          (item, index) =>
+            item && (
+              <div className="monster-display" key={index}>
+                <div>Action {index + 1}</div>
+                <div className="capacity-display">
+                  Monster: {item.monster.name}
+                </div>
+                <div className="capacity-display">
+                  Capacity: {item.capacity.name}
+                </div>
+              </div>
+            )
         )}
       </div>
       {whichCombo && (
         <>
-          <div className="combo-found-info">
+          <div className="combo-found-info combo-shake">
             <div className="combo-name">Current Combo: {whichCombo?.name}</div>
-            {whichCombo?.requiredElement.map((element, index) => (
-              <div key={index} className="combo-desc">
-                =&gt; {element}
-              </div>
-            ))}
-            <div className="combo-desc">
-              Current Combo: {whichCombo?.description}
+            <div className="combo-requirement">
+              {whichCombo?.requiredElement.map((element, index) => (
+                <div key={index} className="combo-desc">
+                  ==&gt;{element}
+                </div>
+              ))}
             </div>
+            <div className="combo-desc">{whichCombo?.description}</div>
             <div className="combo-details">
               <p>Damage: {whichCombo?.details.base}</p>
               <p>Critical Chance: {whichCombo?.details.critChance}</p>
@@ -135,6 +109,15 @@ function ComboCounterDisplay({ capacityAndMonsterList }) {
         <div className="combo-order-square">
           {capacityAndMonsterList[3]?.capacity.details.element}
         </div>
+      </div>
+      <div className="button-combo-container">
+        {capacityAndMonsterList.length === 4 && (
+          <ConfirmationButton buttonName={'Confirm the turn'} />
+        )}
+        <ConfirmationButton
+          buttonName={'Reset order'}
+          onButtonClick={handleResetOrder}
+        />
       </div>
     </div>
   )

@@ -1,19 +1,44 @@
+@keyframes combo-shake {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.combo-shake {
+  animation: combo-shake 1s ease;
+}
+
 .combo-panel {
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  .button-combo-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
 }
 
 .combo-display-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
+
   .monster-display {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 48%;
     align-self: center;
     flex-direction: column;
     border: 1px solid rebeccapurple;
@@ -51,4 +76,16 @@
 .combo-found-info {
   display: flex;
   flex-direction: column;
+
+  .combo-requirement {
+    display: flex;
+    justify-content: center;
+    color: aqua;
+  }
+
+  .combo-desc {
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+  }
 }
