@@ -759,6 +759,188 @@
         "element": ["Neutral"],
         "scaling": ["+60% speed"]
       }
+    },
+    {
+      "id": 30,
+      "icon": "",
+      "name": "Defiance",
+      "description": "A Defiance that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 18,
+        "variance": 15,
+        "critChance": 2,
+        "critDamage": 1.3,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Neutral"],
+        "scaling": ["+25% defense", "+25% spirit"]
+      }
+    },
+    {
+      "id": 31,
+      "icon": "",
+      "name": "Bone Crusher",
+      "description": "A Bone Crusher that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 28,
+        "variance": 2,
+        "critChance": 1,
+        "critDamage": 1.1,
+        "penetration": 1,
+        "damageType": ["Physical"],
+        "element": ["Neutral"],
+        "scaling": ["+5% attack"]
+      }
+    },
+    {
+      "id": 32,
+      "icon": "",
+      "name": "Paranoia",
+      "description": "A Paranoia that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Dark"],
+        "excluded": null
+      },
+      "race": {
+        "required": ["Eldritch"],
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 17,
+        "variance": 5,
+        "critChance": 3,
+        "critDamage": 1.4,
+        "penetration": 1,
+        "damageType": ["Magical"],
+        "element": ["Dark"],
+        "scaling": ["+50% despair"]
+      }
+    },
+    {
+      "id": 33,
+      "icon": "",
+      "name": "Arcane Pulse",
+      "description": "An Arcane Pulse that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Arcane"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 20,
+        "variance": 3,
+        "critChance": 4,
+        "critDamage": 1.25,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Arcane"],
+        "scaling": ["+20% despair", "+5% magic"]
+      }
+    },
+    {
+      "id": 34,
+      "icon": "",
+      "name": "Phantasm",
+      "description": "A Phantasm that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Arcane"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 19,
+        "variance": 2,
+        "critChance": 5,
+        "critDamage": 1.2,
+        "penetration": 2,
+        "damageType": ["Magical"],
+        "element": ["Arcane"],
+        "scaling": ["+15% despair", "+10% magic"]
+      }
+    },
+    {
+      "id": 35,
+      "icon": "",
+      "name": "Pression",
+      "description": "A Pression that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Arcane"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 19,
+        "variance": 2,
+        "critChance": 5,
+        "critDamage": 1.2,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Arcane"],
+        "scaling": ["+15% despair", "+15% attack"]
+      }
+    },
+    {
+      "id": 36,
+      "icon": "",
+      "name": "Arcanic Claw",
+      "description": "An Arcanic Claw that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Arcane"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 22,
+        "variance": 2,
+        "critChance": 3,
+        "critDamage": 1.5,
+        "penetration": 2,
+        "damageType": ["Physical"],
+        "element": ["Arcane"],
+        "scaling": ["+4% despair", "+16% attack"]
+      }
     }
   ]
 }

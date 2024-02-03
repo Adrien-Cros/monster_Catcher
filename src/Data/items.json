@@ -156,6 +156,23 @@
       "rarity": 1,
       "objectType": "item",
       "effect": {}
+    },
+    {
+      "id": 10,
+      "name": "Arcane Gems",
+      "icon": "./Assets/Items/arcane-gems-icon.png",
+      "description": "An arcane gems, to enhance some monsters.",
+      "type": ["Consumable"],
+      "prices": {
+        "buy": 5,
+        "sell": 1
+      },
+      "stackable": true,
+      "maxStackNumber": 99,
+      "quantityPossessed": 0,
+      "rarity": 1,
+      "objectType": "item",
+      "effect": {}
     }
   ],
   "currency": [

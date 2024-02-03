@@ -29,6 +29,11 @@
       "id": 6,
       "name": "Water",
       "icon": "./Assets/Types/Water-icon.png"
+    },
+    {
+      "id": 7,
+      "name": "Arcane",
+      "icon": "./Assets/Types/Arcane-icon.png"
     }
   ]
 }

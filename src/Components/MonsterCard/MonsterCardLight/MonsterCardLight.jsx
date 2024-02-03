@@ -55,6 +55,8 @@ function MonsterCardLight({
       monsterContainerColor = '#203d95'
     } else if (monster.type.includes('Holy')) {
       monsterContainerColor = '#665548'
+    } else if (monster.type.includes('Arcane')) {
+      monsterContainerColor = '#911951'
     }
   }
 

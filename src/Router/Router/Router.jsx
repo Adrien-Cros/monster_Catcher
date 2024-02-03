@@ -7,10 +7,13 @@ import {
 import { useSelector } from 'react-redux'
 
 import Header from '../../Components/Header/Header'
+import Footer from '../../Components/Footer/Footer'
 import Home from '../../Pages/Home/Home'
 import RandomEncounter from '../../Pages/RandomEncounter/RandomEncounter'
 import MainMenu from '../../Pages/MainMenu/MainMenu'
 import ComboMode from '../../Pages/ComboMode/ComboMode'
+
+import '../../index.scss'
 
 function Routing() {
   //used to track where the player is, to give access or not at certain parts of the app
@@ -41,6 +44,7 @@ function Routing() {
           <Route path="/combo" element={<Navigate to="/main" />} />
         )}
       </Routes>
+      <Footer />
     </Router>
   )
 }

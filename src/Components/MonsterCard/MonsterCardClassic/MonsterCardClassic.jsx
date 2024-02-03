@@ -14,6 +14,8 @@ import {
 import typesData from '../../../Data/types.json'
 import levelsData from '../../../Data/monsterLevels.json'
 
+import calculateCurrentInfoForCapacity from '../../../System/combat/calculateCurrentInfoForCapacity'
+
 import './monsterCardClassic.scss'
 
 /**
@@ -73,6 +75,8 @@ function MonsterCardClassic({
       monsterContainerColor = '#203d95'
     } else if (monster.type.includes('Holy')) {
       monsterContainerColor = '#665548'
+    } else if (monster.type.includes('Arcane')) {
+      monsterContainerColor = '#911951'
     }
   }
 
@@ -196,8 +200,25 @@ function MonsterCardClassic({
       )}
       {showTooltip && tooltipInformation && tooltipInformation.details && (
         <div className="tooltip-container">
-          <p>Base Damage: {tooltipInformation.details?.base}</p>
-          <p>Crit Chance: {tooltipInformation.details?.critChance}%</p>
+          <p>
+            Base Damage: {tooltipInformation.details?.base} (Actual:{' '}
+            {calculateCurrentInfoForCapacity({
+              monster: monster,
+              capacity: tooltipInformation,
+              displayType: 'damageDealt',
+            })}
+            )
+          </p>
+
+          <p>
+            Crit Chance: {tooltipInformation.details?.critChance}% (Actual:{' '}
+            {calculateCurrentInfoForCapacity({
+              monster: monster,
+              capacity: tooltipInformation,
+              displayType: 'critChance',
+            })}
+            %)
+          </p>
           <p>Crit Damage: x{tooltipInformation.details?.critDamage}</p>
           <p>Penetration: {tooltipInformation.details?.penetration}</p>
           <p>Variance: {tooltipInformation.details?.variance}%</p>

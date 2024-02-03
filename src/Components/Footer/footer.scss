@@ -1,0 +1,19 @@
+footer {
+  padding: 8px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #333;
+  margin-top: 20px;
+
+  .contributor {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 16px;
+
+    a {
+      color: green;
+      text-decoration: underline;
+    }
+  }
+}

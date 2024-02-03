@@ -833,7 +833,7 @@
       "experience": 0,
       "picture": "./Assets/Monsters/Corrupted_Clockwork_Spirit.png",
       "race": ["Clockwork", "Eldritch", "Spirit"],
-      "type": ["Lightning", "Dark"],
+      "type": ["Dark"],
       "description": "A beautiful Corrupted Clockwork Spirit !",
       "rarity": 2,
       "stats": {
@@ -1540,6 +1540,226 @@
         },
         {
           "item_id": 9,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "uniqueKey": null,
+      "name": "Book Swarm",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Book_Swarm.png",
+      "race": ["Spirit"],
+      "type": ["Arcane"],
+      "description": "A beautiful Book Swarm !",
+      "rarity": 4,
+      "stats": {
+        "hp": 60,
+        "attack": 5,
+        "magic": 7,
+        "defense": 3,
+        "spirit": 7,
+        "speed": 4,
+        "luck": 10,
+        "despair": 4
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 10,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "uniqueKey": null,
+      "name": "Book Golem",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Book_Golem.png",
+      "race": ["Spirit"],
+      "type": ["Arcane"],
+      "description": "A beautiful Book Golem !",
+      "rarity": 2,
+      "stats": {
+        "hp": 80,
+        "attack": 6,
+        "magic": 6,
+        "defense": 7,
+        "spirit": 7,
+        "speed": 3,
+        "luck": 8,
+        "despair": 2
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 10,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "uniqueKey": null,
+      "name": "Librarian",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Librarian.png",
+      "race": ["Spirit"],
+      "type": ["Arcane"],
+      "description": "A beautiful Librarian !",
+      "rarity": 1,
+      "stats": {
+        "hp": 75,
+        "attack": 6,
+        "magic": 10,
+        "defense": 5,
+        "spirit": 8,
+        "speed": 3,
+        "luck": 5,
+        "despair": 8
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 10,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "uniqueKey": null,
+      "name": "Arcanic Tree",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Arcanic_Tree.png",
+      "race": ["Plant", "Beast"],
+      "type": ["Arcane"],
+      "description": "A beautiful Arcanic Tree !",
+      "rarity": 2,
+      "stats": {
+        "hp": 85,
+        "attack": 9,
+        "magic": 5,
+        "defense": 8,
+        "spirit": 6,
+        "speed": 3,
+        "luck": 6,
+        "despair": 3
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 10,
           "min_quantity": 1,
           "max_quantity": 1,
           "drop_chance": 25

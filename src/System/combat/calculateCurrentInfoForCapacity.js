@@ -39,7 +39,7 @@ function calculateCurrentInforForCapacity({ monster, capacity, displayType }) {
   function showActualCritChance(monster, capacity) {
     // 10 luck = +1%
     const luckModifier = monster.stats.luck / 10
-    critChance = Math.ceil(capacity.details.critChance + luckModifier)
+    critChance = Math.floor(capacity.details.critChance + luckModifier)
     return critChance
   }
 
