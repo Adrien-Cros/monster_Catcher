@@ -17,7 +17,7 @@
       "details": {
         "type": "Damage",
         "base": 20,
-        "variance": 5,
+        "variance": 10,
         "critChance": 1,
         "critDamage": 1.5,
         "penetration": 0,
@@ -43,13 +43,13 @@
       "details": {
         "type": "Damage",
         "base": 20,
-        "variance": 5,
+        "variance": 10,
         "critChance": 1,
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Dark"],
-        "scaling": ["+10% magic", "+20% despair"]
+        "scaling": ["+15% magic", "+15% despair"]
       }
     },
     {
@@ -68,14 +68,14 @@
       },
       "details": {
         "type": "Damage",
-        "base": 25,
+        "base": 20,
         "variance": 10,
         "critChance": 1,
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Ice"],
-        "scaling": ["+10% magic"]
+        "scaling": ["+25% magic"]
       }
     },
     {
@@ -95,13 +95,13 @@
       "details": {
         "type": "Damage",
         "base": 20,
-        "variance": 5,
+        "variance": 7,
         "critChance": 1,
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Fire"],
-        "scaling": ["+30% attack"]
+        "scaling": ["+25% attack"]
       }
     },
     {
@@ -127,7 +127,7 @@
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Neutral"],
-        "scaling": ["+50% attack", "+10% speed"]
+        "scaling": ["+30% attack", "+10% speed"]
       }
     },
     {
@@ -146,14 +146,14 @@
       },
       "details": {
         "type": "Damage",
-        "base": 20,
-        "variance": 5,
-        "critChance": 1,
+        "base": 2,
+        "variance": 6,
+        "critChance": 2,
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Neutral"],
-        "scaling": ["+10% attack"]
+        "scaling": ["+15% attack"]
       }
     },
     {
@@ -205,7 +205,7 @@
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Holy"],
-        "scaling": ["+30% magic"]
+        "scaling": ["+25% magic"]
       }
     },
     {
@@ -225,13 +225,13 @@
       "details": {
         "type": "Damage",
         "base": 20,
-        "variance": 5,
+        "variance": 6,
         "critChance": 1,
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Water"],
-        "scaling": ["+30% magic"]
+        "scaling": ["+25% magic"]
       }
     },
     {
@@ -253,7 +253,7 @@
         "base": 16,
         "variance": 15,
         "critChance": 1,
-        "critDamage": 1.5,
+        "critDamage": 2,
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Neutral"],
@@ -277,13 +277,13 @@
       "details": {
         "type": "Damage",
         "base": 22,
-        "variance": 5,
+        "variance": 10,
         "critChance": 1,
         "critDamage": 1.4,
         "penetration": 1,
         "damageType": ["Physical"],
         "element": ["Neutral"],
-        "scaling": ["+20% attack"]
+        "scaling": ["+22% attack"]
       }
     },
     {
@@ -309,7 +309,7 @@
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Neutral"],
-        "scaling": ["+40% magic"]
+        "scaling": ["+50% magic"]
       }
     },
     {
@@ -335,7 +335,7 @@
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Neutral"],
-        "scaling": ["+5% attack", "+25% defense"]
+        "scaling": ["+5% attack", "+40% defense"]
       }
     },
     {
@@ -361,7 +361,7 @@
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Ice"],
-        "scaling": ["+20% magic", "+5% despair"]
+        "scaling": ["+18% magic", "+7% despair"]
       }
     },
     {
@@ -387,7 +387,7 @@
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Dark"],
-        "scaling": ["+10% magic", "+40% despair"]
+        "scaling": ["+10% magic", "+30% despair"]
       }
     },
     {
@@ -407,13 +407,13 @@
       "details": {
         "type": "Damage",
         "base": 25,
-        "variance": 2,
+        "variance": 3,
         "critChance": 1,
         "critDamage": 1.2,
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Lightning"],
-        "scaling": ["+20% magic", "+10% spirit"]
+        "scaling": ["+10% magic", "+20% spirit"]
       }
     },
     {
@@ -439,7 +439,7 @@
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Water"],
-        "scaling": ["+25% magic"]
+        "scaling": ["+30% magic"]
       }
     },
     {
@@ -458,14 +458,14 @@
       },
       "details": {
         "type": "Damage",
-        "base": 22,
+        "base": 24,
         "variance": 15,
         "critChance": 1,
         "critDamage": 2,
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Ice"],
-        "scaling": ["+30% attack"]
+        "scaling": ["+10% attack"]
       }
     },
     {
@@ -491,7 +491,7 @@
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Holy"],
-        "scaling": ["+30% attack"]
+        "scaling": ["+20% attack"]
       }
     },
     {
@@ -513,7 +513,7 @@
         "base": 20,
         "variance": 50,
         "critChance": 1,
-        "critDamage": 1.5,
+        "critDamage": 1.75,
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Lightning"],
@@ -539,7 +539,7 @@
         "base": 20,
         "variance": 50,
         "critChance": 1,
-        "critDamage": 1.5,
+        "critDamage": 1.75,
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Lightning"],
@@ -566,10 +566,10 @@
         "variance": 10,
         "critChance": 1,
         "critDamage": 1.5,
-        "penetration": 0,
+        "penetration": 1,
         "damageType": ["Magical"],
         "element": ["Neutral"],
-        "scaling": ["+20% magic"]
+        "scaling": ["+40% magic"]
       }
     },
     {
@@ -588,11 +588,11 @@
       },
       "details": {
         "type": "Damage",
-        "base": 28,
-        "variance": 20,
+        "base": 27,
+        "variance": 15,
         "critChance": 1,
         "critDamage": 1.2,
-        "penetration": 0,
+        "penetration": 2,
         "damageType": ["Magical"],
         "element": ["Holy"],
         "scaling": ["+20% magic", "+20% attack", "+5% despair"]
@@ -621,7 +621,143 @@
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Fire"],
-        "scaling": ["+15% magic", "+5% despair"]
+        "scaling": ["+10% magic", "+5% despair"]
+      }
+    },
+    {
+      "id": 25,
+      "icon": "",
+      "name": "Water Slash",
+      "description": "A Water Slash that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Water"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 22,
+        "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.5,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Water"],
+        "scaling": ["+30% magic"]
+      }
+    },
+    {
+      "id": 26,
+      "icon": "",
+      "name": "Horror",
+      "description": "A Horror that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Dark"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 24,
+        "variance": 10,
+        "critChance": 1,
+        "critDamage": 1.25,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Dark"],
+        "scaling": ["+40% despair", "+5% magic"]
+      }
+    },
+    {
+      "id": 27,
+      "icon": "",
+      "name": "Eruption",
+      "description": "A Eruption that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Fire"],
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 16,
+        "variance": 7,
+        "critChance": 1,
+        "critDamage": 1.85,
+        "penetration": 1,
+        "damageType": ["Magical"],
+        "element": ["Fire"],
+        "scaling": ["+25% despair", "+25% magic"]
+      }
+    },
+    {
+      "id": 28,
+      "icon": "",
+      "name": "Judgment",
+      "description": "A Judgment that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": {
+        "required": ["Angel"],
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 22,
+        "variance": 15,
+        "critChance": 1,
+        "critDamage": 1.4,
+        "penetration": 4,
+        "damageType": ["Magical"],
+        "element": ["Holy"],
+        "scaling": [
+          "+10% magic",
+          "+10% attack",
+          "+10% speed",
+          "+10% spirit",
+          "+10% luck"
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "icon": "",
+      "name": "Speed Test",
+      "description": "A Speed Test that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": null,
+        "excluded": null
+      },
+      "race": {
+        "required": null,
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 23,
+        "variance": 12,
+        "critChance": 1,
+        "critDamage": 2.1,
+        "penetration": 2,
+        "damageType": ["Physical"],
+        "element": ["Neutral"],
+        "scaling": ["+65% speed"]
       }
     }
   ]

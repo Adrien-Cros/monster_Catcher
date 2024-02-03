@@ -10,6 +10,8 @@ import ComboCapacitySelection from '../../Components/ComboMode/ComboCapacitySele
 import ComboCounterDisplay from '../../Components/ComboMode/ComboCounterDisplay/ComboCounterDisplay'
 
 import './comboMode.scss'
+import calculateDamageCombo from '../../System/combat/comboMode/calculateDamageCombo'
+import randomEnemyCapacityCombo from '../../System/combat/comboMode/randomEnemyCapacityCombo'
 
 function ComboMode() {
   const [hasInitBattle, setHasInitBattle] = useState(false)
@@ -29,6 +31,13 @@ function ComboMode() {
 
   // Used to track which capacities have been selected
   const [selectedCapacities, setSelectedCapacities] = useState([])
+
+  // Stats tracking
+  const [playerTeamStats, setPlayerTeamStats] = useState(0)
+  const [wildTeamStats, setWildTeamStats] = useState(0)
+
+  const [copiedPlayerTeamStats, setCopiedPlayerTeamStats] = useState(0)
+  const [copiedWildTeamStats, setCopiedWildTeamStats] = useState(0)
 
   const handleCapacitySelect = (monster, capacity) => {
     // Create an object containing the monster with the selected capacity
@@ -73,12 +82,73 @@ function ComboMode() {
     setSelectedCapacities([])
   }
 
+  const handleValidateTurn = () => {
+    const whichMonstersCapacity = randomEnemyCapacityCombo({
+      monsterList: copiedWildMonstersList,
+    })
+    const playerGoesFirst =
+      copiedPlayerTeamStats.speed >= copiedWildTeamStats.speed
+
+    if (playerGoesFirst) {
+      //player turn
+      let damageDealt = calculateDamageCombo({
+        attacker: copiedPlayerTeamStats,
+        defender: copiedWildTeamStats,
+        capacityUsed: selectedCapacities,
+      })
+      setCopiedWildTeamStats((prevStats) => ({
+        ...prevStats,
+        hp: prevStats.hp - damageDealt,
+      }))
+      console.log('Your team have dealt: ', damageDealt)
+      //monster turn
+      damageDealt = calculateDamageCombo({
+        attacker: copiedWildTeamStats,
+        defender: copiedPlayerTeamStats,
+        capacityUsed: whichMonstersCapacity,
+      })
+      setCopiedPlayerTeamStats((prevStats) => ({
+        ...prevStats,
+        hp: prevStats.hp - damageDealt,
+      }))
+      console.log('Monsters have dealt: ', damageDealt)
+    } else {
+      //monster turn
+      let damageDealt = calculateDamageCombo({
+        attacker: copiedWildTeamStats,
+        defender: copiedPlayerTeamStats,
+        capacityUsed: whichMonstersCapacity,
+      })
+      setCopiedPlayerTeamStats((prevStats) => ({
+        ...prevStats,
+        hp: prevStats.hp - damageDealt,
+      }))
+      console.log('Monsters have dealt: ', damageDealt)
+      //player turn
+      damageDealt = calculateDamageCombo({
+        attacker: copiedPlayerTeamStats,
+        defender: copiedWildTeamStats,
+        capacityUsed: selectedCapacities,
+      })
+      setCopiedWildTeamStats((prevStats) => ({
+        ...prevStats,
+        hp: prevStats.hp - damageDealt,
+      }))
+      console.log('Your team have dealt: ', damageDealt)
+    }
+
+    setSelectedCapacities([])
+  }
+
   useEffect(() => {
     setOriginalMonsterInTeam(monsterInTeam)
     setCopiedMonsterInTeam(monsterInTeam)
 
     setOriginalWildMonstersList(wildMonstersList)
     setCopiedWildMonstersList(wildMonstersList)
+
+    setCopiedPlayerTeamStats(calculateTotalStats(originalMonsterInTeam))
+    setCopiedWildTeamStats(calculateTotalStats(wildMonstersList))
   }, [monsterInTeam, wildMonstersList])
 
   const AVERAGE_TEAM_LVL = useSelector((state) =>
@@ -100,6 +170,42 @@ function ComboMode() {
     return !isMonsterInActualTeam && !isMonsterInCapturedList
   }
 
+  // Helper to calculate the team hp
+  const calculateTotalStats = (monsterList) => {
+    return monsterList?.reduce(
+      (totalStats, monster) => {
+        if (monster?.stats) {
+          return {
+            hp: totalStats.hp + (monster.stats.hp || 0),
+            attack: totalStats.attack + (monster.stats.attack || 0),
+            magic: totalStats.magic + (monster.stats.magic || 0),
+            defense: totalStats.defense + (monster.stats.defense || 0),
+            spirit: totalStats.spirit + (monster.stats.spirit || 0),
+            speed: totalStats.speed + (monster.stats.speed || 0),
+            luck: totalStats.luck + (monster.stats.luck || 0),
+            despair: totalStats.despair + (monster.stats.despair || 0),
+          }
+        }
+        return totalStats
+      },
+      {
+        hp: 0,
+        attack: 0,
+        magic: 0,
+        defense: 0,
+        spirit: 0,
+        speed: 0,
+        luck: 0,
+        despair: 0,
+      }
+    )
+  }
+
+  useEffect(() => {
+    setPlayerTeamStats(calculateTotalStats(copiedMonsterInTeam))
+    setWildTeamStats(calculateTotalStats(copiedWildMonstersList))
+  }, [wildTeamStats.hp, playerTeamStats.hp])
+
   useEffect(() => {
     const generatedMonsters = Array.from({ length: 4 }, () => {
       const randomMonster = generateMonster({
@@ -118,7 +224,8 @@ function ComboMode() {
   }, [AVERAGE_TEAM_LVL])
 
   const calculateHealthRatio = (currentHP, maxHP) => {
-    return (currentHP / maxHP) * 100
+    const ratio = (currentHP / maxHP) * 100
+    return Math.max(Math.floor(ratio), 0)
   }
 
   return (
@@ -136,9 +243,26 @@ function ComboMode() {
         <ComboCounterDisplay
           capacityAndMonsterList={selectedCapacities}
           onResetButton={handleResetCapacity}
+          onValidateButton={handleValidateTurn}
         />
       </div>
       <div className="battlefield">
+        {playerTeamStats && copiedPlayerTeamStats?.hp && (
+          <div className="player-hp">
+            {copiedPlayerTeamStats?.hp} / {playerTeamStats?.hp}
+            <div className="player-hp-container">
+              <div
+                className="player-hp-bar"
+                style={{
+                  height: `${calculateHealthRatio(
+                    copiedPlayerTeamStats?.hp,
+                    playerTeamStats?.hp
+                  )}%`,
+                }}
+              ></div>
+            </div>
+          </div>
+        )}
         <div className="monster-list-combo">
           {hasInitBattle &&
             originalMonsterInTeam &&
@@ -147,19 +271,6 @@ function ComboMode() {
                 key={index}
                 className="monster-container-combo --player player-animation"
               >
-                <div
-                  className="hp-container-bar"
-                  style={{
-                    width: `${calculateHealthRatio(
-                      monster.stats.hp,
-                      monster.stats.hp
-                    )}%`,
-                  }}
-                >
-                  <div className="hp-container">
-                    {monster.stats.hp} / {originalMonsterInTeam[index].stats.hp}
-                  </div>
-                </div>
                 <MonsterCardLight
                   key={monster.uniqueKey}
                   monster={monster}
@@ -176,20 +287,6 @@ function ComboMode() {
                 key={index}
                 className="monster-container-combo --monster monster-animation"
               >
-                <div
-                  className="hp-container-bar"
-                  style={{
-                    width: `${calculateHealthRatio(
-                      monster.stats.hp,
-                      monster.stats.hp
-                    )}%`,
-                  }}
-                >
-                  <div className="hp-container">
-                    {monster.stats.hp} /
-                    {originalWildMonstersList[index].stats.hp}
-                  </div>
-                </div>
                 <MonsterCardLight
                   key={monster.uniqueKey}
                   monster={monster}
@@ -198,6 +295,22 @@ function ComboMode() {
               </div>
             ))}
         </div>
+        {wildTeamStats && copiedWildTeamStats?.hp && (
+          <div className="wild-hp">
+            {copiedWildTeamStats?.hp} / {wildTeamStats?.hp}
+            <div className="wil-hp-container">
+              <div
+                className="wild-hp-bar"
+                style={{
+                  height: `${calculateHealthRatio(
+                    copiedWildTeamStats?.hp,
+                    wildTeamStats?.hp
+                  )}%`,
+                }}
+              ></div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

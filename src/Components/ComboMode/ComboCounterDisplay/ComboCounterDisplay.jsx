@@ -3,7 +3,11 @@ import ConfirmationButton from '../../Button/ConfirmationButton/ConfirmationButt
 import './comboCounterDisplay.scss'
 
 // capacityAndMonsterList format [{monster{}, capacity{}}, {monster{}, capacity{}}, {monster{}, capacity{}}, {monster{}, capacity{}}]
-function ComboCounterDisplay({ capacityAndMonsterList, onResetButton }) {
+function ComboCounterDisplay({
+  capacityAndMonsterList,
+  onResetButton,
+  onValidateButton,
+}) {
   // Check if a sequence combo can be activate
   const isComboActivated = () => {
     const possibleCombo = comboData.combo
@@ -45,6 +49,14 @@ function ComboCounterDisplay({ capacityAndMonsterList, onResetButton }) {
 
   const handleResetOrder = () => {
     onResetButton()
+  }
+
+  const handleValidateTurn = (capacityAndMonsterList) => {
+    if (whichCombo) {
+      onValidateButton(capacityAndMonsterList.push({ capacity: whichCombo }))
+    } else {
+      onValidateButton(capacityAndMonsterList)
+    }
   }
 
   return (
@@ -112,7 +124,10 @@ function ComboCounterDisplay({ capacityAndMonsterList, onResetButton }) {
       </div>
       <div className="button-combo-container">
         {capacityAndMonsterList.length === 4 && (
-          <ConfirmationButton buttonName={'Confirm the turn'} />
+          <ConfirmationButton
+            buttonName={'Confirm the turn'}
+            onButtonClick={() => handleValidateTurn(capacityAndMonsterList)}
+          />
         )}
         <ConfirmationButton
           buttonName={'Reset order'}

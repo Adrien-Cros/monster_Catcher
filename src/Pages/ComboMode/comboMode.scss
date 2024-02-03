@@ -40,6 +40,31 @@
   }
 }
 
+.wil-hp-container,
+.player-hp-container {
+  display: flex;
+  width: 30px;
+  height: 100%;
+  background: red;
+  color: black;
+  border-radius: 10px;
+}
+
+.wild-hp-bar,
+.player-hp-bar {
+  width: 30px;
+  background: green;
+  border-radius: 10px;
+}
+
+.player-hp,
+.wild-hp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 500px;
+}
+
 .combo-mode {
   display: flex;
   justify-content: center;

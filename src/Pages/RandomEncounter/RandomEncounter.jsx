@@ -67,7 +67,7 @@ function RandomEncounter() {
         0
       )
       return Math.ceil(
-        totalLevel / state.monsterTeam.actualMonstersInTeam.length
+        Math.random(totalLevel / state.monsterTeam.actualMonstersInTeam.length)
       )
     }
     return 0
@@ -232,7 +232,8 @@ function RandomEncounter() {
   }
 
   const calculateHealthRatio = (currentHP, maxHP) => {
-    return (currentHP / maxHP) * 100
+    const ratio = (currentHP / maxHP) * 100
+    return Math.max(Math.floor(ratio), 0)
   }
 
   return (
