@@ -102,30 +102,31 @@ function calculateDamageCombo({ attacker, defender, capacityUsed }) {
 
     // add the crit multiplier
     damageDealt = isCritical ? damageDealt * capacity.critDamage : damageDealt
-
     // add the variance
     if (capacity.variance) {
       const halfVariance = capacity.variance / 2
       const randomVariance = Math.random() * capacity.variance - halfVariance
       damageDealt += randomVariance
     }
-
     //calculate the damage reduction
     //Check if the attack type is physical or magical and compare it to armor/spirit for resistance
     // 20 defense or spirit = (1% damage reduction)
-    // penetration reduce the flat damage reduction
-    if (capacity.damageType === 'Physical') {
+    // penetration reduce the % damage reduction
+    if (capacity.damageType[0] === 'Physical') {
       // Calculate damage reduction based on defense
-      const defenseReduction = defender.defense / 10
+      const defenseReduction = defender.defense / 20 / 100
       // Apply penetration reduction
-      const totalReduction = defenseReduction - attacker.penetration
+      const totalReduction = Math.max(
+        0,
+        defenseReduction - capacity.penetration
+      )
       // Apply damage reduction to damageDealt
       damageDealt = damageDealt * (1 - totalReduction)
-    } else if (capacity.damageType === 'Magical') {
+    } else if (capacity.damageType[0] === 'Magical') {
       // Calculate damage reduction based on spirit
-      const spiritReduction = defender.spirit / 10
+      const spiritReduction = defender.spirit / 20 / 100
       // Apply penetration reduction
-      const totalReduction = spiritReduction - attacker.penetration
+      const totalReduction = Math.max(0, spiritReduction - capacity.penetration)
       // Apply damage reduction to damageDealt
       damageDealt = damageDealt * (1 - totalReduction)
     }
@@ -135,7 +136,6 @@ function calculateDamageCombo({ attacker, defender, capacityUsed }) {
   }
 
   const onlyCap = totalCapacityStats(capacityUsed)
-  console.log(onlyCap)
   damageDealtCalculation(defender, attacker, onlyCap)
   return damageDealt
 }

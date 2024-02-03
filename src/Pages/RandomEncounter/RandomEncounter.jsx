@@ -67,7 +67,7 @@ function RandomEncounter() {
         0
       )
       return Math.ceil(
-        Math.random(totalLevel / state.monsterTeam.actualMonstersInTeam.length)
+        totalLevel / state.monsterTeam.actualMonstersInTeam.length
       )
     }
     return 0

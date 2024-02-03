@@ -8,14 +8,14 @@
       "description": "Unleash a potent magical onslaught, inflicting heavy neutral damage.",
       "details": {
         "type": "Damage",
-        "base": 40,
-        "variance": 20,
+        "base": 30,
+        "variance": 10,
         "critChance": 2,
-        "critDamage": 1.3,
+        "critDamage": 1.2,
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Neutral"],
-        "scaling": ["+30% magic", "+10% despair"]
+        "scaling": ["+20% magic", "+10% despair"]
       }
     },
     {
@@ -27,7 +27,7 @@
       "details": {
         "type": "Damage",
         "base": 40,
-        "variance": 20,
+        "variance": 8,
         "critChance": 2,
         "critDamage": 1.3,
         "penetration": 0,
@@ -45,7 +45,7 @@
       "details": {
         "type": "Damage",
         "base": 40,
-        "variance": 20,
+        "variance": 35,
         "critChance": 2,
         "critDamage": 1.3,
         "penetration": 0,
@@ -81,13 +81,13 @@
       "details": {
         "type": "Damage",
         "base": 60,
-        "variance": 20,
+        "variance": 13,
         "critChance": 2,
-        "critDamage": 1.35,
+        "critDamage": 1.3,
         "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Neutral"],
-        "scaling": ["+50% attack"]
+        "scaling": ["+60% attack"]
       }
     },
     {
@@ -116,14 +116,50 @@
       "description": "Channel the power of an eclipse, combining dark, holy, and fire elements to smite enemies with intense magical damage.",
       "details": {
         "type": "Damage",
-        "base": 60,
+        "base": 55,
         "variance": 15,
         "critChance": 1,
         "critDamage": 1.5,
         "penetration": 0,
         "damageType": ["Magical"],
         "element": ["Fire", "Holy", "Dark"],
-        "scaling": ["+50% magic", "+30% despair"]
+        "scaling": ["+50% magic", "+35% despair"]
+      }
+    },
+    {
+      "id": 8,
+      "name": "Frozen Inferno",
+      "icon": null,
+      "requiredElement": ["Ice", "Fire"],
+      "description": "Unleash a paradoxical combination of freezing cold and scorching heat, dealing magical damage to all targets.",
+      "details": {
+        "type": "Damage",
+        "base": 45,
+        "variance": 12,
+        "critChance": 3,
+        "critDamage": 1.2,
+        "penetration": 0,
+        "damageType": ["Magical"],
+        "element": ["Ice", "Fire"],
+        "scaling": ["+40% magic", "+25% despair"]
+      }
+    },
+    {
+      "id": 9,
+      "name": "Divine Inferno Slam",
+      "icon": null,
+      "requiredElement": ["Holy", "Fire"],
+      "description": " Execute a divine inferno slam, combining holy and fire elements to deal heavy physical damage to all targets.",
+      "details": {
+        "type": "Damage",
+        "base": 45,
+        "variance": 15,
+        "critChance": 2,
+        "critDamage": 1.35,
+        "penetration": 0,
+        "damageType": ["Physical"],
+        "element": ["Holy", "Fire"],
+        "scaling": ["+55% magic"]
       }
     }
   ]

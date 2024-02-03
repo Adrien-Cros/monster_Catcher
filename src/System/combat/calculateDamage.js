@@ -120,16 +120,28 @@ function calculateDamage({ attacker, defender, capacityUsed }) {
 
     //calculate the damage reduction
     //Check if the attack type is physical or magical and compare it to armor/spirit for resistance
-    // 10 defense/spirit = (1% damage reduction /2)
-    // penetration reduce the flat damage reduction
-    if (capacity.details.damageType === 'Physical') {
-      damageDealt =
-        damageDealt *
-        (1 - defender.stats.defense - attacker.stats.penetration / 1000)
-    } else if (capacity.details.damageType === 'Magical') {
-      damageDealt =
-        damageDealt *
-        (1 - defender.stats.spirit - attacker.stats.penetration / 1000)
+    // 20 defense or spirit = (1% damage reduction)
+    // penetration reduce the % damage reduction
+    if (capacity.details.damageType[0] === 'Physical') {
+      // Calculate damage reduction based on defense
+      const defenseReduction = defender.stats.defense / 20 / 100
+      // Apply penetration reduction
+      const totalReduction = Math.max(
+        0,
+        defenseReduction - capacity.details.penetration
+      )
+      // Apply damage reduction to damageDealt
+      damageDealt = damageDealt * (1 - totalReduction)
+    } else if (capacity.details.damageType[0] === 'Magical') {
+      // Calculate damage reduction based on spirit
+      const spiritReduction = defender.stats.spirit / 20 / 100
+      // Apply penetration reduction
+      const totalReduction = Math.max(
+        0,
+        spiritReduction - capacity.details.penetration
+      )
+      // Apply damage reduction to damageDealt
+      damageDealt = damageDealt * (1 - totalReduction)
     }
     damageDealt = Math.ceil(damageDealt)
   }

@@ -74,6 +74,7 @@ function ComboMode() {
       ? Math.ceil(totalLevel / actualMonstersInTeam.length)
       : 0
   }
+
   const monsterInTeam = useSelector(
     (state) => state.monsterTeam.actualMonstersInTeam
   )
@@ -89,9 +90,11 @@ function ComboMode() {
     const playerGoesFirst =
       copiedPlayerTeamStats.speed >= copiedWildTeamStats.speed
 
+    let damageDealt = 0
+
     if (playerGoesFirst) {
       //player turn
-      let damageDealt = calculateDamageCombo({
+      damageDealt = calculateDamageCombo({
         attacker: copiedPlayerTeamStats,
         defender: copiedWildTeamStats,
         capacityUsed: selectedCapacities,
@@ -114,7 +117,7 @@ function ComboMode() {
       console.log('Monsters have dealt: ', damageDealt)
     } else {
       //monster turn
-      let damageDealt = calculateDamageCombo({
+      damageDealt = calculateDamageCombo({
         attacker: copiedWildTeamStats,
         defender: copiedPlayerTeamStats,
         capacityUsed: whichMonstersCapacity,

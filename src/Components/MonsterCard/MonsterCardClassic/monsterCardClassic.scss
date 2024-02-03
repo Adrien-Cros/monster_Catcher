@@ -143,26 +143,26 @@
     }
   }
 
-  .clicked-item {
-    display: flex;
-    align-items: center;
-    z-index: 1;
+  .tooltip-container {
     position: absolute;
-    top: 74%;
+    display: flex;
+    flex-direction: column;
     background: black;
-    color: white;
-    border: 1px solid white;
-    padding: 5px;
-    opacity: 0.85;
-    left: 14px;
-    gap: 20px;
-
-    .close-button-tooltip {
-      border: 1px solid white;
-      width: 16px;
-      height: 16px;
-      padding: 3px;
-      cursor: pointer;
-    }
+    border: 1px solid red;
+    padding: 4px;
+    z-index: 9999;
+    top: 50px;
+    left: 100px;
+  }
+  .tooltip-container-light {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: black;
+    border: 1px solid red;
+    padding: 4px;
+    z-index: 9999;
+    bottom: 100px;
+    left: 100px;
   }
 }

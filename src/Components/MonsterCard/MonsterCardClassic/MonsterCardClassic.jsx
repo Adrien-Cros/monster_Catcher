@@ -20,6 +20,7 @@ import './monsterCardClassic.scss'
  * @param {Object} props -
  * @param {MonsterObject} props.monster
  * @param {function} props.onDelete
+ * @param {boolean} props.isNew
  * @param {boolean} props.canAccessMenu
  * @param {boolean} props.canBeRemovedFromTeam
  * @param {boolean} props.canBeDelete
@@ -38,7 +39,9 @@ function MonsterCardClassic({
   const dispatch = useDispatch()
 
   const [isMenuOpen, setMenuOpen] = useState(false)
-  const [clickedItem, setClickedItem] = useState(null)
+
+  const [showTooltip, setShowTooltip] = useState(false)
+  const [tooltipInformation, setTooltipInformation] = useState(null)
 
   const teamMonsters = useSelector(
     (state) => state.monsterTeam.actualMonstersInTeam
@@ -105,8 +108,14 @@ function MonsterCardClassic({
     setMenuOpen(!isMenuOpen)
   }
 
-  const handleClickOnItem = (item) => {
-    setClickedItem(item)
+  const handleOverItem = (item) => {
+    setTooltipInformation(item)
+    setShowTooltip(true)
+  }
+
+  const handleLeaveHoverItem = () => {
+    setShowTooltip(false)
+    setTooltipInformation(null)
   }
 
   return (
@@ -185,6 +194,25 @@ function MonsterCardClassic({
           <p>Luck: {monster.stats?.luck}</p>
         </div>
       )}
+      {showTooltip && tooltipInformation && tooltipInformation.details && (
+        <div className="tooltip-container">
+          <p>Base Damage: {tooltipInformation.details?.base}</p>
+          <p>Crit Chance: {tooltipInformation.details?.critChance}%</p>
+          <p>Crit Damage: x{tooltipInformation.details?.critDamage}</p>
+          <p>Penetration: {tooltipInformation.details?.penetration}</p>
+          <p>Variance: {tooltipInformation.details?.variance}%</p>
+          <p>Scaling: {tooltipInformation.details?.scaling}</p>
+          <p>Type: {tooltipInformation.details?.damageType[0]}</p>
+          <p>Element: {tooltipInformation.details?.element[0]}</p>
+        </div>
+      )}
+      {showTooltip &&
+        tooltipInformation &&
+        tooltipInformation.effectOnStats && (
+          <div className="tooltip-container-light">
+            <p>{tooltipInformation.description}</p>
+          </div>
+        )}
 
       <div className="capacity">
         Capacity:
@@ -194,7 +222,11 @@ function MonsterCardClassic({
             .map(
               (capacity, index) =>
                 capacity && (
-                  <p key={index} onClick={() => handleClickOnItem(capacity)}>
+                  <p
+                    key={index}
+                    onMouseEnter={() => handleOverItem(capacity)}
+                    onMouseLeave={handleLeaveHoverItem}
+                  >
                     {capacity.name}
                   </p>
                 )
@@ -209,23 +241,16 @@ function MonsterCardClassic({
             .map(
               (trait, index) =>
                 trait && (
-                  <p key={index} onClick={() => handleClickOnItem(trait)}>
+                  <p
+                    key={index}
+                    onMouseEnter={() => handleOverItem(trait)}
+                    onMouseLeave={handleLeaveHoverItem}
+                  >
                     {trait.name}
                   </p>
                 )
             )}
       </div>
-      {clickedItem && (
-        <div className="clicked-item">
-          <p>{clickedItem.description}</p>
-          <p
-            className="close-button-tooltip"
-            onClick={() => handleClickOnItem(null)}
-          >
-            X
-          </p>
-        </div>
-      )}
     </div>
   )
 }

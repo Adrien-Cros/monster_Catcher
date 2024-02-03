@@ -750,14 +750,14 @@
       },
       "details": {
         "type": "Damage",
-        "base": 23,
-        "variance": 12,
+        "base": 20,
+        "variance": 10,
         "critChance": 1,
         "critDamage": 2.1,
-        "penetration": 2,
+        "penetration": 0,
         "damageType": ["Physical"],
         "element": ["Neutral"],
-        "scaling": ["+65% speed"]
+        "scaling": ["+60% speed"]
       }
     }
   ]

@@ -11,7 +11,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["attack +10%"]
+      "effectOnStats": ["attack +10%"],
+      "traitType": "Strong"
     },
     {
       "id": 2,
@@ -24,7 +25,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["attack +20%"]
+      "effectOnStats": ["attack +20%"],
+      "traitType": "Strong"
     },
     {
       "id": 3,
@@ -38,7 +40,8 @@
       },
       "race": null,
 
-      "effectOnStats": ["attack +30%"]
+      "effectOnStats": ["attack +30%"],
+      "traitType": "Strong"
     },
     {
       "id": 4,
@@ -51,7 +54,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["attack -10%"]
+      "effectOnStats": ["attack -10%"],
+      "traitType": "Weak"
     },
     {
       "id": 5,
@@ -64,7 +68,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["attack -20%"]
+      "effectOnStats": ["attack -20%"],
+      "traitType": "Weak"
     },
     {
       "id": 6,
@@ -77,7 +82,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["attack -30%"]
+      "effectOnStats": ["attack -30%"],
+      "traitType": "Weak"
     },
     {
       "id": 7,
@@ -90,7 +96,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["attack -10%", "magic +10%"]
+      "effectOnStats": ["attack -10%", "magic +10%"],
+      "traitType": "Magician"
     },
     {
       "id": 8,
@@ -103,7 +110,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["attack -20%", "magic +20%"]
+      "effectOnStats": ["attack -20%", "magic +20%"],
+      "traitType": "Magician"
     },
     {
       "id": 9,
@@ -116,7 +124,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["attack -30%", "magic +30%"]
+      "effectOnStats": ["attack -30%", "magic +30%"],
+      "traitType": "Magician"
     },
     {
       "id": 10,
@@ -129,7 +138,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["magic -10%", "attack +10%"]
+      "effectOnStats": ["magic -10%", "attack +10%"],
+      "traitType": "Fighter"
     },
     {
       "id": 11,
@@ -142,7 +152,8 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["magic -20%", "attack +20%"]
+      "effectOnStats": ["magic -20%", "attack +20%"],
+      "traitType": "Fighter"
     },
     {
       "id": 12,
@@ -155,36 +166,12 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["magic -30%", "attack +30%"]
+      "effectOnStats": ["magic -30%", "attack +30%"],
+      "traitType": "Fighter"
     },
+
     {
       "id": 13,
-      "rarityTier": 2,
-      "icon": "",
-      "name": "Heavy",
-      "description": "+10% hp, +10% defense",
-      "type": {
-        "required": [],
-        "excluded": null
-      },
-      "race": null,
-      "effectOnStats": ["hp +10%", "defense +10%"]
-    },
-    {
-      "id": 14,
-      "rarityTier": 3,
-      "icon": "",
-      "name": "Heavy+",
-      "description": "+20% hp, +20% defense",
-      "type": {
-        "required": [],
-        "excluded": null
-      },
-      "race": null,
-      "effectOnStats": ["hp +20%", "defense +20%"]
-    },
-    {
-      "id": 15,
       "rarityTier": 4,
       "icon": "",
       "name": "Legendary",
@@ -203,10 +190,11 @@
         "speed +30%",
         "luck +30%",
         "despair +30%"
-      ]
+      ],
+      "traitType": "Legendary"
     },
     {
-      "id": 16,
+      "id": 14,
       "rarityTier": 4,
       "icon": "",
       "name": "Cursed",
@@ -225,10 +213,11 @@
         "speed -30%",
         "luck -30%",
         "despair -30%"
-      ]
+      ],
+      "traitType": "Cursed"
     },
     {
-      "id": 17,
+      "id": 15,
       "rarityTier": 1,
       "icon": "",
       "name": "Lucky",
@@ -238,10 +227,11 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["luck +10%"]
+      "effectOnStats": ["luck +10%"],
+      "traitType": "Lucky"
     },
     {
-      "id": 18,
+      "id": 16,
       "rarityTier": 2,
       "icon": "",
       "name": "Lucky+",
@@ -251,10 +241,11 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["luck +20%"]
+      "effectOnStats": ["luck +20%"],
+      "traitType": "Lucky"
     },
     {
-      "id": 19,
+      "id": 17,
       "rarityTier": 3,
       "icon": "",
       "name": "Lucky++",
@@ -264,36 +255,53 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["luck +30%"]
+      "effectOnStats": ["luck +30%"],
+      "traitType": "Lucky"
+    },
+    {
+      "id": 18,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Unlucky",
+      "description": "-10% luck",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["luck -10%"],
+      "traitType": "Unlucky"
+    },
+    {
+      "id": 19,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Unlucky+",
+      "description": "-20% luck",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["luck -20%"],
+      "traitType": "Unlucky"
     },
     {
       "id": 20,
-      "rarityTier": 2,
+      "rarityTier": 3,
       "icon": "",
-      "name": "Resistant",
-      "description": "+10% defense, +10% spirit",
+      "name": "Unlucky++",
+      "description": "-30% luck",
       "type": {
         "required": [],
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["defense +10%", "spirit +10%"]
+      "effectOnStats": ["luck -30%"],
+      "traitType": "Unlucky"
     },
     {
       "id": 21,
-      "rarityTier": 3,
-      "icon": "",
-      "name": "Resistant+",
-      "description": "+20% defense, +20% spirit",
-      "type": {
-        "required": [],
-        "excluded": null
-      },
-      "race": null,
-      "effectOnStats": ["defense +20%", "spirit +20%"]
-    },
-    {
-      "id": 22,
       "rarityTier": 1,
       "icon": "",
       "name": "Fast",
@@ -303,10 +311,11 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["speed +10%"]
+      "effectOnStats": ["speed +10%"],
+      "traitType": "Fast"
     },
     {
-      "id": 23,
+      "id": 22,
       "rarityTier": 2,
       "icon": "",
       "name": "Fast+",
@@ -316,10 +325,11 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["speed +20%"]
+      "effectOnStats": ["speed +20%"],
+      "traitType": "Fast"
     },
     {
-      "id": 24,
+      "id": 23,
       "rarityTier": 3,
       "icon": "",
       "name": "Fast++",
@@ -329,88 +339,11 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["speed +30%"]
+      "effectOnStats": ["speed +30%"],
+      "traitType": "Fast"
     },
     {
-      "id": 25,
-      "rarityTier": 1,
-      "icon": "",
-      "name": "Psychic",
-      "description": "+10% despair",
-      "type": {
-        "required": [],
-        "excluded": null
-      },
-      "race": null,
-      "effectOnStats": ["despair +10%"]
-    },
-    {
-      "id": 26,
-      "rarityTier": 2,
-      "icon": "",
-      "name": "Psychic+",
-      "description": "+20% despair",
-      "type": {
-        "required": [],
-        "excluded": null
-      },
-      "race": null,
-      "effectOnStats": ["despair +20%"]
-    },
-    {
-      "id": 27,
-      "rarityTier": 3,
-      "icon": "",
-      "name": "Psychic++",
-      "description": "+30% despair",
-      "type": {
-        "required": [],
-        "excluded": null
-      },
-      "race": null,
-      "effectOnStats": ["despair +30%"]
-    },
-    {
-      "id": 28,
-      "rarityTier": 1,
-      "icon": "",
-      "name": "Stupid",
-      "description": "-10% magic",
-      "type": {
-        "required": [],
-        "excluded": null
-      },
-      "race": null,
-      "effectOnStats": ["magic -10%"]
-    },
-    {
-      "id": 29,
-      "rarityTier": 2,
-      "icon": "",
-      "name": "Stupid+",
-      "description": "-20% magic",
-      "type": {
-        "required": [],
-        "excluded": null
-      },
-      "race": null,
-      "effectOnStats": ["magic -20%"]
-    },
-    {
-      "id": 30,
-      "rarityTier": 3,
-      "icon": "",
-      "name": "Stupid++",
-      "description": "-30% magic",
-      "type": {
-        "required": [],
-        "excluded": null
-      },
-      "race": null,
-      "effectOnStats": ["magic -30%"]
-    },
-    {
-      "id": 31,
+      "id": 24,
       "rarityTier": 1,
       "icon": "",
       "name": "Slow",
@@ -420,10 +353,11 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["speed -10%"]
+      "effectOnStats": ["speed -10%"],
+      "traitType": "Slow"
     },
     {
-      "id": 32,
+      "id": 25,
       "rarityTier": 2,
       "icon": "",
       "name": "Slow+",
@@ -433,10 +367,11 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["speed -20%"]
+      "effectOnStats": ["speed -20%"],
+      "traitType": "Slow"
     },
     {
-      "id": 33,
+      "id": 26,
       "rarityTier": 3,
       "icon": "",
       "name": "Slow++",
@@ -446,7 +381,429 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["speed -30%"]
+      "effectOnStats": ["speed -30%"],
+      "traitType": "Slow"
+    },
+    {
+      "id": 27,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Stupid",
+      "description": "-10% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic -10%"],
+      "traitType": "Stupid"
+    },
+    {
+      "id": 28,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Stupid+",
+      "description": "-20% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic -20%"],
+      "traitType": "Stupid"
+    },
+    {
+      "id": 29,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Stupid++",
+      "description": "-30% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic -30%"],
+      "traitType": "Stupid"
+    },
+    {
+      "id": 30,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Intelligent",
+      "description": "+10% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic +10%"],
+      "traitType": "Intelligent"
+    },
+    {
+      "id": 31,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Intelligent+",
+      "description": "+20% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic +20%"],
+      "traitType": "Intelligent"
+    },
+    {
+      "id": 32,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Intelligent++",
+      "description": "+30% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["magic +30%"],
+      "traitType": "Intelligent"
+    },
+
+    {
+      "id": 33,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Spiritualist",
+      "description": "+10% spirit",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["spirit +10%"],
+      "traitType": "Spiritualist"
+    },
+    {
+      "id": 34,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Spiritualist+",
+      "description": "+20% spirit",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["spirit +20%"],
+      "traitType": "Spiritualist"
+    },
+    {
+      "id": 35,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Spiritualist++",
+      "description": "+30% spirit",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["spirit +30%"],
+      "traitType": "Spiritualist"
+    },
+    {
+      "id": 36,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Defensive",
+      "description": "+10% defense",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["defense +10%"],
+      "traitType": "Defensive"
+    },
+    {
+      "id": 37,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Defensive+",
+      "description": "+20% defense",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["defense +20%"],
+      "traitType": "Defensive"
+    },
+    {
+      "id": 38,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Defensive++",
+      "description": "+30% defense",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["defense +30%"],
+      "traitType": "Defensive"
+    },
+    {
+      "id": 39,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Resistant",
+      "description": "+15% defense, +15% spirit",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["defense +15%", "spirit +15%"],
+      "traitType": "Resistant"
+    },
+    {
+      "id": 40,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Resistant+",
+      "description": "+30% defense, +30% spirit",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["defense +30%", "spirit +30%"],
+      "traitType": "Resistant"
+    },
+    {
+      "id": 41,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Heavy",
+      "description": "+15% hp, -15% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["hp +15%", "speed -15%"],
+      "traitType": "Heavy"
+    },
+    {
+      "id": 42,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Heavy+",
+      "description": "+30% hp, -30% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["hp +30%", "speed -30%"],
+      "traitType": "Heavy"
+    },
+    {
+      "id": 43,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Light",
+      "description": "-15% hp, +15% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["hp -15%", "speed +15%"],
+      "traitType": "Light"
+    },
+    {
+      "id": 44,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Light+",
+      "description": "-30% hp, +30% speed",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["hp -30%", "speed +30%"],
+      "traitType": "Light"
+    },
+    {
+      "id": 45,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Psychic",
+      "description": "+10% despair",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["despair +10%"],
+      "traitType": "Psychic"
+    },
+    {
+      "id": 46,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Psychic+",
+      "description": "+20% despair",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["despair +20%"],
+      "traitType": "Psychic"
+    },
+    {
+      "id": 47,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Psychic++",
+      "description": "+30% despair",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["despair +30%"],
+      "traitType": "Psychic"
+    },
+    {
+      "id": 48,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Fat",
+      "description": "+10% hp",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["hp +30%"],
+      "traitType": "Fat"
+    },
+    {
+      "id": 49,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Fat+",
+      "description": "+20% hp",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["hp +20%"],
+      "traitType": "Fat"
+    },
+    {
+      "id": 50,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Fat++",
+      "description": "+30% hp",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["hp +30%"],
+      "traitType": "Fat"
+    },
+    {
+      "id": 51,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Aggressive",
+      "description": "+5% attack, +5% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack +5%", "magic +5%"],
+      "traitType": "Aggressive"
+    },
+    {
+      "id": 52,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Aggressive+",
+      "description": "+10% attack, +10% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack +10%", "magic +10%"],
+      "traitType": "Aggressive"
+    },
+    {
+      "id": 53,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Aggressive++",
+      "description": "+15% attack, +15% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack +15%", "magic +15%"],
+      "traitType": "Aggressive"
+    },
+    {
+      "id": 54,
+      "rarityTier": 1,
+      "icon": "",
+      "name": "Pacific",
+      "description": "-5% attack, -5% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack -5%", "magic -5%"],
+      "traitType": "Pacific"
+    },
+    {
+      "id": 55,
+      "rarityTier": 2,
+      "icon": "",
+      "name": "Pacific+",
+      "description": "-10% attack, -10% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack -10%", "magic -10%"],
+      "traitType": "Pacific"
+    },
+    {
+      "id": 56,
+      "rarityTier": 3,
+      "icon": "",
+      "name": "Pacific++",
+      "description": "-15% attack, -15% magic",
+      "type": {
+        "required": [],
+        "excluded": null
+      },
+      "race": null,
+      "effectOnStats": ["attack -15%", "magic -15%"],
+      "traitType": "Pacific"
     }
   ]
 }
