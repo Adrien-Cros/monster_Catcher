@@ -1,0 +1,75 @@
+.monster-container-codex {
+  position: relative;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 6px;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+
+  h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #dfd4d4;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .monster-icon-codex {
+    width: 220px;
+    height: 170px;
+    border-radius: 4px;
+    object-fit: scale-down;
+  }
+
+  .description {
+    color: #dfd4d4;
+    font-style: italic;
+    margin: 0;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 4px;
+
+    p {
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+
+  .stats-codex {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+
+    p {
+      margin: 4px 0;
+    }
+  }
+
+  .type-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    position: absolute;
+    left: 3%;
+    top: 27%;
+  }
+
+  .monster-name-id {
+    .monster-id {
+      position: absolute;
+    }
+    .monster-container-name {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

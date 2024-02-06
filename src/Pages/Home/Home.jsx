@@ -115,7 +115,7 @@ function Home() {
   }
 
   return (
-    <main>
+    <section className="fullview">
       {pressedNewGame && (
         <ModalConfirmation
           modalName={'New Game'}
@@ -142,7 +142,7 @@ function Home() {
           </button>
         </div>
       )}
-    </main>
+    </section>
   )
 }
 

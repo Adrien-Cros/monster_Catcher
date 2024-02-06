@@ -1556,7 +1556,7 @@
       "race": ["Spirit"],
       "type": ["Arcane"],
       "description": "A beautiful Book Swarm !",
-      "rarity": 4,
+      "rarity": 1,
       "stats": {
         "hp": 60,
         "attack": 5,
@@ -1760,6 +1760,116 @@
         },
         {
           "item_id": 10,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "uniqueKey": null,
+      "name": "Slicer",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Slicer.png",
+      "race": ["Clockwork"],
+      "type": ["Lightning"],
+      "description": "A beautiful Slicer !",
+      "rarity": 2,
+      "stats": {
+        "hp": 87,
+        "attack": 11,
+        "magic": 2,
+        "defense": 7,
+        "spirit": 7,
+        "speed": 3,
+        "luck": 3,
+        "despair": 4
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 8,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "uniqueKey": null,
+      "name": "Erager",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Erager.png",
+      "race": ["Clockwork"],
+      "type": ["Lightning"],
+      "description": "A beautiful Erager !",
+      "rarity": 2,
+      "stats": {
+        "hp": 75,
+        "attack": 2,
+        "magic": 11,
+        "defense": 5,
+        "spirit": 9,
+        "speed": 3,
+        "luck": 3,
+        "despair": 4
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 8,
           "min_quantity": 1,
           "max_quantity": 1,
           "drop_chance": 25

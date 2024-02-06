@@ -75,7 +75,7 @@ function MainMenu() {
   }
 
   return (
-    <main className="main-menu">
+    <section className="main-menu fullview">
       {alreadyHaveStarter ? (
         <>
           <div className="mission-container">
@@ -98,7 +98,7 @@ function MainMenu() {
               {errorMessage !== '' && <>{errorMessage}</>}
             </div>
           </div>
-          <section className="main-menu-container">
+          <div className="main-menu-container">
             <div className="misc-button">
               <MenuButton
                 onClick={togglePlayerBox}
@@ -133,12 +133,12 @@ function MainMenu() {
                 <PlayerInventory />
               </div>
             )}
-          </section>
+          </div>
         </>
       ) : (
         <StarterMonsterSelection />
       )}
-    </main>
+    </section>
   )
 }
 

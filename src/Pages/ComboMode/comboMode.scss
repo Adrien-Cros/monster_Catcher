@@ -68,7 +68,8 @@
 .combo-mode {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  flex-direction: row;
+  height: 100%;
 
   .monster-capacity-combo {
     display: flex;

@@ -34,7 +34,7 @@
   animation: button-apparition2 1s ease forwards;
 }
 
-main {
+section {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -44,7 +44,7 @@ main {
     flex-direction: column;
     justify-content: center;
     gap: 30px;
-    margin-top: 150px;
+    height: 100%;
   }
 }
 .main-menu-button {

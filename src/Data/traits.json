@@ -690,7 +690,7 @@
         "excluded": null
       },
       "race": null,
-      "effectOnStats": ["hp +30%"],
+      "effectOnStats": ["hp +10%"],
       "traitType": "Fat"
     },
     {

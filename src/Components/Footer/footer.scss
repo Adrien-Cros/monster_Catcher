@@ -3,17 +3,19 @@ footer {
   display: flex;
   justify-content: space-evenly;
   background-color: #333;
-  margin-top: 20px;
+  margin: 0;
 
   .contributor {
     display: flex;
     flex-direction: column;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
 
     a {
-      color: green;
+      display: flex;
+      color: #7b97c4;
       text-decoration: underline;
+      align-self: flex-start;
     }
   }
 }

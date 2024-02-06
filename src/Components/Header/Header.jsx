@@ -7,8 +7,9 @@ import {
   setDifficultyNormal,
 } from '../../System/config'
 
-import './header.scss'
 import PlayerInfosHUD from '../HUD/PlayerInfos/PlayerInfosHUD'
+
+import './header.scss'
 
 function Header() {
   const dispatch = useDispatch()
@@ -44,6 +45,11 @@ function Header() {
     } else if (selectedDifficulty === 'hard') {
       dispatch(setDifficultyHard())
     }
+  }
+
+  const handleOpenCodex = () => {
+    const codexUrl = '/codex'
+    window.open(codexUrl, '_blank')
   }
 
   return (
@@ -86,7 +92,9 @@ function Header() {
             Main Menu
           </div>
           <div className="option-button">Menu 2</div>
-          <div className="option-button">Codex</div>
+          <div className="option-button" onClick={handleOpenCodex}>
+            Codex
+          </div>
           <div className="option-button" onClick={handleOption}>
             Options
           </div>

@@ -187,7 +187,7 @@ function ActionSelection({
                     }) with ${selectedCaptureItem.name} (${Math.min(
                       100,
                       100 -
-                        (catchRateHelpers({ monster: wildMonster }) +
+                        (catchRateHelpers({ monster: wildMonster }) -
                           selectedCaptureItem.effect.chanceToCapture)
                     )}%) ?`
                   : 'Select a capture item to catch this monster!'}

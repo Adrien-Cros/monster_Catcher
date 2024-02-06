@@ -10,9 +10,10 @@
 }
 
 .main-menu {
+  display: flex;
+  flex-direction: column;
   margin-right: 20px;
   margin-left: 20px;
-  margin-top: 4px;
 
   &-container {
     display: flex;

@@ -238,8 +238,8 @@ function RandomEncounter() {
 
   return (
     <>
-      <main
-        className={`combat-panel ${
+      <section
+        className={`combat-panel fullview ${
           playerMonster ? '--flex-row-reverse' : '--flex-column'
         }`}
       >
@@ -325,7 +325,8 @@ function RandomEncounter() {
             canChooseAnAction={true}
           />
         )}
-      </main>
+      </section>
+      {/*
       {playerMonster && (
         <aside className="combat-log">
           <h3>Combat log:</h3>
@@ -336,6 +337,7 @@ function RandomEncounter() {
           </div>
         </aside>
       )}
+            */}
     </>
   )
 }

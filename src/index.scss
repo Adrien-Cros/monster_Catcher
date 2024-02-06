@@ -1,13 +1,6 @@
-.Router {
-  text-align: center;
-  position: relative;
-  height: 100vh;
-}
-
 body {
   margin: 0;
-  height: 100vh;
-  box-sizing: border-box;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -15,6 +8,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
   color: white;
+}
+
+.fullview {
+  height: 87.7vh;
+}
+
+main {
+  min-height: 0;
+  overflow: auto;
 }
 
 code {

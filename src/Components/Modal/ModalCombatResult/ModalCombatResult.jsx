@@ -29,7 +29,9 @@ function ModalCombatResult({
   return (
     <div className="modal">
       <h3 className="modal-name">{modalName}</h3>
-      {xpWon && <div className="combat-result">XP Gained: {xpWon}</div>}
+      {xpWon && xpWon !== 0 && (
+        <div className="combat-result">XP Gained: {xpWon}</div>
+      )}
       {(monsterDefeated || isCaptured) &&
         currencyWon !== null &&
         currencyWon.length > 0 && (
@@ -49,9 +51,9 @@ function ModalCombatResult({
           <div className="combat-result">
             {itemsWon.map((loot, index) => (
               <div key={index} className="loot">
-                {loot.item.name}
-                <img src={loot.item.icon} alt={loot.item.name} />
-                <span>{`Quantity: ${loot.quantity}`}</span>
+                {loot?.item.name}
+                <img src={loot?.item.icon} alt={loot?.item.name} />
+                <span>{`Quantity: ${loot?.quantity}`}</span>
               </div>
             ))}
           </div>

@@ -1,32 +1,43 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import store from '../../Store/store'
 import MonsterCardLight from '../../Components/MonsterCard/MonsterCardLight/MonsterCardLight'
 import generateMonster from '../../System/generateMonster/generateMonster'
 import applyLevelToMonster from '../../System/level/applyLevelToMonster/applyLevelToMonster'
+import levelUp from '../../System/level/levelUp/levelUp'
+import { updateMonsterFromTeam } from '../../Store/Slice/playerTeamSlice'
+import { updatePlayerXp } from '../../Store/Slice/playerInfoSlice'
+import ModalCombatResult from '../../Components/Modal/ModalCombatResult/ModalCombatResult'
+import { addCurrencyToInventory } from '../../Store/Slice/inventorySlice'
+import { addItemToInventory } from '../../Store/Slice/inventorySlice'
 
 import ComboCapacitySelection from '../../Components/ComboMode/ComboCapacitySelection/ComboCapacitySelection'
 import ComboCounterDisplay from '../../Components/ComboMode/ComboCounterDisplay/ComboCounterDisplay'
 
-import './comboMode.scss'
 import calculateDamageCombo from '../../System/combat/comboMode/calculateDamageCombo'
 import randomEnemyCapacityCombo from '../../System/combat/comboMode/randomEnemyCapacityCombo'
 
+import './comboMode.scss'
+import lootCurrency from '../../System/loot/lootCurrency'
+import lootItem from '../../System/loot/lootItem'
+import { setInComboMode } from '../../Store/Slice/gameStatusSlice'
+
 function ComboMode() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const [hasInitBattle, setHasInitBattle] = useState(false)
-  const [wildMonstersList, setWildMonstersList] = useState([])
 
   // Original state for monsterInTeam
   const [originalMonsterInTeam, setOriginalMonsterInTeam] = useState(null)
-
   // Copy state for monsterInTeam
   const [copiedMonsterInTeam, setCopiedMonsterInTeam] = useState([])
 
-  // Original state for wildMonstersList
+  // Original state for originalWildMonstersList
   const [originalWildMonstersList, setOriginalWildMonstersList] = useState(null)
-
-  // Copy state for wildMonstersList
+  // Copy state for originalWildMonstersList
   const [copiedWildMonstersList, setCopiedWildMonstersList] = useState([])
 
   // Used to track which capacities have been selected
@@ -38,6 +49,12 @@ function ComboMode() {
 
   const [copiedPlayerTeamStats, setCopiedPlayerTeamStats] = useState(0)
   const [copiedWildTeamStats, setCopiedWildTeamStats] = useState(0)
+
+  const [winOrLoose, setWinOrLoose] = useState() // true = win, false = loose
+  const [hasCombatEnded, setHasCombatEnded] = useState(false)
+  //used to check the loot when the monster is killed
+  const [lootList, setLootList] = useState([])
+  const [currencyList, setCurrencyList] = useState([])
 
   const handleCapacitySelect = (monster, capacity) => {
     // Create an object containing the monster with the selected capacity
@@ -144,15 +161,93 @@ function ComboMode() {
   }
 
   useEffect(() => {
+    if (copiedWildTeamStats?.hp <= 0) {
+      console.log('You win')
+      setWinOrLoose(true)
+    } else if (copiedPlayerTeamStats?.hp <= 0) {
+      console.log('You lose')
+      setWinOrLoose(false)
+    }
+  }, [copiedWildTeamStats?.hp, copiedPlayerTeamStats?.hp])
+
+  useEffect(() => {
+    if (winOrLoose) {
+      //check for lvl up et xp won
+      let lootedItem = []
+      let lootedCurrency = []
+      for (let i = 0; i < originalMonsterInTeam.length; i++) {
+        const result = levelUp({
+          victoriousMonster: originalMonsterInTeam[i],
+          defeatedMonster: originalWildMonstersList[i],
+        })
+        console.log('Result de ', i, ' + ', result)
+        //Update the monster with the new xp/lvl
+        dispatch(updateMonsterFromTeam({ monsterToUpdate: result.monster }))
+        //loot
+        lootedCurrency.push(lootCurrency())
+        lootedItem.push(lootItem({ monster: originalWildMonstersList[i] }))
+      }
+
+      // Merge arrays based on item ID
+      const mergeArrays = (arr) => {
+        return arr.reduce((merged, current) => {
+          const existingItem = merged.find(
+            (item) => item.item.id === current.item.id
+          )
+
+          if (existingItem) {
+            existingItem.quantity += current.quantity
+          } else {
+            merged.push({ ...current })
+          }
+
+          return merged
+        }, [])
+      }
+
+      // Combine the arrays of looted items and currency
+      const combinedLootedItems = mergeArrays([].concat(...lootedItem))
+      const combinedCurrencyLooted = mergeArrays([].concat(...lootedCurrency))
+
+      if (combinedLootedItems) {
+        combinedLootedItems.forEach(({ item, quantity }) => {
+          dispatch(addItemToInventory({ item, quantity }))
+        })
+      }
+      //Check loot currency
+      if (combinedCurrencyLooted) {
+        combinedCurrencyLooted.forEach(({ item, quantity }) => {
+          dispatch(addCurrencyToInventory({ currency: item, quantity }))
+        })
+      }
+
+      // Update state with the merged arrays
+      setLootList(combinedLootedItems)
+      setCurrencyList(combinedCurrencyLooted)
+
+      // Update the player xp
+      dispatch(updatePlayerXp({ xpGained: 15 }))
+      setHasCombatEnded(true)
+    } else if (winOrLoose === false) {
+      navigate('/main')
+    }
+  }, [winOrLoose])
+
+  useEffect(() => {
+    console.log('Looted Items: ', lootList)
+    console.log('Currency Looted: ', currencyList)
+  }, [currencyList, lootList])
+
+  useEffect(() => {
     setOriginalMonsterInTeam(monsterInTeam)
     setCopiedMonsterInTeam(monsterInTeam)
 
-    setOriginalWildMonstersList(wildMonstersList)
-    setCopiedWildMonstersList(wildMonstersList)
+    setOriginalWildMonstersList(originalWildMonstersList)
+    setCopiedWildMonstersList(originalWildMonstersList)
 
     setCopiedPlayerTeamStats(calculateTotalStats(originalMonsterInTeam))
-    setCopiedWildTeamStats(calculateTotalStats(wildMonstersList))
-  }, [monsterInTeam, wildMonstersList])
+    setCopiedWildTeamStats(calculateTotalStats(originalWildMonstersList))
+  }, [monsterInTeam, originalMonsterInTeam, originalWildMonstersList])
 
   const AVERAGE_TEAM_LVL = useSelector((state) =>
     calculateAverageTeamLevel(state.monsterTeam.actualMonstersInTeam)
@@ -207,7 +302,7 @@ function ComboMode() {
   useEffect(() => {
     setPlayerTeamStats(calculateTotalStats(copiedMonsterInTeam))
     setWildTeamStats(calculateTotalStats(copiedWildMonstersList))
-  }, [wildTeamStats.hp, playerTeamStats.hp])
+  }, [copiedMonsterInTeam, copiedWildMonstersList])
 
   useEffect(() => {
     const generatedMonsters = Array.from({ length: 4 }, () => {
@@ -222,7 +317,7 @@ function ComboMode() {
       })
     })
 
-    setWildMonstersList(generatedMonsters)
+    setOriginalWildMonstersList(generatedMonsters)
     setHasInitBattle(true)
   }, [AVERAGE_TEAM_LVL])
 
@@ -231,8 +326,24 @@ function ComboMode() {
     return Math.max(Math.floor(ratio), 0)
   }
 
+  const handleCloseModal = () => {
+    dispatch(setInComboMode(false))
+    navigate('/main')
+  }
+
   return (
-    <section className="combo-mode">
+    <section className="combo-mode fullview">
+      {hasCombatEnded && winOrLoose && (
+        <ModalCombatResult
+          modalName={'Combat Result'}
+          monsterDefeated={originalWildMonstersList[2]}
+          onCloseModal={handleCloseModal}
+          itemsWon={lootList}
+          currencyWon={currencyList}
+          xpWon={0}
+          isCaptured={false}
+        />
+      )}
       <div className="monster-capacity-combo">
         {copiedMonsterInTeam.length === 4 && (
           <ComboCapacitySelection
