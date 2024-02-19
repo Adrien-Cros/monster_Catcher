@@ -33,6 +33,8 @@ function MonsterCardLight({
     (state) => state.config.maxMonstersInTeam
   )
 
+  const monsterVersion = monster.version
+
   //Handle the case for monster not found
   if (!monster) {
     return <div>Can't find monsters</div>
@@ -88,60 +90,64 @@ function MonsterCardLight({
   }
 
   return (
-    <div
-      className="monster-container-light"
-      style={{ backgroundColor: monsterContainerColor }}
-    >
-      {isNew && <div className="monster-new new-animation">New</div>}
-      <img
-        className="monster-icon-light"
-        src={monster.picture}
-        alt={monster.name}
-      />
-      {canAccessMenu === true && (
-        <div className="menu-container-light">
-          <button
-            onClick={handleMenuClick}
-            className="monster-menu-button-light"
-          >
-            ...
-          </button>
-          {isMenuOpen && (
-            <>
-              {canBeRemovedFromTeam === false && (
-                <button
-                  onClick={handleMoveToTeam}
-                  className="move-button-light"
-                >
-                  Move to your team
-                </button>
-              )}
-              {canBeRemovedFromTeam === true && (
-                <button
-                  onClick={handleRemoveFromTeam}
-                  className="remove-button-light"
-                >
-                  Move to your box
-                </button>
-              )}
-              <button className="rename-button-light">Rename</button>
-              {canBeDelete === true && (
-                <button
-                  onClick={handleDeleteClick}
-                  className="delete-button-light"
-                >
-                  Delete
-                </button>
-              )}
-            </>
-          )}
+    <div className="monster-container-wrapper">
+      <div
+        className={`monster-container-light ${
+          monsterVersion === 'foil' ? 'foil-effect-light' : ''
+        }`}
+        style={{ backgroundColor: monsterContainerColor }}
+      >
+        {isNew && <div className="monster-new new-animation">New</div>}
+        <img
+          className="monster-icon-light"
+          src={monster.picture}
+          alt={monster.name}
+        />
+        {canAccessMenu === true && (
+          <div className="menu-container-light">
+            <button
+              onClick={handleMenuClick}
+              className="monster-menu-button-light"
+            >
+              ...
+            </button>
+            {isMenuOpen && (
+              <>
+                {canBeRemovedFromTeam === false && (
+                  <button
+                    onClick={handleMoveToTeam}
+                    className="move-button-light"
+                  >
+                    Move to your team
+                  </button>
+                )}
+                {canBeRemovedFromTeam === true && (
+                  <button
+                    onClick={handleRemoveFromTeam}
+                    className="remove-button-light"
+                  >
+                    Move to your box
+                  </button>
+                )}
+                <button className="rename-button-light">Rename</button>
+                {canBeDelete === true && (
+                  <button
+                    onClick={handleDeleteClick}
+                    className="delete-button-light"
+                  >
+                    Delete
+                  </button>
+                )}
+              </>
+            )}
+          </div>
+        )}
+        <div className="monster-name-id-light">
+          <h3 className="monster-container-name-light">{monster.name}</h3>
         </div>
-      )}
-      <div className="monster-name-id-light">
-        <h3 className="monster-container-name-light">{monster.name}</h3>
-      </div>
-      <div>
-        <p className="lvl-light">Level: {monster.level}</p>
+        <div>
+          <p className="lvl-light">Level: {monster.level}</p>
+        </div>
       </div>
     </div>
   )

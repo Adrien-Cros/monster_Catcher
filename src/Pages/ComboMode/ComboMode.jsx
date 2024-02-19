@@ -340,7 +340,6 @@ function ComboMode() {
           onCloseModal={handleCloseModal}
           itemsWon={lootList}
           currencyWon={currencyList}
-          xpWon={0}
           isCaptured={false}
         />
       )}

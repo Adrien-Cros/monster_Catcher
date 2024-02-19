@@ -14,6 +14,30 @@
   }
 }
 
+@keyframes foil {
+  0% {
+    background-position: 84% 0;
+  }
+  50% {
+    background-position: 17% 100%;
+  }
+  100% {
+    background-position: 84% 0;
+  }
+}
+
+.foil-effect {
+  background: radial-gradient(
+    circle,
+    rgb(104, 57, 57) 0%,
+    rgba(55, 51, 51, 0.18) 3%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  background-size: 200% 200%;
+
+  animation: foil 8s ease infinite;
+}
+
 .monster-container {
   position: relative;
   border: 2px solid #ccc;

@@ -11,6 +11,7 @@
       "type": ["Fire"],
       "description": "A cute little fire carbuncle",
       "rarity": 0,
+      "version": "normal",
       "stats": {
         "hp": 80,
         "attack": 7,
@@ -66,6 +67,7 @@
       "type": ["Dark"],
       "description": "A cute little dark carbuncle",
       "rarity": 0,
+      "version": "normal",
       "stats": {
         "hp": 82,
         "attack": 8,
@@ -121,6 +123,7 @@
       "type": ["Ice"],
       "description": "A cute little ice carbuncle",
       "rarity": 0,
+      "version": "normal",
       "stats": {
         "hp": 85,
         "attack": 9,
@@ -176,6 +179,7 @@
       "type": ["Dark"],
       "description": "A beautiful Dark Slime !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 74,
         "attack": 6,
@@ -231,6 +235,7 @@
       "type": ["Holy"],
       "description": "A beautiful Holy Slime !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 76,
         "attack": 7,
@@ -286,6 +291,7 @@
       "type": ["Fire"],
       "description": "A beautiful Fire Slime !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 79,
         "attack": 7,
@@ -341,6 +347,7 @@
       "type": ["Water"],
       "description": "A beautiful Water Slime !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 82,
         "attack": 8,
@@ -396,6 +403,7 @@
       "type": ["Ice"],
       "description": "A beautiful Ice Slime !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 82,
         "attack": 8,
@@ -451,6 +459,7 @@
       "type": ["Dark"],
       "description": "A beautiful Corrupted Villager !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 92,
         "attack": 10,
@@ -506,6 +515,7 @@
       "type": ["Dark"],
       "description": "A beautiful Corrupted Hound !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 96,
         "attack": 10,
@@ -561,6 +571,7 @@
       "type": ["Dark"],
       "description": "A beautiful Corrupted Boomer !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 50,
         "attack": 15,
@@ -616,6 +627,7 @@
       "type": ["Fire"],
       "description": "A beautiful Fire Gazer Elemental !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 76,
         "attack": 4,
@@ -671,6 +683,7 @@
       "type": ["Water"],
       "description": "A beautiful Water Gazer Elemental !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 74,
         "attack": 4,
@@ -726,6 +739,7 @@
       "type": ["Lightning"],
       "description": "A beautiful Clockwork Bird !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 70,
         "attack": 8,
@@ -781,6 +795,7 @@
       "type": ["Lightning"],
       "description": "A beautiful Clockwork Gunner !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 68,
         "attack": 12,
@@ -836,6 +851,7 @@
       "type": ["Dark"],
       "description": "A beautiful Corrupted Clockwork Spirit !",
       "rarity": 2,
+      "version": "normal",
       "stats": {
         "hp": 101,
         "attack": 6,
@@ -897,6 +913,7 @@
       "type": ["Ice"],
       "description": "A beautiful Ice Bull !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 92,
         "attack": 6,
@@ -952,6 +969,7 @@
       "type": ["Ice"],
       "description": "A beautiful Ice Lion !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 90,
         "attack": 7,
@@ -1007,6 +1025,7 @@
       "type": ["Holy"],
       "description": "A beautiful Magical Holy Fox !",
       "rarity": 2,
+      "version": "normal",
       "stats": {
         "hp": 78,
         "attack": 4,
@@ -1062,6 +1081,7 @@
       "type": ["Dark"],
       "description": "A beautiful Magical Dark Fox !",
       "rarity": 2,
+      "version": "normal",
       "stats": {
         "hp": 79,
         "attack": 3,
@@ -1117,6 +1137,7 @@
       "type": ["Lightning"],
       "description": "A beautiful Clockwork Worker !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 64,
         "attack": 6,
@@ -1172,6 +1193,7 @@
       "type": ["Holy"],
       "description": "A beautiful Armored Knight !",
       "rarity": 3,
+      "version": "normal",
       "stats": {
         "hp": 100,
         "attack": 5,
@@ -1227,6 +1249,7 @@
       "type": ["Holy"],
       "description": "A beautiful Angel Knight !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 86,
         "attack": 7,
@@ -1282,6 +1305,7 @@
       "type": ["Holy"],
       "description": "A beautiful Maiden !",
       "rarity": 2,
+      "version": "normal",
       "stats": {
         "hp": 71,
         "attack": 3,
@@ -1337,6 +1361,7 @@
       "type": ["Fire"],
       "description": "A beautiful Furious !",
       "rarity": 2,
+      "version": "normal",
       "stats": {
         "hp": 76,
         "attack": 8,
@@ -1392,6 +1417,7 @@
       "type": ["Fire"],
       "description": "A beautiful Ignis !",
       "rarity": 4,
+      "version": "normal",
       "stats": {
         "hp": 127,
         "attack": 15,
@@ -1447,6 +1473,7 @@
       "type": ["Water"],
       "description": "A beautiful Water Butterfly !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 60,
         "attack": 6,
@@ -1502,6 +1529,7 @@
       "type": ["Water"],
       "description": "A beautiful Dergon !",
       "rarity": 4,
+      "version": "normal",
       "stats": {
         "hp": 138,
         "attack": 14,
@@ -1557,6 +1585,7 @@
       "type": ["Arcane"],
       "description": "A beautiful Book Swarm !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 60,
         "attack": 5,
@@ -1612,6 +1641,7 @@
       "type": ["Arcane"],
       "description": "A beautiful Book Golem !",
       "rarity": 2,
+      "version": "normal",
       "stats": {
         "hp": 80,
         "attack": 6,
@@ -1667,6 +1697,7 @@
       "type": ["Arcane"],
       "description": "A beautiful Librarian !",
       "rarity": 1,
+      "version": "normal",
       "stats": {
         "hp": 75,
         "attack": 6,
@@ -1722,6 +1753,7 @@
       "type": ["Arcane"],
       "description": "A beautiful Arcanic Tree !",
       "rarity": 2,
+      "version": "normal",
       "stats": {
         "hp": 85,
         "attack": 9,
@@ -1777,6 +1809,7 @@
       "type": ["Lightning"],
       "description": "A beautiful Slicer !",
       "rarity": 2,
+      "version": "normal",
       "stats": {
         "hp": 87,
         "attack": 11,
@@ -1832,6 +1865,7 @@
       "type": ["Lightning"],
       "description": "A beautiful Erager !",
       "rarity": 2,
+      "version": "normal",
       "stats": {
         "hp": 75,
         "attack": 2,

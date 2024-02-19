@@ -2,6 +2,7 @@ import monstersData from '../../Data/monsters.json'
 import addCapacityToMonsters from './addCapacityToMonsters'
 import addTraitsToMonster from './addTraitsToMonsters'
 import applyTraitsEffectToMonsters from './applyTraitsEffectToMonsters'
+import addVersionToMonsters from './addVersionToMonsters'
 
 // Generate a random monster from the monster data, attaching random traits/capacity to it, and generating a uniqueKey
 // monsterRarity can accept "all" for no filter, a single number for a specific rarity, or an array like [2, 3, 4] to search in specific rarity
@@ -72,8 +73,13 @@ const generateMonster = ({ monsterRarity, specificMonsterId }) => {
     monster: generatedMonsterWithDetail,
   })
 
+  // Apply version to a monster
+  const modifiedMonsterWithVersion = addVersionToMonsters({
+    monster: modifiedMonster,
+  })
+
   // Return the modified monster
-  return modifiedMonster
+  return modifiedMonsterWithVersion
 }
 
 export default generateMonster

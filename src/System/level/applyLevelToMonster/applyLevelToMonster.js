@@ -35,6 +35,7 @@ const applyLevelToMonster = ({ monster, level }) => {
     traits: currentMonster.traits,
     uniqueKey: currentMonster.uniqueKey,
     uniquePassive: currentMonster.uniquePassive,
+    version: currentMonster.version,
   }
 
   // Reapply the traits effect to the monster

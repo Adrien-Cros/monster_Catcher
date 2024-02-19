@@ -307,7 +307,7 @@ function RandomEncounter() {
               </div>
               <MonsterCardClassic
                 monster={wildMonsterCopy}
-                showStats={false}
+                showStats={true}
                 isNew={isANewMonster}
               />
             </div>
