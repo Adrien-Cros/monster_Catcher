@@ -234,11 +234,6 @@ function ComboMode() {
   }, [winOrLoose])
 
   useEffect(() => {
-    console.log('Looted Items: ', lootList)
-    console.log('Currency Looted: ', currencyList)
-  }, [currencyList, lootList])
-
-  useEffect(() => {
     setOriginalMonsterInTeam(monsterInTeam)
     setCopiedMonsterInTeam(monsterInTeam)
 

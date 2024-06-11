@@ -1909,6 +1909,342 @@
           "drop_chance": 25
         }
       ]
+    },
+    {
+      "id": 35,
+      "uniqueKey": null,
+      "name": "Fire Lion",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Fire_Lion.png",
+      "race": ["Beast"],
+      "type": ["Fire"],
+      "description": "A beautiful Fire Lion !",
+      "rarity": 1,
+      "version": "normal",
+      "stats": {
+        "hp": 78,
+        "attack": 6,
+        "magic": 4,
+        "defense": 6,
+        "spirit": 10,
+        "speed": 6,
+        "luck": 2,
+        "despair": 2
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 5,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "uniqueKey": null,
+      "name": "Ice Golem",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Ice_Golem.png",
+      "race": ["Elemental", "Rock"],
+      "type": ["Ice"],
+      "description": "A beautiful Ice Golem !",
+      "rarity": 3,
+      "version": "normal",
+      "stats": {
+        "hp": 109,
+        "attack": 5,
+        "magic": 5,
+        "defense": 10,
+        "spirit": 10,
+        "speed": 2,
+        "luck": 1,
+        "despair": 2
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 7,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "uniqueKey": null,
+      "name": "Ice Turtle",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Ice_Turtle.png",
+      "race": ["Beast"],
+      "type": ["Ice"],
+      "description": "A beautiful Ice Turtle !",
+      "rarity": 2,
+      "version": "normal",
+      "stats": {
+        "hp": 100,
+        "attack": 4,
+        "magic": 6,
+        "defense": 13,
+        "spirit": 4,
+        "speed": 1,
+        "luck": 4,
+        "despair": 1
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 7,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "uniqueKey": null,
+      "name": "Hernes",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Hernes.png",
+      "race": ["Dragon", "Beast"],
+      "type": ["Holy"],
+      "description": "A beautiful Hernes !",
+      "rarity": 4,
+      "version": "normal",
+      "stats": {
+        "hp": 130,
+        "attack": 12,
+        "magic": 12,
+        "defense": 8,
+        "spirit": 14,
+        "speed": 7,
+        "luck": 5,
+        "despair": 5
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 6,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "uniqueKey": null,
+      "name": "Urchin",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Urchin.png",
+      "race": ["Beast"],
+      "type": ["Water"],
+      "description": "A beautiful Urchin !",
+      "rarity": 2,
+      "version": "normal",
+      "stats": {
+        "hp": 70,
+        "attack": 7,
+        "magic": 5,
+        "defense": 8,
+        "spirit": 5,
+        "speed": 2,
+        "luck": 6,
+        "despair": 4
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 9,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "uniqueKey": null,
+      "name": "Pendulum",
+      "level": 1,
+      "experience": 0,
+      "picture": "./Assets/Monsters/Pendulum.png",
+      "race": ["Elemental", "Clockwork"],
+      "type": ["Holy"],
+      "description": "A beautiful Pendulum !",
+      "rarity": 1,
+      "version": "normal",
+      "stats": {
+        "hp": 65,
+        "attack": 5,
+        "magic": 14,
+        "defense": 5,
+        "spirit": 12,
+        "speed": 6,
+        "luck": 8,
+        "despair": 2
+      },
+      "uniquePassive": [],
+      "capacities": {
+        "capacity1": [],
+        "capacity2": [],
+        "capacity3": [],
+        "capacity4": []
+      },
+      "traits": {
+        "trait1": [],
+        "trait2": [],
+        "trait3": [],
+        "trait4": []
+      },
+      "lootTable": [
+        {
+          "item_id": 1,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 50
+        },
+        {
+          "item_id": 2,
+          "min_quantity": 1,
+          "max_quantity": 2,
+          "drop_chance": 5
+        },
+        {
+          "item_id": 6,
+          "min_quantity": 1,
+          "max_quantity": 1,
+          "drop_chance": 25
+        }
+      ]
     }
   ]
 }

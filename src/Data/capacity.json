@@ -941,6 +941,32 @@
         "element": ["Arcane"],
         "scaling": ["+4% despair", "+16% attack"]
       }
+    },
+    {
+      "id": 37,
+      "icon": "",
+      "name": "Burning Wound",
+      "description": "A Burning Wound that deals damage !",
+      "objectType": "capacity",
+      "type": {
+        "required": ["Fire"],
+        "excluded": null
+      },
+      "race": {
+        "required": ["Beast"],
+        "excluded": null
+      },
+      "details": {
+        "type": "Damage",
+        "base": 22,
+        "variance": 5,
+        "critChance": 1,
+        "critDamage": 1.35,
+        "penetration": 2,
+        "damageType": ["Physical"],
+        "element": ["Fire"],
+        "scaling": ["+30% attack", "+7% despair"]
+      }
     }
   ]
 }

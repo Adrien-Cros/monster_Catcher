@@ -29,11 +29,12 @@
 .foil-effect {
   background: radial-gradient(
     circle,
-    rgb(104, 57, 57) 0%,
-    rgba(55, 51, 51, 0.18) 3%,
-    rgba(255, 255, 255, 0.4) 100%
+    rgba(179, 164, 164, 0.32) 1%,
+    rgba(102, 100, 100, 0.11) 3%,
+    rgba(115, 99, 99, 0.16) 35%,
+    rgba(145, 142, 142, 0.4) 55%
   );
-  background-size: 200% 200%;
+  background-size: 150% 150%;
 
   animation: foil 8s ease infinite;
 }
@@ -124,13 +125,17 @@
 
     p {
       display: flex;
-      justify-content: center;
       border: 2px solid #c60404;
-      padding: 3px;
       border-radius: 6px;
       margin: 4px 0;
       color: #75ecff;
       background: black;
+      padding: 4px;
+      width: 20%;
+      height: 12px;
+      align-items: center;
+      overflow: hidden;
+      white-space: nowrap;
     }
     :hover {
       text-decoration: underline;

@@ -210,6 +210,9 @@ function MonsterCardClassic({
         {showTooltip && tooltipInformation && tooltipInformation.details && (
           <div className="tooltip-container">
             <p>
+              <strong>{tooltipInformation.name}</strong>
+            </p>
+            <p>
               Base Damage: {tooltipInformation.details?.base} (Actual:{' '}
               {calculateCurrentInfoForCapacity({
                 monster: monster,
@@ -218,7 +221,6 @@ function MonsterCardClassic({
               })}
               )
             </p>
-
             <p>
               Crit Chance: {tooltipInformation.details?.critChance}% (Actual:{' '}
               {calculateCurrentInfoForCapacity({
@@ -240,6 +242,9 @@ function MonsterCardClassic({
           tooltipInformation &&
           tooltipInformation.effectOnStats && (
             <div className="tooltip-container-light">
+              <p>
+                <strong>{tooltipInformation.name}</strong>
+              </p>
               <p>{tooltipInformation.description}</p>
             </div>
           )}

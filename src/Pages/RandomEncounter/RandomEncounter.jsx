@@ -94,7 +94,7 @@ function RandomEncounter() {
     const generateRandomMonster = () => {
       if (!hasChosenRandomMonster) {
         const randomMonster = generateMonster({
-          specificMonsterId: null,
+          specificMonsterId: null, // null for all or specify a monster id
           monsterRarity: 'all',
         })
         if (randomMonster) {

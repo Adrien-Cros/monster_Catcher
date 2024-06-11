@@ -43,13 +43,13 @@
   ],
 
   "effectOnStats": [
-    "hp +30",
+    "hp +42",
     "attack +5",
     "magic +5",
     "defense +3",
     "spirit +3",
     "speed +2",
     "luck +2",
-    "despair +5"
+    "despair +2"
   ]
 }

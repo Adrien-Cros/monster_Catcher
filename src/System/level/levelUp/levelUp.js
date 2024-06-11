@@ -70,6 +70,7 @@ const levelUp = ({ victoriousMonster, defeatedMonster }) => {
       traits: currentVictoriousMonster.traits,
       uniqueKey: currentVictoriousMonster.uniqueKey,
       uniquePassive: currentVictoriousMonster.uniquePassive,
+      version: currentVictoriousMonster.version,
     }
 
     // Reapply the traits effect to the monster
